@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'unnic-icons';
+  src:  url('fonts/unnic-icons.eot?rmkzy9');
+  src:  url('fonts/unnic-icons.eot?rmkzy9#iefix') format('embedded-opentype'),
+    url('fonts/unnic-icons.ttf?rmkzy9') format('truetype'),
+    url('fonts/unnic-icons.woff?rmkzy9') format('woff'),
+    url('fonts/unnic-icons.svg?rmkzy9#unnic-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'unnic-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-alert-circle-1:before {
+  content: "\e900";
+}
+.icon-check-circle-1-1:before {
+  content: "\e901";
+}
+.icon-close-1:before {
+  content: "\e902";
+}
+.icon-github:before {
+  content: "\e903";
+}
+.icon-email-action-unread-1:before {
+  content: "\e904";
+}
+.icon-loading-circle-1:before {
+  content: "\e905";
+}
+.icon-lock-2-1:before {
+  content: "\e906";
+}
+.icon-read-email-at-1:before {
+  content: "\e907";
+}
+.icon-single-neutral-actions-1:before {
+  content: "\e908";
+}
+.icon-google .path1:before {
+  content: "\e909";
+  color: rgb(235, 67, 53);
+}
+.icon-google .path2:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(251, 188, 5);
+}
+.icon-google .path3:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(66, 133, 244);
+}
+.icon-google .path4:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: rgb(52, 168, 83);
+}
+.icon-view-1-1:before {
+  content: "\e90d";
+}
+.icon-view-off-1:before {
+  content: "\e90e";
+}
