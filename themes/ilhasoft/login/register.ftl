@@ -37,14 +37,14 @@
                 </div>
             </div>
 
-                <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)}">
+                <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('nickname',properties.kcFormGroupErrorClass!)}">
                     <div class="${properties.kcLabelWrapperClass!}">
-                        <label for="user.attributes.username" class="${properties.kcLabelClass!}">${msg("username")}</label>
+                        <label for="user.attributes.nickname" class="${properties.kcLabelClass!}">${msg("nickname")}</label>
                     </div>
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                         <span class="icon icon-input icon-left icon-read-email-at-1"></span>
-                        <input type="text" id="user.attributes.username" class="has-icon-left ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterUsername")}" name="user.attributes.username" value="${(register.formData['user.attributes.username']!'')}" />
-                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('username')} </div>
+                        <input type="text" id="user.attributes.nickname" class="has-icon-left ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterNickname")}" name="user.attributes.nickname" value="${(register.formData['user.attributes.nickname']!'')}" />
+                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('nickname')} </div>
                     </div>
                 </div>
 
