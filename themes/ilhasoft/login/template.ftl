@@ -131,8 +131,8 @@
           </#if>
         </div>
       </div>
+      <footer></footer>
     </div>
-    <footer></footer>
   </div>
     <script>
         $(document).ready(function(){

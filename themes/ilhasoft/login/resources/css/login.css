@@ -160,6 +160,7 @@ button, #kc-login, .btn {
 .card-pf {
     margin: 0 176px;
     align-items: center;
+    align-content: center;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 1rem;
