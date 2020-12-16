@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'unnic-icons';
-  src:  url('fonts/unnic-icons.eot?rmkzy9');
-  src:  url('fonts/unnic-icons.eot?rmkzy9#iefix') format('embedded-opentype'),
-    url('fonts/unnic-icons.ttf?rmkzy9') format('truetype'),
-    url('fonts/unnic-icons.woff?rmkzy9') format('woff'),
-    url('fonts/unnic-icons.svg?rmkzy9#unnic-icons') format('svg');
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?hw46mb');
+  src:  url('fonts/icomoon.eot?hw46mb#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?hw46mb') format('truetype'),
+    url('fonts/icomoon.woff?hw46mb') format('woff'),
+    url('fonts/icomoon.svg?hw46mb#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'unnic-icons' !important;
+  font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,55 +25,138 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-alert-circle-1:before {
+.icon-alarm-bell-2:before {
   content: "\e900";
 }
-.icon-check-circle-1-1:before {
+.icon-alarm-bell-3:before {
   content: "\e901";
 }
-.icon-close-1:before {
+.icon-alert-circle-1-1:before {
   content: "\e902";
 }
-.icon-github:before {
+.icon-alert-circle-1:before {
   content: "\e903";
 }
-.icon-email-action-unread-1:before {
+.icon-arrow-button-down-1:before {
   content: "\e904";
 }
-.icon-loading-circle-1:before {
+.icon-arrow-button-up-1:before {
   content: "\e905";
 }
-.icon-lock-2-1:before {
+.icon-arrow-left-1-1:before {
   content: "\e906";
 }
-.icon-read-email-at-1:before {
+.icon-arrow-right-1-1:before {
   content: "\e907";
 }
+.icon-chat-translate-1:before {
+  content: "\e90f";
+}
+.icon-check-circle-1-1-1:before {
+  content: "\e910";
+}
+.icon-check-circle-1-1:before {
+  content: "\e911";
+}
+.icon-close-1:before {
+  content: "\e912";
+}
+.icon-delete-1:before {
+  content: "\e913";
+}
+.icon-developer-community-github-1-1:before {
+  content: "\e914";
+}
+.icon-email-action-unread-1:before {
+  content: "\e915";
+}
+.icon-expand-8-1:before {
+  content: "\e916";
+}
+.icon-expand-full-1:before {
+  content: "\e917";
+}
+.icon-gauge-dashboard-1:before {
+  content: "\e918";
+}
+.icon-gauge-dashboard-2:before {
+  content: "\e919";
+}
+.icon-graph-stats-1:before {
+  content: "\e91a";
+}
+.icon-graph-stats-ascend-2:before {
+  content: "\e91b";
+}
+.icon-headphones-customer-support-1:before {
+  content: "\e91c";
+}
+.icon-headphones-customer-support-2:before {
+  content: "\e91d";
+}
+.icon-hierarchy-3-2:before {
+  content: "\e91e";
+}
+.icon-hierarchy-3-3:before {
+  content: "\e91f";
+}
+.icon-house-1-1:before {
+  content: "\e920";
+}
+.icon-house-2-2:before {
+  content: "\e921";
+}
+.icon-information-circle-4:before {
+  content: "\e922";
+}
+.icon-loading-circle-1:before {
+  content: "\e923";
+}
+.icon-lock-2-1:before {
+  content: "\e924";
+}
+.icon-logout-1-1:before {
+  content: "\e925";
+}
+.icon-messages-bubble-1:before {
+  content: "\e926";
+}
+.icon-messaging-we-chat-2:before {
+  content: "\e927";
+}
+.icon-messaging-we-chat-3:before {
+  content: "\e928";
+}
+.icon-read-email-at-1:before {
+  content: "\e929";
+}
+.icon-science-fiction-robot-1:before {
+  content: "\e92a";
+}
+.icon-science-fiction-robot-2:before {
+  content: "\e92b";
+}
+.icon-search-1:before {
+  content: "\e92c";
+}
+.icon-single-neutral-2:before {
+  content: "\e92d";
+}
 .icon-single-neutral-actions-1:before {
-  content: "\e908";
+  content: "\e92e";
 }
-.icon-google .path1:before {
-  content: "\e909";
-  color: rgb(235, 67, 53);
+.icon-task-list-clock-1:before {
+  content: "\e933";
 }
-.icon-google .path2:before {
-  content: "\e90a";
-  margin-left: -1em;
-  color: rgb(251, 188, 5);
-}
-.icon-google .path3:before {
-  content: "\e90b";
-  margin-left: -1em;
-  color: rgb(66, 133, 244);
-}
-.icon-google .path4:before {
-  content: "\e90c";
-  margin-left: -1em;
-  color: rgb(52, 168, 83);
+.icon-team-meeting-1:before {
+  content: "\e934";
 }
 .icon-view-1-1:before {
-  content: "\e90d";
+  content: "\e94f";
 }
 .icon-view-off-1:before {
-  content: "\e90e";
+  content: "\e950";
+}
+.icon-vip-crown-queen-2:before {
+  content: "\e951";
 }

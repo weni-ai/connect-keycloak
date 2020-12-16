@@ -8,10 +8,6 @@ h1 {
     text-align: center;
 }
 
-#kc-content, .login-pf-header {
-    flex: 1
-}
-
 .login-pf-page {
     display: flex;
     align-items: center;
@@ -32,8 +28,29 @@ h1 {
     box-sizing: border-box;
 }
 
+.form-control:focus {
+    color: var(--unnic-color-brand-ilha);
+    border-color: var(--unnic-color-brand-ilha);
+    outline: none;
+}
+
+.input-control:focus-within .icon{
+    color: var(--unnic-color-brand-ilha);
+}
+
 .input-control {
     position: relative;
+}
+
+.button-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.icon-button-left {
+    margin-right: var(--unnic-inline-nano);
 }
 
 .has-icon-left {
@@ -45,7 +62,12 @@ h1 {
 }
 
 .icon {
-    font-size: var(--unnic-icon-size-lg);
+    font-size: var(--unnic-icon-size-md);
+}
+
+.icon-image {
+    height: var(--unnic-icon-size-md);
+    width: var(--unnic-icon-size-md);
 }
 
 .icon-clickable {
@@ -53,20 +75,18 @@ h1 {
 }
 
 .icon-left, .icon-right {
-    top: 0;
+    top: 25%;
     z-index: 1;
 }
 
 .icon-left {
     position: absolute;
-    left: 7px;
-    top: 7px;
+    left: var(--unnic-inline-sm);
 }
 
 .icon-right {
     position: absolute;
-    right: 7px;
-    top: 7px;
+    right: var(--unnic-inline-sm);
 }
 
 .icon-input {
@@ -111,7 +131,7 @@ button, #kc-login, .btn {
 .forgot-password {
     text-align: right;
     font-size: var(--unnic-font-size-body-md);
-    margin-top: var(--unnic-spacing-stack-nano);
+    right: 0;
 }
 
 #kc-login, .form-group, .btn {
@@ -128,11 +148,6 @@ button, #kc-login, .btn {
     margin: var(--unnic-spacing-stack-md) 0;
 }
 
-.forgot-password a {
-    text-decoration: none;
-    color: var(--unnic-color-neutral-darkest);
-}
-
 .login-message {
     font-size: var(--unnic-font-size-body-md);
     margin: var(--unnic-spacing-stack-nano) 0;
@@ -143,15 +158,20 @@ button, #kc-login, .btn {
 }
 
 .card-pf {
-    display: flex;
-    margin: var(--unnic-inset-lg);
-    flex-grow: 1;
-    justify-content: center;
+    margin: 0 176px;
     align-items: center;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+    flex-grow: 1;
 }
 
-.login-pf-header, .kc-content {
-    width: 50vw;
+.login-pf-header {
+    grid-column: 1 / 6;
+}
+
+#kc-content {
+    grid-column: 8 / 12;
 }
 
 #kc-registration, .back-link {
@@ -175,7 +195,12 @@ button, #kc-login, .btn {
 }
 
 .social-button {
-    font-size:  var(--unnic-font-size-body-lg);
+    font-size: var(--unnic-font-size-body-lg);
+    font-weight: var(--unnic-font-weight-regular);
+}
+
+.social-link {
+    text-decoration: none;
 }
 
 #button-github {
@@ -218,26 +243,24 @@ footer {
     font-size: var(--unnic-font-size-title-md);
     font-family: var(--unnic-font-family-secondary);
     margin: var(--unnic-spacing-stack-xl) 0;
+    color: var(--unnic-color-neutral-darkest);
 }
 
 .text-md {
     font-size: var(--unnic-font-size-body-md);
     margin: var(--unnic-spacing-stack-nano) 0;
+    color: var(--unnic-color-neutral-dark);
 }
 
 .brand-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: var(--unnic-spacing-stack-lg) 0;
-}
-
-.brand {
+    flex-wrap: wrap;
     margin: var(--unnic-spacing-stack-sm) 0;
 }
 
-.login-pf-header {
-    margin-right: var(--unnic-inline-awesome);
+.brand {
+    margin: 0 var(--unnic-inline-md) var(--unnic-inline-md) 0;
 }
 
 .alert {
@@ -259,6 +282,7 @@ footer {
 
 .form-header {
     margin: var(--unnic-spacing-stack-sm) 0;
+    color: var(--unnic-color-neutral-cloudy);
 }
 
 .has-error input {
@@ -275,4 +299,17 @@ footer {
     position: absolute;
     font-size: var(--unnic-font-size-body-md);
     bottom: -16px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: var(--unnic-color-neutral-darkest);
+}
+
+.home-back-link {
+    margin-top: var(--unnic-spacing-stack-awesome);
+}
+
+.home-back-link, .home-back-link * {
+    color: var(--unnic-color-neutral-dark)
 }

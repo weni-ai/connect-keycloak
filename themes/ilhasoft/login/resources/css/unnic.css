@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap');
 
 :root {
 
@@ -46,7 +46,7 @@
 
     /* Font family */
     --unnic-font-family-primary: Lato;
-    --unnic-font-family-secondary: 'Slabo 27px', serif;
+    --unnic-font-family-secondary: 'Slabo 13px', serif;
 
     /* Font weight */
     --unnic-font-weight-black: 900;

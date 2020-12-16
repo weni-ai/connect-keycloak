@@ -79,6 +79,7 @@
             <img class="brand" src="${url.resourcesPath}/img/login/brand-4.svg" >
             <img class="brand" src="${url.resourcesPath}/img/login/brand-5.svg" >
         </div>
+        <div class="home-back-link"> &larr; <a href="${properties.backUrl!}">${msg("backHome")}</span> </a>
       </header>
       <div id="kc-content">
         <div id="kc-content-wrapper">
@@ -103,10 +104,10 @@
         <#if realm.password && social.providers??>
             <div class="buttons-group">
                 <#list social.providers as p>
-                    <a id="zocial-${p.alias}" href="${p.loginUrl}">
-                        <button class="${properties.kcInputControlClass!} social-button has-icon-left" id="button-${p.alias}">
-                            <span class="icon icon-input icon-left icon-${p.alias}"></span>
-                            ${msg("loginWith")} ${p.displayName}
+                    <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
+                        <button class="social-button button-control" id="button-${p.alias}">
+                            <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg" class="icon-image icon-button-left" >
+                            <span>${msg("loginWith")} ${p.displayName} </span>
                         </button></a>
                 </#list>
             </div>
