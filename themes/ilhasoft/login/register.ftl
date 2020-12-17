@@ -37,16 +37,18 @@
                 </div>
             </div>
 
-                <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('nickname',properties.kcFormGroupErrorClass!)}">
+            <#if !realm.registrationEmailAsUsername>
+                <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)}">
                     <div class="${properties.kcLabelWrapperClass!}">
-                        <label for="user.attributes.nickname" class="${properties.kcLabelClass!}">${msg("nickname")}</label>
+                        <label for="username" class="${properties.kcLabelClass!}">${msg("username")}</label>
                     </div>
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                         <span class="icon icon-input icon-left icon-read-email-at-1"></span>
-                        <input type="text" id="user.attributes.nickname" class="has-icon-left ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterNickname")}" name="user.attributes.nickname" value="${(register.formData['user.attributes.nickname']!'')}" />
-                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('nickname')} </div>
+                        <input type="text" id="username" class="has-icon-left ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterUsername")}" name="username" value="${(register.formData.username!'')}" autocomplete="username" />
+                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('username')} </div>
                     </div>
                 </div>
+            </#if>
 
             <#if passwordRequired??>
                 <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password',properties.kcFormGroupErrorClass!)}">
