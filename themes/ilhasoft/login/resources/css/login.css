@@ -328,6 +328,10 @@ footer {
     display: flex;
 }
 
+.form-group-nested > * {
+    margin: 0;
+}
+
 .form-group-nested :not(:last-child) {
     margin-right: var(--unnic-inline-sm);
 }
