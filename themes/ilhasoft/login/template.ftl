@@ -72,7 +72,8 @@
         </#if>
         <img class="brand" src="${url.resourcesPath}/img/login/brand.svg" >
         <p class="title-md"> ${msg("headerTitleText")} </p>
-        <p class="text-md"> ${msg("headerTitleSubtext")} </p>
+        <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
+        <p class="text-md"> ${msg("brandsTitle")} </p>
         <div class="brand-container">
             <img class="brand" src="${url.resourcesPath}/img/login/brand-2.svg" >
             <img class="brand" src="${url.resourcesPath}/img/login/brand-3.svg" >

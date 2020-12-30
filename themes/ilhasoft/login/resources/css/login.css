@@ -158,7 +158,7 @@ button, #kc-login, .btn {
 }
 
 .card-pf {
-    margin: 0 176px;
+    margin: 16px 176px;
     align-items: center;
     align-content: center;
     display: grid;
@@ -241,16 +241,25 @@ footer {
 }
 
 .title-md {
-    font-size: var(--unnic-font-size-title-md);
+    font-size: var(--unnic-font-size-title-lg);
     font-family: var(--unnic-font-family-secondary);
-    margin: var(--unnic-spacing-stack-xl) 0;
+    margin: var(--unnic-spacing-stack-sm) 0;
     color: var(--unnic-color-neutral-darkest);
+}
+
+.title-sm {
+    font-size: var(--unnic-font-size-body-lg);
+    color: var(--unnic-color-neutral-cloudy);
 }
 
 .text-md {
     font-size: var(--unnic-font-size-body-md);
-    margin: var(--unnic-spacing-stack-nano) 0;
+    margin: var(--unnic-spacing-stack-xgiant) 0 0 0;
     color: var(--unnic-color-neutral-dark);
+}
+
+.keyword {
+    color: var(--unnic-color-brand-ilha);
 }
 
 .brand-container {
@@ -313,4 +322,12 @@ footer {
 
 .home-back-link, .home-back-link * {
     color: var(--unnic-color-neutral-dark)
+}
+
+.form-group-nested {
+    display: flex;
+}
+
+.form-group-nested :not(:last-child) {
+    margin-right: var(--unnic-inline-sm);
 }

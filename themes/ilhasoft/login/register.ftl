@@ -37,6 +37,8 @@
                 </div>
             </div>
 
+            <div class="form-group-nested">
+
                 <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('nickname',properties.kcFormGroupErrorClass!)}">
                     <div class="${properties.kcLabelWrapperClass!}">
                         <label for="user.attributes.nickname" class="${properties.kcLabelClass!}">${msg("nickname")}</label>
@@ -60,6 +62,7 @@
                         <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
                     </div>
                 </div>
+            </div>
 
                 <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password-confirm',properties.kcFormGroupErrorClass!)}">
                     <div class="${properties.kcLabelWrapperClass!}">
