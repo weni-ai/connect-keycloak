@@ -19,11 +19,9 @@
                 ${msg("passwordResetBodyText2Html", linkExpiration)?no_esc}
                 
                 <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3B414D;color: #FFFFFF;font-size: 16px;
-            font-family: Lato;margin-top:20px;border-radius: 4px; padding: 1px 0; margin-bottom: 14px;">
-              ${msg("passwordResetBodyHtml",link)?no_esc}
-            </div>
-                
-            <div style="text-align: center; cursor:pointer; color: #9CACCC; font-family: Lato;font-style: normal;font-weight: normal;font-size: 12px;line-height: 20px; text-align: center;max-width:574px; word-break: break-all;">${link}</div>
+                font-family: Lato;margin-top:50px;border-radius: 4px; padding: 1px 0;">
+                  ${msg("passwordResetBodyHtml",link)?no_esc}
+                </div>
               </section>
               
               <footer style="width: 670px;height: 150px; border-top: 1px solid #E2E6ED; border-bottom: 8px solid #262626;margin: auto; text-align: center;">
