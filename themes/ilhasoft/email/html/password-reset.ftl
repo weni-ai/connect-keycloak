@@ -8,19 +8,19 @@
     
     <body>
         <div>
-            <div style="width: 670px; height: 724px;">
-              <header style="width: 670px; height: 52px; border-bottom: 1px solid #E2E6ED;"> 
+            <div style="width: 670px; min-height: 724px;">
+            <header style="width: 670px; height: 52px; border-bottom: 1px solid #E2E6ED;"> 
                 <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
               </header>
-              <section style="width: 574px; height: 280px; margin: 50px auto;">
+              <section style="width: 574px; min-height: 280px; margin: 50px auto;">
                 
                 ${msg("passwordResetBodyText1Html")?no_esc}
                 
-                ${msg("passwordResetBodyText2Html")?no_esc}
+                ${msg("passwordResetBodyText2Html", linkExpiration)?no_esc}
                 
                 <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3B414D;color: #FFFFFF;font-size: 16px;
             font-family: Lato;margin-top:20px;border-radius: 4px; padding: 1px 0; margin-bottom: 14px;">
-              ${msg("passwordResetBodyHtml",link, linkExpiration)?no_esc}
+              ${msg("passwordResetBodyHtml",link)?no_esc}
             </div>
                 
             <div style="text-align: center; cursor:pointer; color: #9CACCC; font-family: Lato;font-style: normal;font-weight: normal;font-size: 12px;line-height: 20px; text-align: center;max-width:574px; word-break: break-all;">${link}</div>
@@ -30,7 +30,6 @@
  
                 <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo-small.png" alt="Weni-Logo" style="margin: 15px 0;"/>
   
-  
                 <div style="width: 450px; font-size: 12px;line-height: 20px;margin: auto;">
                   <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">${msg("emailAccessOurSite")?no_esc}</a>
                   <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Facebook</a>
@@ -38,7 +37,7 @@
                   <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Twitter</a>
                 </div>
               
-              <div style="font-family: Lato;font-style: normal;font-weight: normal;font-size: 12px;line-height: 20px;color: #CCCCCC;text-align: center;margin-top:10px;">Weni © Brasil 2020 - Todos os direitos reservados</div>
+              ${msg("emailCopyright")?no_esc}
               
               ${msg("passwordResetBodyText3Html")?no_esc}
             </footer>

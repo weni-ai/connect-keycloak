@@ -8,11 +8,11 @@
 
 <body>
     <div>
-        <div style="width: 670px; height: 500px">
+        <div style="width: 670px; min-height: 724px;">
           <header style="width: 670px; height: 52px; border-bottom: 1px solid #E2E6ED;"> 
             <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
           </header>
-          <section style="width: 574px; height: 280px; margin: 50px auto;">
+          <section style="width: 574px; min-height: 280px; margin: 50px auto;">
             <div style="font-family: Lato; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #808080;"> Hi, <span style="font-family: Lato;color: #262626; font-size: 20px; font-weight: bold; font-style: normal;">${user.firstName}!</span></div>
             
             <div style="font-family: Lato; font-weight: bold; font-size: 20px; line-height: 28px; color: #262626; margin-top: 24px;">
@@ -27,13 +27,13 @@
 
 
             <div style="width: 450px; font-size: 12px;line-height: 20px;margin: auto;">
-              <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Visite o nosso site</a>
+              <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">${msg("emailAccessOurSite")?no_esc}</a>
               <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Facebook</a>
               <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Instagram</a>
               <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Twitter</a>
             </div>
           
-          <div style="font-family: Lato;font-style: normal;font-weight: normal;font-size: 12px;line-height: 20px;color: #CCCCCC;text-align: center;margin-top:10px;">Weni © Brasil 2020 - Todos os direitos reservados</div>
+          ${msg("emailCopyright")?no_esc}
         </footer>
             </div>
         </div>
