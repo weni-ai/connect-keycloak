@@ -34,23 +34,22 @@
                             <#if realm.resetPasswordAllowed>
                                 <div class="forgot-password ${properties.kcInputMessageClass!}"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></div>
                             </#if>
+                            <#if realm.rememberMe && !usernameEditDisabled??>
+                            <div class="input-message">
+                                <#if login.rememberMe??>
+                                    <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3" checked> ${msg("rememberMe")}
+                                <#else>
+                                    <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3"> ${msg("rememberMe")}
+                                </#if>
+                            </div>
+                        </#if>
                         </div>
                     </div>
                 </div>
 
                 <div class="${properties.kcFormGroupClass!}">
                     <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
-                        <#if realm.rememberMe && !usernameEditDisabled??>
-                            <div class="checkbox">
-                                <label>
-                                    <#if login.rememberMe??>
-                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" tabindex="3" checked> ${msg("rememberMe")}
-                                    <#else>
-                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" tabindex="3"> ${msg("rememberMe")}
-                                    </#if>
-                                </label>
-                            </div>
-                        </#if>
+                        
                     </div>
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">

@@ -15,12 +15,12 @@
                 </div>
                 <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                     <span class="icon icon-input icon-left icon-email-action-unread-1"></span>
-                    <input type="text" id="username" placeholder="${msg("placeholderLoginReset")}" name="username" class="${properties.kcInputClass!} ${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)} has-icon-left" autofocus/>
+                    <input type="text" oninput="disableButton()" id="required-input" placeholder="${msg("placeholderLoginReset")}" name="username" class="${properties.kcInputClass!} ${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)} has-icon-left" autofocus/>
                 </div>
             </div>
 
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
+                    <input id="required-input-button" disabled class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
                 </div>
             </div>
 
