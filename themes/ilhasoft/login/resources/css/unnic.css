@@ -4,9 +4,9 @@
 :root {
 
     /* Brand */
-    --unnic-color-brand-ilha: #00DED2;
-    --unnic-color-brand-ilha-dark: #005E5A;
-    --unnic-color-brand-ilha-soft: #009E96;
+    --unnic-color-brand-weni: #00DED2;
+    --unnic-color-brand-weni-dark: #005E5A;
+    --unnic-color-brand-weni-soft: #009E96;
     --unnic-color-brand-sec-dark: #2F343D;
     --unnic-color-brand-sec-soft: #808080;
     --unnic-color-brand-sec: #D0D0D0;
@@ -57,6 +57,7 @@
     /* Font size */
     --unnic-font-size-body-sm: 8px;
     --unnic-font-size-body-md: 12px;
+    --unnic-font-size-body-gt: 14px;
     --unnic-font-size-body-lg: 16px;
 
     --unnic-font-size-title-sm: 20px;

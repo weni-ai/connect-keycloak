@@ -1,4 +1,4 @@
-<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true>
+<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayHeader=true displaySocial=true>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
 
@@ -43,13 +43,23 @@
             classes = passwordIcon.className.split(" ");
             classes[classes.length - 1] = type === 'password' ? 'icon-view-off-1' : 'icon-view-1-1';
             passwordIcon.className = classes.join(" ");
-        }
+        };
+
+        const disableButton = () => {
+            const input = document.getElementById("required-input");
+            const button = document.getElementById("required-input-button");
+
+            if(!input || !button) return;
+
+            button.disabled = input.value === null || input.value === undefined || input.value.trim().length === 0;
+        };
     </script>
 </head>
 
 <body class="${properties.kcBodyClass!}">
       <div class="${properties.kcLoginClass!}">
     <div class="${properties.kcFormCardClass!}">
+    <#if displayHeader>
       <header class="${properties.kcFormHeaderClass!}">
         <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
             <div id="kc-locale">
@@ -70,7 +80,7 @@
                 </div>
             </div>
         </#if>
-        <img class="brand" src="${url.resourcesPath}/img/login/brand.svg" >
+        <a href="${properties.backUrl!}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
         <p class="title-md"> ${msg("headerTitleText")} </p>
         <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
         <p class="text-md"> ${msg("brandsTitle")} </p>
@@ -80,11 +90,7 @@
             <img class="brand" src="${url.resourcesPath}/img/login/brand-4.svg" >
             <img class="brand" src="${url.resourcesPath}/img/login/brand-5.svg" >
         </div>
-        <div class="home-back-link"> &larr; <a href="${properties.backUrl!}">${msg("backHome")}</span> </a>
-      </header>
-      <div id="kc-content">
-        <div id="kc-content-wrapper">
-          <#if displayMessage && message?has_content>
+                  <#if displayMessage && message?has_content>
 
             <#if (message.summary == msg("verifyEmailMessage"))>
                 <div class="alert alert-success">
@@ -102,7 +108,15 @@
             </#if>
           <#else>
         </#if>
-        <#if realm.password && social.providers??>
+      </header>
+    </#if>
+    <#if displayHeader>
+      <div id="kc-content">
+    <#else>
+    <div id="kc-content-headerless">
+    </#if>
+        <div id="kc-content-wrapper">
+        <#if realm.password && social.providers?? && displaySocial>
             <div class="buttons-group">
                 <#list social.providers as p>
                     <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
