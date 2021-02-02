@@ -10,7 +10,7 @@ services:
     - "8080:8080"
     volumes:
       - ./themes/ilhasoft/:/opt/jboss/keycloak/themes/ilhasoft/
-      # - ./standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
+    #   - ./standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
     environment:
       KEYCLOAK_USER: "admin"
       KEYCLOAK_PASSWORD: "admin"
