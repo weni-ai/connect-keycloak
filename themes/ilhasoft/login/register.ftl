@@ -58,7 +58,7 @@
                         </div>
                         <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                             <span class="icon icon-input icon-left icon-lock-2-1"></span>
-                                <span onclick="togglePassword()" id="password-icon" class="icon icon-input icon-clickable icon-right icon-view-1-1"></span>
+                                <span onclick="togglePassword('password-icon', 'password')" id="password-icon" class="icon icon-input icon-clickable icon-right icon-view-1-1"></span>
                                 <input type="password" id="password" class="has-icon-left has-icon-right ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterPassword")}" name="password" autocomplete="new-password"/>
                             <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
                         </div>

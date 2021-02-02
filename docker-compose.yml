@@ -8,9 +8,9 @@ services:
       dockerfile: Dockerfile
     ports:
     - "8080:8080"
-    # volumes:
-    #   - ./themes/ilhasoft/:/opt/jboss/keycloak/themes/ilhasoft/
-    #   - ./standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
+    volumes:
+      - ./themes/ilhasoft/:/opt/jboss/keycloak/themes/ilhasoft/
+      - ./standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
     environment:
       KEYCLOAK_USER: "admin"
       KEYCLOAK_PASSWORD: "admin"

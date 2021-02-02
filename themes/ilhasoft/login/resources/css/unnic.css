@@ -52,7 +52,7 @@
     --unnic-font-weight-black: 900;
     --unnic-font-weight-bold: 700;
     --unnic-font-weight-regular: 400;
-    --unnic-font-weight-black: 300;
+    --unnic-font-weight-light: 300;
 
     /* Font size */
     --unnic-font-size-body-sm: 8px;
@@ -143,6 +143,7 @@
     --unnic-spacing-stack-md: 24px;
     --unnic-spacing-stack-lg: 32px;
     --unnic-spacing-stack-xl: 40px;
+    --unnic-spacing-stack-giant: 48px;
     --unnic-spacing-stack-xgiant: 64px;
     --unnic-spacing-stack-awesome: 80px;
 }
