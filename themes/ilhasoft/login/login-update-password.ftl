@@ -1,8 +1,10 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayMessage=!messagesPerField.existsError('password','password-confirm') displayHeader=false displaySocial=false;; section>
-    <#if section = "header">
-        ${msg("updatePasswordTitle")}
-    <#elseif section = "form">
+<@layout.registrationLayout displayInfo=true displayHeader=false displaySocial=false; section>
+    <#if section = "form">
+        <img class="brand-password" src="${url.resourcesPath}/img/login/brand.svg" >
+        <div class="update-password-title">
+            ${msg("updatePasswordTitle")}
+        </div>
         <form id="kc-passwd-update-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <input type="text" id="username" name="username" value="${username}" autocomplete="username"
                    readonly="readonly" style="display:none;"/>
@@ -12,17 +14,16 @@
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password-new" class="${properties.kcLabelClass!}">${msg("passwordNew")}</label>
                 </div>
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!}"
+                <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
+                    <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!} has-icon-left has-icon-right"
                            autofocus autocomplete="new-password"
-                           aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>"
                     />
+                    <span class="icon icon-input icon-left icon-lock-2-1"></span>
+                    <span id="password-icon" onclick="togglePassword('password-icon', 'password-new')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
 
-                    <#if messagesPerField.existsError('password')>
                         <span id="input-error-password" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password'))?no_esc}
                         </span>
-                    </#if>
                 </div>
             </div>
 
@@ -30,19 +31,17 @@
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                 </div>
-                <div class="${properties.kcInputWrapperClass!}">
+                <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                     <input type="password" id="password-confirm" name="password-confirm"
-                           class="${properties.kcInputClass!}"
+                           class="${properties.kcInputClass!} has-icon-left has-icon-right"
                            autocomplete="new-password"
-                           aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>"
                     />
+                    <span class="icon icon-input icon-left icon-lock-2-1"></span>
+                    <span id="password-icon-new" onclick="togglePassword('password-icon-new', 'new-password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
 
-                    <#if messagesPerField.existsError('password-confirm')>
                         <span id="input-error-password-confirm" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
                         </span>
-                    </#if>
-
                 </div>
             </div>
 
@@ -65,6 +64,7 @@
                         <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}" />
                     </#if>
                 </div>
+                <div class="password-back-link"> &larr; <a href="${properties.backUrl!}">${msg("backHome")}</span> </a>
             </div>
         </form>
     </#if>

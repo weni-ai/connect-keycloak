@@ -1,0 +1,74 @@
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.4);;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    background-color: var(--unnic-color-background-carpet);
+    border-radius: var(--unnic-border-radius-sm);
+    overflow: hidden;
+}
+
+.modal-content {
+    padding: var(--unnic-squish-md);
+}
+
+.modal-button-container {
+    display: flex;
+    justify-content: flex-end;
+    font-size: var(--unnic-icon-size-sm);
+    color: var(--unnic-color-neutral-dark);
+}
+
+.modal-center-icon {
+    display: flex;
+    justify-content: center;
+    font-size: var(--unnic-icon-size-xl);
+    margin-bottom: var(--unnic-inset-sm);
+}
+
+.modal-text {
+    font-size: var(--unnic-font-size-body-lg);
+    color: var(--unnic-color-neutral-cloudy);
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 48px;
+}
+
+.modal-title {
+    font-size: var(--unnic-font-size-title-sm);
+    font-weight: var(--unnic-font-weight-black);
+    color: var(--unnic-color-neutral-darkest);
+    text-align: center;
+    line-height: 28px;
+    margin-bottom: var(--unnic-inline-md);
+}
+
+.modal-message {
+    font-size: var(--unnic-font-size-body-md);
+    padding: var(--unnic-inset-md);
+    text-align: center;
+    color: var(--unnic-color-neutral-dark);
+    background-color: var(--unnic-color-neutral-soft);
+}
+
+.modal-message a {
+    color: var(--unnic-color-neutral-dark);
+    font-weight: var(--unnic-font-weight-bold);
+}
+
+.icon-success {
+    color: var(--unnic-color-feedback-green);
+}
+
+.icon-alert {
+    color: var(--unnic-color-feedback-yellow);  
+}

@@ -1,6 +1,9 @@
 body {
     font-family: var(--unnic-font-family-primary);
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1 {
@@ -11,9 +14,9 @@ h1 {
 .login-pf-page {
     display: flex;
     align-items: center;
-    min-height: 100vh;
     justify-content: center;
     flex-direction: column;
+    flex: 1;
 }
 
 .form-control {
@@ -137,12 +140,20 @@ button, #kc-login, .btn, .bt-lg {
     color: var(--unnic-color-neutral-cloudy);
 }
 
-.btn-form {
-    margin-top: var(--)
-}
-
 .form-group + .form-group {
     margin: var(--unnic-spacing-stack-md) 0 0 0;
+}
+
+.form-group-nested {
+    display: flex;
+}
+
+.form-group-nested > :not(:last-child) {
+    margin: 0 var(--unnic-inline-sm) 0 0;
+}
+
+.form-group-nested > :last-child {
+    margin: 0;
 }
 
 .form-group-wrapper {
@@ -339,24 +350,8 @@ footer {
     color: var(--unnic-color-neutral-darkest);
 }
 
-.home-back-link {
-    margin-top: var(--unnic-spacing-stack-awesome);
-}
-
 .home-back-link, .home-back-link * {
     color: var(--unnic-color-neutral-dark)
-}
-
-.form-group-nested {
-    display: flex;
-}
-
-.form-group-nested > * {
-    margin: 0;
-}
-
-.form-group-nested :not(:last-child) {
-    margin-right: var(--unnic-inline-sm);
 }
 
 .input-message {

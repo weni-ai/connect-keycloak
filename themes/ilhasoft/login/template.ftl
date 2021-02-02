@@ -31,9 +31,10 @@
         </#list>
     </#if>
     <script>
-        const togglePassword = () => {
-            const element = document.getElementById("password");
-            const passwordIcon = document.getElementById("password-icon");
+        const togglePassword = (buttonId, inputId) => {
+            console.log({ buttonId, inputId });
+            const element = document.getElementById(inputId);
+            const passwordIcon = document.getElementById(buttonId);
 
             if(!element || !passwordIcon) return;
 
@@ -52,6 +53,12 @@
             if(!input || !button) return;
 
             button.disabled = input.value === null || input.value === undefined || input.value.trim().length === 0;
+        };
+
+        const closeModal = () => {
+            const modal = document.getElementById("modal");
+            console.log('remove');
+            modal.remove()
         };
     </script>
 </head>
@@ -90,9 +97,24 @@
             <img class="brand" src="${url.resourcesPath}/img/login/brand-4.svg" >
             <img class="brand" src="${url.resourcesPath}/img/login/brand-5.svg" >
         </div>
-                  <#if displayMessage && message?has_content>
+            <#if displayMessage && message?has_content>
+            <#if (message.summary == msg("emailSentMessage"))>
+                <div id="modal" class="modal-background">
+                    <div class="modal-container">
+                        <div class="modal-content">
+                            <div class="modal-button-container">
+                                <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
+                            </div>
+                            <div class="modal-center-icon">
+                                <span class="icon-check-circle-1-1 icon-success"></span>
+                            </div>
+                        <div class="modal-title">${msg("emailSentTitle")}</div>
+                        <div class="modal-text">${kcSanitize(message.summary)?no_esc}</div>
+                    </div>
+                    <div class="modal-message">${msg("emailSentSubitle")}</div>
+                </div>
 
-            <#if (message.summary == msg("verifyEmailMessage"))>
+            <#elseif (message.summary == msg("verifyEmailMessage"))>
                 <div class="alert alert-success">
                     <span class="${properties.kcFeedbackSuccessIcon!}"></span>
                     ${kcSanitize(message.summary)?no_esc}
@@ -116,7 +138,7 @@
     <div id="kc-content-headerless">
     </#if>
         <div id="kc-content-wrapper">
-        <#if realm.password && social.providers?? && displaySocial>
+        <#if realm.password?? && social.providers?? && displaySocial>
             <div class="buttons-group">
                 <#list social.providers as p>
                     <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
@@ -146,7 +168,6 @@
           </#if>
         </div>
       </div>
-      <footer></footer>
     </div>
   </div>
     <script>
@@ -155,5 +176,6 @@
         });
     </script>
 </body>
+<footer></footer>
 </html>
 </#macro>
