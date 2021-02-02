@@ -14,11 +14,11 @@
 .modal-container {
     background-color: var(--unnic-color-background-carpet);
     border-radius: var(--unnic-border-radius-sm);
+    overflow: hidden;
 }
 
 .modal-content {
     padding: var(--unnic-squish-md);
-    overflow: hidden;
 }
 
 .modal-button-container {
@@ -46,7 +46,7 @@
 .modal-title {
     font-size: var(--unnic-font-size-title-sm);
     font-weight: var(--unnic-font-weight-black);
-    color: var(--unnic-color-neutral-cloudy);
+    color: var(--unnic-color-neutral-darkest);
     text-align: center;
     line-height: 28px;
     margin-bottom: var(--unnic-inline-md);
@@ -56,8 +56,19 @@
     font-size: var(--unnic-font-size-body-md);
     padding: var(--unnic-inset-md);
     text-align: center;
+    color: var(--unnic-color-neutral-dark);
+    background-color: var(--unnic-color-neutral-soft);
+}
+
+.modal-message a {
+    color: var(--unnic-color-neutral-dark);
+    font-weight: var(--unnic-font-weight-bold);
 }
 
 .icon-success {
     color: var(--unnic-color-feedback-green);
+}
+
+.icon-alert {
+    color: var(--unnic-color-feedback-yellow);  
 }
