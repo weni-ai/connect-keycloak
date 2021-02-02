@@ -28,10 +28,10 @@
             </div>
 
             <div class="${properties.kcFormGroupClass!}">
-                <div class="${properties.kcLabelWrapperClass!} ${properties.kcInputControlClass!}">
+                <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                 </div>
-                <div class="${properties.kcInputWrapperClass!}">
+                <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                     <input type="password" id="password-confirm" name="password-confirm"
                            class="${properties.kcInputClass!} has-icon-left has-icon-right"
                            autocomplete="new-password"

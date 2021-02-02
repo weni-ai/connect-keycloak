@@ -32,7 +32,8 @@
     </#if>
     <script>
         const togglePassword = (buttonId, inputId) => {
-            const element = document.getElementById(passwordId);
+            console.log({ buttonId, inputId });
+            const element = document.getElementById(inputId);
             const passwordIcon = document.getElementById(buttonId);
 
             if(!element || !passwordIcon) return;

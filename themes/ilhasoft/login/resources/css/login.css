@@ -141,6 +141,18 @@ button, #kc-login, .btn, .bt-lg {
     margin: var(--unnic-spacing-stack-md) 0 0 0;
 }
 
+.form-group-nested {
+    display: flex;
+}
+
+.form-group-nested > :not(:last-child) {
+    margin: 0 var(--unnic-inline-sm) 0 0;
+}
+
+.form-group-nested > :last-child {
+    margin: 0;
+}
+
 .form-group-wrapper {
     margin: var(--unnic-spacing-stack-md) 0;
 }
@@ -337,18 +349,6 @@ footer {
 
 .home-back-link, .home-back-link * {
     color: var(--unnic-color-neutral-dark)
-}
-
-.form-group-nested {
-    display: flex;
-}
-
-.form-group-nested > * {
-    margin: 0;
-}
-
-.form-group-nested :not(:last-child) {
-    margin-right: var(--unnic-inline-sm);
 }
 
 .input-message {

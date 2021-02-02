@@ -23,7 +23,7 @@
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                         <input tabindex="2" id="password" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
                             <span class="icon icon-input icon-left icon-lock-2-1"></span>
-                            <span id="password-icon" onclick="togglePassword()" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
+                            <span id="password-icon" onclick="togglePassword('password-icon', 'password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
                             <#if realm.resetPasswordAllowed>
                                 <div class="forgot-password ${properties.kcInputMessageClass!}"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></div>
                             </#if>

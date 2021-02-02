@@ -71,7 +71,8 @@
                     </div>
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                         <span class="icon icon-input icon-left icon-lock-2-1"></span>
-                        <input type="password" id="password-confirm" class="has-icon-left ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterPasswordConfirm")}" name="password-confirm" />
+                        <span onclick="togglePassword('password-confirm-icon', 'password-confirm')" id="password-confirm-icon" class="icon icon-input icon-clickable icon-right icon-view-1-1"></span>
+                        <input type="password" id="password-confirm" class="has-icon-left has-icon-right ${properties.kcInputClass!}" placeholder="${msg("placeholderRegisterPasswordConfirm")}" name="password-confirm" />
                         <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('passwordConfirm')} </div>
                     </div>
                 </div>
