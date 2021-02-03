@@ -12,14 +12,14 @@
             <header style="width: 670px; height: 52px; border-bottom: 1px solid #E2E6ED;"> 
                 <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
               </header>
-              <section style="width: 574px; min-height: 280px; margin: 50px auto;">
+              <section style="width: 574px; margin: 48px auto;">
                 
                 ${msg("passwordResetBodyText1Html")?no_esc}
                 
                 ${msg("passwordResetBodyText2Html", linkExpiration)?no_esc}
                 
                 <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3B414D;color: #FFFFFF;font-size: 16px;
-                font-family: Lato;margin-top:50px;border-radius: 4px; padding: 1px 0;">
+                font-family: Lato;margin-top:20px;border-radius: 4px; padding: 1px 0;">
                   ${msg("passwordResetBodyHtml",link)?no_esc}
                 </div>
               </section>
