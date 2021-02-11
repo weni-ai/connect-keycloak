@@ -1,3 +1,11 @@
+input {
+    filter: none;
+}
+
+input:focus {
+    outline: none;
+}
+
 body {
     font-family: var(--unnic-font-family-primary);
     margin: 0;
@@ -193,7 +201,8 @@ button, #kc-login, .btn, .bt-lg {
 
 .btn:disabled {
     background-color: var(--unnic-color-neutral-light);
-    color: var(--unnic-color-neutral-clean);
+    color: var(--unnic-color-neutral-cloudy);
+    border: 1px #D0D3D9 dashed;
     cursor: not-allowed;
 }
 
@@ -210,6 +219,7 @@ button, #kc-login, .btn, .bt-lg {
 #kc-info-wrapper a, #kc-registration a, #kc-form-options a {
     color: var(--unnic-color-brand-weni);
     text-decoration: none;
+    font-weight: var(--unnic-font-weight-bold);
 }
 
 #kc-form-buttons {
@@ -221,23 +231,30 @@ button, #kc-login, .btn, .bt-lg {
 }
 
 .buttons-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: var(--unnic-inline-sm);
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(-1*var(--unnic-inline-sm));
 }
 
 .social-button {
     font-size: var(--unnic-font-size-body-lg);
     font-weight: var(--unnic-font-weight-regular);
+    min-width: 1.5rem;
 }
 
 .social-link {
     text-decoration: none;
+    flex: 1;
+    margin: var(--unnic-inline-sm);
 }
 
 #button-github {
     background-color: var(--unnic-color-neutral-black);
     color: var(--unnic-color-neutral-snow);
+}
+
+#button-github:hover {
+    opacity: var(--unnic-opacity-level-clear);
 }
 
 #button-google {
@@ -368,4 +385,16 @@ footer {
 
 .alert-error {
     color: var(--unnic-color-feedback-red);
+}
+
+.terms-use {
+    line-height: 20px;
+    font-size: var(--unnic-font-size-body-md);
+    color: var(--unnic-color-neutral-cloudy);
+    text-align: center;
+}
+
+.terms-use a {
+    color: var(--unnic-color-neutral-cloudy);
+    font-weight: var(--unnic-font-weight-bold);
 }

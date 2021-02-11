@@ -92,6 +92,7 @@
             </div>
 
             <div id="kc-info-wrapper" class="back-link">
+                <div class="terms-use"> ${msg("registerAcceptTerms")} <a href="${url.loginUrl}"> ${msg("termsOfUse")} </a> ${msg("and")} <a href="${url.loginUrl}"> ${msg("privacyPolicy")} </a> </div>
                 <span>${msg("alreadyAccount")} <a href="${url.loginUrl}">${msg("backToLogin")?no_esc}</a></span>
             </div>
         </form>
