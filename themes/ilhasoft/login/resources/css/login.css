@@ -316,11 +316,19 @@ footer {
 .brand-container {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .brand {
-    margin: 0 var(--unnic-inline-sm) var(--unnic-spacing-stack-xs) 0;
+    margin-right: var(--unnic-inline-sm);
+    flex: 1;
+}
+
+.brand:last-child {
+    margin-right: 0;
+}
+
+.brand img {
+    width: 100%;
 }
 
 .brand-title {
