@@ -92,10 +92,21 @@
         <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
         <p class="text-md"> ${msg("brandsTitle")} </p>
         <div class="brand-container">
-            <img class="brand" src="${url.resourcesPath}/img/login/brand-2.svg" >
-            <img class="brand" src="${url.resourcesPath}/img/login/brand-3.svg" >
-            <img class="brand" src="${url.resourcesPath}/img/login/brand-4.svg" >
-            <img class="brand" src="${url.resourcesPath}/img/login/brand-5.svg" >
+            <div class="brand">
+                <img src="${url.resourcesPath}/img/login/brand-2.svg" >
+            </div>
+
+            <div class="brand">
+                <img src="${url.resourcesPath}/img/login/brand-3.svg" >
+            </div>
+
+            <div class="brand">
+                <img src="${url.resourcesPath}/img/login/brand-4.svg" >
+            </div>
+
+            <div class="brand">
+                <img src="${url.resourcesPath}/img/login/brand-5.svg" >
+            </div>
         </div>
             <#if displayMessage && message?has_content>
             <#if (message.summary == msg("emailSentMessage"))>
