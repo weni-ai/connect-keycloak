@@ -6,7 +6,10 @@
                     </div>
 
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
-                        <span class="icon icon-input icon-left icon-single-neutral-actions-1"></span>
+                        <label for="username">
+                            <span class="icon icon-input icon-left icon-single-neutral-actions-1"></span>
+                        </label>
+
                         <#if usernameEditDisabled??>
                             <input tabindex="1" id="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" disabled />
                         <#else>
@@ -22,7 +25,10 @@
 
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                         <input tabindex="2" id="password" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
-                            <span class="icon icon-input icon-left icon-lock-2-1"></span>
+                            <label for="password">
+                                <span class="icon icon-input icon-left icon-lock-2-1"></span>
+                            </label>
+
                             <span id="password-icon" onclick="togglePassword('password-icon', 'password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
                             <#if realm.resetPasswordAllowed>
                                 <div class="forgot-password ${properties.kcInputMessageClass!}"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></div>
@@ -47,9 +53,28 @@
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                         <div class="${properties.kcFormButtonsWrapperClass!}">
-                            <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                            <button type="submit" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit">
+                                ${msg("doLogIn")}
+                            </button>
                         </div>
                      </div>
                 </div>
+
+                <script>
+                
+                    const username = document.querySelector('#username');
+                    const password = document.querySelector('#password');
+                    const submitButton = document.querySelector('#kc-login');
+
+                    const onInput = () => {
+                        submitButton.disabled = !username.value || !password.value;
+                    }
+
+                    username.addEventListener('input', onInput);
+                    password.addEventListener('input', onInput);
+
+                    onInput();
+                
+                </script>
             </form>
 </#macro>
