@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root {
 
@@ -45,8 +45,8 @@
     --unnic-color-aux-pink: #DE16BA;
 
     /* Font family */
-    --unnic-font-family-primary: Lato;
-    --unnic-font-family-secondary: 'Slabo 13px', serif;
+    --unnic-font-family-primary: 'Aleo', serif;
+    --unnic-font-family-secondary: Lato;
 
     /* Font weight */
     --unnic-font-weight-black: 900;
