@@ -125,16 +125,14 @@ label {
     display: block;
 }
 
+.m-0 {
+    margin: 0;
+}
+
 #back-link {
     text-decoration: underline;
     color: var(--unicc-color-neutral-dark);
     font-size: var(--unnic-font-size-body-md);
-}
-
-.forgot-password {
-    text-align: right;
-    font-size: var(--unnic-font-size-body-md);
-    right: 0;
 }
 
 .form-group {
@@ -223,7 +221,7 @@ button, .btn, .bt-lg {
 }
 
 #kc-form-buttons {
-    margin-top: var(--unnic-spacing-stack-lg);
+    margin-top: var(--unnic-spacing-stack-nano);
 }
 
 .login-button {
@@ -301,13 +299,13 @@ button, .btn, .bt-lg {
     justify-content: center;
     align-items: center;
     font-weight: var(--unnic-font-weight-bold);
+    margin: var(--unnic-inline-sm) 0;
 }
 
 .separator {
     flex-grow: 1;
     width: 0;
     border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
-    margin: var(--unnic-inline-md) 0;
 }
 
 .separator-text {
@@ -395,6 +393,7 @@ footer {
     color: var(--unnic-color-neutral-cloudy);
     font-size: var(--unnic-font-size-body-gt);
     font-weight: var(--unnic-font-weight-regular);
+    font-family: var(--unnic-font-family-secondary);
 }
 
 .has-error input {
@@ -407,26 +406,35 @@ footer {
     color: var(--unnic-color-feedback-red);
 }
 
-.forgot-password a {
-    text-decoration: none;
-    color: var(--unnic-color-neutral-darkest);
-}
-
 .home-back-link, .home-back-link * {
     color: var(--unnic-color-neutral-dark)
 }
 
+#kc-form-options {
+    display: flex;
+    justify-content: space-between;
+}
+
 .input-message {
-    position: absolute;
     font-family: var(--unnic-font-family-secondary);
     font-size: var(--unnic-font-size-body-md);
     color: var(--unnic-color-neutral-darkest);
-    margin: 0;
-    bottom: -20px;
+    line-height: 20px;
 }
 
-#rememberMe {
-    margin: 0 var(--unnic-inline-nano) 0 0;
+.remember-me {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.remember-me label {
+    margin: 0;
+}
+
+.forgot-password {
+    margin-top: var(--unnic-spacing-stack-nano);
+    font-size: var(--unnic-font-size-body-md);
 }
 
 .alert-error {
