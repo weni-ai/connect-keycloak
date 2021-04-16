@@ -25,30 +25,64 @@
 
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
                         <input tabindex="2" id="password" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
-                            <label for="password">
-                                <span class="icon icon-input icon-left icon-lock-2-1"></span>
-                            </label>
 
-                            <span id="password-icon" onclick="togglePassword('password-icon', 'password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
-                            <#if realm.resetPasswordAllowed>
-                                <div class="forgot-password ${properties.kcInputMessageClass!}"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></div>
-                            </#if>
-                            <#if realm.rememberMe && !usernameEditDisabled??>
-                            <div class="input-message">
-                                <#if login.rememberMe??>
-                                    <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3" checked> ${msg("rememberMe")}
-                                <#else>
-                                    <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3"> ${msg("rememberMe")}
-                                </#if>
-                            </div>
-                        </#if>
+                        <label for="password" class="m-0">
+                            <span class="icon icon-input icon-left icon-lock-2-1"></span>
+                        </label>
+
+                        <span id="password-icon" onclick="togglePassword('password-icon', 'password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="${properties.kcFormGroupClass!}">
                     <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
-                        
+                        <#if realm.rememberMe && !usernameEditDisabled??>
+                            <div class="input-message remember-me">
+                                <#if login.rememberMe??>
+                                    <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3" checked>
+                                <#else>
+                                    <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3">
+                                </#if>
+
+                                <label for="rememberMe"></label>
+                                <label for="rememberMe">${msg("rememberMe")}</label>
+
+                                <style>
+
+                                /* https://stackoverflow.com/a/13953070 */
+
+                                #rememberMe {
+                                    display: none;
+                                }
+
+                                #rememberMe + label {
+                                    background: url('${url.resourcesPath}/img/login/checkbox-default.svg') no-repeat;
+                                    background-size: contain;
+                                    height: 16px;
+                                    width: 16px;
+                                    display:inline-block;
+                                    padding: 0 0 0 0px;
+                                    margin: 0 6px 0 0;
+                                    cursor: pointer;
+                                }
+
+                                #rememberMe:checked + label {
+                                    background: url('${url.resourcesPath}/img/login/checkbox-select.svg') no-repeat;
+                                    background-size: contain;
+                                    height: 16px;
+                                    width: 16px;
+                                    display: inline-block;
+                                    padding: 0 0 0 0px;
+                                }
+
+                                </style>
+                            </div>
+                        </#if>
+
+                        <#if realm.resetPasswordAllowed>
+                            <div class="forgot-password ${properties.kcInputMessageClass!}"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></div>
+                        </#if>
                     </div>
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
@@ -72,6 +106,9 @@
 
                     username.addEventListener('input', onInput);
                     password.addEventListener('input', onInput);
+
+                    username.addEventListener('change', onInput);
+                    password.addEventListener('change', onInput);
 
                     onInput();
                 
