@@ -50,8 +50,6 @@
 
                                 <style>
 
-                                /* https://stackoverflow.com/a/13953070 */
-
                                 #rememberMe {
                                     display: none;
                                 }
@@ -62,7 +60,7 @@
                                     height: 16px;
                                     width: 16px;
                                     display:inline-block;
-                                    padding: 0 0 0 0px;
+                                    padding: 0;
                                     margin: 0 6px 0 0;
                                     cursor: pointer;
                                 }
@@ -73,7 +71,7 @@
                                     height: 16px;
                                     width: 16px;
                                     display: inline-block;
-                                    padding: 0 0 0 0px;
+                                    padding: 0;
                                 }
 
                                 </style>
