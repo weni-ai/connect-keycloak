@@ -61,10 +61,11 @@
             modal.remove()
         };
     </script>
+    <script src="${url.resourcesPath}/vue/vue.min.js"></script>
 </head>
 
 <body class="${properties.kcBodyClass!}">
-      <div class="${properties.kcLoginClass!}">
+    <div class="${properties.kcLoginClass!}" id="app">
     <div class="${properties.kcFormCardClass!}">
     <#if displayHeader>
       <header class="${properties.kcFormHeaderClass!}">
