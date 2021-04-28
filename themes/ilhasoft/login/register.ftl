@@ -183,7 +183,7 @@
             </div>
 
             <div id="kc-info-wrapper" class="back-link">
-                <div class="terms-use"> ${msg("registerAcceptTerms")} <a href="${url.loginUrl}"> ${msg("termsOfUse")} </a> ${msg("and")} <a href="${url.loginUrl}"> ${msg("privacyPolicy")} </a> </div>
+                <div class="terms-use"> ${msg("registerAcceptTerms")} <a href="${url.loginUrl}"> ${msg("termsOfUse")} </a> ${msg("and")} <a target="_blank" href="${properties.urlPrivacyPolicy!}"> ${msg("privacyPolicy")} </a> </div>
 
                 <div class="back-to-login">
                     ${msg("alreadyAccount")}
