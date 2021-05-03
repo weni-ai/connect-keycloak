@@ -4,7 +4,7 @@
         ${msg("registerTitle")}
     <#elseif section = "form">
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
-            <div class="input-medium ${messagesPerField.printIfExists('firstName', properties.kcFormGroupErrorClass!)}">
+            <div :class="['input-medium ${messagesPerField.printIfExists('firstName', properties.kcFormGroupErrorClass!)}', { 'has-error': firstName.length && firstName.length < 3, }]">
                 <label for="firstName">
                     <div class="label">${msg("firstName")}</div>
 
@@ -22,12 +22,12 @@
                         />
                     </div>
 
-                    <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('firstName')} </div>
+                    <div class="${properties.kcInputMessageClass!}">{{ '${messagesPerField.get('firstName')}' || (firstName.length && firstName.length < 3) ? '${msg('minCharacters')}' : null }}</div>
                 </label>
             </div>
 
 
-            <div class="input-medium ${messagesPerField.printIfExists('lastName', properties.kcFormGroupErrorClass!)}">
+            <div :class="['input-medium ${messagesPerField.printIfExists('lastName', properties.kcFormGroupErrorClass!)}', { 'has-error': lastName.length && lastName.length < 3, }]">
                 <label for="lastName">
                     <div class="label">${msg("lastName")}</div>
 
@@ -45,7 +45,7 @@
                         />
                     </div>
 
-                    <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('lastName')} </div>
+                    <div class="${properties.kcInputMessageClass!}">{{ '${messagesPerField.get('lastName')}' || (lastName.length && lastName.length < 3) ? '${msg('minCharacters')}' : null }}</div>
                 </label>
             </div>
 
@@ -223,13 +223,19 @@
                 computed: {
                     canRegister() {
                         return [
-                            this.firstName,
-                            this.lastName,
-                            this.email,
-                            this.username,
-                            this.password,
-                            this.passwordConfirm,
-                        ].every(field => field.length);
+                            'firstName',
+                            'lastName',
+                            'email',
+                            'username',
+                            'password',
+                            'passwordConfirm',
+                        ].every(field => {
+                            if (['firstName', 'lastName'].includes(field)) {
+                                return this[field].length >= 3;
+                            } else {
+                                return this[field].length;
+                            }
+                        });
                     },
                 },
             });
