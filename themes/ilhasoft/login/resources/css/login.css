@@ -221,7 +221,7 @@ button, .btn, .bt-lg {
 }
 
 #kc-form-buttons {
-    margin-top: var(--unnic-spacing-stack-nano);
+    margin-top: var(--unnic-spacing-stack-sm);
 }
 
 .login-button {
@@ -443,6 +443,12 @@ footer {
 .forgot-password {
     margin-top: var(--unnic-spacing-stack-nano);
     font-size: var(--unnic-font-size-body-md);
+}
+
+#kc-form-options .forgot-password a{
+    color: var(--unnic-color-neutral-darkest);
+    text-decoration: none;
+    font-weight: var(--unnic-font-weight-normal);
 }
 
 .alert-error {
