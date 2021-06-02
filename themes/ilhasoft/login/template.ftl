@@ -91,7 +91,7 @@
         <a href="${properties.backUrl!}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
         <p class="title-md"> ${msg("headerTitleText")} </p>
         <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
-        <p class="text-md"> ${msg("brandsTitle")} </p>
+        <p class="text-body-gt"> ${msg("brandsTitle")} </p>
         <div class="brand-container">
             <div class="brand">
                 <img src="${url.resourcesPath}/img/login/brand-2.svg" >
