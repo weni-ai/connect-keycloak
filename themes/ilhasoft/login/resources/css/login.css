@@ -221,7 +221,7 @@ button, .btn, .bt-lg {
 }
 
 #kc-form-buttons {
-    margin-top: var(--unnic-spacing-stack-nano);
+    margin-top: var(--unnic-spacing-stack-sm);
 }
 
 .login-button {
@@ -342,6 +342,14 @@ footer {
     color: var(--unnic-color-neutral-dark);
 }
 
+.text-body-gt{
+    font-family: var(--unnic-font-family-secondary);
+    font-size: var(--unnic-font-size-body-gt);
+    margin: 0 0 var(--unnic-spacing-stack-xs) 0;
+    color: var(--unnic-color-neutral-cloudy);
+    font-weight: var(--unnic-font-weight-regular);
+}
+
 .keyword {
     color: var(--unnic-color-brand-weni);
     font-weight: var(--unnic-font-weight-bold);
@@ -435,6 +443,12 @@ footer {
 .forgot-password {
     margin-top: var(--unnic-spacing-stack-nano);
     font-size: var(--unnic-font-size-body-md);
+}
+
+#kc-form-options .forgot-password a{
+    color: var(--unnic-color-neutral-darkest);
+    text-decoration: none;
+    font-weight: var(--unnic-font-weight-normal);
 }
 
 .alert-error {
