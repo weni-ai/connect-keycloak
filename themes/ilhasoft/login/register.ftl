@@ -75,7 +75,7 @@
 
 
             <#if !realm.registrationEmailAsUsername>
-                <div class="input-medium ${messagesPerField.printIfExists('username', properties.kcFormGroupErrorClass!)}">
+                <div ref="username" class="input-medium ${messagesPerField.printIfExists('username', properties.kcFormGroupErrorClass!)}">
                     <label for="username">
                         <div class="label">${msg("username")}</div>
 
@@ -232,6 +232,8 @@
                         ].every(field => {
                             if (['firstName', 'lastName'].includes(field)) {
                                 return this[field].length >= 3;
+                            } if(['username'].includes(field)){
+                                return this.$refs.username ? this[field].length : true;
                             } else {
                                 return this[field].length;
                             }
