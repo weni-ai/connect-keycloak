@@ -88,7 +88,7 @@
                 </div>
             </div>
         </#if>
-        <a href="${properties.backUrl!}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
+        <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
         <p class="title-md"> ${msg("headerTitleText")} </p>
         <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
         <p class="text-body-gt"> ${msg("brandsTitle")} </p>
