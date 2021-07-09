@@ -457,14 +457,17 @@ footer {
 
 .terms-use {
     line-height: 20px;
-    font-size: var(--unnic-font-size-body-md);
+    font-size: var(--unnic-font-size-body-gt);
     color: var(--unnic-color-neutral-cloudy);
     text-align: center;
+    text-align: justify;
+    text-align-last: center;
 }
 
 .terms-use a {
-    color: var(--unnic-color-neutral-cloudy);
-    font-weight: var(--unnic-font-weight-bold);
+    color: var(--unnic-color-neutral-cloudy) !important;
+    font-weight: var(--unnic-font-weight-bold) !important;
+    text-decoration: underline !important;
 }
 
 .input-control.error .icon {
