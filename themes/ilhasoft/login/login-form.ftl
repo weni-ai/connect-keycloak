@@ -111,20 +111,5 @@
                     onInput();
                 
                 </script>
-
-                <script>
-                    function emitConnectEvent(name, content) {
-                        const data = {
-                            pathname: window.location.pathname,
-                            data: content,
-                        }
-
-                        if (window.top && window.top.postMessage) {
-                            window.top.postMessage(`connect:${name}:${JSON.stringify(data)}`, '*');
-                        }
-                    }
-
-                    emitConnectEvent('requestlogout');
-                </script>
             </form>
 </#macro>
