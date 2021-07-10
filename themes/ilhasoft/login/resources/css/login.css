@@ -6,6 +6,36 @@ input:focus {
     outline: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--unnic-color-neutral-dark);
+    text-fill-color: var(--unnic-color-neutral-dark);
+    -webkit-box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
+    box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+textarea:autofill,
+textarea:autofill:hover,
+textarea:autofill:focus,
+select:autofill,
+select:autofill:hover,
+select:autofill:focus {
+    -webkit-text-fill-color: var(--unnic-color-neutral-dark);
+    text-fill-color: var(--unnic-color-neutral-dark);
+    -webkit-box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
+    box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
+}
+
 body {
     font-family: var(--unnic-font-family-primary);
     margin: 0;
