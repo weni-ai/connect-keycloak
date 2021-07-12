@@ -120,7 +120,7 @@
                         }
 
                         if (window.top && window.top.postMessage) {
-                            window.top.postMessage(`connect:${name}:${JSON.stringify(data)}`, '*');
+                            window.top.postMessage('connect:' + name + ':' + JSON.stringify(data), '*');
                         }
                     }
 
