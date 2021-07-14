@@ -25,6 +25,12 @@
             font-family: Lato;margin-top:20px;border-radius: 4px; padding: 1px 0;">
               ${msg("emailVerificationConfirmationButton", link)?no_esc}
             </div>
+
+            <div style="font-family: 'Lato', sans-serif;  font-style: normal; font-weight: normal;
+             font-size: 16px; line-height: 24px; color: #808080; margin-top: 48px;">
+             ${msg("emailVerificationScheduleChat")?no_esc} <a target="_blank" href="bit.ly/chat_weni" style="color: #808080;">${msg("emailVerificationScheduleChatLink")?no_esc}</a> 
+            </div>
+
           </section>
           
           <footer style="width: 670px;height: 150px; border-top: 1px solid #E2E6ED; border-bottom: 8px solid #262626;margin: auto; text-align: center;">
