@@ -28,7 +28,7 @@
 
             <div style="font-family: 'Lato', sans-serif;  font-style: normal; font-weight: normal;
              font-size: 16px; line-height: 24px; color: #808080; margin-top: 48px;">
-             ${msg("emailVerificationScheduleChat")?no_esc} <a target="_blank" href="bit.ly/chat_weni" style="color: #808080;">${msg("emailVerificationScheduleChatLink")?no_esc}</a> 
+             ${msg("emailVerificationScheduleChat")?no_esc} <a target="_blank" href="https://bit.ly/chat_weni" style="color: #808080;">${msg("emailVerificationScheduleChatLink")?no_esc}</a> 
             </div>
 
           </section>
