@@ -293,6 +293,39 @@ button, .btn, .bt-lg {
     cursor: not-allowed;
 }
 
+.btn-secondary {
+    background-color: rgba(#E2E6ED, 0.16);
+    color: var(--unnic-color-neutral-dark);
+    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-clean);
+}
+
+.btn-secondary:hover{
+    border: none;
+}
+
+.btn-secondary:disabled {
+    background-color: var(--unnic-color-neutral-light);
+    color: var(--unnic-color-neutral-cloudy);
+    border: var(--unnic-border-width-thinner) dashed var(--unnic-color-neutral-clean);
+}
+
+.btn-tertiary {
+    background-color: rgba(0,0,0,0);
+    color: var(--unnic-color-neutral-dark);
+}
+
+.btn-tertiary:hover{
+    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
+}
+
+.btn-tertiary:disabled {
+    background-color: var(--unnic-color-neutral-light);
+    color: var(--unnic-color-neutral-cloudy);
+}
+
+#kc-form-wrapper #kc-register-form .form-group .btn-tertiary{
+    margin-top: var(--unnic-spacing-stack-sm);
+}
 
 #separator-group {
     display: flex;
