@@ -463,6 +463,10 @@ footer {
     line-height: 20px;
 }
 
+.input-message label {
+    color: var(--unnic-color-neutral-dark);
+}
+
 .remember-me {
     display: flex;
     align-items: center;
@@ -479,7 +483,7 @@ footer {
 }
 
 #kc-form-options .forgot-password a{
-    color: var(--unnic-color-neutral-darkest);
+    color: var(--unnic-color-neutral-dark);
     text-decoration: none;
     font-weight: var(--unnic-font-weight-normal);
 }
