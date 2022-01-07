@@ -323,6 +323,39 @@ button, .btn, .bt-lg {
     cursor: not-allowed;
 }
 
+.btn-secondary {
+    background-color: rgba(#E2E6ED, 0.16);
+    color: var(--unnic-color-neutral-dark);
+    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-clean);
+}
+
+.btn-secondary:hover{
+    border: none;
+}
+
+.btn-secondary:disabled {
+    background-color: var(--unnic-color-neutral-light);
+    color: var(--unnic-color-neutral-cloudy);
+    border: var(--unnic-border-width-thinner) dashed var(--unnic-color-neutral-clean);
+}
+
+.btn-tertiary {
+    background-color: rgba(0,0,0,0);
+    color: var(--unnic-color-neutral-dark);
+}
+
+.btn-tertiary:hover{
+    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
+}
+
+.btn-tertiary:disabled {
+    background-color: var(--unnic-color-neutral-light);
+    color: var(--unnic-color-neutral-cloudy);
+}
+
+#kc-form-wrapper #kc-register-form .form-group .btn-tertiary{
+    margin-top: var(--unnic-spacing-stack-sm);
+}
 
 #separator-group {
     display: flex;
@@ -460,6 +493,10 @@ footer {
     line-height: 20px;
 }
 
+.input-message label {
+    color: var(--unnic-color-neutral-dark);
+}
+
 .remember-me {
     display: flex;
     align-items: center;
@@ -476,7 +513,7 @@ footer {
 }
 
 #kc-form-options .forgot-password a{
-    color: var(--unnic-color-neutral-darkest);
+    color: var(--unnic-color-neutral-dark);
     text-decoration: none;
     font-weight: var(--unnic-font-weight-normal);
 }
@@ -487,14 +524,17 @@ footer {
 
 .terms-use {
     line-height: 20px;
-    font-size: var(--unnic-font-size-body-md);
+    font-size: var(--unnic-font-size-body-gt);
     color: var(--unnic-color-neutral-cloudy);
     text-align: center;
+    text-align: justify;
+    text-align-last: center;
 }
 
 .terms-use a {
-    color: var(--unnic-color-neutral-cloudy);
-    font-weight: var(--unnic-font-weight-bold);
+    color: var(--unnic-color-neutral-cloudy) !important;
+    font-weight: var(--unnic-font-weight-bold) !important;
+    text-decoration: underline !important;
 }
 
 .input-control.error .icon {
