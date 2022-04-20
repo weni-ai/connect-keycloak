@@ -108,7 +108,7 @@
                     username.addEventListener('change', onInput);
                     password.addEventListener('change', onInput);
 
-                    onInput();
+                    document.querySelector('#kc-form-login').addEventListener("load", onInput);
                 
                 </script>
 
