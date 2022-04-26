@@ -155,7 +155,7 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.DEVOPS_GITHUB_PERMANENT_TOKEN }}
-          repository: Ilhasoft/kubernetes-manifests-platform
+          repository: Ilhasoft/kubernetes-manifests-connect
           directory: ./kubernetes-manifests/
           branch: main
           message: "From Integrations WebApp Build (Push-Tag)"
