@@ -14,75 +14,53 @@ jobs:
 
       - name: Set variables
         run: |
-          echo "COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
-          echo "COMMIT_SHA=${GITHUB_SHA}"
-          export TAG="engine-${GITHUB_SHA::7}" 
-          # TAG=$(echo $GITHUB_REF | cut -d"/" -f3) 
-          echo "TAG=${TAG}" >> $GITHUB_ENV
-          echo "TAG=${TAG}"
-          VERSION=${TAG}
-          echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
-          echo "VERSION=${VERSION}"
-          echo "REGISTRY_URL=869898323958.dkr.ecr.us-east-1.amazonaws.com" >> ${GITHUB_ENV}
-          echo "REGISTRY_URL=869898323958.dkr.ecr.us-east-1.amazonaws.com"
-          echo "IMAGE_TAG=connectof/keycloak:${TAG}" >> ${GITHUB_ENV}
-          echo "IMAGE_TAG=connectof/keycloak:${TAG}"
-          echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak" >> ${GITHUB_ENV}
-          echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak"
-          echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect" >> ${GITHUB_ENV}
-          echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect"
-          echo "PROJECT_DIR=connect-keycloak" >> ${GITHUB_ENV}
-          echo "PROJECT_DIR=connect-keycloak"
-          echo "PATCH_TARGET=deployment.json" >> ${GITHUB_ENV}
-          echo "PATCH_TARGET=deployment.json"
-            
-            # TAG=$(echo $GITHUB_REF|cut -d"/" -f3)
-            # if $(echo  $TAG|grep --silent -e 'v*.*.*-develop*')
+            TAG=$(echo $GITHUB_REF|cut -d"/" -f3)
+            if $(echo  $TAG|grep --silent -e 'v*.*.*-develop*')
+            then
+              echo "Found environment: DEVELOP - $TAG"
+              echo "MANIFESTS_ENVIRONMENT=develop" >> $GITHUB_ENV
+              echo "MANIFESTS_ENVIRONMENT=develop"
+              echo "TAG=$TAG" >> $GITHUB_ENV
+              echo "TAG=$TAG"
+              VERSION=${TAG#v}
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
+              echo "VERSION=$VERSION"
+              echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+              echo "COMMIT_SHA=$GITHUB_SHA"
+              echo "IMAGE_TAG=keycloak:$TAG" >> $GITHUB_ENV
+              echo "IMAGE_TAG=keycloak:$TAG"
+            elif $(echo  $TAG|grep --silent -e 'v*.*.*-staging*')
+            then
+              echo "Found environment: STAGING - $TAG"
+              echo "MANIFESTS_ENVIRONMENT=staging" >> $GITHUB_ENV
+              echo "MANIFESTS_ENVIRONMENT=staging"
+              echo "TAG=$TAG" >> $GITHUB_ENV
+              echo "TAG=$TAG"
+              VERSION=${TAG#v}
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
+              echo "VERSION=$VERSION"
+              echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+              echo "COMMIT_SHA=$GITHUB_SHA"
+              echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
+              echo "IMAGE_TAG=connectof/keycloak:$TAG"
+            # elif $(echo  $TAG|grep --silent -e 'v*.*.*')
             # then
-            #   echo "Found environment: DEVELOP - $TAG"
-            #   echo "MANIFESTS_ENVIRONMENT=develop" >> $GITHUB_ENV
-            #   echo "MANIFESTS_ENVIRONMENT=develop"
-            #   echo "TAG=$TAG" >> $GITHUB_ENV
-            #   echo "TAG=$TAG"
-            #   VERSION=${TAG#v}
-            #   echo "VERSION=$VERSION" >> $GITHUB_ENV
-            #   echo "VERSION=$VERSION"
-            #   echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
-            #   echo "COMMIT_SHA=$GITHUB_SHA"
-            #   echo "IMAGE_TAG=keycloak:$TAG" >> $GITHUB_ENV
-            #   echo "IMAGE_TAG=keycloak:$TAG"
-            # elif $(echo  $TAG|grep --silent -e 'v*.*.*-staging*')
-            # then
-            #   echo "Found environment: STAGING - $TAG"
-            #   echo "MANIFESTS_ENVIRONMENT=staging" >> $GITHUB_ENV
-            #   echo "MANIFESTS_ENVIRONMENT=staging"
-            #   echo "TAG=$TAG" >> $GITHUB_ENV
-            #   echo "TAG=$TAG"
-            #   VERSION=${TAG#v}
-            #   echo "VERSION=$VERSION" >> $GITHUB_ENV
-            #   echo "VERSION=$VERSION"
-            #   echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
-            #   echo "COMMIT_SHA=$GITHUB_SHA"
-            #   echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
-            #   echo "IMAGE_TAG=connectof/keycloak:$TAG"
-            # # elif $(echo  $TAG|grep --silent -e 'v*.*.*')
-            # # then
-            #   # echo "No environment found, assuming: PRODUCTION - $TAG"
-            #   # echo "MANIFESTS_ENVIRONMENT=production" >> $GITHUB_ENV
-            #   # echo "MANIFESTS_ENVIRONMENT=production"
-            #   # echo "TAG=$TAG" >> $GITHUB_ENV
-            #   # echo "TAG=$TAG"
-            #   # VERSION=${TAG#v}
-            #   # echo "VERSION=$VERSION" >> $GITHUB_ENV
-            #   # echo "VERSION=$VERSION"
-            #   # echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
-            #   # echo "COMMIT_SHA=$GITHUB_SHA"
-            #   # echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
-            #   # echo "IMAGE_TAG=connectof/keycloak:$TAG"
-            # else
-            #   echo 'Not a valid tag. Skipping...'
-            #   exit 1
-            # fi
+              # echo "No environment found, assuming: PRODUCTION - $TAG"
+              # echo "MANIFESTS_ENVIRONMENT=production" >> $GITHUB_ENV
+              # echo "MANIFESTS_ENVIRONMENT=production"
+              # echo "TAG=$TAG" >> $GITHUB_ENV
+              # echo "TAG=$TAG"
+              # VERSION=${TAG#v}
+              # echo "VERSION=$VERSION" >> $GITHUB_ENV
+              # echo "VERSION=$VERSION"
+              # echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+              # echo "COMMIT_SHA=$GITHUB_SHA"
+              # echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
+              # echo "IMAGE_TAG=connectof/keycloak:$TAG"
+            else
+              echo 'Not a valid tag. Skipping...'
+              exit 1
+            fi
 
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -145,7 +123,7 @@ jobs:
           repository: Ilhasoft/kubernetes-manifests-connect
           directory: ./kubernetes-manifests/
           branch: main
-          message: "From Integrations WebApp Build (Push-Tag)"
+          message: "From Integrations WebApp Build (Push Branch)"
 
       - name: Generated Image
         run: |
