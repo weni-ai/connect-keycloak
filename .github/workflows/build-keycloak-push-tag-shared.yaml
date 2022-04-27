@@ -30,11 +30,12 @@ jobs:
           echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect" >> ${GITHUB_ENV}
           echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect"
           echo "MANIFESTS_ENVIRONMENT=develop" >> $GITHUB_ENV
-          echo "MANIFESTS_ENVIRONMENT=develop"            
+          echo "MANIFESTS_ENVIRONMENT=develop"           
+
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
-          ref: feature/build
+          ref: develop
           repository: Ilhasoft/connect-keycloak
 
       - name: Set up QEMU
