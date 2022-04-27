@@ -37,7 +37,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
-          ref: develop
+          ref: feature/build
           # ref: ${{env.GITHUB_SHA}}
           # repository: Ilhasoft/connect-keycloak
 
