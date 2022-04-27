@@ -1,11 +1,11 @@
-name: Build Connect Keycloak in Shared (Push Branch)
+name: Build Connect Keycloak in Shared (Push Tag)
 
 on:
   push:
-    branches:
-      - feature/build
-      - develop
-      # - 'v*.*.*'
+    tags:
+      - 'v*.*.*-develop*'
+      - 'v*.*.*-staging*'
+      - 'v*.*.*'
 
 jobs:
   docker:
@@ -14,26 +14,53 @@ jobs:
 
       - name: Set variables
         run: |
-          echo "COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
-          echo "COMMIT_SHA=${GITHUB_SHA}"
-          export TAG="keycloak-${GITHUB_SHA::7}" 
-          # TAG=$(echo $GITHUB_REF | cut -d"/" -f3) 
-          echo "TAG=${TAG}" >> $GITHUB_ENV
-          echo "TAG=${TAG}"
-          VERSION=${TAG}
-          echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
-          echo "VERSION=${VERSION}"
-          echo "REGISTRY_URL=452158872079.dkr.ecr.eu-west-1.amazonaws.com" >> ${GITHUB_ENV}
-          echo "REGISTRY_URL=452158872079.dkr.ecr.eu-west-1.amazonaws.com"
-          echo "IMAGE_TAG=keycloak:$TAG" >> $GITHUB_ENV
-          echo "IMAGE_TAG=keycloak:$TAG"
-          echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak" >> ${GITHUB_ENV}
-          echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak"
-          echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect" >> ${GITHUB_ENV}
-          echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect"
-          echo "MANIFESTS_ENVIRONMENT=develop" >> $GITHUB_ENV
-          echo "MANIFESTS_ENVIRONMENT=develop"            
-
+            TAG=$(echo $GITHUB_REF|cut -d"/" -f3)
+            if $(echo  $TAG|grep --silent -e 'v*.*.*-develop*')
+            then
+              echo "Found environment: DEVELOP - $TAG"
+              echo "MANIFESTS_ENVIRONMENT=develop" >> $GITHUB_ENV
+              echo "MANIFESTS_ENVIRONMENT=develop"
+              echo "TAG=$TAG" >> $GITHUB_ENV
+              echo "TAG=$TAG"
+              VERSION=${TAG#v}
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
+              echo "VERSION=$VERSION"
+              echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+              echo "COMMIT_SHA=$GITHUB_SHA"
+              echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
+              echo "IMAGE_TAG=connectof/keycloak:$TAG"
+            elif $(echo  $TAG|grep --silent -e 'v*.*.*-staging*')
+            then
+              echo "Found environment: STAGING - $TAG"
+              echo "MANIFESTS_ENVIRONMENT=staging" >> $GITHUB_ENV
+              echo "MANIFESTS_ENVIRONMENT=staging"
+              echo "TAG=$TAG" >> $GITHUB_ENV
+              echo "TAG=$TAG"
+              VERSION=${TAG#v}
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
+              echo "VERSION=$VERSION"
+              echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+              echo "COMMIT_SHA=$GITHUB_SHA"
+              echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
+              echo "IMAGE_TAG=connectof/keycloak:$TAG"
+            elif $(echo  $TAG|grep --silent -e 'v*.*.*')
+            then
+              echo "No environment found, assuming: PRODUCTION - $TAG"
+              echo "MANIFESTS_ENVIRONMENT=production" >> $GITHUB_ENV
+              echo "MANIFESTS_ENVIRONMENT=production"
+              echo "TAG=$TAG" >> $GITHUB_ENV
+              echo "TAG=$TAG"
+              VERSION=${TAG#v}
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
+              echo "VERSION=$VERSION"
+              echo "COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+              echo "COMMIT_SHA=$GITHUB_SHA"
+              echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
+              echo "IMAGE_TAG=connectof/keycloak:$TAG"
+            else
+              echo 'Not a valid tag. Skipping...'
+              exit 1
+            fi
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
@@ -49,7 +76,7 @@ jobs:
       # - name: Login to ECR
       #   uses: docker/login-action@v1
       #   with:
-      #     registry: ${{env.REGISTRY_URL}}
+      #     registry: 869898323958.dkr.ecr.us-east-1.amazonaws.com
       #     username: ${{secrets.AWS_ACCESS_KEY_ID_SHARED}}
       #     password: ${{secrets.AWS_SECRET_ACCESS_KEY_SHARED}}
 
@@ -64,10 +91,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          labels: branch=develop,commit=${{env.COMMIT_SHA}},repository=https://github.com/Ilhasoft/connect-keycloak
+          labels: branch=${{env.TAG}},commit=${{env.COMMIT_SHA}},repository=https://github.com/Ilhasoft/connect-keycloak
           file: Dockerfile
           push: true
-          tags: ${{env.REGISTRY_URL}}/${{env.IMAGE_TAG}}
+          tags: ${{env.IMAGE_TAG}}
           no-cache: true
 
       - name: Check out Kubernetes Manifests
@@ -80,22 +107,56 @@ jobs:
 
       - name: Update image on deployment
         run: |
-          echo 'New configurations:'
-          new_configuration=$(
-            cat "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}" \
-              | jq '(..|select(.path == "/spec/template/spec/containers/0/image")?) += {value: "'"${{env.REGISTRY_URL}}/${{env.IMAGE_TAG}}"'"}'
-          )
-          echo "${new_configuration}"
-          echo "${new_configuration}" > "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}"
-
+            which jq > /dev/null 2>&1 || ( sudo apt update ; sudo apt install -y jq )
+            # Dep: coreutils
+            verlte() {
+              [ "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
+            }
+            verlt(){
+              [ "$1" = "$2" ] && return 1 || verlte $1 $2
+            }
+            export PROJECT_DIR="keycloak" PATCH_TARGET="deployment.json"
+            for e in ${{env.MANIFESTS_ENVIRONMENT}}; do
+              echo "Update ${e}:"
+              if [ ! -d "kubernetes-manifests/${PROJECT_DIR}/${e}" ] ; then
+                echo "kubernetes-manifests/${PROJECT_DIR}/${e}: Does not exist, skipping"
+              elif [ ! -r "kubernetes-manifests/${PROJECT_DIR}/${e}/kustomization.yaml" ] ; then
+                echo "kubernetes-manifests/${PROJECT_DIR}/${e}/kustomization.yaml: Does not readable, skipping"
+              elif [ ! -r "kubernetes-manifests/${PROJECT_DIR}/${e}/${PATCH_TARGET}" ] ; then
+                echo "kubernetes-manifests/${PROJECT_DIR}/${e}/${PATCH_TARGET}: Does not readable, skipping"
+              else
+                OLD_IMAGE=$(
+                  cat "kubernetes-manifests/${PROJECT_DIR}/${e}/${PATCH_TARGET}" \
+                    | jq '.[] | select(.path == "/spec/template/spec/containers/0/image") | .value'
+                )
+                echo "Old image to replace: ${OLD_IMAGE}"
+                OLD_VERSION=$(
+                  echo "${OLD_IMAGE}" \
+                    | sed s'/^.*[v:-]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/'g \
+                    | head -n1
+                )
+                echo "Old image version to compare: ${OLD_VERSION}<=${{env.VERSION}}"
+                if verlte "${OLD_VERSION}" "${{env.VERSION}}" ; then
+                  echo 'New configurations:'
+                  new_configuration=$(
+                    cat "kubernetes-manifests/${PROJECT_DIR}/${e}/${PATCH_TARGET}" \
+                      | jq '(..|select(.path == "/spec/template/spec/containers/0/image")?) += {value: "'"${{env.IMAGE_TAG}}"'"}'
+                  )
+                  echo "${new_configuration}"
+                  echo "${new_configuration}" > "kubernetes-manifests/${PROJECT_DIR}/${e}/${PATCH_TARGET}"
+                else
+                  echo "Version in file is greater than build, skiping update yaml"
+                fi
+              fi
+            done
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.DEVOPS_GITHUB_PERMANENT_TOKEN }}
-          repository: Ilhasoft/kubernetes-manifests-connect
+          repository: Ilhasoft/kubernetes-manifests-platform
           directory: ./kubernetes-manifests/
           branch: main
-          message: "From Integrations WebApp Build (Push Branch)"
+          message: "From Integrations WebApp Build (Push-Tag)"
 
       - name: Generated Image
         run: |
