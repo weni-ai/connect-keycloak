@@ -37,7 +37,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
-          ref: feature/build
+          ref: develop
           # ref: ${{env.GITHUB_SHA}}
           # repository: Ilhasoft/connect-keycloak
 
@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          labels: branch=feature/build,commit=${{env.COMMIT_SHA}},repository=https://github.com/Ilhasoft/connect-keycloak
+          labels: branch=develop,commit=${{env.COMMIT_SHA}},repository=https://github.com/Ilhasoft/connect-keycloak
           file: Dockerfile
           push: true
           tags: ${{env.REGISTRY_URL}}/${{env.IMAGE_TAG}}
