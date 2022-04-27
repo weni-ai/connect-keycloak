@@ -37,8 +37,9 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
-          ref: ${{env.GITHUB_SHA}}
-          repository: Ilhasoft/connect-keycloak
+          ref: develop
+          # ref: ${{env.GITHUB_SHA}}
+          # repository: Ilhasoft/connect-keycloak
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
