@@ -2,10 +2,8 @@ name: Build Connect Keycloak in Shared (Push Branch)
 
 on:
   push:
-    branches:
-      - feature/build
-      - develop
-      # - 'v*.*.*'
+    tags:
+      - 'v*.*.*-develop'
 
 jobs:
   docker:
