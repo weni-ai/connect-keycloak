@@ -22,8 +22,8 @@ jobs:
           VERSION=${TAG}
           echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
           echo "VERSION=${VERSION}"
-          echo "REGISTRY_URL=452158872079.dkr.ecr.eu-west-1.amazonaws.com" >> ${GITHUB_ENV}
-          echo "REGISTRY_URL=452158872079.dkr.ecr.eu-west-1.amazonaws.com"
+          echo "REGISTRY_URL=869898323958.dkr.ecr.us-east-1.amazonaws.com" >> ${GITHUB_ENV}
+          echo "REGISTRY_URL=869898323958.dkr.ecr.us-east-1.amazonaws.com"
           echo "IMAGE_TAG=connectof/keycloak:$TAG" >> $GITHUB_ENV
           echo "IMAGE_TAG=connectof/keycloak:$TAG"
           echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak" >> ${GITHUB_ENV}
@@ -86,7 +86,7 @@ jobs:
           echo 'New configurations:'
           new_configuration=$(
             cat "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}" \
-              | jq '(..|select(.path == "/spec/template/spec/containers/0/image")?) += {value: "'"${{env.REGISTRY_URL}}/${{env.IMAGE_TAG}}"'"}'
+              | jq '(..|select(.path == "/spec/template/spec/containers/0/image")?) += {value: "'"${{env.IMAGE_TAG}}"'"}'
           )
           echo "${new_configuration}"
           echo "${new_configuration}" > "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}"
