@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/build
+      - develop
 
 jobs:
   docker:
@@ -85,7 +86,7 @@ jobs:
           echo 'New configurations:'
           new_configuration=$(
             cat "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}" \
-              | jq '(..|select(.path == "/spec/template/spec/containers/0/image")?) += {value: "'"${{env.REGISTRY_URL}}/${{env.IMAGE_TAG}}"'"}'
+              | jq '(..|select(.path == "/spec/template/spec/containers/0/image")?) += {value: "'"${{env.IMAGE_TAG}}"'"}'
           )
           echo "${new_configuration}"
           echo "${new_configuration}" > "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}"
