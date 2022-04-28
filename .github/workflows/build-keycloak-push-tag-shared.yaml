@@ -3,7 +3,6 @@ name: Build Connect Keycloak in Shared (Push Branch)
 on:
   push:
     branches:
-      - feature/build
       - develop
 
 jobs:
@@ -40,7 +39,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
-          ref: feature/build
+          ref: develop
           repository: Ilhasoft/connect-keycloak
 
       - name: Set up QEMU
