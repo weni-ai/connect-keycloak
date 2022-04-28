@@ -30,7 +30,11 @@ jobs:
           echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect" >> ${GITHUB_ENV}
           echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests-connect"
           echo "MANIFESTS_ENVIRONMENT=develop" >> $GITHUB_ENV
-          echo "MANIFESTS_ENVIRONMENT=develop"           
+          echo "MANIFESTS_ENVIRONMENT=develop"
+          echo "PROJECT_DIR=keycloak" >> ${GITHUB_ENV}
+          echo "PROJECT_DIR=keycloak"
+          echo "PATCH_TARGET=deployment.json" >> ${GITHUB_ENV}
+          echo "PATCH_TARGET=deployment.json"           
 
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -85,6 +89,7 @@ jobs:
           )
           echo "${new_configuration}"
           echo "${new_configuration}" > "./kubernetes-manifests/${{env.PROJECT_DIR}}/develop/${{env.PATCH_TARGET}}"
+     
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
