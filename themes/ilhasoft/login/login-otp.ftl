@@ -3,6 +3,16 @@
     <#if section="header">
         ${msg("doLogIn")}
     <#elseif section="form">
+    
+        <div class="kc-otp-header">
+            <div class="totp-title">
+                <span class="icon icon-single-neutral-actions-1"></span>
+                <h1>${msg("loginOtpTitleTwoFactor")}</h1>
+            </div>
+
+            <p class="totp-start-instructions">${msg("loginOtpTitleTwoFactorDescription")}</p>
+
+        </div>
         <form id="kc-otp-login-form" class="${properties.kcFormClass!}" action="${url.loginAction}"
             method="post">
             <#if otpLogin.userOtpCredentials?size gt 1>
