@@ -4,16 +4,24 @@
     <#if section = "header">
         ${msg("loginTotpTitle")}
     <#elseif section = "form">
-        <ol id="kc-totp-settings">
-            <li>
-                <p>${msg("loginTotpStep1")}</p>
+        <div class="kc-otp-header">
+            <div class="totp-title">
+                <span class="icon icon-single-neutral-actions-1"></span>
+                <h1>${msg("loginOtpTitle")}</h1>
+            </div>
 
-                <ul id="kc-totp-supported-apps">
-                    <#list totp.policy.supportedApplications as app>
-                        <li>${app}</li>
-                    </#list>
-                </ul>
-            </li>
+            <div class="totp-info">
+                <span class="icon icon-information-circle-4"></span>
+                <span class="totp-info__text">${msg("loginOtpInfo")}</span>
+            </div>
+
+            <p class="totp-start-instructions">${msg("loginOtpStartInstructions")}</p>
+
+        </div>
+
+        <ol id="kc-totp-settings">
+
+
 
             <#if mode?? && mode = "manual">
                 <li>
@@ -45,14 +53,13 @@
             </#if>
             <li>
                 <p>${msg("loginTotpStep3")}</p>
-                <p>${msg("loginTotpStep3DeviceName")}</p>
             </li>
         </ol>
 
         <form action="${url.loginAction}" class="${properties.kcFormClass!}" id="kc-totp-settings-form" method="post">
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcInputWrapperClass!}">
-                    <label for="totp" class="control-label">${msg("authenticatorCode")}</label> <span class="required">*</span>
+                    <label for="totp" class="control-label">${msg("authenticatorCode")}</label>
                 </div>
                 <div class="${properties.kcInputWrapperClass!}">
                     <input type="text" id="totp" name="totp" autocomplete="off" class="${properties.kcInputClass!}"
@@ -70,7 +77,7 @@
                 <#if mode??><input type="hidden" id="mode" name="mode" value="${mode}"/></#if>
             </div>
 
-            <div class="${properties.kcFormGroupClass!}">
+            <#--  <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcInputWrapperClass!}">
                     <label for="userLabel" class="control-label">${msg("loginTotpDeviceName")}</label> <#if totp.otpCredentials?size gte 1><span class="required">*</span></#if>
                 </div>
@@ -86,11 +93,11 @@
                         </span>
                     </#if>
                 </div>
-            </div>
+            </div>  -->
 
             <#if isAppInitiatedAction??>
                 <input type="submit"
-                       class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}"
+                       class="${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonLargeClass!}"
                        id="saveTOTPBtn" value="${msg("doSubmit")}"
                 />
                 <button type="submit"
@@ -99,7 +106,7 @@
                 </button>
             <#else>
                 <input type="submit"
-                       class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
+                       class="${properties.kcButtonClass!} ${properties.kcButtonDefaultClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
                        id="saveTOTPBtn" value="${msg("doSubmit")}"
                 />
             </#if>
