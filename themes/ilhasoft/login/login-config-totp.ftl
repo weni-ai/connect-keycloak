@@ -77,7 +77,7 @@
                 <#if mode??><input type="hidden" id="mode" name="mode" value="${mode}"/></#if>
             </div>
 
-            <#--  <div class="${properties.kcFormGroupClass!}">
+            <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcInputWrapperClass!}">
                     <label for="userLabel" class="control-label">${msg("loginTotpDeviceName")}</label> <#if totp.otpCredentials?size gte 1><span class="required">*</span></#if>
                 </div>
@@ -93,7 +93,7 @@
                         </span>
                     </#if>
                 </div>
-            </div>  -->
+            </div>
 
             <#if isAppInitiatedAction??>
                 <input type="submit"
