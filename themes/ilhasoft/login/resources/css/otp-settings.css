@@ -2,7 +2,7 @@
   padding-left: 14px;
 }
 
-#kc-totp-settings-form, #kc-totp-settings, .kc-otp-header {
+#kc-totp-settings-form, #kc-totp-settings, .kc-otp-header, #kc-totp-settings-form > .form-group label {
   font-family: var(--unnic-font-family-secondary);
   color: var(--unnic-color-neutral-cloudy);
   font-size: var(--unnic-font-size-body-gt);

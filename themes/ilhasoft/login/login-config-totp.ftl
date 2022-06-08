@@ -6,7 +6,7 @@
     <#elseif section = "form">
         <div class="kc-otp-header">
             <div class="totp-title">
-                <span class="icon icon-single-neutral-actions-1"></span>
+                <span class="icon icon-lock-2-1"></span>
                 <h1>${msg("loginOtpTitle")}</h1>
             </div>
 
