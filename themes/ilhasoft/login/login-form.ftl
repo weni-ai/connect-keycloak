@@ -47,34 +47,6 @@
 
                                 <label for="rememberMe"></label>
                                 <label for="rememberMe">${msg("rememberMe")}</label>
-
-                                <style>
-
-                                #rememberMe {
-                                    display: none;
-                                }
-
-                                #rememberMe + label {
-                                    background: url('${url.resourcesPath}/img/login/checkbox-default.svg') no-repeat;
-                                    background-size: contain;
-                                    height: 16px;
-                                    width: 16px;
-                                    display:inline-block;
-                                    padding: 0;
-                                    margin: 0 6px 0 0;
-                                    cursor: pointer;
-                                }
-
-                                #rememberMe:checked + label {
-                                    background: url('${url.resourcesPath}/img/login/checkbox-select.svg') no-repeat;
-                                    background-size: contain;
-                                    height: 16px;
-                                    width: 16px;
-                                    display: inline-block;
-                                    padding: 0;
-                                }
-
-                                </style>
                             </div>
                         </#if>
 
