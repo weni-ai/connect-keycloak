@@ -220,8 +220,9 @@
             margin: 2rem 12.88%;
             align-self: normal;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: flex-end;
+            flex-direction: column;
         }
 
         .login-pf-header .language-select {
@@ -282,6 +283,10 @@
                     seePassword: false,
                     seePasswordConfirm: false,
                 </#if>
+                <#if displayLoginFormScriptsAndStyles>
+                    loginUsername: '',
+                    loginPassword: '',
+                </#if>
             },
 
             computed: {
@@ -314,6 +319,48 @@
                 language() {
                     return kc2UnnnicLanguages[this.keycloakCurrentLanguage];
                 },
+            },
+
+            mounted() {
+                <#if displayLoginFormScriptsAndStyles>
+                    const username = this.$refs.username;
+                    const password = this.$refs.password;
+                    const submitButton = this.$refs['kc-login'];
+
+                    console.log('test', this.$refs);
+
+                    const onInput = () => {
+                        console.log('te');
+                        submitButton.disabled = !username.value || !password.value;
+                    }
+
+                    username.addEventListener('input', onInput);
+                    password.addEventListener('input', onInput);
+
+                    username.addEventListener('change', onInput);
+                    password.addEventListener('change', onInput);
+
+                    console.log('form', this.$refs['kc-form-login']);
+                    setTimeout(() => {
+                        this.$refs['kc-form-login'].addEventListener('submit', () => {
+                        console.log('enviou');
+                        event.preventDefault();
+                    });
+                    }, 0);
+
+                    function emitConnectEvent(name, content) {
+                        const data = {
+                            pathname: window.location.pathname,
+                            data: content,
+                        }
+
+                        if (window.top && window.top.postMessage) {
+                            window.top.postMessage('connect:' + name + ':' + JSON.stringify(data), '*');
+                        }
+                    }
+
+                    emitConnectEvent('requestlogout');
+                </#if>
             },
 
             methods: {
