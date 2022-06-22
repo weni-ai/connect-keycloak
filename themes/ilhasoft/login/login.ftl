@@ -1,6 +1,6 @@
 <#import "template.ftl" as layout>
 <#import "login-form.ftl" as loginLayout>
-<@layout.registrationLayout displayInfo=social.displayInfo; section>
+<@layout.registrationLayout displayInfo=social.displayInfo displayLoginFormScriptsAndStyles=true; section>
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">

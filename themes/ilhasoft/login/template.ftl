@@ -1,4 +1,4 @@
-<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayHeader=true displaySocial=true>
+<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayHeader=true displayRegisterScriptsAndStyles=false displayLoginFormScriptsAndStyles=false displaySocial=true>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
 
@@ -62,11 +62,12 @@
         };
     </script>
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
+    <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
+    <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
 
 <body class="${properties.kcBodyClass!}">
     <div class="${properties.kcLoginClass!}" id="app">
-    <div class="${properties.kcFormCardClass!}">
     <#if displayHeader>
       <header class="${properties.kcFormHeaderClass!}">
         <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
@@ -74,45 +75,18 @@
                 <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
                     <div class="kc-dropdown" id="kc-locale-dropdown">
                         <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
-                        <a href="#" id="kc-current-locale-link">
-                            ${locale.current}
-                        </a>
-                        <ul>
-                            <#list locale.supported as l>
-                                <#if l.label != locale.current>
-                                    <li class="kc-dropdown-item"><a href="${l.url}">${l.label}</a></li>
-                                </#if>
-                            </#list>
-                        </ul>
+                        <div class="language-select">
+                            <unnnic-language-select
+                                :value="language"
+                                @input="changeLanguage"
+                                position="bottom"
+                                :supported-languages="supportedLanguages"
+                            ></unnnic-language-select>
+                        </div>
                     </div>
                 </div>
             </div>
         </#if>
-        <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
-            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
-        <#else>
-            <a href="${url.loginRestartFlowUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
-        </#if>
-        <p class="title-md"> ${msg("headerTitleText")} </p>
-        <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
-        <p class="text-body-gt"> ${msg("brandsTitle")} </p>
-        <div class="brand-container">
-            <div class="brand">
-                <img src="${url.resourcesPath}/img/login/brand-2.svg" >
-            </div>
-
-            <div class="brand">
-                <img src="${url.resourcesPath}/img/login/brand-3.svg" >
-            </div>
-
-            <div class="brand">
-                <img src="${url.resourcesPath}/img/login/brand-4.svg" >
-            </div>
-
-            <div class="brand">
-                <img src="${url.resourcesPath}/img/login/brand-5.svg" >
-            </div>
-        </div>
             <#if displayMessage && message?has_content>
             <#if (message.summary == msg("emailSentMessage"))>
                 <div id="modal" class="modal-background">
@@ -148,47 +122,216 @@
         </#if>
       </header>
     </#if>
-    <#if displayHeader>
-      <div id="kc-content">
-    <#else>
-    <div id="kc-content-headerless">
-    </#if>
-        <div id="kc-content-wrapper">
-        <#if realm.password?? && social.providers?? && displaySocial>
-            <div class="buttons-group">
-                <#list social.providers as p>
-                    <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                        <button class="social-button button-control" id="button-${p.alias}">
-                            <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg" class="icon-image icon-button-left" >
-                            <span>${msg("loginWith")} ${p.displayName} </span>
-                        </button></a>
-                </#list>
+    <div class="${properties.kcFormCardClass!}">
+        <div class="left-side-content" style="grid-column: 1 / 7">
+            <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
+                <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
+            <#else>
+                <a href="${url.loginRestartFlowUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
+            </#if>
+            <p class="title-md"> ${msg("headerTitleText")} </p>
+            <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
+            <p class="text-body-gt"> ${msg("brandsTitle")} </p>
+            <div class="brand-container">
+                <div class="brand">
+                    <img src="${url.resourcesPath}/img/login/brand-2.svg" >
+                </div>
+
+                <div class="brand">
+                    <img src="${url.resourcesPath}/img/login/brand-3.svg" >
+                </div>
+
+                <div class="brand">
+                    <img src="${url.resourcesPath}/img/login/brand-4.svg" >
+                </div>
+
+                <div class="brand">
+                    <img src="${url.resourcesPath}/img/login/brand-5.svg" >
+                </div>
             </div>
-            <div id="separator-group">
-                <div class="separator"></div>
-                <span class="separator-text"> ${msg("separatorMessage")} </span>
-                <div class="separator"></div>
-            </div>
+        </div>
+        <#if displayHeader>
+        <div id="kc-content">
+        <#else>
+        <div id="kc-content-headerless">
         </#if>
-        <div id="kc-form" class="${properties.kcFormAreaClass!}">
-            <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
-                <#nested "form">
+            <div id="kc-content-wrapper">
+            <#if realm.password?? && social.providers?? && displaySocial>
+                <div class="buttons-group">
+                    <#list social.providers as p>
+                        <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
+                            <button class="social-button button-control" id="button-${p.alias}">
+                                <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg" class="icon-image icon-button-left" >
+                                <span>${msg("loginWith")} ${p.displayName} </span>
+                            </button></a>
+                    </#list>
+                </div>
+                <div id="separator-group">
+                    <div class="separator"></div>
+                    <span class="separator-text"> ${msg("separatorMessage")} </span>
+                    <div class="separator"></div>
+                </div>
+            </#if>
+            <div id="kc-form" class="${properties.kcFormAreaClass!}">
+                <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
+                    <#nested "form">
+                </div>
+            </div>
+            <#if displayInfo>
+                <div id="kc-info" class="${properties.kcSignUpClass!}">
+                    <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
+                        <#nested "info">
+                    </div>
+                </div>
+            </#if>
             </div>
         </div>
-        <#if displayInfo>
-              <div id="kc-info" class="${properties.kcSignUpClass!}">
-                  <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
-                      <#nested "info">
-                  </div>
-              </div>
-          </#if>
         </div>
-      </div>
     </div>
   </div>
+    <style>
+        <#if displayLoginFormScriptsAndStyles>
+            #rememberMe {
+            display: none;
+            }
+
+            #rememberMe + label {
+                background: url('${url.resourcesPath}/img/login/checkbox-default.svg') no-repeat;
+                background-size: contain;
+                height: 16px;
+                width: 16px;
+                display:inline-block;
+                padding: 0;
+                margin: 0 6px 0 0;
+                cursor: pointer;
+            }
+
+            #rememberMe:checked + label {
+                background: url('${url.resourcesPath}/img/login/checkbox-select.svg') no-repeat;
+                background-size: contain;
+                height: 16px;
+                width: 16px;
+                display: inline-block;
+                padding: 0;
+            }
+        </#if>
+
+        .login-pf-header {
+            margin: 2rem 12.88%;
+            align-self: normal;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .login-pf-header .language-select {
+            width: 12.5rem;
+        }
+        
+        .login-pf-header .language-select .unnnic-language-select {
+            user-select: none;
+            z-index: 1;
+        }
+
+        .card-pf {
+            margin-top: 0;
+        }
+    </style>
     <script>
-        $(document).ready(function(){
-            $('#iconeTooltip').tooltip({container: 'body'});;
+        const kc2UnnnicLanguages = {
+            'pt-BR': 'pt-br',
+            'en': 'en',
+            'es': 'es',
+        };
+
+        const convert = (text) => {
+            const data = {
+                '&lt;': '<',
+                '&gt;': '>',
+                '&amp;': '&',
+                '&quot;': '"',
+                '&#39;': '\'',
+            };
+
+            return Object.keys(data).reduce((currentText, from) => {
+                return currentText.replace(new RegExp(from, 'g'), data[from]);
+            }, text);
+        }
+
+        new Vue({
+            el: '#app',
+            data: {
+                keycloakCurrentLanguage:
+                    <#list locale.supported as l>
+                        <#if l.label == locale.current>
+                            "${l.languageTag}",
+                        </#if>
+                    </#list>
+                keycloakLanguages: {
+                    <#list locale.supported as l>
+                        "${l.languageTag}": convert("${l.url}"),
+                    </#list>
+                },
+                <#if displayRegisterScriptsAndStyles>
+                    firstName: convert('${(register.formData.firstName!"")}'),
+                    lastName: convert('${(register.formData.lastName!"")}'),
+                    email: convert('${(register.formData.email!"")}'),
+                    username: convert('${(register.formData.username!"")}'),
+                    password: convert('${(register.formData.password!"")}'),
+                    passwordConfirm: '',
+                    seePassword: false,
+                    seePasswordConfirm: false,
+                </#if>
+            },
+
+            computed: {
+                <#if displayRegisterScriptsAndStyles>
+                    canRegister() {
+                        return [
+                            'firstName',
+                            'lastName',
+                            'email',
+                            'username',
+                            'password',
+                            'passwordConfirm',
+                        ].every(field => {
+                            if (['firstName', 'lastName'].includes(field)) {
+                                return this[field].length >= 3;
+                            } if(['username'].includes(field)){
+                                return this.$refs.username ? this[field].length : true;
+                            } else {
+                                return this[field].length;
+                            }
+                        });
+                    },
+                </#if>
+                supportedLanguages() {
+                    return Object.keys(this.keycloakLanguages)
+                        .map((keycloakLanguage) => kc2UnnnicLanguages[keycloakLanguage])
+                        .filter((language) => language);
+                },
+
+                language() {
+                    return kc2UnnnicLanguages[this.keycloakCurrentLanguage];
+                },
+            },
+
+            methods: {
+                changeLanguage(language) {
+                    Object.keys(this.keycloakLanguages)
+                        .forEach((keycloakLanguage) => {
+                            if (kc2UnnnicLanguages[keycloakLanguage] === language) {
+                                console.log(this.keycloakLanguages[keycloakLanguage]);
+                                const a = document.createElement('a');
+                                a.setAttribute('href', this.keycloakLanguages[keycloakLanguage]);
+                                document.body.appendChild(a);
+                                a.click();
+                            }
+                        });
+                    
+                    console.log('t', language);
+                },
+            },
         });
     </script>
     <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/bc670956-964a-4451-9629-b0c74ae4b122-loader.js" ></script>
