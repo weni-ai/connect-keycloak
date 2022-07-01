@@ -3,7 +3,7 @@ FROM quay.io/keycloak/keycloak:11.0.3
 USER root
 
 COPY ./keycloak-user-migration/ /project
-RUN cd /project && ./mvnw clean package
+RUN cd /project && sh ./mvnw clean package
 
 FROM quay.io/keycloak/keycloak:11.0.3
 USER root
