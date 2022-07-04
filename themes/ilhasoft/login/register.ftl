@@ -1,5 +1,5 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayMessage=false; section>
+<@layout.registrationLayout displayMessage=false displayRegisterScriptsAndStyles=true; section>
     <#if section = "header">
         ${msg("registerTitle")}
     <#elseif section = "form">
@@ -191,56 +191,5 @@
                 </div>
             </div>
         </form>
-
-        <script>
-            const convert = (text) => {
-                const data = {
-                    '&lt;': '<',
-                    '&gt;': '>',
-                    '&amp;': '&',
-                    '&quot;': '"',
-                    '&#39;': '\'',
-                };
-
-                return Object.keys(data).reduce((currentText, from) => {
-                    return currentText.replace(new RegExp(from, 'g'), data[from]);
-                }, text);
-            }
-
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    firstName: convert('${(register.formData.firstName!"")}'),
-                    lastName: convert('${(register.formData.lastName!"")}'),
-                    email: convert('${(register.formData.email!"")}'),
-                    username: convert('${(register.formData.username!"")}'),
-                    password: convert('${(register.formData.password!"")}'),
-                    passwordConfirm: '',
-                    seePassword: false,
-                    seePasswordConfirm: false,
-                },
-
-                computed: {
-                    canRegister() {
-                        return [
-                            'firstName',
-                            'lastName',
-                            'email',
-                            'username',
-                            'password',
-                            'passwordConfirm',
-                        ].every(field => {
-                            if (['firstName', 'lastName'].includes(field)) {
-                                return this[field].length >= 3;
-                            } if(['username'].includes(field)){
-                                return this.$refs.username ? this[field].length : true;
-                            } else {
-                                return this[field].length;
-                            }
-                        });
-                    },
-                },
-            });
-        </script>
     </#if>
 </@layout.registrationLayout>

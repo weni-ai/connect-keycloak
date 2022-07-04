@@ -1,5 +1,5 @@
 <#macro loginLayout>
-    <form id="kc-form-login" class="${properties.kcFormClass!}" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+    <form id="kc-form-login" ref="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcLabelWrapperClass!}">
                         <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
@@ -11,9 +11,9 @@
                         </label>
 
                         <#if usernameEditDisabled??>
-                            <input tabindex="1" id="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" disabled />
+                            <input tabindex="1" id="username" ref="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" disabled />
                         <#else>
-                            <input tabindex="1" id="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" />
+                            <input tabindex="1" id="username" ref="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" />
                         </#if>
                     </div>
                 </div>
@@ -24,14 +24,13 @@
                     </div>
 
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
-                        <input tabindex="2" id="password" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
+                        <input tabindex="2" id="password" ref="password" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
 
                         <label for="password" class="m-0">
                             <span class="icon icon-input icon-left icon-lock-2-1"></span>
                         </label>
 
                         <span id="password-icon" onclick="togglePassword('password-icon', 'password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
-                        </div>
                     </div>
                 </div>
 
@@ -47,34 +46,6 @@
 
                                 <label for="rememberMe"></label>
                                 <label for="rememberMe">${msg("rememberMe")}</label>
-
-                                <style>
-
-                                #rememberMe {
-                                    display: none;
-                                }
-
-                                #rememberMe + label {
-                                    background: url('${url.resourcesPath}/img/login/checkbox-default.svg') no-repeat;
-                                    background-size: contain;
-                                    height: 16px;
-                                    width: 16px;
-                                    display:inline-block;
-                                    padding: 0;
-                                    margin: 0 6px 0 0;
-                                    cursor: pointer;
-                                }
-
-                                #rememberMe:checked + label {
-                                    background: url('${url.resourcesPath}/img/login/checkbox-select.svg') no-repeat;
-                                    background-size: contain;
-                                    height: 16px;
-                                    width: 16px;
-                                    display: inline-block;
-                                    padding: 0;
-                                }
-
-                                </style>
                             </div>
                         </#if>
 
@@ -85,46 +56,9 @@
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                         <div class="${properties.kcFormButtonsWrapperClass!}">
-                            <button type="submit" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit">
-                                ${msg("doLogIn")}
-                            </button>
+                            <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("doLogIn")}" />
                         </div>
                      </div>
                 </div>
-
-                <script>
-                
-                    const username = document.querySelector('#username');
-                    const password = document.querySelector('#password');
-                    const submitButton = document.querySelector('#kc-login');
-
-                    const onInput = () => {
-                        submitButton.disabled = !username.value || !password.value;
-                    }
-
-                    username.addEventListener('input', onInput);
-                    password.addEventListener('input', onInput);
-
-                    username.addEventListener('change', onInput);
-                    password.addEventListener('change', onInput);
-
-                    document.querySelector('#kc-form-login').addEventListener("load", onInput);
-                
-                </script>
-
-                <script>
-                    function emitConnectEvent(name, content) {
-                        const data = {
-                            pathname: window.location.pathname,
-                            data: content,
-                        }
-
-                        if (window.top && window.top.postMessage) {
-                            window.top.postMessage('connect:' + name + ':' + JSON.stringify(data), '*');
-                        }
-                    }
-
-                    emitConnectEvent('requestlogout');
-                </script>
             </form>
 </#macro>
