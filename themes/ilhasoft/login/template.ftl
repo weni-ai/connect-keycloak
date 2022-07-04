@@ -262,17 +262,19 @@
         new Vue({
             el: '#app',
             data: {
-                keycloakCurrentLanguage:
-                    <#list locale.supported as l>
-                        <#if l.label == locale.current>
-                            "${l.languageTag}",
-                        </#if>
-                    </#list>
-                keycloakLanguages: {
-                    <#list locale.supported as l>
-                        "${l.languageTag}": convert("${l.url}"),
-                    </#list>
-                },
+                <#if realm.internationalizationEnabled>
+                    keycloakCurrentLanguage:
+                        <#list locale.supported as l>
+                            <#if l.label == locale.current>
+                                "${l.languageTag}",
+                            </#if>
+                        </#list>
+                    keycloakLanguages: {
+                        <#list locale.supported as l>
+                            "${l.languageTag}": convert("${l.url}"),
+                        </#list>
+                    },
+                </#if>
                 <#if displayRegisterScriptsAndStyles>
                     firstName: convert('${(register.formData.firstName!"")}'),
                     lastName: convert('${(register.formData.lastName!"")}'),
@@ -327,10 +329,7 @@
                     const password = this.$refs.password;
                     const submitButton = this.$refs['kc-login'];
 
-                    console.log('test', this.$refs);
-
                     const onInput = () => {
-                        console.log('te');
                         submitButton.disabled = !username.value || !password.value;
                     }
 
@@ -339,14 +338,6 @@
 
                     username.addEventListener('change', onInput);
                     password.addEventListener('change', onInput);
-
-                    console.log('form', this.$refs['kc-form-login']);
-                    setTimeout(() => {
-                        this.$refs['kc-form-login'].addEventListener('submit', () => {
-                        console.log('enviou');
-                        event.preventDefault();
-                    });
-                    }, 0);
 
                     function emitConnectEvent(name, content) {
                         const data = {
@@ -368,15 +359,12 @@
                     Object.keys(this.keycloakLanguages)
                         .forEach((keycloakLanguage) => {
                             if (kc2UnnnicLanguages[keycloakLanguage] === language) {
-                                console.log(this.keycloakLanguages[keycloakLanguage]);
                                 const a = document.createElement('a');
                                 a.setAttribute('href', this.keycloakLanguages[keycloakLanguage]);
                                 document.body.appendChild(a);
                                 a.click();
                             }
                         });
-                    
-                    console.log('t', language);
                 },
             },
         });
