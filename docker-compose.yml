@@ -12,5 +12,11 @@ services:
       - ./themes/ilhasoft/:/opt/jboss/keycloak/themes/ilhasoft/
       # - ./standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
     environment:
-      KEYCLOAK_USER: "admin"
-      KEYCLOAK_PASSWORD: "admin"
+      KEYCLOAK_ADMIN: "admin"
+      KEYCLOAK_ADMIN_PASSWORD: "admin"
+    networks:
+      - keycloak
+
+networks:
+  keycloak:
+    external: true
