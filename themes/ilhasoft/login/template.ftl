@@ -369,7 +369,6 @@
             },
         });
     </script>
-    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/bc670956-964a-4451-9629-b0c74ae4b122-loader.js" ></script>
 
 </body>
 <footer></footer>
