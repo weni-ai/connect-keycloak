@@ -1,0 +1,61 @@
+#kc-totp-settings{
+  padding-left: 14px;
+}
+
+#kc-totp-settings-form, #kc-totp-settings, .kc-otp-header, #kc-totp-settings-form > .form-group label {
+  font-family: var(--unnic-font-family-secondary);
+  color: var(--unnic-color-neutral-cloudy);
+  font-size: var(--unnic-font-size-body-gt);
+  line-height: calc(var(--unnic-line-height-md)+var(--unnic-font-size-body-gt));
+}
+
+.kc-otp-header .totp-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--unnic-spacing-stack-md );
+}
+.kc-otp-header .totp-title h1 {
+  font-size: var(--unnic-font-size-title-sm);
+  font-weight: var(--unnic-font-weight-regular);
+  color: var(--unnic-color-neutral-darkest);
+  margin:0 0 0 var(--unnic-spacing-stack-sm);
+
+}
+
+.kc-otp-header .totp-title .icon {
+  padding: var(--unnic-spacing-stack-nano);
+  background-color: rgba(var(--unnic-color-aux-blue-rgb), 0.08);
+  border-radius: var(--unnic-border-radius-sm);
+  font-size: var(--unnic-icon-size-sm);
+  color: var(--unnic-color-aux-blue);
+}
+
+
+/* info */
+.kc-otp-header .totp-info {
+  padding: var(--unnic-inset-xs);
+  background-color: var(--unnic-color-background-carpet);
+  color: var(--unnic-color-neutral-dark);
+  display: flex;
+  align-items: center;
+  border-radius: var(--unnic-border-radius-sm);
+}
+
+.kc-otp-header .totp-info .totp-info__text {
+  font-size: var(--unnic-font-size-body-gt);
+  line-height: calc(var(--unnic-line-height-md)+var(--unnic-font-size-body-gt));
+  margin-left: var(--unnic-spacing-stack-xs);
+}
+
+.kc-otp-header .totp-info .icon {
+  color: var(--unnic-color-feedback-yellow);
+  font-size: var(--unnic-icon-size-sm);
+}
+
+.totp-start-instructions {
+  margin-top: var(--unnic-spacing-stack-lg);
+}
+
+#kc-totp-settings-form > div {
+  margin-bottom: var(--unnic-spacing-stack-sm);
+}
