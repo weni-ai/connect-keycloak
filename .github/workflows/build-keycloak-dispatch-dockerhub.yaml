@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       source-branch:
-        description: 'Source branch in Connect Keycloak repository (main, staging, develop, fix/sentry etc.)'
+        description: 'Source branch in Connect Keycloak repository (master, staging, develop, fix/sentry etc.)'
         required: true
-        default: 'main'
+        default: 'master'
       tag-name:
         description: 'Tag id (v0.0.1-develop, v0.0.2, etc.)'
         required: true
@@ -58,9 +58,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Set Commit ID
-        id: commit_id
-        run: echo "::set-output commit=$(git rev-parse --short $GITHUB_SHA)"
+      # - name: Set Commit ID
+      #   id: commit_id
+      #   run: echo "::set-output commit=$(git rev-parse --short $GITHUB_SHA)"
 
       - name: Build and push - Connect Keycloak Image
         id: docker_build1
