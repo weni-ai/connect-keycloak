@@ -25,10 +25,8 @@ jobs:
           echo "COMMIT_SHA=${GITHUB_SHA}"
           echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
           echo "VERSION=${VERSION}"
-          echo "REGISTRY_URL=242357350604.dkr.ecr.sa-east-1.amazonaws.com" >> ${GITHUB_ENV}
-          echo "REGISTRY_URL=242357350604.dkr.ecr.sa-east-1.amazonaws.com"
-          echo "IMAGE_TAG=keycloak:$TAG" >> $GITHUB_ENV
-          echo "IMAGE_TAG=keycloak:$TAG"
+          # echo "REGISTRY_URL=242357350604.dkr.ecr.sa-east-1.amazonaws.com" >> ${GITHUB_ENV}
+          # echo "REGISTRY_URL=242357350604.dkr.ecr.sa-east-1.amazonaws.com"
           echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak" >> ${GITHUB_ENV}
           echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak"
       
@@ -67,9 +65,12 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          labels: branch=${{github.event.inputs.source-branch}},commit=${{env.GITHUB_SHA}},repository=https://github.com/Ilhasoft/connect-keycloak
+          labels: |
+            branch=${{env.TAG}}
+            commit=${{env.COMMIT_SHA}}
+            repository=https://github.com/${{env.IMAGE_REPOSITORY}}
           file: Dockerfile
           push: true
-          tags: keycloak:${{github.event.inputs.tag-name}}
+          tags: weniai/keycloak:${{github.event.inputs.tag-name}}
           no-cache: true
       
