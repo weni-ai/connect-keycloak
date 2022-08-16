@@ -25,6 +25,8 @@ jobs:
           echo "COMMIT_SHA=${GITHUB_SHA}"
           echo "VERSION=${VERSION}" >> ${GITHUB_ENV}
           echo "VERSION=${VERSION}"
+          echo "TAG=${{github.event.inputs.tag-name}}" >> ${GITHUB_ENV}
+          echo "TAG=${{github.event.inputs.tag-name}}"
           # echo "REGISTRY_URL=242357350604.dkr.ecr.sa-east-1.amazonaws.com" >> ${GITHUB_ENV}
           # echo "REGISTRY_URL=242357350604.dkr.ecr.sa-east-1.amazonaws.com"
           echo "IMAGE_REPOSITORY=Ilhasoft/connect-keycloak" >> ${GITHUB_ENV}
