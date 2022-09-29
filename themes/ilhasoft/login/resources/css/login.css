@@ -625,7 +625,7 @@ footer {
     font-size: var(--unnic-font-size-body-md);
     color: var(--unnic-color-neutral-darkest);
     line-height: calc(var(--unnic-font-size-body-md) + var(--unnic-line-height-md));
-    height: calc(var(--unnic-font-size-body-md) + var(--unnic-line-height-md));
+    min-height: calc(var(--unnic-font-size-body-md) + var(--unnic-line-height-md));
 }
 
 #kc-register-form .input-group {
