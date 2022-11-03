@@ -129,6 +129,7 @@
             <#else>
                 <a href="${url.loginRestartFlowUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
             </#if>
+            <iframe src="https://flows.weni.ai/users/logout" style="display: none;"></iframe>
             <p class="title-md"> ${msg("headerTitleText")} </p>
             <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
             <p class="text-body-gt"> ${msg("brandsTitle")} </p>
