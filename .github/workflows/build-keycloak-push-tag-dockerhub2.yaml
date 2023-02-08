@@ -93,7 +93,7 @@ jobs:
             }
             export PROJECT_DIR="${{ env.MANIFESTS_APPLICATION }}"
             #ENV_DIR="kubernetes-manifests/${MANIFESTS_ENVIRONMENT}/${{ env.MANIFESTS_APPLICATION }}"
-            ENV_DIR="kubernetes-manifests/${MANIFESTS_ENVIRONMENT}/application-keycloak3.yaml"
+            ENV_DIR="kubernetes-manifests/argocd/${MANIFESTS_ENVIRONMENT}/"
             for e in ${ENV_DIR}; do
               echo "Update ${e}:"
               if [ ! -d "${e}" ] ; then
