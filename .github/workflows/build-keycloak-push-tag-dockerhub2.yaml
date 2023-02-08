@@ -119,7 +119,7 @@ jobs:
                       | tr '\f' '\n'
 
                   )
-                #  echo "${new_configuration}"
+                  echo "${new_configuration}"
                 #  echo "${new_configuration}" > "${e}/${{ env.MANIFESTS_PATCH_TARGET }}"
                 #else
                 #  echo "Version in file is greater than build, skipping update yaml"
