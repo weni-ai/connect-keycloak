@@ -60,7 +60,7 @@ jobs:
               tar --xz -cvf ../plugins.tar.xz *.jar
             )
             (
-              cd theme
+              cd themes
               tar --xz -cvf ../themes.tar.xz *
             )
 
@@ -68,11 +68,10 @@ jobs:
         uses: softprops/action-gh-release@v1
         id: create_release
         with:
-          name: "${TAG}"
+          name: "${{ env.TAG }}"
           files: |
             plugins.tar.xz
             themes.tar.xz
-      # ${{ fromJSON(steps.create_release.outputs.assets)[0].browser_download_url }}
 
       - name: Check out Kubernetes Manifests
         uses: actions/checkout@master
@@ -93,7 +92,8 @@ jobs:
               [ "$1" = "$2" ] && return 1 || verlte $1 $2
             }
             export PROJECT_DIR="${{ env.MANIFESTS_APPLICATION }}"
-            ENV_DIR="kubernetes-manifests/${{ env.MANIFESTS_APPLICATION }}/${MANIFESTS_ENVIRONMENT}"
+            #ENV_DIR="kubernetes-manifests/${MANIFESTS_ENVIRONMENT}/${{ env.MANIFESTS_APPLICATION }}"
+            ENV_DIR="kubernetes-manifests/${MANIFESTS_ENVIRONMENT}/application-keycloak3.yaml"
             for e in ${ENV_DIR}; do
               echo "Update ${e}:"
               if [ ! -d "${e}" ] ; then
