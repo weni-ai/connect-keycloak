@@ -114,8 +114,8 @@ jobs:
                   new_configuration=$(
                     cat "${e}/${{ env.MANIFESTS_PATCH_TARGET }}" \
                       | tr '\n' '\f' \
-                      | sed 's/- name: PLUGINS_URL\(\f *\)value: "/- name: PLUGINS_URL\1value: "${{ fromJSON(steps.create_release.outputs.assets)[0].browser_download_url }}/g' \
-                      | sed 's/- name: THEMES_URL\(\f *\)value: "/- name: THEMES_URL\1value: "${{ fromJSON(steps.create_release.outputs.assets)[1].browser_download_url }}/g' \
+                      | sed 's/- name: PLUGINS_URL\(\f *\)value: "[^"]"/- name: PLUGINS_URL\1value: "${{ fromJSON(steps.create_release.outputs.assets)[0].browser_download_url }};g' \
+                      | sed 's;- name: THEMES_URL\(\f *\)value: "[^"]"/- name: THEMES_URL\1value: "${{ fromJSON(steps.create_release.outputs.assets)[1].browser_download_url }};g' \
                       | tr '\f' '\n'
 
                   )
