@@ -1,4 +1,4 @@
-name: Build Keycloak (Connect) in Dockerhub (Push Tag)
+name: Build Keycloak (Connect) github release (Push Tag)
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - '*.*.*'
 
 jobs:
-  docker:
+  create-release:
     runs-on: ubuntu-latest
     #container:
     #  image: bitnami/keycloak:20.0.3-debian-11-r5
@@ -81,7 +81,7 @@ jobs:
           token: "${{ secrets.DEVOPS_GITHUB_PERMANENT_TOKEN }}"
           path: ./kubernetes-manifests/
 
-      - name: Update image on deployment
+      - name: Update version on keycloak application
         run: |
             which jq > /dev/null 2>&1 || ( sudo apt update ; sudo apt install -y jq )
             # Dep: coreutils
