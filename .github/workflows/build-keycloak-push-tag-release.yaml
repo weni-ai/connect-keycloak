@@ -110,7 +110,7 @@ jobs:
                 #)
                 #echo "Old image version to compare: ${OLD_VERSION}<=${{env.VERSION}}"
                 #if verlte "${OLD_VERSION}" "${VERSION}" || [[ ! "${OLD_VERSION}" =~ [0-9]+\.[0-9]+\.[0-9]+ ]] ; then
-                  echo 'New configurations:'
+                  echo "New configurations(${e}/${{ env.MANIFESTS_PATCH_TARGET }}):"
                   new_configuration=$(
                     cat "${e}/${{ env.MANIFESTS_PATCH_TARGET }}" \
                       | tr '\n' '\f' \
@@ -119,8 +119,6 @@ jobs:
                       | tr '\f' '\n'
 
                   )
-                  echo "${new_configuration}"
-                  echo "${new_configuration}" "${e}/${{ env.MANIFESTS_PATCH_TARGET }}"
                   echo "${new_configuration}" > "${e}/${{ env.MANIFESTS_PATCH_TARGET }}"
                 #else
                 #  echo "Version in file is greater than build, skipping update yaml"
