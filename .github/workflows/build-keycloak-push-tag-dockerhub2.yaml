@@ -38,7 +38,7 @@ jobs:
             echo "IMAGE_SOURCE_URL=https://github.com/weni-ai/connect-keycloak" | tee -a "${GITHUB_ENV}"
             echo "MANIFESTS_REPOSITORY=Ilhasoft/kubernetes-manifests" | tee -a "${GITHUB_ENV}"
             echo "MANIFESTS_APPLICATION=keycloak" | tee -a "${GITHUB_ENV}"
-            echo "MANIFESTS_PATCH_TARGET=application-keycloak3.yaml" | tee -a "${GITHUB_ENV}"
+            echo "MANIFESTS_PATCH_TARGET=application-keycloak.yaml" | tee -a "${GITHUB_ENV}"
 
       - name: Check out the repo
         uses: actions/checkout@v3
