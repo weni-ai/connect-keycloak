@@ -23,10 +23,6 @@
                         
                         <#--  this is with password  -->
                         <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
-
-                        <#if message?has_content && message.type = 'error'>
-                            <div class="${properties.kcInputMessageClass!}">${kcSanitize(message.summary)?no_esc}</div>
-                        </#if>
                 </div>
             </div>
 
