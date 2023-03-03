@@ -1,5 +1,5 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayInfo=true displayHeader=false displaySocial=false; section>
+<@layout.registrationLayout displayInfo=true displaySocial=false; section>
     <#if section = "form">
         <img class="brand-password" src="${url.resourcesPath}/img/login/brand.svg" >
         <div class="update-password-title">
@@ -24,8 +24,9 @@
                         <#--  this is with password  -->
                         <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
 
-                        <#--  this is with passwordNew  -->
-                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password-new')} </div>
+                        <#if message?has_content && message.type = 'error'>
+                            <div class="${properties.kcInputMessageClass!}">${kcSanitize(message.summary)?no_esc}</div>
+                        </#if>
                 </div>
             </div>
 
