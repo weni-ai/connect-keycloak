@@ -25,7 +25,7 @@
                         <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
 
                         <#--  this is with passwordNew  -->
-                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('passwordNew')} </div>
+                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password-new')} </div>
                 </div>
             </div>
 
