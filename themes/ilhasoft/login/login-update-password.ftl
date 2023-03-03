@@ -20,10 +20,12 @@
                     />
                     <span class="icon icon-input icon-left icon-lock-2-1"></span>
                     <span id="password-icon" onclick="togglePassword('password-icon', 'password-new')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
+                        
+                        <#--  this is with password  -->
+                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
 
-                        <span id="input-error-password" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                            ${kcSanitize(messagesPerField.get('password'))?no_esc}
-                        </span>
+                        <#--  this is with passwordNew  -->
+                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('passwordNew')} </div>
                 </div>
             </div>
 
@@ -39,9 +41,7 @@
                     <span class="icon icon-input icon-left icon-lock-2-1"></span>
                     <span id="password-icon-new" onclick="togglePassword('password-icon-new', 'new-password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
 
-                        <span id="input-error-password-confirm" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                            ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
-                        </span>
+                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password-confirm')} </div>
                 </div>
             </div>
 
