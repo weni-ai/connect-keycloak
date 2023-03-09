@@ -124,11 +124,8 @@
     </#if>
     <div class="${properties.kcFormCardClass!}">
         <div class="left-side-content" style="grid-column: 1 / 7">
-            <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
-                <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
-            <#else>
-                <a href="${url.loginRestartFlowUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
-            </#if>
+            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
+
             <iframe src="https://flows.weni.ai/users/logout" style="display: none;"></iframe>
             <p class="title-md"> ${msg("headerTitleText")} </p>
             <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
