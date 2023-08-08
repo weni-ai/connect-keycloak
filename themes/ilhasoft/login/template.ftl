@@ -368,6 +368,23 @@
         });
     </script>
 
+    <script src="https://cdn.ingest-lr.com/LogRocket.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        const realm = "${realm.name}";
+
+        const logRocketIdByRealms = {
+            "weni": "weni/production-rxhyp",
+            "weni-staging": "weni/staging-15tbe",
+            "weni-develop": "weni/develop",
+        }
+
+        const logRocketId = logRocketIdByRealms[realm];
+
+        if (logRocketId && window.LogRocket) {
+            window.LogRocket.init(logRocketId);
+        }
+    </script>
 </body>
 <footer></footer>
 </html>
