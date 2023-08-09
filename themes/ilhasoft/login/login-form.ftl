@@ -1,4 +1,12 @@
 <#macro loginLayout>
+    <div class="greetings">
+        <a href="${url.loginUrl}">
+            <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
+        </a>
+
+        ${msg("greetings")}
+    </div>
+
     <form id="kc-form-login" ref="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcLabelWrapperClass!}">
@@ -11,9 +19,9 @@
                         </label>
 
                         <#if usernameEditDisabled??>
-                            <input tabindex="1" id="username" ref="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" disabled />
+                            <input tabindex="1" id="username" ref="username" v-model="usernameInput" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" disabled />
                         <#else>
-                            <input tabindex="1" id="username" ref="username" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" />
+                            <input tabindex="1" id="username" ref="username" v-model="usernameInput" class="${properties.kcInputClass!} has-icon-left" placeholder="${msg("placeholderLoginName")}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" />
                         </#if>
                     </div>
                 </div>
@@ -24,7 +32,7 @@
                     </div>
 
                     <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
-                        <input tabindex="2" id="password" ref="password" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
+                        <input tabindex="2" id="password" ref="password"  v-model="passwordInput" class="${properties.kcInputClass!} has-icon-left has-icon-right" placeholder="${msg("placeholderLoginPassword")}" name="password" type="password" autocomplete="off" />
 
                         <label for="password" class="m-0">
                             <span class="icon icon-input icon-left icon-lock-2-1"></span>
@@ -35,6 +43,28 @@
                 </div>
 
                 <div class="${properties.kcFormGroupClass!}">
+                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                        <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
+                            <unnnic-button
+                                class="login-button"
+                                size="small"
+                                text="${msg('doLogIn')}"
+                                type="primary"
+                            ></unnnic-button>
+
+                            <#if realm.password?? && social.providers??>
+                                <#list social.providers as p>
+                                    <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
+                                        <button class="social-button button-control" id="button-${p.alias}">
+                                            <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg" class="icon-image icon-button-left" >
+                                            <span>${msg("loginWith")} ${p.displayName} </span>
+                                        </button>
+                                    </a>
+                                </#list>
+                            </#if>
+                        </div>
+                    </div>
+
                     <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                         <#if realm.rememberMe && !usernameEditDisabled??>
                             <div class="input-message remember-me">
@@ -53,12 +83,6 @@
                             <div class="forgot-password ${properties.kcInputMessageClass!}"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></div>
                         </#if>
                     </div>
-
-                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                        <div class="${properties.kcFormButtonsWrapperClass!}">
-                            <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("doLogIn")}" />
-                        </div>
-                     </div>
                 </div>
             </form>
 </#macro>
