@@ -11,9 +11,28 @@
         </#if>
     <#elseif section = "info" >
         <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
+            <div id="separator-group">
+                <div class="separator"></div>
+                <span class="separator-text"> ${msg("separatorMessage")} </span>
+                <div class="separator"></div>
+            </div>
+
             <div id="kc-registration">
-                <span>${msg("noAccount")} <a tabindex="6" href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                <#--  <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("doLogIn")}" />  -->
+
+                <unnnic-button
+                    class="sign-up-button"
+                    size="small"
+                    text="${msg('doRegisterForFree')}"
+                    type="secondary"
+                    @click.prevent="location.href = '${url.registrationUrl}'"
+                ></unnnic-button>
             </div>
         </#if>
+        <div class="footer">
+            <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">
+                ${msg('termsOfService')}
+            </a>
+        </div>
     </#if>
 </@layout.registrationLayout>
