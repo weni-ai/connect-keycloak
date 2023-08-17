@@ -3,76 +3,77 @@
     <#if section = "header">
         ${msg("registerTitle")}
     <#elseif section = "form">
+        <div class="greetings">
+            <a href="${url.loginUrl}">
+                <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
+            </a>
+
+            ${msg("register_greetings")}
+        </div>
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
-            <div :class="['input-medium ${messagesPerField.printIfExists('firstName', properties.kcFormGroupErrorClass!)}', { 'has-error': firstName.length && firstName.length < 3, }]">
-                <label for="firstName">
-                    <div class="label">${msg("firstName")}</div>
-
-                    <div class="input">
-                        <div class="icon left">
-                            <#include "resources/img/login/single-neutral-actions-1.svg">
-                        </div>
-
-                        <input
-                            type="text"
-                            id="firstName"
-                            placeholder="${msg('placeholderRegisterFirstName')}"
-                            name="firstName"
-                            v-model="firstName"
-                        />
-                    </div>
-
-                    <div class="${properties.kcInputMessageClass!}">{{ '${messagesPerField.get('firstName')}' || (firstName.length && firstName.length < 3) ? '${msg('minCharacters')}' : null }}</div>
-                </label>
+            <div class="register-form-row-email">
+                <unnnic-form-element
+                    label="${msg('email')}"
+                    error="${messagesPerField.get('email')}"
+                >
+                    <unnnic-input
+                        v-model="email"
+                        icon-left="email-action-unread-1"
+                        placeholder="${msg('placeholderRegisterEmail')}"
+                        name="email"
+                        autocomplete="email"
+                        :type="'${messagesPerField.get('email')}' ? 'error' : 'normal'"
+                    ></unnnic-input>
+                </unnnic-form-element>
             </div>
 
+            <div class="register-form-row-password">
+                <unnnic-form-element
+                    label="${msg('password')}"
+                    error="${messagesPerField.get('password')}"
+                >
+                    <unnnic-input
+                        ref="registerPassword"
+                        v-model="password"
+                        native-type="password"
+                        icon-left="lock-2-1"
+                        placeholder="${msg('placeholderRegisterPassword')}"
+                        name="password"
+                        autocomplete="password"
+                        :type="'${messagesPerField.get('password')}' ? 'error' : 'normal'"
+                        allow-toggle-password
+                    ></unnnic-input>
+                </unnnic-form-element>
 
-            <div :class="['input-medium ${messagesPerField.printIfExists('lastName', properties.kcFormGroupErrorClass!)}', { 'has-error': lastName.length && lastName.length < 3, }]">
-                <label for="lastName">
-                    <div class="label">${msg("lastName")}</div>
-
-                    <div class="input">
-                        <div class="icon left">
-                            <#include "resources/img/login/single-neutral-actions-1.svg">
-                        </div>
-
-                        <input
-                            type="text"
-                            id="lastName"
-                            placeholder="${msg('placeholderRegisterLastName')}"
-                            name="lastName"
-                            v-model="lastName"
-                        />
-                    </div>
-
-                    <div class="${properties.kcInputMessageClass!}">{{ '${messagesPerField.get('lastName')}' || (lastName.length && lastName.length < 3) ? '${msg('minCharacters')}' : null }}</div>
-                </label>
+                <#if passwordRequired??>
+                    <unnnic-form-element
+                        label="${msg('passwordConfirm')}"
+                        error="${messagesPerField.get('password-confirm')}"
+                    >
+                        <unnnic-input
+                            ref="registerPasswordConfirm"
+                            v-model="passwordConfirm"
+                            native-type="password"
+                            icon-left="lock-2-1"
+                            placeholder="${msg('placeholderRegisterPasswordConfirm')}"
+                            name="password-confirm"
+                            autocomplete="password"
+                            :type="'${messagesPerField.get('password-confirm')}' ? 'error' : 'normal'"
+                            allow-toggle-password
+                        ></unnnic-input>
+                    </unnnic-form-element>
+                </#if>
             </div>
 
+            <div v-if="registerPasswordFocused || registerPasswordConfirmFocused" class="register-form-row-password-message">
+                ${msg("password_instructions_title")}
 
-            <div class="input-medium ${messagesPerField.printIfExists('email', properties.kcFormGroupErrorClass!)}">
-                <label for="email">
-                    <div class="label">${msg("email")}</div>
-
-                    <div class="input">
-                        <div class="icon left">
-                            <#include "resources/img/login/email-action-unread-1.svg">
-                        </div>
-
-                        <input
-                            type="text"
-                            id="email"
-                            placeholder="${msg('placeholderRegisterEmail')}"
-                            name="email"
-                            v-model="email"
-                            autocomplete="email"
-                        />
-                    </div>
-
-                    <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('email')} </div>
-                </label>
+                <ul>
+                    <li>${msg("password_instructions_1")}</li>
+                    <li>${msg("password_instructions_2")}</li>
+                    <li>${msg("password_instructions_3")}</li>
+                </ul>
             </div>
-
 
             <#if !realm.registrationEmailAsUsername>
                 <div ref="username" class="input-medium ${messagesPerField.printIfExists('username', properties.kcFormGroupErrorClass!)}">
@@ -99,76 +100,6 @@
                 </div>
             </#if>
 
-            <#if passwordRequired??>
-                <div class="input-group">
-                    <div class="input-medium ${messagesPerField.printIfExists('password', properties.kcFormGroupErrorClass!)}">
-                        <label for="password">
-                            <div class="label">${msg("password")}</div>
-
-                            <div class="input">
-                                <div class="icon left">
-                                    <#include "resources/img/login/lock-2-1.svg">
-                                </div>
-
-                                <input
-                                    :type="seePassword ? 'text' : 'password'"
-                                    id="password"
-                                    placeholder="${msg('placeholderRegisterPassword')}"
-                                    name="password"
-                                    v-model="password"
-                                    autocomplete="password"
-                                />
-
-                                <div class="icon right clickable" @click="seePassword = !seePassword">
-                                    <template v-if="seePassword">
-                                        <#include "resources/img/login/view-off-1.svg">
-                                    </template>
-
-                                    <template v-else>
-                                        <#include "resources/img/login/view-1-1.svg">
-                                    </template>
-                                </div>
-                            </div>
-
-                            <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
-                        </label>
-                    </div>
-
-
-                    <div class="input-medium ${messagesPerField.printIfExists('password-confirm', properties.kcFormGroupErrorClass!)}">
-                        <label for="password-confirm">
-                            <div class="label">${msg("passwordConfirm")}</div>
-
-                            <div class="input">
-                                <div class="icon left">
-                                    <#include "resources/img/login/lock-2-1.svg">
-                                </div>
-
-                                <input
-                                    :type="seePasswordConfirm ? 'text' : 'password'"
-                                    id="password-confirm"
-                                    placeholder="${msg('placeholderRegisterPasswordConfirm')}"
-                                    name="password-confirm"
-                                    v-model="passwordConfirm"
-                                />
-
-                                <div class="icon right clickable" @click="seePasswordConfirm = !seePasswordConfirm">
-                                    <template v-if="seePasswordConfirm">
-                                        <#include "resources/img/login/view-off-1.svg">
-                                    </template>
-
-                                    <template v-else>
-                                        <#include "resources/img/login/view-1-1.svg">
-                                    </template>
-                                </div>
-                            </div>
-
-                            <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password-confirm')} </div>
-                        </label>
-                    </div>
-                </div>
-            </#if>
-
             <#if recaptchaRequired??>
                 <div class="form-group">
                     <div class="${properties.kcInputWrapperClass!}">
@@ -178,7 +109,19 @@
             </#if>
 
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doRegister")}" :disabled="!canRegister"/>
+                    <unnnic-button
+                        class="login-button"
+                        size="small"
+                        text="${msg('doRegister')}"
+                        type="primary"
+                        :disabled="!email || !password || !passwordConfirm"
+                    ></unnnic-button>
+                </div>
+
+                <div id="separator-group">
+                    <div class="separator"></div>
+                    <span class="separator-text">${msg("separatorMessage")}</span>
+                    <div class="separator"></div>
                 </div>
         
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
@@ -196,13 +139,15 @@
                     </div>
                 </div>
 
-            <div id="kc-info-wrapper" class="back-link">
-                <div class="terms-use"> <span>${msg("registerAcceptTerms")}</span> <a target="_blank" href="${properties.urlPrivacyPolicy!}"> ${msg("privacyPolicy")} </a> </div>
-
+            <div class="footer">
                 <div class="back-to-login">
                     ${msg("alreadyAccount")}
                     <a href="${url.loginUrl}">${msg("backToLogin")?no_esc}</a>
                 </div>
+
+                <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">
+                    ${msg('termsOfService')}
+                </a>
             </div>
         </form>
     </#if>

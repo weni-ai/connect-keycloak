@@ -19,7 +19,6 @@
 
             <div id="kc-registration">
                 <#--  <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("doLogIn")}" />  -->
-
                 <unnnic-button
                     class="sign-up-button"
                     size="small"

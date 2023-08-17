@@ -46,15 +46,6 @@
             passwordIcon.className = classes.join(" ");
         };
 
-        const disableButton = () => {
-            const input = document.getElementById("required-input");
-            const button = document.getElementById("required-input-button");
-
-            if(!input || !button) return;
-
-            button.disabled = input.value === null || input.value === undefined || input.value.trim().length === 0;
-        };
-
         const closeModal = () => {
             const modal = document.getElementById("modal");
             console.log('remove');
@@ -75,53 +66,56 @@
 
             <iframe src="https://flows.weni.ai/users/logout" style="display: none;"></iframe>
             
+            <div>
             <div style="position: relative;">
             <img src="${url.resourcesPath}/img/login/icon-weni-1.svg" class="icon-weni-background">
             <img src="${url.resourcesPath}/img/login/screen.png" class="icon-screen-background">
 
             <div class="benefits">
-            <p class="title"> ${msg("headerTitleText")} </p>
-            <div class="benefits-list">
-                <div class="benefit">
-                    <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                    ${msg("benefits1")}
+                <p class="title">${msg("headerTitleText")}</p>
+
+                <div class="benefits-list">
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits1")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits2")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits3")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits4")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits5")}
+                    </div>
                 </div>
-                <div class="benefit">
-                    <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                    ${msg("benefits2")}
-                </div>
-                <div class="benefit">
-                    <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                    ${msg("benefits3")}
-                </div>
-                <div class="benefit">
-                    <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                    ${msg("benefits4")}
-                </div>
-                <div class="benefit">
-                    <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                    ${msg("benefits5")}
-                </div>
-            </div>
             </div>
             </div>
             <div class="recommended-by">
-            <p class="title"> ${msg("brandsTitle")} </p>
-            <div class="brand-container">
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/Stone.svg" >
-                </div>
+                <p class="title">${msg("brandsTitle")}</p>
+                <div class="brand-container">
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Stone.svg" >
+                    </div>
 
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/Unicef.svg" >
-                </div>
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Unicef.svg" >
+                    </div>
 
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/Governo-do-Ceara.svg" >
-                </div>
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Governo-do-Ceara.svg" >
+                    </div>
 
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/Bild.svg" >
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Bild.svg" >
+                    </div>
                 </div>
             </div>
             </div>
@@ -147,42 +141,43 @@
         </#if>
             <div id="kc-content-wrapper">
 
-            <#if displayHeader>
-                <header class="${properties.kcFormHeaderClass!}">
-                        <#if displayMessage && message?has_content>
-                        <#if (message.summary == msg("emailSentMessage"))>
-                            <div id="modal" class="modal-background">
-                                <div class="modal-container">
-                                    <div class="modal-content">
-                                        <div class="modal-button-container">
-                                            <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
-                                        </div>
-                                        <div class="modal-center-icon">
-                                            <span class="icon-check-circle-1-1 icon-success"></span>
-                                        </div>
-                                    <div class="modal-title">${msg("emailSentTitle")}</div>
-                                    <div class="modal-text">${kcSanitize(message.summary)?no_esc}</div>
-                                </div>
-                                <div class="modal-message">${msg("emailSentSubitle")}</div>
-                            </div>
+            <#--  <div id="modal" class="modal-background">
+                <div class="modal-container">
+                    <div class="modal-content">
+                        <div class="modal-button-container">
+                            <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
+                        </div>
+                        <div class="modal-center-icon">
+                            <span class="icon-check-circle-1-1 icon-success"></span>
+                        </div>
+                    <div class="modal-title">${msg("emailSentTitle")}</div>
+                    <div class="modal-text">messa</div>
+                </div>
+                <div class="modal-message">${msg("emailSentSubitle")}</div>
+            </div>  -->
 
-                        <#elseif (message.summary == msg("verifyEmailMessage"))>
-                            <div class="alert alert-success">
-                                <span class="${properties.kcFeedbackSuccessIcon!}"></span>
-                                ${kcSanitize(message.summary)?no_esc}
-                            </div>
-                        <#else>
-                            <div class="alert alert-${message.type}">
-                                <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
-                                <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
-                                <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
-                                <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
-                                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-                            </div>
-                        </#if>
-                    <#else>
-                    </#if>
-                </header>
+            <#if displayMessage && message?has_content>
+                <#if (message.summary == msg("emailSentMessage"))>
+                    <unnnic-modal
+                        v-if="emailSentModal"
+                        @close="closeEmailSentModal"
+                        text="${msg('emailSentTitle')}"
+                        scheme="feedback-green"
+                        modal-icon="check-circle-1-1"
+                    >
+                        <div slot="message" style="text-align: center;">
+                            ${kcSanitize(message.summary)?no_esc}
+                        </div>
+                    </unnnic-modal>
+                <#else>
+                    <div class="alert alert-${message.type}">
+                        <#if message.type = 'success'></#if>
+                        <#if message.type = 'warning'></#if>
+                        <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
+                        <#if message.type = 'info'></#if>
+                        <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
+                    </div>
+                </#if>
             </#if>
 
             <div id="kc-form" class="${properties.kcFormAreaClass!}">
@@ -222,7 +217,7 @@
     <style>
         <#if displayLoginFormScriptsAndStyles>
             #rememberMe {
-            display: none;
+                display: none;
             }
 
             #rememberMe + label {
@@ -283,7 +278,10 @@
         new Vue({
             el: '#app',
             data: {
-                usernameInput: '',
+                registerPasswordFocused: false,
+                registerPasswordConfirmFocused: false,
+                emailSentModal: true,
+                usernameInput: '${(login.username!'')}',
                 passwordInput: '',
                 <#if realm.internationalizationEnabled>
                     keycloakCurrentLanguage:
@@ -347,10 +345,52 @@
             },
 
             mounted() {
-                <#if displayLoginFormScriptsAndStyles>
-                    const username = this.$refs.username;
-                    const password = this.$refs.password;
+                if (this.$refs.registerPassword) {
+                    const registerPasswordInput = this.$refs.registerPassword.$el.querySelector('input');
 
+                    registerPasswordInput.addEventListener('focus', () => {
+                        this.registerPasswordFocused = true;
+                    });
+
+                    registerPasswordInput.addEventListener('blur', () => {
+                        this.registerPasswordFocused = false;
+                    });
+                }
+
+
+                if (this.$refs.registerPasswordConfirm) {
+                    const registerPasswordConfirmInput = this.$refs.registerPasswordConfirm.$el.querySelector('input');
+
+                    registerPasswordConfirmInput.addEventListener('focus', () => {
+                        this.registerPasswordConfirmFocused = true;
+                    });
+
+                    registerPasswordConfirmInput.addEventListener('blur', () => {
+                        this.registerPasswordConfirmFocused = false;
+                    });
+                }
+
+                if (this.$refs.loginUsername) {
+                    console.log(this.$refs.loginUsername.$el.querySelector('input'));
+                    this.$refs.loginUsername.$el.querySelector('input').addEventListener('animationstart', (event) => {
+                        console.log('event', event.animationName);
+                        if (event.animationName === 'onAutoFillStart') {
+                            setTimeout(() => {
+                            console.log(this.$refs.loginUsername.$el.querySelector('input').value);
+
+                            });
+                        }
+                        /*switch (e.animationName) {
+                            case defaultStyles.onAutoFillStart:
+                            return this.onAutoFillStart()
+
+                            case defaultStyles.onAutoFillCancel:
+                            return this.onAutoFillCancel()
+                        }*/
+                    })
+                }
+
+                <#if displayLoginFormScriptsAndStyles>
                     function emitConnectEvent(name, content) {
                         const data = {
                             pathname: window.location.pathname,
@@ -377,6 +417,10 @@
                                 a.click();
                             }
                         });
+                },
+
+                closeEmailSentModal() {
+                    this.emailSentModal = false;
                 },
             },
         });

@@ -98,14 +98,6 @@ h1 {
     margin-right: var(--unnic-inline-nano);
 }
 
-.has-icon-left {
-    padding-left: var(--unnic-inline-giant);
-}
-
-.has-icon-right {
-    padding-right: var(--unnic-inline-giant);
-}
-
 .icon {
     font-size: var(--unnic-icon-size-md);
 }
@@ -311,6 +303,7 @@ button, .btn, .bt-lg {
 
 .recommended-by {
     text-align: center;
+    margin-top: 24px;
 }
 
 .recommended-by .title {
@@ -321,6 +314,17 @@ button, .btn, .bt-lg {
     color: var(--color-neutral-lightest, #F9F9F9);
     margin: 0;
     margin-bottom: 16px;
+}
+
+@media (max-width: 1248px) {
+    .recommended-by {
+        margin-top: 48px;
+    }
+
+    .recommended-by .title {
+        text-align: left;
+        margin-bottom: 8px;
+    }
 }
 
 .brand-container {
@@ -389,7 +393,7 @@ a:has(.brand-title) {
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 }
 
-.card-pf #kc-content .login-buttons .login-button {
+.card-pf #kc-content .login-buttons .login-button:not(:disabled), .card-pf #kc-content #kc-form-buttons .login-button:not(:disabled) {
     background-color: var(--color-weni-600, #00A49F);
 }
 
@@ -520,10 +524,6 @@ a:has(.brand-title) {
     font-weight: var(--unnic-font-weight-bold);
 }
 
-#kc-form-buttons {
-    margin-bottom: 24px;
-}
-
 .login-button {
     width: 100%;
 }
@@ -642,7 +642,8 @@ a:has(.brand-title) {
     justify-content: center;
     align-items: center;
     font-weight: var(--unnic-font-weight-bold);
-    margin: 24px 0;
+    margin: 24px auto;
+    max-width: 80%;
 }
 
 .separator {
@@ -696,14 +697,26 @@ a:has(.brand-title) {
 }
 
 .alert {
-    text-align: left;
-    margin: var(--unnic-spacing-stack-xl) 0 0 0;
-    width: 100%;
-    padding: var(--unnic-inset-sm);
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-gt);
+    padding: 16px;
+    margin-bottom: 24px;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
     background-color: var(--unnic-color-background-carpet);
-    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    border-radius: 4px;
+    margin-left: -48px;
+    margin-right: -48px;
+}
+
+@media (max-width: 1248px) {
+    .alert {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 .checbkoxGroup {
@@ -919,10 +932,86 @@ a:has(.brand-title) {
     color: var(--unnic-color-feedback-red);
 }
 
-#kc-register-form #kc-form-buttons {
-    margin-top: var(--unnic-spacing-stack-xs);
+.back-to-login {
+    margin-top: 24px;
+
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: var(--color-neutral-cloudy, #67738B);
 }
 
-.back-to-login {
-    margin-top: var(--unnic-spacing-stack-sm);
+.back-to-login a {
+    margin-top: 24px;
+
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    color: var(--color-weni-700, #028380);
+}
+
+.register-form-row-email {
+    margin-bottom: 24px;
+}
+
+.register-form-row-password {
+    display: grid;
+    grid-gap: 24px 12px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+    .register-form-row-password {
+        grid-template-columns: 1fr;
+    }
+}
+
+.register-form-row-password-message {
+    margin-top: -8px;
+    margin-bottom: 24px;
+
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: var(--color-neutral-cloudy, #67738B);
+}
+
+.register-form-row-password-message ul {
+    margin: 0;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    padding-left: 22px;
+}
+
+#kc-form-login {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+}
+
+
+.input-itself {
+
+}
+
+.input-itself:-webkit-autofill, .input-itself:autofill {
+    animation-name: onAutoFillStart;
+  }
+
+.input-itself:not(:-webkit-autofill), .input-itself:not(:autofill) {
+    animation-name: onAutoFillCancel;
+}
+
+@keyframes onAutoFillStart {
+    from {/**/}
+    to {/**/}
+}
+
+@keyframes onAutoFillCancel {
+    from {/**/}
+    to {/**/}
 }
