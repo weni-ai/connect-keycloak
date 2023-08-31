@@ -30,8 +30,10 @@
             <div class="register-form-row-password">
                 <unnnic-form-element
                     label="${msg('password')}"
-                    error="${messagesPerField.get('password')}"
+                    :error="'${messagesPerField.get('password')}' ? '${msg('password_instructions_title')}' : false"
+                    :message="'${messagesPerField.get('password')}' ? undefined : '${msg('password_instructions_title')}'"
                 >
+                
                     <unnnic-input
                         ref="registerPassword"
                         v-model="password"
@@ -58,21 +60,24 @@
                             placeholder="${msg('placeholderRegisterPasswordConfirm')}"
                             name="password-confirm"
                             autocomplete="password"
-                            :type="'${messagesPerField.get('password-confirm')}' ? 'error' : 'normal'"
+                            :type="`${messagesPerField.get('password-confirm')}` ? 'error' : 'normal'"
                             allow-toggle-password
                         ></unnnic-input>
                     </unnnic-form-element>
                 </#if>
-            </div>
 
-            <div v-if="registerPasswordFocused || registerPasswordConfirmFocused" class="register-form-row-password-message">
-                ${msg("password_instructions_title")}
+                <div v-if="password.length && registerPasswordFocused" class="password-strength">
+                    <div class="title">
+                        {{
+                            password.length < 8 ? '${msg('password_level_1')}' :
+                            ['${msg('password_level_2')}', '${msg('password_level_3')}', '${msg('password_level_4')}'][[/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length - 1]
+                        }}
+                    </div>
 
-                <ul>
-                    <li>${msg("password_instructions_1")}</li>
-                    <li>${msg("password_instructions_2")}</li>
-                    <li>${msg("password_instructions_3")}</li>
-                </ul>
+                    <div class="bar">
+                        <div :class="['progress', 'fulfilled-' + (password.length < 8 ? '0' : [/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length)]"></div>
+                    </div>
+                </div>
             </div>
 
             <#if !realm.registrationEmailAsUsername>

@@ -53,6 +53,7 @@
         };
     </script>
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
+    <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
