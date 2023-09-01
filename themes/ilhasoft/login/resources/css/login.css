@@ -968,6 +968,7 @@ a:has(.brand-title) {
     line-height: 20px;
     color: var(--color-neutral-cloudy, #67738B);
     text-align: center;
+    margin-top: -8px;
 
     display: flex;
     flex-direction: column;

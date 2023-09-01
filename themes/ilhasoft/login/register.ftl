@@ -47,6 +47,19 @@
                     ></unnnic-input>
                 </unnnic-form-element>
 
+                <div v-if="password.length" class="password-strength">
+                    <div class="title">
+                        {{
+                            password.length < 8 ? '${msg('password_level_1')}' :
+                            ['${msg('password_level_2')}', '${msg('password_level_3')}', '${msg('password_level_4')}'][[/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length - 1]
+                        }}
+                    </div>
+
+                    <div class="bar">
+                        <div :class="['progress', 'fulfilled-' + (password.length < 8 ? '0' : [/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length)]"></div>
+                    </div>
+                </div>
+
                 <#if passwordRequired??>
                     <unnnic-form-element
                         label="${msg('passwordConfirm')}"
@@ -65,19 +78,6 @@
                         ></unnnic-input>
                     </unnnic-form-element>
                 </#if>
-
-                <div v-if="password.length && registerPasswordFocused" class="password-strength">
-                    <div class="title">
-                        {{
-                            password.length < 8 ? '${msg('password_level_1')}' :
-                            ['${msg('password_level_2')}', '${msg('password_level_3')}', '${msg('password_level_4')}'][[/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length - 1]
-                        }}
-                    </div>
-
-                    <div class="bar">
-                        <div :class="['progress', 'fulfilled-' + (password.length < 8 ? '0' : [/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length)]"></div>
-                    </div>
-                </div>
             </div>
 
             <#if !realm.registrationEmailAsUsername>
