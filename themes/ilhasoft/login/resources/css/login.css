@@ -397,10 +397,6 @@ a:has(.brand-title) {
     background-color: var(--color-weni-600, #00A49F);
 }
 
-.card-pf #kc-content .sign-up-button {
-    max-width: 311px;
-}
-
 .card-pf #kc-content .footer a.privacy-policy {
     margin-top: 24px;
     display: inline-block;

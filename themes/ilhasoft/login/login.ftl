@@ -23,7 +23,7 @@
                     class="sign-up-button"
                     size="small"
                     text="${msg('doRegisterForFree')}"
-                    type="secondary"
+                    type="terciary"
                     @click.prevent="location.href = '${url.registrationUrl}'"
                 ></unnnic-button>
             </div>

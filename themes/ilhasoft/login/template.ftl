@@ -372,9 +372,7 @@
                 }
 
                 if (this.$refs.loginUsername) {
-                    console.log(this.$refs.loginUsername.$el.querySelector('input'));
                     this.$refs.loginUsername.$el.querySelector('input').addEventListener('animationstart', (event) => {
-                        console.log('event', event.animationName);
                         if (event.animationName === 'onAutoFillStart') {
                             setTimeout(() => {
                             console.log(this.$refs.loginUsername.$el.querySelector('input').value);
