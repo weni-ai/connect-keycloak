@@ -49,7 +49,7 @@
                             <#if realm.password?? && social.providers??>
                                 <#list social.providers as p>
                                     <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                                        <button class="social-button button-control" id="button-${p.alias}">
+                                        <button type="button" class="social-button button-control" id="button-${p.alias}">
                                             <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg" class="icon-image icon-button-left" >
                                             <span>${msg("loginWith")} ${p.displayName} </span>
                                         </button>
