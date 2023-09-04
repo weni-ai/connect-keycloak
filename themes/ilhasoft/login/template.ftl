@@ -46,10 +46,15 @@
             passwordIcon.className = classes.join(" ");
         };
 
-        const closeModal = () => {
+        const closeModal = (message) => {
             const modal = document.getElementById("modal");
-            console.log('remove');
             modal.remove()
+
+            if (message === 'verifyEmail') {
+                const restartLogin = "${url.loginRestartFlowUrl}";
+
+                location.href = restartLogin;
+            }
         };
     </script>
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
@@ -158,7 +163,8 @@
             </div>  -->
 
             <#if displayMessage && message?has_content>
-                <#if (message.summary == msg("emailSentMessage"))>
+                <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
+                <#elseif (message.summary == msg("emailSentMessage"))>
                     <unnnic-modal
                         v-if="emailSentModal"
                         @close="closeEmailSentModal"
