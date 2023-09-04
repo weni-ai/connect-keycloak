@@ -75,7 +75,7 @@
             <div>
             <div style="position: relative;">
             <img src="${url.resourcesPath}/img/login/icon-weni-1.svg" class="icon-weni-background">
-            <img src="${url.resourcesPath}/img/login/screen.png" class="icon-screen-background">
+            <img src="${url.resourcesPath}/img/login/screen2.png" class="icon-screen-background">
 
             <div class="benefits">
                 <p class="title">${msg("headerTitleText")}</p>

@@ -11,6 +11,34 @@
             ${msg("register_greetings")}
         </div>
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
+            <unnnic-form-element
+                label="${msg('firstName')}"
+                error="${messagesPerField.get('firstName')}"
+                class="register-form-row-email"
+            >
+                <unnnic-input
+                    v-model="firstName"
+                    icon-left="single-neutral-actions-1"
+                    placeholder="${msg('placeholderRegisterFirstName')}"
+                    name="firstName"
+                    :type="'${messagesPerField.get('firstName')}' ? 'error' : 'normal'"
+                ></unnnic-input>
+            </unnnic-form-element>
+
+            <unnnic-form-element
+                label="${msg('lastName')}"
+                error="${messagesPerField.get('lastName')}"
+                class="register-form-row-email"
+            >
+                <unnnic-input
+                    v-model="lastName"
+                    icon-left="single-neutral-actions-1"
+                    placeholder="${msg('placeholderRegisterLastName')}"
+                    name="lastName"
+                    :type="'${messagesPerField.get('lastName')}' ? 'error' : 'normal'"
+                ></unnnic-input>
+            </unnnic-form-element>
+
             <div class="register-form-row-email">
                 <unnnic-form-element
                     label="${msg('email')}"
@@ -30,8 +58,7 @@
             <div class="register-form-row-password">
                 <unnnic-form-element
                     label="${msg('password')}"
-                    :error="'${messagesPerField.get('password')}' ? '${msg('password_instructions_title')}' : false"
-                    :message="'${messagesPerField.get('password')}' ? undefined : '${msg('password_instructions_title')}'"
+                    :error="'${messagesPerField.get('password')}' ? '${messagesPerField.get('password')}' : false"
                 >
                 
                     <unnnic-input
@@ -46,19 +73,6 @@
                         allow-toggle-password
                     ></unnnic-input>
                 </unnnic-form-element>
-
-                <div v-if="password.length" class="password-strength">
-                    <div class="title">
-                        {{
-                            password.length < 8 ? '${msg('password_level_1')}' :
-                            ['${msg('password_level_2')}', '${msg('password_level_3')}', '${msg('password_level_4')}'][[/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length - 1]
-                        }}
-                    </div>
-
-                    <div class="bar">
-                        <div :class="['progress', 'fulfilled-' + (password.length < 8 ? '0' : [/[a-z]/.test(password), /[A-Z]/.test(password), /[@$!%*?&#]/.test(password)].filter(i => i).length)]"></div>
-                    </div>
-                </div>
 
                 <#if passwordRequired??>
                     <unnnic-form-element

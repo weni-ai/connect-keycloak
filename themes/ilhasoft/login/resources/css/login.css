@@ -395,6 +395,7 @@ a:has(.brand-title) {
 
 .card-pf #kc-content .login-buttons .login-button:not(:disabled), .card-pf #kc-content #kc-form-buttons .login-button:not(:disabled) {
     background-color: var(--color-weni-600, #00A49F);
+    grid-area: 1/1/2/3;
 }
 
 .card-pf #kc-content .footer a.privacy-policy {
@@ -953,7 +954,7 @@ a:has(.brand-title) {
 .register-form-row-password {
     display: grid;
     grid-gap: 24px 12px;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     margin-bottom: 24px;
 }
 
