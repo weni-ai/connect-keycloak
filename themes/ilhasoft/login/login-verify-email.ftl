@@ -10,7 +10,7 @@
             <div class="modal-container">
                 <div class="modal-content">
                     <div class="modal-button-container">
-                        <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
+                        <span class="icon-close-1 icon-clickable" onclick="closeModal('verifyEmail')"></span>
                     </div>
                 <div class="modal-center-icon">
                     <span class="icon-alert-circle-1 icon-alert"></span>
