@@ -46,15 +46,6 @@
             passwordIcon.className = classes.join(" ");
         };
 
-        const disableButton = () => {
-            const input = document.getElementById("required-input");
-            const button = document.getElementById("required-input-button");
-
-            if(!input || !button) return;
-
-            button.disabled = input.value === null || input.value === undefined || input.value.trim().length === 0;
-        };
-
         const closeModal = (message) => {
             const modal = document.getElementById("modal");
             modal.remove()
@@ -67,115 +58,135 @@
         };
     </script>
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
+    <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
 
 <body class="${properties.kcBodyClass!}">
     <div class="${properties.kcLoginClass!}" id="app">
-    <#if displayHeader>
-      <header class="${properties.kcFormHeaderClass!}">
-        <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-            <div id="kc-locale">
-                <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
-                    <div class="kc-dropdown" id="kc-locale-dropdown">
-                        <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
-                        <div class="language-select">
-                            <unnnic-language-select
-                                :value="language"
-                                @input="changeLanguage"
-                                position="bottom"
-                                :supported-languages="supportedLanguages"
-                            ></unnnic-language-select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </#if>
-            <#if displayMessage && message?has_content>
-            <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
-            <#elseif (message.summary == msg("emailSentMessage"))>
-                <div id="modal" class="modal-background">
-                    <div class="modal-container">
-                        <div class="modal-content">
-                            <div class="modal-button-container">
-                                <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
-                            </div>
-                            <div class="modal-center-icon">
-                                <span class="icon-check-circle-1-1 icon-success"></span>
-                            </div>
-                        <div class="modal-title">${msg("emailSentTitle")}</div>
-                        <div class="modal-text">${kcSanitize(message.summary)?no_esc}</div>
-                    </div>
-                    <div class="modal-message">${msg("emailSentSubitle")}</div>
-                </div>
-
-            <#elseif (message.summary == msg("verifyEmailMessage"))>
-                <div class="alert alert-success">
-                    <span class="${properties.kcFeedbackSuccessIcon!}"></span>
-                    ${kcSanitize(message.summary)?no_esc}
-                </div>
-            <#else>
-                <div class="alert alert-${message.type}">
-                    <#if message.type = 'success'><span class="${properties.kcFeedbackSuccessIcon!}"></span></#if>
-                    <#if message.type = 'warning'><span class="${properties.kcFeedbackWarningIcon!}"></span></#if>
-                    <#if message.type = 'error'><span class="${properties.kcFeedbackErrorIcon!}"></span></#if>
-                    <#if message.type = 'info'><span class="${properties.kcFeedbackInfoIcon!}"></span></#if>
-                    <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-                </div>
-            </#if>
-          <#else>
-        </#if>
-      </header>
-    </#if>
     <div class="${properties.kcFormCardClass!}">
-        <div class="left-side-content" style="grid-column: 1 / 7">
-            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/brand.svg" ></a>
+        <div class="left-side-content">
+        <div class="content">
+            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
 
             <iframe src="https://flows.weni.ai/users/logout" style="display: none;"></iframe>
-            <p class="title-md"> ${msg("headerTitleText")} </p>
-            <p class="title-sm"> <@msg("headerTitleSubtext")?interpret /> </p>
-            <p class="text-body-gt"> ${msg("brandsTitle")} </p>
-            <div class="brand-container">
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/brand-2.svg" >
-                </div>
+            
+            <div>
+            <div style="position: relative;">
+            <img src="${url.resourcesPath}/img/login/icon-weni-1.svg" class="icon-weni-background">
+            <img src="${url.resourcesPath}/img/login/screen2.png" class="icon-screen-background">
 
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/brand-3.svg" >
-                </div>
+            <div class="benefits">
+                <p class="title">${msg("headerTitleText")}</p>
 
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/brand-4.svg" >
-                </div>
-
-                <div class="brand">
-                    <img src="${url.resourcesPath}/img/login/brand-5.svg" >
+                <div class="benefits-list">
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits1")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits2")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits3")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits4")}
+                    </div>
+                    <div class="benefit">
+                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
+                        ${msg("benefits5")}
+                    </div>
                 </div>
             </div>
+            </div>
+            <div class="recommended-by">
+                <p class="title">${msg("brandsTitle")}</p>
+                <div class="brand-container">
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Stone.svg" >
+                    </div>
+
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Unicef.svg" >
+                    </div>
+
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Governo-do-Ceara.svg" >
+                    </div>
+
+                    <div class="brand">
+                        <img src="${url.resourcesPath}/img/login/Bild.svg" >
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="brand-title-spacing"></div>
+        </div>
         </div>
         <#if displayHeader>
         <div id="kc-content">
+        <div class="content">
+            <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
+                <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
+                <div class="language-select top">
+                    <unnnic-language-select
+                        :value="language"
+                        @input="changeLanguage"
+                        position="bottom"
+                        :supported-languages="supportedLanguages"
+                    ></unnnic-language-select>
+                </div>
+            </#if>
         <#else>
         <div id="kc-content-headerless">
         </#if>
             <div id="kc-content-wrapper">
-            <#if realm.password?? && social.providers?? && displaySocial>
-                <div class="buttons-group">
-                    <#list social.providers as p>
-                        <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                            <button class="social-button button-control" id="button-${p.alias}">
-                                <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg" class="icon-image icon-button-left" >
-                                <span>${msg("loginWith")} ${p.displayName} </span>
-                            </button></a>
-                    </#list>
+
+            <#--  <div id="modal" class="modal-background">
+                <div class="modal-container">
+                    <div class="modal-content">
+                        <div class="modal-button-container">
+                            <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
+                        </div>
+                        <div class="modal-center-icon">
+                            <span class="icon-check-circle-1-1 icon-success"></span>
+                        </div>
+                    <div class="modal-title">${msg("emailSentTitle")}</div>
+                    <div class="modal-text">messa</div>
                 </div>
-                <div id="separator-group">
-                    <div class="separator"></div>
-                    <span class="separator-text"> ${msg("separatorMessage")} </span>
-                    <div class="separator"></div>
-                </div>
+                <div class="modal-message">${msg("emailSentSubitle")}</div>
+            </div>  -->
+
+            <#if displayMessage && message?has_content>
+                <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
+                <#elseif (message.summary == msg("emailSentMessage"))>
+                    <unnnic-modal
+                        v-if="emailSentModal"
+                        @close="closeEmailSentModal"
+                        text="${msg('emailSentTitle')}"
+                        scheme="feedback-green"
+                        modal-icon="check-circle-1-1"
+                    >
+                        <div slot="message" style="text-align: center;">
+                            ${kcSanitize(message.summary)?no_esc}
+                        </div>
+                    </unnnic-modal>
+                <#else>
+                    <div class="alert alert-${message.type}">
+                        <#if message.type = 'success'></#if>
+                        <#if message.type = 'warning'></#if>
+                        <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
+                        <#if message.type = 'info'></#if>
+                        <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
+                    </div>
+                </#if>
             </#if>
+
             <div id="kc-form" class="${properties.kcFormAreaClass!}">
                 <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
                     <#nested "form">
@@ -188,15 +199,32 @@
                     </div>
                 </div>
             </#if>
+                <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
+                    <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
+                    <div class="footer">
+                        <div class="language-select bottom">
+                            <unnnic-language-select
+                                :value="language"
+                                @input="changeLanguage"
+                                position="top"
+                                :supported-languages="supportedLanguages"
+                            ></unnnic-language-select>
+                        </div>
+                    </div>
+                </#if>
             </div>
+            <div class="language-select-counterpoint"></div>
         </div>
+        <#if displayHeader>
+        </div>
+        </#if>
         </div>
     </div>
   </div>
     <style>
         <#if displayLoginFormScriptsAndStyles>
             #rememberMe {
-            display: none;
+                display: none;
             }
 
             #rememberMe + label {
@@ -219,15 +247,6 @@
                 padding: 0;
             }
         </#if>
-
-        .login-pf-header {
-            margin: 2rem 12.88%;
-            align-self: normal;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            flex-direction: column;
-        }
 
         .login-pf-header .language-select {
             width: 12.5rem;
@@ -266,6 +285,11 @@
         new Vue({
             el: '#app',
             data: {
+                registerPasswordFocused: false,
+                registerPasswordConfirmFocused: false,
+                emailSentModal: true,
+                usernameInput: '${(login.username!'')}',
+                passwordInput: '',
                 <#if realm.internationalizationEnabled>
                     keycloakCurrentLanguage:
                         <#list locale.supported as l>
@@ -328,21 +352,50 @@
             },
 
             mounted() {
+                if (this.$refs.registerPassword) {
+                    const registerPasswordInput = this.$refs.registerPassword.$el.querySelector('input');
+
+                    registerPasswordInput.addEventListener('focus', () => {
+                        this.registerPasswordFocused = true;
+                    });
+
+                    registerPasswordInput.addEventListener('blur', () => {
+                        this.registerPasswordFocused = false;
+                    });
+                }
+
+
+                if (this.$refs.registerPasswordConfirm) {
+                    const registerPasswordConfirmInput = this.$refs.registerPasswordConfirm.$el.querySelector('input');
+
+                    registerPasswordConfirmInput.addEventListener('focus', () => {
+                        this.registerPasswordConfirmFocused = true;
+                    });
+
+                    registerPasswordConfirmInput.addEventListener('blur', () => {
+                        this.registerPasswordConfirmFocused = false;
+                    });
+                }
+
+                if (this.$refs.loginUsername) {
+                    this.$refs.loginUsername.$el.querySelector('input').addEventListener('animationstart', (event) => {
+                        if (event.animationName === 'onAutoFillStart') {
+                            setTimeout(() => {
+                            console.log(this.$refs.loginUsername.$el.querySelector('input').value);
+
+                            });
+                        }
+                        /*switch (e.animationName) {
+                            case defaultStyles.onAutoFillStart:
+                            return this.onAutoFillStart()
+
+                            case defaultStyles.onAutoFillCancel:
+                            return this.onAutoFillCancel()
+                        }*/
+                    })
+                }
+
                 <#if displayLoginFormScriptsAndStyles>
-                    const username = this.$refs.username;
-                    const password = this.$refs.password;
-                    const submitButton = this.$refs['kc-login'];
-
-                    const onInput = () => {
-                        submitButton.disabled = !username.value || !password.value;
-                    }
-
-                    username.addEventListener('input', onInput);
-                    password.addEventListener('input', onInput);
-
-                    username.addEventListener('change', onInput);
-                    password.addEventListener('change', onInput);
-
                     function emitConnectEvent(name, content) {
                         const data = {
                             pathname: window.location.pathname,
@@ -369,6 +422,10 @@
                                 a.click();
                             }
                         });
+                },
+
+                closeEmailSentModal() {
+                    this.emailSentModal = false;
                 },
             },
         });
