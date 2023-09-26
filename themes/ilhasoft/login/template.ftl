@@ -69,8 +69,6 @@
         <div class="left-side-content">
         <div class="content">
             <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
-
-            <iframe src="https://flows.weni.ai/users/logout" style="display: none;"></iframe>
             
             <div>
             <div style="position: relative;">
@@ -446,6 +444,21 @@
 
         if (logRocketId && window.LogRocket) {
             window.LogRocket.init(logRocketId);
+        }
+
+        const flowsLogoutURLByRealms = {
+            "weni": "https://flows.weni.ai/users/logout",
+            "weni-staging": "https://flows.stg.cloud.weni.ai/users/logout",
+            "weni-develop": "https://flows.dev.cloud.weni.ai/users/logout",
+        }
+
+        const flowsLogoutURL = flowsLogoutURLByRealms[realm];
+
+        if (flowsLogoutURL) {
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', flowsLogoutURL);
+            iframe.setAttribute('style', 'display: none;');
+            document.body.appendChild(iframe);
         }
     </script>
 </body>
