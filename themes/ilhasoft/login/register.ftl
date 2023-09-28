@@ -11,7 +11,7 @@
             ${msg("register_greetings")}
         </div>
         <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
-            <unnnic-form-element
+            <!-- <unnnic-form-element
                 label="${msg('firstName')}"
                 error="${messagesPerField.get('firstName')}"
                 class="register-form-row-email"
@@ -37,7 +37,7 @@
                     name="lastName"
                     :type="'${messagesPerField.get('lastName')}' ? 'error' : 'normal'"
                 ></unnnic-input>
-            </unnnic-form-element>
+            </unnnic-form-element> -->
 
             <div class="register-form-row-email">
                 <unnnic-form-element
