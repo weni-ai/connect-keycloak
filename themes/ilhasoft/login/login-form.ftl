@@ -1,10 +1,18 @@
 <#macro loginLayout>
     <div class="greetings">
         <a href="${url.loginUrl}">
-            <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
+            <#if client.clientId = "weni-chats">
+                <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Chats-Logo-Blue.svg">
+            <#else>
+                <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
+            </#if>
         </a>
 
-        ${msg("greetings")}
+        <#if client.clientId = "weni-chats">
+            ${msg("greetings_chats")}
+        <#else>
+            ${msg("greetings")}
+        </#if>
     </div>
 
     <form id="kc-form-login" ref="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
