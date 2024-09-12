@@ -63,7 +63,7 @@
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
 
-<body class="${properties.kcBodyClass!}">
+<body class="${properties.kcBodyClass!}" style="display: none;">
     <div class="${properties.kcLoginClass!}" id="app">
     <div class="${properties.kcFormCardClass!}">
         <div class="left-side-content">
@@ -350,6 +350,9 @@
             },
 
             mounted() {
+                if(!localStorage.getItem('haveLanguagePreference')) {
+                    this.changeLanguage('en')
+                }
                 if (this.$refs.registerPassword) {
                     const registerPasswordInput = this.$refs.registerPassword.$el.querySelector('input');
 
@@ -407,6 +410,7 @@
 
                     emitConnectEvent('requestlogout');
                 </#if>
+                document.body.style.display = 'flex'
             },
 
             methods: {
@@ -418,6 +422,7 @@
                                 a.setAttribute('href', this.keycloakLanguages[keycloakLanguage]);
                                 document.body.appendChild(a);
                                 a.click();
+                                localStorage.setItem('haveLanguagePreference', true)
                             }
                         });
                 },
