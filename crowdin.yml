@@ -8,11 +8,11 @@
 
 files: [
   {
-    "source": "src/themes/ilhasoft/email/messages/messages_en.properties",
-    "translation": "src/themes/ilhasoft/email/messages/messages_%locale%.properties",
+    "source": "themes/ilhasoft/email/messages/messages_en.properties",
+    "translation": "themes/ilhasoft/email/messages/messages_%locale%.properties",
   },
   {
-    "source": "src/themes/ilhasoft/login/messages/messages_en.properties",
-    "translation": "src/themes/ilhasoft/login/messages/messages_%locale%.properties",
+    "source": "themes/ilhasoft/login/messages/messages_en.properties",
+    "translation": "themes/ilhasoft/login/messages/messages_%locale%.properties",
   }
 ]
