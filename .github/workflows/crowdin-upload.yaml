@@ -2,7 +2,7 @@ name: Crowdin Upload
 
 on:
   push:
-    paths: [ 'src/themes/ilhasoft/email/messages/**', 'src/themes/ilhasoft/login/messages/**' ]
+    # paths: [ 'src/themes/ilhasoft/email/messages/**', 'src/themes/ilhasoft/login/messages/**' ]
     # branches: [ master ]
 
 jobs:
