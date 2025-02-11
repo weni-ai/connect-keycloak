@@ -11,13 +11,13 @@
                         </#if>
                         <#elseif section="info">
                             <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
-                                <div id="separator-group">
+                                <div v-if="!VTEXAppEmail" id="separator-group">
                                     <div class="separator"></div>
                                     <span class="separator-text"> ${msg("separatorMessage")} </span>
                                     <div class="separator"></div>
                                 </div>
 
-                                <div id="kc-registration">
+                                <div v-if="!VTEXAppEmail" id="kc-registration">
                                     <#-- <input
                                         class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}"
                                         name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("

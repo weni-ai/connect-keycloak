@@ -7,11 +7,15 @@
         ${msg("greetings")}
     </div>
 
+    <section v-if="!!VTEXAppEmail" class="greetings-description">
+        ${msg("accessPasswordSentToTheEmail")} {{ VTEXAppEmail }}.
+    </section>
+
     <form id="kc-form-login" ref="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}"
         method="post">
         <unnnic-form-element
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
-            <unnnic-input ref="loginUsername" v-model="usernameInput" icon-left="single-neutral-actions-1"
+            <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput" icon-left="single-neutral-actions-1"
                 placeholder="${msg('placeholderLoginName')}" name="username"
                 :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus></unnnic-input>
         </unnnic-form-element>
