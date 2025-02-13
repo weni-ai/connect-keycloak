@@ -279,6 +279,15 @@
                 return currentText.replace(new RegExp(from, 'g'), data[from]);
             }, text);
         }
+        
+        let VTEXAppEmail;
+
+        const redirectURI = new URLSearchParams(document.location.search).get('redirect_uri');
+
+        if (redirectURI) {
+            const vtexApp = new URL(redirectURI).searchParams.get('vtex_app');
+            VTEXAppEmail = new URLSearchParams(vtexApp || '').get('email');
+        }
 
         new Vue({
             el: '#app',
@@ -286,7 +295,8 @@
                 registerPasswordFocused: false,
                 registerPasswordConfirmFocused: false,
                 emailSentModal: true,
-                usernameInput: '${(login.username!'')}',
+                VTEXAppEmail,
+                usernameInput: VTEXAppEmail || '${(login.username!'')}',
                 passwordInput: '',
                 <#if realm.internationalizationEnabled>
                     keycloakCurrentLanguage:

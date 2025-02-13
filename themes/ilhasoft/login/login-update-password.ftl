@@ -14,32 +14,18 @@
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password-new" class="${properties.kcLabelClass!}">${msg("passwordNew")}</label>
                 </div>
-                <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
-                    <input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!} has-icon-left has-icon-right"
-                           autofocus autocomplete="new-password"
-                    />
-                    <span class="icon icon-input icon-left icon-lock-2-1"></span>
-                    <span id="password-icon" onclick="togglePassword('password-icon', 'password-new')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
-                        
-                        <#--  this is with password  -->
-                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password')} </div>
-                </div>
+
+                <unnnic-input native-type="password" icon-left="lock-2-1"
+                placeholder="" name="password-new" allow-toggle-password autofocus autocomplete="new-password"></unnnic-input>
             </div>
 
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
                     <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
                 </div>
-                <div class="${properties.kcInputWrapperClass!} ${properties.kcInputControlClass!}">
-                    <input type="password" id="password-confirm" name="password-confirm"
-                           class="${properties.kcInputClass!} has-icon-left has-icon-right"
-                           autocomplete="new-password"
-                    />
-                    <span class="icon icon-input icon-left icon-lock-2-1"></span>
-                    <span id="password-icon-new" onclick="togglePassword('password-icon-new', 'new-password')" class="icon icon-clickable icon-input icon-right icon-view-1-1"></span>
 
-                        <div class="${properties.kcInputMessageClass!}"> ${messagesPerField.get('password-confirm')} </div>
-                </div>
+                <unnnic-input native-type="password" icon-left="lock-2-1"
+                placeholder="" name="password-confirm" allow-toggle-password autofocus autocomplete="new-password"></unnnic-input>
             </div>
 
             <div class="${properties.kcFormGroupClass!}">

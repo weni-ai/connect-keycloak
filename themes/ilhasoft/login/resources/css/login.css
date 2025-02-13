@@ -390,6 +390,16 @@ a:has(.brand-title) {
     margin-bottom: 24px;
 }
 
+.card-pf #kc-content .greetings-description {
+    font-family: Lato;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-top: -16px;
+    margin-bottom: 24px;
+    color: var(--color-neutral-darkest, #3B414D);
+}
+
 .card-pf #kc-content .footer {
     text-align: center;
 }
