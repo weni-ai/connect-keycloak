@@ -16,6 +16,7 @@
                     <unnnic-input
                         ref="username"
                         v-model="usernameInput"
+                        @input="usernameInput = sanitizeHtml(usernameInput)"
                         icon-left="email-action-unread-1"
                         placeholder="${msg('placeholderLoginReset')}"
                         name="username"

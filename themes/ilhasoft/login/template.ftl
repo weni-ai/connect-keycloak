@@ -31,21 +31,6 @@
         </#list>
     </#if>
     <script>
-        const togglePassword = (buttonId, inputId) => {
-            console.log({ buttonId, inputId });
-            const element = document.getElementById(inputId);
-            const passwordIcon = document.getElementById(buttonId);
-
-            if(!element || !passwordIcon) return;
-
-            const type = element.type;
-            element.type = type === 'password' ? 'text' : 'password';
-            
-            classes = passwordIcon.className.split(" ");
-            classes[classes.length - 1] = type === 'password' ? 'icon-view-off-1' : 'icon-view-1-1';
-            passwordIcon.className = classes.join(" ");
-        };
-
         const closeModal = (message) => {
             const modal = document.getElementById("modal");
             modal.remove()
@@ -60,6 +45,7 @@
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
     <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
+    <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
 
