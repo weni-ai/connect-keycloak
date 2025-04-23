@@ -17,7 +17,7 @@
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
             <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput" icon-left="single-neutral-actions-1"
                 placeholder="${msg('placeholderLoginName')}" name="username"
-                :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus></unnnic-input>
+                :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus @input="usernameInput = sanitizeHtml(usernameInput)"></unnnic-input>
         </unnnic-form-element>
 
         <unnnic-form-element label="${msg('password')}">

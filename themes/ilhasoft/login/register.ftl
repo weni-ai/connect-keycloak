@@ -44,7 +44,7 @@
                         <unnnic-form-element label="${msg('email')}" error="${messagesPerField.get('email')}">
                             <unnnic-input v-model="email" icon-left="email-action-unread-1"
                                 placeholder="${msg('placeholderRegisterEmail')}" name="email" autocomplete="email"
-                                :type="'${messagesPerField.get('email')}' ? 'error' : 'normal'"></unnnic-input>
+                                :type="'${messagesPerField.get('email')}' ? 'error' : 'normal'" @input="email = sanitizeHtml(email)"></unnnic-input>
                         </unnnic-form-element>
                     </div>
 
@@ -56,7 +56,7 @@
                                 icon-left="lock-2-1" placeholder="${msg('placeholderRegisterPassword')}" name="password"
                                 autocomplete="password"
                                 :type="'${messagesPerField.get('password')}' ? 'error' : 'normal'"
-                                allow-toggle-password></unnnic-input>
+                                allow-toggle-password @input="password = sanitizeHtml(password)"></unnnic-input>
                         </unnnic-form-element>
 
                         <#if passwordRequired??>
@@ -67,7 +67,7 @@
                                     placeholder="${msg('placeholderRegisterPasswordConfirm')}" name="password-confirm"
                                     autocomplete="password"
                                     :type="`${messagesPerField.get('password-confirm')}` ? 'error' : 'normal'"
-                                    allow-toggle-password></unnnic-input>
+                                    allow-toggle-password @input="passwordConfirm = sanitizeHtml(passwordConfirm)"></unnnic-input>
                             </unnnic-form-element>
                         </#if>
                     </div>
