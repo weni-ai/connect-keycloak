@@ -117,14 +117,14 @@ jobs:
                   echo 'New configurations Themes:'
                   new_configuration=$(
                     cat "${e}/${{ env.MANIFESTS_PATCH_TARGET }}" \
-                      | jq '(..|select(.path == "/spec/template/spec/initContainers/0/env/0/value")?) += {value: "https://github.com/weni-ai/connect-keycloak/releases/download/'"${{env.TAG}}"'/themes.tar.xz"}'
+                      | jq '(..|select(.path == "/spec/template/spec/initContainers/1/env/0/value")?) += {value: "https://github.com/weni-ai/connect-keycloak/releases/download/'"${{env.TAG}}"'/themes.tar.xz"}'
                   )
                   echo "${new_configuration}"
                   echo "${new_configuration}" > "${e}/${{ env.MANIFESTS_PATCH_TARGET }}"
                   echo 'New configurations Plugins:'
                   new_configuration=$(
                     cat "${e}/${{ env.MANIFESTS_PATCH_TARGET }}" \
-                      | jq '(..|select(.path == "/spec/template/spec/initContainers/0/env/1/value")?) += {value: "https://github.com/weni-ai/connect-keycloak/releases/download/'"${{env.TAG}}"'/plugins.tar.xz"}'
+                      | jq '(..|select(.path == "/spec/template/spec/initContainers/1/env/1/value")?) += {value: "https://github.com/weni-ai/connect-keycloak/releases/download/'"${{env.TAG}}"'/plugins.tar.xz"}'
                   )
                   echo "${new_configuration}"
                   echo "${new_configuration}" > "${e}/${{ env.MANIFESTS_PATCH_TARGET }}"
