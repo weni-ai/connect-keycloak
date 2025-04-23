@@ -109,7 +109,7 @@ jobs:
                 echo "Old image to replace: ${OLD_IMAGE}"
                 OLD_VERSION=$(
                   echo "${OLD_IMAGE}" \
-                    | sed s'/^.*[v:-]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/'g \
+                    | sed s'/^.*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*$/\1/'g \
                     | head -n1
                 )
                 echo "Old image version to compare: ${OLD_VERSION}<=${{env.VERSION}}"
