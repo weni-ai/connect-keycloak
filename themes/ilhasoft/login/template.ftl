@@ -1,4 +1,4 @@
-<#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayHeader=true displayRegisterScriptsAndStyles=false displayLoginFormScriptsAndStyles=false displaySocial=true>
+<#macro registrationLayout bodyClass="" displayInfo=true displayMessage=true displayHeader=true displayRegisterScriptsAndStyles=false displayLoginFormScriptsAndStyles=false displaySocial=true>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
 
@@ -31,21 +31,6 @@
         </#list>
     </#if>
     <script>
-        const togglePassword = (buttonId, inputId) => {
-            console.log({ buttonId, inputId });
-            const element = document.getElementById(inputId);
-            const passwordIcon = document.getElementById(buttonId);
-
-            if(!element || !passwordIcon) return;
-
-            const type = element.type;
-            element.type = type === 'password' ? 'text' : 'password';
-            
-            classes = passwordIcon.className.split(" ");
-            classes[classes.length - 1] = type === 'password' ? 'icon-view-off-1' : 'icon-view-1-1';
-            passwordIcon.className = classes.join(" ");
-        };
-
         const closeModal = (message) => {
             const modal = document.getElementById("modal");
             modal.remove()
@@ -60,6 +45,7 @@
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
     <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
+    <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
 
