@@ -104,7 +104,7 @@ jobs:
               else
                 OLD_IMAGE=$(
                   cat "${e}/${{ env.MANIFESTS_PATCH_TARGET }}" \
-                    | jq '.[] | select(.path == "/spec/template/spec/initContainers/0/env/0/value") | .value'
+                    | jq '.[] | select(.path == "/spec/template/spec/initContainers/1/env/0/value") | .value'
                 )
                 echo "Old image to replace: ${OLD_IMAGE}"
                 OLD_VERSION=$(
