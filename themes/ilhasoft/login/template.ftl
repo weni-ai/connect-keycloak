@@ -53,64 +53,7 @@
     <div class="${properties.kcLoginClass!}" id="app">
     <div class="${properties.kcFormCardClass!}">
         <div class="left-side-content">
-        <div class="content">
-            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
-            
-            <div>
-            <div style="position: relative;">
-            <img src="${url.resourcesPath}/img/login/icon-weni-1.svg" class="icon-weni-background">
-            <img src="${url.resourcesPath}/img/login/screen2.png" class="icon-screen-background">
-
-            <div class="benefits">
-                <p class="title">${msg("headerTitleText")}</p>
-
-                <div class="benefits-list">
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits1")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits2")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits3")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits4")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits5")}
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="recommended-by">
-                <p class="title">${msg("brandsTitle")}</p>
-                <div class="brand-container">
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Stone.svg" >
-                    </div>
-
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Unicef.svg" >
-                    </div>
-
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Governo-do-Ceara.svg" >
-                    </div>
-
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Bild.svg" >
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="brand-title-spacing"></div>
-        </div>
+            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content" />
         </div>
         <#if displayHeader>
         <div id="kc-content">

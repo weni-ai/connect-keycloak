@@ -233,10 +233,8 @@ button,
 }
 
 .card-pf .left-side-content {
-    flex: 1;
-    background: var(--color-weni-600, #00A49F);
+    flex-basis: 25%;
     display: flex;
-    justify-content: flex-end;
 }
 
 .card-pf .left-side-content .benefits {
@@ -306,40 +304,6 @@ button,
     row-gap: 16px;
     box-sizing: border-box;
     justify-content: space-between;
-}
-
-.recommended-by {
-    text-align: center;
-    margin-top: 24px;
-}
-
-.recommended-by .title {
-    font-family: Lato;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 20px;
-    color: var(--color-neutral-lightest, #F9F9F9);
-    margin: 0;
-    margin-bottom: 16px;
-}
-
-@media (max-width: 1248px) {
-    .recommended-by {
-        margin-top: 48px;
-    }
-
-    .recommended-by .title {
-        text-align: left;
-        margin-bottom: 8px;
-    }
-}
-
-.brand-container {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-items: center;
-    column-gap: 16px;
-    width: fit-content;
 }
 
 .brand {
@@ -464,11 +428,6 @@ a:has(.brand-title) {
     .card-pf #kc-content>.content {
         padding-left: 16px;
         padding-right: 16px;
-    }
-
-    .brand-container {
-        grid-template-columns: 1fr 1fr;
-        column-gap: 0;
     }
 
     .card-pf .left-side-content a:has(.brand-title) {
