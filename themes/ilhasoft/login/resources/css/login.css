@@ -281,13 +281,14 @@ button,
 .card-pf #kc-content {
     flex: 1;
     display: flex;
+    justify-content: center;
 }
 
 .card-pf .left-side-content>.content,
 .card-pf #kc-content>.content {
     display: flex;
     flex-direction: column;
-    max-width: 624px;
+    max-width: 560px;
     width: 100%;
 }
 
@@ -300,7 +301,7 @@ button,
 }
 
 .card-pf #kc-content>.content {
-    padding: 32px 112px;
+    padding: 32px 0px;
     row-gap: 16px;
     box-sizing: border-box;
     justify-content: space-between;
@@ -328,7 +329,7 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .language-select.top {
-    margin-right: -96px;
+    margin-right: -180px;
 }
 
 .card-pf #kc-content .language-select.bottom {
@@ -398,12 +399,12 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .greetings a:has(.brand-title) {
-    display: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .card-pf #kc-content .greetings .brand-title {
-    display: none;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
 }
 
 @media (max-width: 1248px) {
@@ -447,6 +448,12 @@ a:has(.brand-title) {
     .card-pf #kc-content .language-select.bottom {
         margin-top: 32px;
         display: inline-block;
+    }
+}
+
+@media (max-width: 900px) {
+    .card-pf .left-side-content {
+        display: none;
     }
 }
 
@@ -1047,6 +1054,31 @@ a:has(.brand-title) {
 .input-itself:not(:-webkit-autofill),
 .input-itself:not(:autofill) {
     animation-name: onAutoFillCancel;
+}
+
+.sign-up-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.sign-up-button-text {
+    color: #4E5666;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.sign-up-button {
+    width: auto;
+    min-width: auto;
+    flex: 1;
 }
 
 @keyframes onAutoFillStart {

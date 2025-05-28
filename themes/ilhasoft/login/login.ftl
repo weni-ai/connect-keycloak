@@ -22,9 +22,14 @@
                                         class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}"
                                         name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("
                                         doLogIn")}" /> -->
-                                    <unnnic-button class="sign-up-button" size="small"
-                                        text="${msg('doRegisterForFree')}" type="terciary"
-                                        @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+                                        <section class="sign-up-button-container">
+                                            <section>
+                                                <p class="sign-up-button-text">${msg('signUpForFree')}</p>
+                                            </section>
+                                            <unnnic-button class="sign-up-button" size="small"
+                                            text="${msg('doRegisterForFree')}" type="terciary"
+                                            @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+                                        </section>
                                 </div>
                             </#if>
                             <div class="footer">

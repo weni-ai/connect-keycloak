@@ -1,8 +1,6 @@
 <#macro loginLayout>
     <div class="greetings">
-        <a href="${url.loginUrl}">
-            <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
-        </a>
+        <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
 
         ${msg("greetings")}
     </div>

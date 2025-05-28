@@ -53,7 +53,7 @@
     <div class="${properties.kcLoginClass!}" id="app">
     <div class="${properties.kcFormCardClass!}">
         <div class="left-side-content">
-            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content" />
+            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content Weni" />
         </div>
         <#if displayHeader>
         <div id="kc-content">
