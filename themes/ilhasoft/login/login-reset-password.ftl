@@ -5,6 +5,11 @@
     <#elseif section = "header">
         ${msg("emailForgotTitle")}
     <#elseif section = "form">
+        <div class="greetings">
+            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
+
+            ${msg("greetings")}
+        </div>
         <div class="form-header">
             ${msg("emailInstruction")}
         </div>
@@ -17,7 +22,6 @@
                         ref="username"
                         v-model="usernameInput"
                         @input="usernameInput = sanitizeHtml(usernameInput)"
-                        icon-left="email-action-unread-1"
                         placeholder="${msg('placeholderLoginReset')}"
                         name="username"
                         :type="'${messagesPerField.printIfExists('username',properties.kcFormGroupErrorClass!)}' ? 'error' : 'normal'"
@@ -26,13 +30,27 @@
                 </unnnic-form-element>
             </div>
 
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <input id="required-input-button" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
+                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} reset-password-buttons">
+                    <unnnic-button class="" size="large"
+                    text="${msg('cancel')}" type="terciary"
+                    @click.prevent="location.href = '${url.loginUrl}'"></unnnic-button>
+                    <unnnic-button id="required-input-button" class="login-button" size="large" text="${msg('confirm')}"
+                    type="primary" type="submit" ></unnnic-button>
                 </div>
             </div>
 
-            <div id="kc-info-wrapper" class="back-link">
-                <span>${msg("alreadyAccountReset")} <a href="${url.loginUrl}">${msg("backToLogin")?no_esc}</a></span>
+            <section class="sign-up-button-container">
+                <section>
+                    <p class="sign-up-button-text">${msg('signUpForFree')}</p>
+                </section>
+                <unnnic-button class="sign-up-button" size="large"
+                text="${msg('doRegisterForFree')}" type="terciary"
+                @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+            </section>
+            <div class="footer">
+                <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">
+                    ${msg('termsOfService')}
+                </a>
             </div>
         </form>
     </#if>

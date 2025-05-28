@@ -102,7 +102,7 @@
                     </#if>
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                        <unnnic-button class="login-button" size="small" text="${msg('doRegister')}" type="primary"
+                        <unnnic-button class="login-button" size="large" text="${msg('doRegister')}" type="primary"
                             :disabled="!email || !password || !passwordConfirm"></unnnic-button>
                     </div>
 

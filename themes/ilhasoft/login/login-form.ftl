@@ -26,7 +26,7 @@
         <div class="${properties.kcFormGroupClass!}">
             <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                 <div class="${properties.kcFormButtonsWrapperClass!}">
-                    <unnnic-button class="login-button" size="small" text="${msg('doLogIn')}"
+                    <unnnic-button class="login-button" size="large" text="${msg('doLogIn')}"
                         type="primary" :disabled="!canLogin"></unnnic-button>
                 </div>
             </div>

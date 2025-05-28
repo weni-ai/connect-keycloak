@@ -72,7 +72,7 @@
         <#else>
         <div id="kc-content-headerless">
         </#if>
-            <div id="kc-content-wrapper">
+            <div id="kc-content-wrapper" class="custom-header-content">
 
             <#--  <div id="modal" class="modal-background">
                 <div class="modal-container">

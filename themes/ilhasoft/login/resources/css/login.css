@@ -155,11 +155,6 @@ label {
     margin: 0;
 }
 
-#back-link {
-    text-decoration: underline;
-    color: var(--unicc-color-neutral-dark);
-    font-size: var(--unnic-font-size-body-md);
-}
 
 .form-group {
     color: var(--unnic-color-neutral-dark);
@@ -491,8 +486,7 @@ a:has(.brand-title) {
     grid-column: 1 / 6;
 }
 
-#kc-registration,
-.back-link {
+#kc-registration {
     text-align: center;
     color: var(--unnic-color-neutral-cloudy);
 }
@@ -526,7 +520,7 @@ a:has(.brand-title) {
     font-size: 12px;
     line-height: 20px;
     font-weight: 400;
-    padding: 8px 16px;
+    padding: 12px 16px;
 }
 
 .social-button img {
@@ -727,10 +721,6 @@ a:has(.brand-title) {
 
 .checbkoxGroup {
     margin: var(--unnic-spacing-stack-nano) 0;
-}
-
-.back-link {
-    margin: var(--unnic-spacing-stack-md) 0;
 }
 
 .form-header {
@@ -1133,4 +1123,13 @@ a:has(.brand-title) {
     width: auto;
     min-width: auto;
     flex: 1;
+}
+
+.custom-header-content {
+    height: 100%;
+}
+
+.reset-password-buttons {
+    display: flex;
+    gap: 16px;
 }
