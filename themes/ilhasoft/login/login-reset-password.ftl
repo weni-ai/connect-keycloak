@@ -35,7 +35,7 @@
                     text="${msg('cancel')}" type="terciary"
                     @click.prevent="location.href = '${url.loginUrl}'"></unnnic-button>
                     <unnnic-button id="required-input-button" class="login-button" size="large" text="${msg('confirm')}"
-                    type="primary" type="submit" ></unnnic-button>
+                    type="primary" native-type="submit" :disabled="!isEmailValid(usernameInput)"></unnnic-button>
                 </div>
             </div>
 

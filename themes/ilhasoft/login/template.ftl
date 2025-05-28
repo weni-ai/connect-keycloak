@@ -368,6 +368,12 @@
             },
 
             methods: {
+                isEmailValid(email) {
+                    if (!email) return false;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                },
+
                 changeLanguage(language) {
                     Object.keys(this.keycloakLanguages)
                         .forEach((keycloakLanguage) => {
