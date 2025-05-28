@@ -16,7 +16,27 @@
                                     <span class="separator-text"> ${msg("separatorMessage")} </span>
                                     <div class="separator"></div>
                                 </div>
-
+                                <section class="social-login-container">
+                                    <button type="button" class="social-button button-control" id="button-x">
+                                        a
+                                    </button>
+                                    <button type="button" class="social-button button-control" id="button-x">
+                                        b
+                                    </button>
+                                    <button type="button" class="social-button button-control" id="button-x">
+                                        c
+                                    </button>
+                                    <#if realm.password?? && social.providers??>
+                                    <#list social.providers as p>
+                                        <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
+                                            <button type="button" class="social-button button-control" id="button-${p.alias}">
+                                                <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
+                                                    class="icon-image icon-button-left">
+                                            </button>
+                                        </a>
+                                    </#list>
+                                </#if>
+                                </section>
                                 <div v-if="!VTEXAppEmail" id="kc-registration">
                                     <#-- <input
                                         class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}"

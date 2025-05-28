@@ -647,7 +647,6 @@ a:has(.brand-title) {
     align-items: center;
     font-weight: var(--unnic-font-weight-bold);
     margin: 24px auto;
-    max-width: 80%;
 }
 
 .separator {
@@ -657,8 +656,9 @@ a:has(.brand-title) {
 }
 
 .separator-text {
-    font-size: var(--unnic-font-size-body-lg);
+    font-size: var(--unnic-font-size-body-md);
     font-family: var(--unnic-font-family-secondary);
+    font-weight: var(--unnic-font-weight-regular);
     color: var(--unnic-color-neutral-dark);
     margin: 0 var(--unnic-inline-sm);
 }
@@ -792,7 +792,7 @@ a:has(.brand-title) {
 }
 
 .alert-error {
-    color: var(--unnic-color-feedback-red);
+    color: var(--unnic-color-neutral-dark);
 }
 
 .terms-use {
@@ -1079,6 +1079,11 @@ a:has(.brand-title) {
     width: auto;
     min-width: auto;
     flex: 1;
+}
+
+.social-login-container {
+    display: flex;
+    gap: 16px;
 }
 
 @keyframes onAutoFillStart {
