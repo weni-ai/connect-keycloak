@@ -45,6 +45,7 @@
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
     <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
+    <script src="${url.resourcesPath}/vue/modal-dialog.js"></script>
     <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
@@ -92,17 +93,15 @@
             <#if displayMessage && message?has_content>
                 <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
                 <#elseif (message.summary == msg("emailSentMessage"))>
-                    <unnnic-modal
-                        v-if="emailSentModal"
+                    <modal-dialog
+                        :show="emailSentModal"
                         @close="closeEmailSentModal"
                         text="${msg('emailSentTitle')}"
-                        scheme="feedback-green"
-                        modal-icon="check-circle-1-1"
                     >
                         <div slot="message" style="text-align: center;">
                             ${kcSanitize(message.summary)?no_esc}
                         </div>
-                    </unnnic-modal>
+                    </modal-dialog>
                 <#else>
                     <#-- Alert moved to kc-form-wrapper for correct positioning -->
                 </#if>

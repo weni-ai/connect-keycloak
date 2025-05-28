@@ -1133,3 +1133,103 @@ a:has(.brand-title) {
     display: flex;
     gap: 16px;
 }
+
+.modal-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; 
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.modal-dialog-content {
+    background-color: var(--unnic-color-background-snow, #fff);
+    padding: 24px;
+    border-radius: var(--unnic-border-radius-md, 8px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 320px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    text-align: left;
+    font-family: var(--unnic-font-family-secondary, Lato);
+}
+
+.modal-dialog-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    background: none;
+    border: none;
+    color: var(--unnic-color-neutral-clean, #B8BECB);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-dialog-close-button .unnnic-icon {
+    color: var(--unnic-color-neutral-cloudy, #67738B);
+}
+
+.modal-dialog-close-button:hover .unnnic-icon {
+    color: var(--unnic-color-neutral-dark, #4E5666);
+}
+
+.modal-dialog-icon-wrapper {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.modal-dialog-icon-wrapper .unnnic-icon {
+    font-size: var(--unnic-icon-size-lg, 32px); 
+}
+
+.modal-dialog-scheme-feedback-green .modal-dialog-icon-wrapper .unnnic-icon {
+    color: var(--unnic-color-feedback-green, #00A49F); 
+}
+
+.modal-dialog-title-text {
+    font-family: var(--unnic-font-family-secondary, Lato);
+    font-size: var(--unnic-font-size-title-sm, 20px);
+    font-weight: var(--unnic-font-weight-bold, 700);
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-right: 30px;
+
+    color: var(--color-neutral-darkest, #3B414D);
+}
+
+.modal-dialog-separator {
+    height: 1px;
+    background-color: var(--unnic-color-neutral-soft, #E2E6ED);
+    margin-bottom: 16px;
+    margin-left: -20px;
+    margin-right: -20px;
+    width: calc(100% + 40px);
+}
+
+.modal-dialog-body-content {
+    font-size: var(--unnic-font-size-body-gt, 14px);
+    color: var(--unnic-color-neutral-cloudy, #67738B);
+    font-family: var(--unnic-font-family-secondary, Lato);
+    font-weight: 400;
+    line-height: 22px; 
+}
+
+.modal-dialog-body-content > div {
+    text-align: left;
+}
+
+.modal-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
