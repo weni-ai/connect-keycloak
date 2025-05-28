@@ -20,25 +20,14 @@
 
         <unnnic-form-element label="${msg('password')}">
             <unnnic-input ref="password" v-model="passwordInput" native-type="password" icon-left="lock-2-1"
-                placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password></unnnic-input>
+                placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password @input="passwordInput = sanitizeHtml(passwordInput)"></unnnic-input>
         </unnnic-form-element>
 
         <div class="${properties.kcFormGroupClass!}">
             <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
+                <div class="${properties.kcFormButtonsWrapperClass!}">
                     <unnnic-button class="login-button" size="small" text="${msg('doLogIn')}"
-                        type="primary"></unnnic-button>
-
-                    <#if realm.password?? && social.providers??>
-                        <#list social.providers as p>
-                            <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                                <button type="button" class="social-button button-control" id="button-${p.alias}">
-                                    <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
-                                        class="icon-image icon-button-left">
-                                </button>
-                            </a>
-                        </#list>
-                    </#if>
+                        type="primary" :disabled="!canLogin"></unnnic-button>
                 </div>
             </div>
         </div>

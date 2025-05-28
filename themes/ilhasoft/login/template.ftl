@@ -286,6 +286,12 @@
                         });
                     },
                 </#if>
+                <#if displayLoginFormScriptsAndStyles>
+                    canLogin() {
+                        return this.usernameInput && this.usernameInput.trim().length > 0 && 
+                               this.passwordInput && this.passwordInput.trim().length > 0;
+                    },
+                </#if>
                 supportedLanguages() {
                     return Object.keys(this.keycloakLanguages)
                         .map((keycloakLanguage) => kc2UnnnicLanguages[keycloakLanguage])
