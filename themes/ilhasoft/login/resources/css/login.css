@@ -712,8 +712,10 @@ a:has(.brand-title) {
     align-items: center;
     column-gap: 8px;
     border-radius: 4px;
-    margin-left: -48px;
-    margin-right: -48px;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 1248px) {
@@ -1037,12 +1039,64 @@ a:has(.brand-title) {
     padding-left: 22px;
 }
 
+#kc-form-wrapper .form-alert {
+    order: 10;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+#kc-form-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+#kc-form-wrapper .form-alert {
+    order: 1;
+}
+
 #kc-form-login {
     display: flex;
     flex-direction: column;
+    order: 1;
     row-gap: 24px;
 }
 
+#kc-form-login .greetings {
+    order: 1;
+}
+
+#kc-form-login .greetings-description {
+    order: 2;
+}
+
+#kc-form-login > *:not(.greetings):not(.greetings-description) {
+    order: 3;
+}
+
+.social-login-container {
+    display: flex;
+    gap: 16px;
+}
+
+@keyframes onAutoFillStart {
+    from {
+        /**/
+    }
+
+    to {
+        /**/
+    }
+}
+
+@keyframes onAutoFillCancel {
+    from {
+        /**/
+    }
+
+    to {
+        /**/
+    }
+}
 
 .input-itself {}
 
@@ -1079,29 +1133,4 @@ a:has(.brand-title) {
     width: auto;
     min-width: auto;
     flex: 1;
-}
-
-.social-login-container {
-    display: flex;
-    gap: 16px;
-}
-
-@keyframes onAutoFillStart {
-    from {
-        /**/
-    }
-
-    to {
-        /**/
-    }
-}
-
-@keyframes onAutoFillCancel {
-    from {
-        /**/
-    }
-
-    to {
-        /**/
-    }
 }

@@ -104,18 +104,27 @@
                         </div>
                     </unnnic-modal>
                 <#else>
-                    <div class="alert alert-${message.type}">
-                        <#if message.type = 'success'></#if>
-                        <#if message.type = 'warning'></#if>
-                        <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
-                        <#if message.type = 'info'></#if>
-                        <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-                    </div>
+                    <#-- Alert moved to kc-form-wrapper for correct positioning -->
                 </#if>
             </#if>
 
             <div id="kc-form" class="${properties.kcFormAreaClass!}">
                 <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
+                    <#-- Alert positioned here to appear after greetings with CSS order -->
+                    <#if displayMessage && message?has_content>
+                        <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
+                        <#elseif (message.summary == msg("emailSentMessage"))>
+                            <#-- Email sent modal handled above -->
+                        <#else>
+                            <div class="alert alert-${message.type} form-alert">
+                                <#if message.type = 'success'></#if>
+                                <#if message.type = 'warning'></#if>
+                                <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
+                                <#if message.type = 'info'></#if>
+                                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
+                            </div>
+                        </#if>
+                    </#if>
                     <#nested "form">
                 </div>
             </div>
