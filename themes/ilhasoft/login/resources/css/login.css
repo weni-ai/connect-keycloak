@@ -452,6 +452,12 @@ a:has(.brand-title) {
     }
 }
 
+@media (min-height: 950px) and (max-width: 1024px) {
+    .card-pf .left-side-content {
+        display: none;
+    }
+}
+
 @media (max-width: 600px) {
     .card-pf .left-side-content {
         display: none;
@@ -1168,6 +1174,7 @@ a:has(.brand-title) {
 
 .custom-header-content {
     height: 100%;
+    margin-top: 32px;
 }
 
 .reset-password-buttons {
