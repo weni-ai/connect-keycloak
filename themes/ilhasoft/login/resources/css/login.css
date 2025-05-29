@@ -228,7 +228,7 @@ button,
 }
 
 .card-pf .left-side-content {
-    flex-basis: 25%;
+    flex-basis: 21.6%;
     display: flex;
 }
 
@@ -377,7 +377,7 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .footer a.privacy-policy {
-    margin-top: 24px;
+    margin-top: 40px;
     display: inline-block;
     font-family: Lato;
     font-size: 12px;
@@ -640,7 +640,7 @@ a:has(.brand-title) {
     justify-content: center;
     align-items: center;
     font-weight: var(--unnic-font-weight-bold);
-    margin: 24px auto;
+    margin: 16px auto;
     width: 100%;
 }
 
@@ -949,15 +949,15 @@ a:has(.brand-title) {
 }
 
 .register-form-row-email {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .register-form-row-password {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .register-form-row-password-confirm {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .password-strength-rules {
@@ -1089,7 +1089,7 @@ a:has(.brand-title) {
     display: flex;
     flex-direction: column;
     order: 1;
-    row-gap: 24px;
+    row-gap: 16px;
 }
 
 #kc-form-login .greetings {
