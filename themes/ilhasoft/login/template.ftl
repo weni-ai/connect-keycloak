@@ -45,6 +45,7 @@
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
     <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
+    <script src="${url.resourcesPath}/vue/modal-dialog.js"></script>
     <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
 </head>
@@ -53,64 +54,7 @@
     <div class="${properties.kcLoginClass!}" id="app">
     <div class="${properties.kcFormCardClass!}">
         <div class="left-side-content">
-        <div class="content">
-            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
-            
-            <div>
-            <div style="position: relative;">
-            <img src="${url.resourcesPath}/img/login/icon-weni-1.svg" class="icon-weni-background">
-            <img src="${url.resourcesPath}/img/login/screen2.png" class="icon-screen-background">
-
-            <div class="benefits">
-                <p class="title">${msg("headerTitleText")}</p>
-
-                <div class="benefits-list">
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits1")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits2")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits3")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits4")}
-                    </div>
-                    <div class="benefit">
-                        <unnnic-icon icon="check-double" size="sm"></unnnic-icon>
-                        ${msg("benefits5")}
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="recommended-by">
-                <p class="title">${msg("brandsTitle")}</p>
-                <div class="brand-container">
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Stone.svg" >
-                    </div>
-
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Unicef.svg" >
-                    </div>
-
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Governo-do-Ceara.svg" >
-                    </div>
-
-                    <div class="brand">
-                        <img src="${url.resourcesPath}/img/login/Bild.svg" >
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="brand-title-spacing"></div>
-        </div>
+            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content Weni" />
         </div>
         <#if displayHeader>
         <div id="kc-content">
@@ -129,7 +73,7 @@
         <#else>
         <div id="kc-content-headerless">
         </#if>
-            <div id="kc-content-wrapper">
+            <div id="kc-content-wrapper" class="custom-header-content">
 
             <#--  <div id="modal" class="modal-background">
                 <div class="modal-container">
@@ -149,30 +93,37 @@
             <#if displayMessage && message?has_content>
                 <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
                 <#elseif (message.summary == msg("emailSentMessage"))>
-                    <unnnic-modal
-                        v-if="emailSentModal"
+                    <modal-dialog
+                        :show="emailSentModal"
                         @close="closeEmailSentModal"
                         text="${msg('emailSentTitle')}"
-                        scheme="feedback-green"
-                        modal-icon="check-circle-1-1"
                     >
                         <div slot="message" style="text-align: center;">
                             ${kcSanitize(message.summary)?no_esc}
                         </div>
-                    </unnnic-modal>
+                    </modal-dialog>
                 <#else>
-                    <div class="alert alert-${message.type}">
-                        <#if message.type = 'success'></#if>
-                        <#if message.type = 'warning'></#if>
-                        <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
-                        <#if message.type = 'info'></#if>
-                        <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-                    </div>
+                    <#-- Alert moved to kc-form-wrapper for correct positioning -->
                 </#if>
             </#if>
 
             <div id="kc-form" class="${properties.kcFormAreaClass!}">
                 <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
+                    <#-- Alert positioned here to appear after greetings with CSS order -->
+                    <#if displayMessage && message?has_content>
+                        <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
+                        <#elseif (message.summary == msg("emailSentMessage"))>
+                            <#-- Email sent modal handled above -->
+                        <#else>
+                            <div class="alert alert-${message.type} form-alert">
+                                <#if message.type = 'success'></#if>
+                                <#if message.type = 'warning'></#if>
+                                <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
+                                <#if message.type = 'info'></#if>
+                                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
+                            </div>
+                        </#if>
+                    </#if>
                     <#nested "form">
                 </div>
             </div>
@@ -306,6 +257,13 @@
                     passwordConfirm: '',
                     seePassword: false,
                     seePasswordConfirm: false,
+                    passwordRules: {
+                        lowercase: false,
+                        uppercase: false,
+                        number: false,
+                        specialChar: false,
+                        minLength: false,
+                    },
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
                     loginUsername: '',
@@ -334,6 +292,12 @@
                         });
                     },
                 </#if>
+                <#if displayLoginFormScriptsAndStyles>
+                    canLogin() {
+                        return this.usernameInput && this.usernameInput.trim().length > 0 && 
+                               this.passwordInput && this.passwordInput.trim().length > 0;
+                    },
+                </#if>
                 supportedLanguages() {
                     return Object.keys(this.keycloakLanguages)
                         .map((keycloakLanguage) => kc2UnnnicLanguages[keycloakLanguage])
@@ -345,10 +309,33 @@
                 },
             },
 
+            watch: {
+                <#if displayRegisterScriptsAndStyles>
+                password(newPassword) {
+                    this.passwordRules.lowercase = /[a-z]/.test(newPassword);
+                    this.passwordRules.uppercase = /[A-Z]/.test(newPassword);
+                    this.passwordRules.number = /[0-9]/.test(newPassword);
+                    this.passwordRules.specialChar = /[^a-zA-Z0-9]/.test(newPassword);
+                    this.passwordRules.minLength = newPassword.length >= 8;
+                }
+                </#if>
+            },
+
             mounted() {
                 if(!localStorage.getItem('haveLanguagePreference')) {
                     this.changeLanguage('en')
                 }
+                
+                <#if displayRegisterScriptsAndStyles>
+                if (this.password) {
+                    this.passwordRules.lowercase = /[a-z]/.test(this.password);
+                    this.passwordRules.uppercase = /[A-Z]/.test(this.password);
+                    this.passwordRules.number = /[0-9]/.test(this.password);
+                    this.passwordRules.specialChar = /[^a-zA-Z0-9]/.test(this.password);
+                    this.passwordRules.minLength = this.password.length >= 8;
+                }
+                </#if>
+                
                 if (this.$refs.registerPassword) {
                     const registerPasswordInput = this.$refs.registerPassword.$el.querySelector('input');
 
@@ -410,6 +397,12 @@
             },
 
             methods: {
+                isEmailValid(email) {
+                    if (!email) return false;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                },
+
                 changeLanguage(language) {
                     Object.keys(this.keycloakLanguages)
                         .forEach((keycloakLanguage) => {

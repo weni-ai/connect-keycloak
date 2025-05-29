@@ -16,15 +16,31 @@
                                     <span class="separator-text"> ${msg("separatorMessage")} </span>
                                     <div class="separator"></div>
                                 </div>
-
+                                <section class="social-login-container">
+                                    <#if realm.password?? && social.providers??>
+                                    <#list social.providers as p>
+                                        <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
+                                            <button type="button" class="social-button button-control" id="button-${p.alias}">
+                                                <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
+                                                    class="icon-image icon-button-left">
+                                            </button>
+                                        </a>
+                                    </#list>
+                                </#if>
+                                </section>
                                 <div v-if="!VTEXAppEmail" id="kc-registration">
                                     <#-- <input
                                         class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}"
                                         name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("
                                         doLogIn")}" /> -->
-                                    <unnnic-button class="sign-up-button" size="small"
-                                        text="${msg('doRegisterForFree')}" type="terciary"
-                                        @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+                                        <section class="sign-up-button-container">
+                                            <section>
+                                                <p class="sign-up-button-text">${msg('signUpForFree')}</p>
+                                            </section>
+                                            <unnnic-button class="sign-up-button" size="large"
+                                            text="${msg('doRegisterForFree')}" type="terciary"
+                                            @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+                                        </section>
                                 </div>
                             </#if>
                             <div class="footer">

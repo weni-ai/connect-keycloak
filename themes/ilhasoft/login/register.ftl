@@ -4,12 +4,29 @@
             ${msg("registerTitle")}
             <#elseif section="form">
                 <div class="greetings">
-                    <a href="${url.loginUrl}">
-                        <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
-                    </a>
-
                     ${msg("register_greetings")}
                 </div>
+                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
+                    <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
+                        <#if realm.password?? && social.providers??>
+                            <#list social.providers as p>
+                                <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
+                                    <button type="button" class="social-button button-control"
+                                        id="button-${p.alias}">
+                                        <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
+                                            class="icon-image icon-button-left">
+                                    </button>
+                                </a>
+                            </#list>
+                        </#if>
+                    </div> 
+                </div>
+                <div id="separator-group">
+                    <div class="separator"></div>
+                    <span class="separator-text">${msg("separatorRegisterMessage")}</span>
+                    <div class="separator"></div>
+                </div>
+
                 <form id="kc-register-form" class="${properties.kcFormClass!}" action="${url.registrationAction}"
                     method="post">
                     <!-- <unnnic-form-element
@@ -27,7 +44,7 @@
             </unnnic-form-element>
 
             <unnnic-form-element
-                label="${msg('lastName')}"
+                label="${msg('lastName')}"  
                 error="${messagesPerField.get('lastName')}"
                 class="register-form-row-email"
             >
@@ -42,7 +59,8 @@
 
                     <div class="register-form-row-email">
                         <unnnic-form-element label="${msg('email')}" error="${messagesPerField.get('email')}">
-                            <unnnic-input v-model="email" icon-left="email-action-unread-1"
+                            <unnnic-input v-model="email"
+                                class="register-form-row-email-input"
                                 placeholder="${msg('placeholderRegisterEmail')}" name="email" autocomplete="email"
                                 :type="'${messagesPerField.get('email')}' ? 'error' : 'normal'" @input="email = sanitizeHtml(email)"></unnnic-input>
                         </unnnic-form-element>
@@ -53,17 +71,48 @@
                             :error="'${messagesPerField.get('password')}' ? '${messagesPerField.get('password')}' : false">
 
                             <unnnic-input ref="registerPassword" v-model="password" native-type="password"
-                                icon-left="lock-2-1" placeholder="${msg('placeholderRegisterPassword')}" name="password"
+                             placeholder="${msg('placeholderRegisterPassword')}" name="password"
                                 autocomplete="password"
                                 :type="'${messagesPerField.get('password')}' ? 'error' : 'normal'"
                                 allow-toggle-password @input="password = sanitizeHtml(password)"></unnnic-input>
-                        </unnnic-form-element>
 
+                            <div class="password-strength-rules">
+                                <div class="password-strength-columns">
+                                    <div class="password-strength-column">
+                                        <div class="rule" :class="{ 'valid': passwordRules.lowercase }">
+                                            <unnnic-icon icon="check-circle-1-1-1" fill="true" size="sm" :scheme="passwordRules.lowercase ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                            <span>${msg('password_step_1')}</span>
+                                        </div>
+                                        <div class="rule" :class="{ 'valid': passwordRules.uppercase }">
+                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.uppercase ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                            <span>${msg('password_step_2')}</span>
+                                        </div>
+                                        <div class="rule" :class="{ 'valid': passwordRules.number }">
+                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.number ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                            <span>${msg('password_step_5')}</span>
+                                        </div>
+                                    </div>
+                                    <div class="password-strength-column">
+                                        <div class="rule" :class="{ 'valid': passwordRules.specialChar }">
+                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.specialChar ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                            <span>${msg('password_step_3')}</span>
+                                        </div>
+                                        <div class="rule" :class="{ 'valid': passwordRules.minLength }">
+                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.minLength ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                            <span>${msg('password_step_4')}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </unnnic-form-element>
+                    </div>
+
+                    <div class="register-form-row-password-confirm" v-if="(passwordRules.lowercase && passwordRules.uppercase && passwordRules.number && passwordRules.specialChar && passwordRules.minLength) || ${messagesPerField.exists('email')?c} || ${messagesPerField.exists('password')?c} || ${messagesPerField.exists('password-confirm')?c}">
                         <#if passwordRequired??>
                             <unnnic-form-element label="${msg('passwordConfirm')}"
                                 error="${messagesPerField.get('password-confirm')}">
                                 <unnnic-input ref="registerPasswordConfirm" v-model="passwordConfirm"
-                                    native-type="password" icon-left="lock-2-1"
+                                    native-type="password"
                                     placeholder="${msg('placeholderRegisterPasswordConfirm')}" name="password-confirm"
                                     autocomplete="password"
                                     :type="`${messagesPerField.get('password-confirm')}` ? 'error' : 'normal'"
@@ -102,31 +151,10 @@
                     </#if>
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                        <unnnic-button class="login-button" size="small" text="${msg('doRegister')}" type="primary"
-                            :disabled="!email || !password || !passwordConfirm"></unnnic-button>
+                        <unnnic-button class="login-button" size="large" text="${msg('createAccount')}" type="primary"
+                            :disabled="!email || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordConfirm || password !== passwordConfirm"></unnnic-button>
                     </div>
 
-                    <div id="separator-group">
-                        <div class="separator"></div>
-                        <span class="separator-text">${msg("separatorMessage")}</span>
-                        <div class="separator"></div>
-                    </div>
-
-                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
-                        <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
-                            <#if realm.password?? && social.providers??>
-                                <#list social.providers as p>
-                                    <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                                        <button type="button" class="social-button button-control"
-                                            id="button-${p.alias}">
-                                            <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
-                                                class="icon-image icon-button-left">
-                                        </button>
-                                    </a>
-                                </#list>
-                            </#if>
-                        </div>
-                    </div>
 
                     <div class="footer">
                         <div class="back-to-login">

@@ -1,9 +1,5 @@
 <#macro loginLayout>
     <div class="greetings">
-        <a href="${url.loginUrl}">
-            <img class="brand-title" src="${url.resourcesPath}/img/login/Weni-Logo-Blue.svg">
-        </a>
-
         ${msg("greetings")}
     </div>
 
@@ -15,32 +11,21 @@
         method="post">
         <unnnic-form-element
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
-            <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput" icon-left="single-neutral-actions-1"
+            <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput"
                 placeholder="${msg('placeholderLoginName')}" name="username"
                 :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus @input="usernameInput = sanitizeHtml(usernameInput)"></unnnic-input>
         </unnnic-form-element>
 
         <unnnic-form-element label="${msg('password')}">
-            <unnnic-input ref="password" v-model="passwordInput" native-type="password" icon-left="lock-2-1"
-                placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password></unnnic-input>
+            <unnnic-input ref="password" v-model="passwordInput" native-type="password"
+                placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password @input="passwordInput = sanitizeHtml(passwordInput)"></unnnic-input>
         </unnnic-form-element>
 
         <div class="${properties.kcFormGroupClass!}">
             <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
-                    <unnnic-button class="login-button" size="small" text="${msg('doLogIn')}"
-                        type="primary"></unnnic-button>
-
-                    <#if realm.password?? && social.providers??>
-                        <#list social.providers as p>
-                            <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                                <button type="button" class="social-button button-control" id="button-${p.alias}">
-                                    <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
-                                        class="icon-image icon-button-left">
-                                </button>
-                            </a>
-                        </#list>
-                    </#if>
+                <div class="${properties.kcFormButtonsWrapperClass!}">
+                    <unnnic-button class="login-button" size="large" text="${msg('doLogIn')}"
+                        type="primary" :disabled="!canLogin"></unnnic-button>
                 </div>
             </div>
         </div>
