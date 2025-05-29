@@ -69,6 +69,7 @@
                     <div class="register-form-row-email">
                         <unnnic-form-element label="${msg('email')}" error="${messagesPerField.get('email')}">
                             <unnnic-input v-model="email"
+                                class="register-form-row-email-input"
                                 placeholder="${msg('placeholderRegisterEmail')}" name="email" autocomplete="email"
                                 :type="'${messagesPerField.get('email')}' ? 'error' : 'normal'" @input="email = sanitizeHtml(email)"></unnnic-input>
                         </unnnic-form-element>
@@ -115,7 +116,7 @@
                         </unnnic-form-element>
                     </div>
 
-                    <div class="register-form-row-password-confirm">
+                    <div class="register-form-row-password-confirm" v-if="(passwordRules.lowercase && passwordRules.uppercase && passwordRules.number && passwordRules.specialChar && passwordRules.minLength) || ${messagesPerField.exists('email')?c} || ${messagesPerField.exists('password')?c} || ${messagesPerField.exists('password-confirm')?c}">
                         <#if passwordRequired??>
                             <unnnic-form-element label="${msg('passwordConfirm')}"
                                 error="${messagesPerField.get('password-confirm')}">
@@ -160,7 +161,7 @@
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                         <unnnic-button class="login-button" size="large" text="${msg('doRegister')}" type="primary"
-                            :disabled="!email || !password || !passwordConfirm"></unnnic-button>
+                            :disabled="!email || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordConfirm || password !== passwordConfirm"></unnnic-button>
                     </div>
 
 

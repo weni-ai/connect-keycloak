@@ -325,6 +325,17 @@
                 if(!localStorage.getItem('haveLanguagePreference')) {
                     this.changeLanguage('en')
                 }
+                
+                <#if displayRegisterScriptsAndStyles>
+                if (this.password) {
+                    this.passwordRules.lowercase = /[a-z]/.test(this.password);
+                    this.passwordRules.uppercase = /[A-Z]/.test(this.password);
+                    this.passwordRules.number = /[0-9]/.test(this.password);
+                    this.passwordRules.specialChar = /[^a-zA-Z0-9]/.test(this.password);
+                    this.passwordRules.minLength = this.password.length >= 8;
+                }
+                </#if>
+                
                 if (this.$refs.registerPassword) {
                     const registerPasswordInput = this.$refs.registerPassword.$el.querySelector('input');
 
