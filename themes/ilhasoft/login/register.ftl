@@ -4,6 +4,7 @@
             ${msg("registerTitle")}
             <#elseif section="form">
                 <div class="greetings">
+                    <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
                     ${msg("register_greetings")}
                 </div>
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
