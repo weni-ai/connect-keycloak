@@ -4,7 +4,6 @@
             ${msg("registerTitle")}
             <#elseif section="form">
                 <div class="greetings">
-                    <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
                     ${msg("register_greetings")}
                 </div>
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
@@ -152,7 +151,7 @@
                     </#if>
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                        <unnnic-button class="login-button" size="large" text="${msg('doRegister')}" type="primary"
+                        <unnnic-button class="login-button" size="large" text="${msg('createAccount')}" type="primary"
                             :disabled="!email || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordConfirm || password !== passwordConfirm"></unnnic-button>
                     </div>
 

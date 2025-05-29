@@ -1,7 +1,5 @@
 <#macro loginLayout>
     <div class="greetings">
-        <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
-
         ${msg("greetings")}
     </div>
 
@@ -13,13 +11,13 @@
         method="post">
         <unnnic-form-element
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
-            <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput" icon-left="single-neutral-actions-1"
+            <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput"
                 placeholder="${msg('placeholderLoginName')}" name="username"
                 :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus @input="usernameInput = sanitizeHtml(usernameInput)"></unnnic-input>
         </unnnic-form-element>
 
         <unnnic-form-element label="${msg('password')}">
-            <unnnic-input ref="password" v-model="passwordInput" native-type="password" icon-left="lock-2-1"
+            <unnnic-input ref="password" v-model="passwordInput" native-type="password"
                 placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password @input="passwordInput = sanitizeHtml(passwordInput)"></unnnic-input>
         </unnnic-form-element>
 

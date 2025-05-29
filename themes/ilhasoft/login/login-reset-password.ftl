@@ -6,12 +6,10 @@
         ${msg("emailForgotTitle")}
     <#elseif section = "form">
         <div class="greetings">
-            <a href="${url.loginUrl}"><img class="brand-title" src="${url.resourcesPath}/img/login/Logo-Weni.svg"></a>
-
             ${msg("greetings")}
         </div>
         <div class="form-header">
-            ${msg("emailInstruction")}
+            ${msg("loginResetInstructions")}
         </div>
         <form id="kc-reset-password-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <div class="${properties.kcFormGroupClass!}">
