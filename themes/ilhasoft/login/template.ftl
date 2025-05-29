@@ -257,6 +257,13 @@
                     passwordConfirm: '',
                     seePassword: false,
                     seePasswordConfirm: false,
+                    passwordRules: {
+                        lowercase: false,
+                        uppercase: false,
+                        number: false,
+                        specialChar: false,
+                        minLength: false,
+                    },
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
                     loginUsername: '',
@@ -300,6 +307,18 @@
                 language() {
                     return kc2UnnnicLanguages[this.keycloakCurrentLanguage];
                 },
+            },
+
+            watch: {
+                <#if displayRegisterScriptsAndStyles>
+                password(newPassword) {
+                    this.passwordRules.lowercase = /[a-z]/.test(newPassword);
+                    this.passwordRules.uppercase = /[A-Z]/.test(newPassword);
+                    this.passwordRules.number = /[0-9]/.test(newPassword);
+                    this.passwordRules.specialChar = /[^a-zA-Z0-9]/.test(newPassword);
+                    this.passwordRules.minLength = newPassword.length >= 8;
+                }
+                </#if>
             },
 
             mounted() {

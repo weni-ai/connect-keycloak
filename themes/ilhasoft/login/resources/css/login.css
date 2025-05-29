@@ -641,6 +641,7 @@ a:has(.brand-title) {
     align-items: center;
     font-weight: var(--unnic-font-weight-bold);
     margin: 24px auto;
+    width: 100%;
 }
 
 .separator {
@@ -944,7 +945,7 @@ a:has(.brand-title) {
 
     text-decoration-line: underline;
     text-underline-offset: 4px;
-    color: var(--color-weni-700, #028380);
+    color: var(--color-neutral-dark, #4E5666);
 }
 
 .register-form-row-email {
@@ -952,10 +953,47 @@ a:has(.brand-title) {
 }
 
 .register-form-row-password {
-    display: grid;
-    grid-gap: 24px 12px;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     margin-bottom: 24px;
+}
+
+.register-form-row-password-confirm {
+    margin-bottom: 24px;
+}
+
+.password-strength-rules {
+    margin-top: 8px;
+}
+
+.password-strength-columns {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 128px;
+    margin-top: 16px;
+}
+
+.password-strength-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.password-strength-rules .rule {
+    display: flex;
+    align-items: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--unnic-color-neutral-cloudy, #67738B);
+}
+
+.password-strength-rules .rule .unnnic-icon {
+    margin-right: 4px;
+}
+
+.password-strength-rules .rule.valid span {
+    color: var(--unnic-color-aux-green-500, #38A169);
+    font-weight: var(--unnic-font-weight-bold);
 }
 
 .register-form-row-password .password-strength {
@@ -1006,6 +1044,9 @@ a:has(.brand-title) {
 @media (max-width: 600px) {
     .register-form-row-password {
         grid-template-columns: 1fr;
+    }
+    .password-strength-columns {
+        padding-right: 0;
     }
 }
 
