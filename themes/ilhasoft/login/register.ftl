@@ -8,15 +8,6 @@
                 </div>
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
                     <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
-                        <button type="button" class="social-button button-control" id="button-x">
-                            a
-                        </button>
-                        <button type="button" class="social-button button-control" id="button-x">
-                            b
-                        </button>
-                        <button type="button" class="social-button button-control" id="button-x">
-                            c
-                        </button>
                         <#if realm.password?? && social.providers??>
                             <#list social.providers as p>
                                 <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
