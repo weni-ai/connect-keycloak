@@ -1174,7 +1174,7 @@ a:has(.brand-title) {
 
 .custom-header-content {
     height: 100%;
-    margin-top: 32px;
+    align-content: center;
 }
 
 .reset-password-buttons {
