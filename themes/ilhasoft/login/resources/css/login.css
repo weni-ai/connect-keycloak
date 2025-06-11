@@ -1281,3 +1281,9 @@ a:has(.brand-title) {
     justify-content: flex-end;
     gap: 12px;
 }
+
+.card-pf .left-side-content .brand-logo-link .brand-logo {
+    position: absolute;
+    margin-top: 3.25rem;
+    margin-left: 13.05vh;
+}
