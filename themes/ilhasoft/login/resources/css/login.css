@@ -324,7 +324,9 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .language-select.top {
-    margin-right: -180px;
+    position: absolute;
+    right: 0;
+    margin-right: 13.05vh;
 }
 
 .card-pf #kc-content .language-select.bottom {
@@ -1174,7 +1176,7 @@ a:has(.brand-title) {
 
 .custom-header-content {
     height: 100%;
-    margin-top: 32px;
+    align-content: center;
 }
 
 .reset-password-buttons {
@@ -1280,4 +1282,10 @@ a:has(.brand-title) {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
+}
+
+.card-pf .left-side-content .brand-logo-link .brand-logo {
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 13.05vh;
 }
