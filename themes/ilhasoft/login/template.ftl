@@ -266,6 +266,7 @@
                         number: false,
                         specialChar: false,
                         minLength: false,
+                        passwordEquals: false,
                     },
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
@@ -320,6 +321,10 @@
                     this.passwordRules.number = /[0-9]/.test(newPassword);
                     this.passwordRules.specialChar = /[^a-zA-Z0-9]/.test(newPassword);
                     this.passwordRules.minLength = newPassword.length >= 8;
+                    this.passwordRules.passwordEquals = newPassword === this.passwordConfirm && this.passwordConfirm.length > 0;
+                },
+                passwordConfirm(newPasswordConfirm) {
+                    this.passwordRules.passwordEquals = this.password === newPasswordConfirm && newPasswordConfirm.length > 0;
                 }
                 </#if>
             },
@@ -336,6 +341,7 @@
                     this.passwordRules.number = /[0-9]/.test(this.password);
                     this.passwordRules.specialChar = /[^a-zA-Z0-9]/.test(this.password);
                     this.passwordRules.minLength = this.password.length >= 8;
+                    this.passwordRules.passwordEquals = this.password === this.passwordConfirm && this.passwordConfirm.length > 0;
                 }
                 </#if>
                 
