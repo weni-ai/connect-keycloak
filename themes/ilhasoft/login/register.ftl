@@ -101,6 +101,10 @@
                                             <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.minLength ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
                                             <span>${msg('password_step_4')}</span>
                                         </div>
+                                        <div class="rule" :class="{ 'valid': passwordRules.passwordEquals }" v-if="passwordConfirm">
+                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.passwordEquals ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                            <span>${msg('password_step_6')}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +156,7 @@
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                         <unnnic-button class="login-button" size="large" text="${msg('createAccount')}" type="primary"
-                            :disabled="!email || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordConfirm || password !== passwordConfirm"></unnnic-button>
+                            :disabled="!email || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordRules.passwordEquals || !passwordConfirm"></unnnic-button>
                     </div>
 
 
