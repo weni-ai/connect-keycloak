@@ -38,12 +38,23 @@
             if (message === 'verifyEmail') {
                 const restartLogin = "${url.loginRestartFlowUrl}";
 
-                location.href = restartLogin;
+                window.location.href = restartLogin;
             }
         };
     </script>
+    <script>
+        // Shim for process.env which some npm packages expect
+        window.process = window.process || { env: { NODE_ENV: 'production' } };
+    </script>
     <script src="${url.resourcesPath}/vue/vue.min.js"></script>
     <#--  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>  -->
+    <script>
+        // Vue 2 compatibility shim - add Vue.use as no-op to prevent Unnnic auto-install errors
+        // Unnnic will be properly registered later using app.use()
+        window.Vue.use = function(plugin, options) {
+            console.log('Vue.use shim: captured plugin for later registration');
+        };
+    </script>
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
     <script src="${url.resourcesPath}/vue/modal-dialog.js"></script>
     <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
@@ -229,50 +240,51 @@
             VTEXAppEmail = new URLSearchParams(vtexApp || '').get('email');
         }
 
-        new Vue({
-            el: '#app',
-            data: {
-                registerPasswordFocused: false,
-                registerPasswordConfirmFocused: false,
-                emailSentModal: true,
-                VTEXAppEmail,
-                usernameInput: VTEXAppEmail || '${(login.username!'')}',
-                passwordInput: '',
-                <#if realm.internationalizationEnabled>
-                    keycloakCurrentLanguage:
-                        <#list locale.supported as l>
-                            <#if l.label == locale.current>
-                                "${l.languageTag}",
-                            </#if>
-                        </#list>
-                    keycloakLanguages: {
-                        <#list locale.supported as l>
-                            "${l.languageTag}": convert("${l.url}"),
-                        </#list>
-                    },
-                </#if>
-                <#if displayRegisterScriptsAndStyles>
-                    firstName: convert('${(register.formData.firstName!"")}'),
-                    lastName: convert('${(register.formData.lastName!"")}'),
-                    email: convert('${(register.formData.email!"")}'),
-                    username: convert('${(register.formData.username!"")}'),
-                    password: convert('${(register.formData.password!"")}'),
-                    passwordConfirm: '',
-                    seePassword: false,
-                    seePasswordConfirm: false,
-                    passwordRules: {
-                        lowercase: false,
-                        uppercase: false,
-                        number: false,
-                        specialChar: false,
-                        minLength: false,
-                        passwordEquals: false,
-                    },
-                </#if>
-                <#if displayLoginFormScriptsAndStyles>
-                    loginUsername: '',
-                    loginPassword: '',
-                </#if>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    registerPasswordFocused: false,
+                    registerPasswordConfirmFocused: false,
+                    emailSentModal: true,
+                    VTEXAppEmail,
+                    usernameInput: VTEXAppEmail || '${(login.username!'')}',
+                    passwordInput: '',
+                    <#if realm.internationalizationEnabled>
+                        keycloakCurrentLanguage:
+                            <#list locale.supported as l>
+                                <#if l.label == locale.current>
+                                    "${l.languageTag}",
+                                </#if>
+                            </#list>
+                        keycloakLanguages: {
+                            <#list locale.supported as l>
+                                "${l.languageTag}": convert("${l.url}"),
+                            </#list>
+                        },
+                    </#if>
+                    <#if displayRegisterScriptsAndStyles>
+                        firstName: convert('${(register.formData.firstName!"")}'),
+                        lastName: convert('${(register.formData.lastName!"")}'),
+                        email: convert('${(register.formData.email!"")}'),
+                        username: convert('${(register.formData.username!"")}'),
+                        password: convert('${(register.formData.password!"")}'),
+                        passwordConfirm: '',
+                        seePassword: false,
+                        seePasswordConfirm: false,
+                        passwordRules: {
+                            lowercase: false,
+                            uppercase: false,
+                            number: false,
+                            specialChar: false,
+                            minLength: false,
+                            passwordEquals: false,
+                        },
+                    </#if>
+                    <#if displayLoginFormScriptsAndStyles>
+                        loginUsername: '',
+                        loginPassword: '',
+                    </#if>
+                };
             },
 
             computed: {
@@ -406,6 +418,16 @@
             },
 
             methods: {
+                // Expose sanitizeHtml to Vue template (loaded from sanatize-1.js)
+                sanitizeHtml(input) {
+                    return window.sanitizeHtml ? window.sanitizeHtml(input) : input;
+                },
+
+                // Navigate to a URL (window.location is not accessible in Vue 3 templates)
+                navigateTo(url) {
+                    window.location.href = url;
+                },
+
                 isEmailValid(email) {
                     if (!email) return false;
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -430,6 +452,34 @@
                 },
             },
         });
+
+        // Register Unnnic components with Vue 3 app
+        if (window.Unnnic) {
+            // Register the specific Unnnic components used in this theme
+            const componentsToRegister = {
+                'unnnic-language-select': window.Unnnic.unnniclanguageSelect,
+                'unnnic-icon': window.Unnnic.unnnicIcon,
+                'unnnic-form-element': window.Unnnic.unnnicFormElement,
+                'unnnic-input': window.Unnnic.unnnicInput,
+                'unnnic-button': window.Unnnic.unnnicButton,
+                'unnnic-checkbox': window.Unnnic.unnnicCheckbox,
+                'unnnic-alert': window.Unnnic.unnnicAlert,
+            };
+            
+            Object.entries(componentsToRegister).forEach(([name, component]) => {
+                if (component) {
+                    app.component(name, component);
+                } else {
+                    console.warn('Unnnic component not found:', name);
+                }
+            });
+        }
+        
+        // Register modal-dialog component
+        app.component('modal-dialog', ModalDialog);
+        
+        // Mount the app
+        app.mount('#app');
     </script>
 
     <script src="https://cdn.ingest-lr.com/LogRocket.min.js" crossorigin="anonymous"></script>

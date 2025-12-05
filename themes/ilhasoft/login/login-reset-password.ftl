@@ -30,8 +30,8 @@
 
                 <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} reset-password-buttons">
                     <unnnic-button class="" size="large"
-                    text="${msg('cancel')}" type="terciary"
-                    @click.prevent="location.href = '${url.loginUrl}'"></unnnic-button>
+                    text="${msg('cancel')}" type="secondary"
+                    @click.prevent="navigateTo('${url.loginUrl}')"></unnnic-button>
                     <unnnic-button id="required-input-button" class="login-button" size="large" text="${msg('confirm')}"
                     type="primary" native-type="submit" :disabled="!isEmailValid(usernameInput)"></unnnic-button>
                 </div>
@@ -42,8 +42,8 @@
                     <p class="sign-up-button-text">${msg('signUpForFree')}</p>
                 </section>
                 <unnnic-button class="sign-up-button" size="large"
-                text="${msg('doRegisterForFree')}" type="terciary"
-                @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+                text="${msg('doRegisterForFree')}" type="secondary"
+                @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
             </section>
             <div class="footer">
                 <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">

@@ -1,4 +1,4 @@
-Vue.component('modal-dialog', {
+const ModalDialog = {
   props: {
     text: String,      
     modalIcon: String, 
@@ -45,4 +45,4 @@ Vue.component('modal-dialog', {
       this.$emit('close');
     }
   }
-}); 
+};
