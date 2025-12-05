@@ -148,19 +148,19 @@
     --unnnic-font-caption-2: 400 calc(0.75 * var(--unnnic-font-size)) /* 12px */ / calc(1.125 * var(--unnnic-font-size)) /* 18px */ Lato;
 
     /* Icon size */
-    --unnnic-icon-size-3: 0.75 * 16px /* 12px */;
+    --unnnic-icon-size-3: calc(0.75 * 16px) /* 12px */;
     --unnnic-icon-size-4: 16px /* 16px */;
-    --unnnic-icon-size-5: 1.25 * 16px /* 20px */;
-    --unnnic-icon-size-6: 1.5 * 16px /* 24px */;
-    --unnnic-icon-size-7: 2 * 16px /* 32px */;
-    --unnnic-icon-size-10: 2.5 * 16px /* 40px */;
+    --unnnic-icon-size-5: calc(1.25 * 16px) /* 20px */;
+    --unnnic-icon-size-6: calc(1.5 * 16px) /* 24px */;
+    --unnnic-icon-size-7: calc(2 * 16px) /* 32px */;
+    --unnnic-icon-size-10: calc(2.5 * 16px) /* 40px */;
 
     /* Border radius */
     --unnnic-radius-0: 0 /* 0px */;
-    --unnnic-radius-1: 0.25 * 16px /* 4px */;
-    --unnnic-radius-2: 0.5 * 16px /* 8px */;
-    --unnnic-radius-3: 0.75 * 16px /* 12px */;
-    --unnnic-radius-4: 1 * 16px /* 16px */;
+    --unnnic-radius-1: calc(0.25 * 16px) /* 4px */;
+    --unnnic-radius-2: calc(0.5 * 16px) /* 8px */;
+    --unnnic-radius-3: calc(0.75 * 16px) /* 12px */;
+    --unnnic-radius-4: calc(1 * 16px) /* 16px */;
     --unnnic-radius-full: 1000px;
 
     /* Border width */
@@ -170,8 +170,8 @@
     --unnnic-border-width-thick: 4px;
 
     /* Shadow levels */
-    --unnnic-shadow-1: 0px 0.25 * 16px /* 4px */ 16px /* 16px */ 0px rgba(0, 0, 0, 0.16);
-    --unnnic-shadow-2: 0px 1.5 * 16px /* 24px */ 3 * 16px /* 48px */ 0px rgba(0, 0, 0, 0.16);
+    --unnnic-shadow-1: 0px calc(0.25 * 16px) /* 4px */ 16px /* 16px */ 0px rgba(0, 0, 0, 0.16);
+    --unnnic-shadow-2: 0px calc(1.5 * 16px) /* 24px */ calc(3 * 16px) /* 48px */ 0px rgba(0, 0, 0, 0.16);
     
     /* Opacity levels */
     --unnnic-opacity-level-darkest: 0.8;
@@ -182,19 +182,17 @@
 
     /* Spacing */
     --unnnic-space-0: 0 /* 0px */;
-    --unnnic-space-1: 0.25 * 16px /* 4px */;
-    --unnnic-space-2: 0.5 * 16px /* 8px */;
-    --unnnic-space-3: 0.75 * 16px /* 12px */;
-    --unnnic-space-4: 1 * 16px /* 16px */;
-    --unnnic-space-5: 1.25 * 16px /* 20px */;
-    --unnnic-space-6: 1.5 * 16px /* 24px */;
-    --unnnic-space-7: 1.75 * 16px /* 28px */;
-    --unnnic-space-8: 2 * 16px /* 32px */;
-    --unnnic-space-10: 2.5 * 16px /* 40px */;
-    --unnnic-space-12: 3 * 16px /* 48px */;
-    --unnnic-space-16: 4 * 16px /* 64px */;
-    --unnnic-space-20: 5 * 16px /* 80px */;
-    --unnnic-space-05: 0.125 * 16px /* 2px */;
+    --unnnic-space-05: calc(0.125 * 16px) /* 2px */;
+    --unnnic-space-1: calc(0.25 * 16px) /* 4px */;
+    --unnnic-space-2: calc(0.5 * 16px) /* 8px */;
+    --unnnic-space-3: calc(0.75 * 16px) /* 12px */;
+    --unnnic-space-4: calc(1 * 16px) /* 16px */;
+    --unnnic-space-5: calc(1.25 * 16px) /* 20px */;
+    --unnnic-space-6: calc(1.5 * 16px) /* 24px */;
+    --unnnic-space-7: calc(1.75 * 16px) /* 28px */;
+    --unnnic-space-8: calc(2 * 16px) /* 32px */;
+    --unnnic-space-10: calc(2.5 * 16px) /* 40px */;
+    --unnnic-space-12: calc(3 * 16px) /* 48px */;
+    --unnnic-space-16: calc(4 * 16px) /* 64px */;
+    --unnnic-space-20: calc(5 * 16px) /* 80px */;
 }
-
-
