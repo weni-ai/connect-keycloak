@@ -3,59 +3,56 @@
 }
 
 #kc-totp-settings-form, #kc-totp-settings, .kc-otp-header, #kc-totp-settings-form > .form-group label {
-  font-family: var(--unnic-font-family-secondary);
-  color: var(--unnic-color-neutral-cloudy);
-  font-size: var(--unnic-font-size-body-gt);
-  line-height: calc(var(--unnic-line-height-md)+var(--unnic-font-size-body-gt));
+  color: var(--unnnic-color-gray-400);
+  font: var(--unnnic-font-body);
 }
 
 .kc-otp-header .totp-title {
   display: flex;
   align-items: center;
-  margin-bottom: var(--unnic-spacing-stack-md );
+  margin-bottom: var(--unnnic-space-6 );
 }
 .kc-otp-header .totp-title h1 {
-  font-size: var(--unnic-font-size-title-sm);
-  font-weight: var(--unnic-font-weight-regular);
-  color: var(--unnic-color-neutral-darkest);
-  margin:0 0 0 var(--unnic-spacing-stack-sm);
+  font: var(--unnnic-font-display-2);
+  font-weight: var(--unnnic-font-weight-regular);
+  color: var(--unnnic-color-fg-emphasized);
+  margin:0 0 0 var(--unnnic-space-4);
 
 }
 
 .kc-otp-header .totp-title .icon {
-  padding: var(--unnic-spacing-stack-nano);
-  background-color: rgba(var(--unnic-color-aux-blue-rgb), 0.08);
-  border-radius: var(--unnic-border-radius-sm);
-  font-size: var(--unnic-icon-size-sm);
-  color: var(--unnic-color-aux-blue);
+  padding: var(--unnnic-space-1);
+  background-color: rgba(var(--unnnic-color-aux-blue-rgb), 0.08);
+  border-radius: var(--unnnic-radius-1);
+  font-size: var(--unnnic-icon-size-4);
+  color: var(--unnnic-color-teal-400);
 }
 
 
 /* info */
 .kc-otp-header .totp-info {
-  padding: var(--unnic-inset-xs);
-  background-color: var(--unnic-color-background-carpet);
-  color: var(--unnic-color-neutral-dark);
+  padding: var(--unnnic-space-3);
+  background-color: var(--unnnic-color-bg-soft);
+  color: var(--unnnic-color-gray-700);
   display: flex;
   align-items: center;
-  border-radius: var(--unnic-border-radius-sm);
+  border-radius: var(--unnnic-radius-1);
 }
 
 .kc-otp-header .totp-info .totp-info__text {
-  font-size: var(--unnic-font-size-body-gt);
-  line-height: calc(var(--unnic-line-height-md)+var(--unnic-font-size-body-gt));
-  margin-left: var(--unnic-spacing-stack-xs);
+  font: var(--unnnic-font-body);
+  margin-left: var(--unnnic-space-2);
 }
 
 .kc-otp-header .totp-info .icon {
-  color: var(--unnic-color-feedback-yellow);
-  font-size: var(--unnic-icon-size-sm);
+  color: var(--unnnic-color-fg-warning);
+  font-size: var(--unnnic-icon-size-4);
 }
 
 .totp-start-instructions {
-  margin-top: var(--unnic-spacing-stack-lg);
+  margin-top: var(--unnnic-space-8);
 }
 
 #kc-totp-settings-form > div {
-  margin-bottom: var(--unnic-spacing-stack-sm);
+  margin-bottom: var(--unnnic-space-4);
 }
