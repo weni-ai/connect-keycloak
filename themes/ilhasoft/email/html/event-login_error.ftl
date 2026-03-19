@@ -3,7 +3,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..600;1,14..32,400..600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -13,9 +13,9 @@
             <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
           </header>
           <section style="width: 574px; min-height: 280px; margin: 50px auto;">
-            <div style="font-family: Lato; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #808080;"> Hi, <span style="font-family: Lato;color: #262626; font-size: 20px; font-weight: bold; font-style: normal;">${user.firstName}!</span></div>
+            <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #808080;"> Hi, <span style="font-family: 'Inter', sans-serif;color: #262626; font-size: 20px; font-weight: bold; font-style: normal;">${user.firstName}!</span></div>
             
-            <div style="font-family: Lato; font-weight: bold; font-size: 20px; line-height: 28px; color: #262626; margin-top: 24px;">
+            <div style="font-family: 'Inter', sans-serif; font-weight: bold; font-size: 20px; line-height: 28px; color: #262626; margin-top: 24px;">
               ${msg("eventLoginErrorBodyHtml",event.date,event.ipAddress)?no_esc}
             </div>
             

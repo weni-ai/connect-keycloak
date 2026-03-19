@@ -3,7 +3,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..600;1,14..32,400..600&display=swap" rel="stylesheet">
     </head>
     
     <body>
@@ -19,7 +19,7 @@
                 ${msg("passwordResetBodyText2Html", linkExpiration)?no_esc}
                 
                 <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3B414D;color: #FFFFFF;font-size: 16px;
-                font-family: Lato;margin-top:20px;border-radius: 4px; padding: 1px 0;">
+                font-family: 'Inter', sans-serif;margin-top:20px;border-radius: 4px; padding: 1px 0;">
                   ${msg("passwordResetBodyHtml",link)?no_esc}
                 </div>
               </section>

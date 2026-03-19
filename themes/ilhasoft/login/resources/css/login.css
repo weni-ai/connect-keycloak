@@ -235,7 +235,7 @@ button,
 }
 
 .card-pf .left-side-content .benefits .title {
-    font-family: 'Aleo', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 28px;
@@ -253,7 +253,7 @@ button,
 
 .card-pf .left-side-content .benefits .benefits-list .benefit {
     padding-left: 20px;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -342,7 +342,7 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .greetings {
-    font-family: 'Aleo', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     line-height: 28px;
     font-weight: 400;
@@ -351,7 +351,7 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .greetings-description {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
@@ -379,7 +379,7 @@ a:has(.brand-title) {
 .card-pf #kc-content .footer a.privacy-policy {
     margin-top: 40px;
     display: inline-block;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     line-height: 24px;
     font-weight: 400;
@@ -521,7 +521,7 @@ a:has(.brand-title) {
 }
 
 .social-button {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     line-height: 20px;
     font-weight: 400;
@@ -698,7 +698,7 @@ a:has(.brand-title) {
 .alert {
     padding: 16px;
     margin-bottom: 24px;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -920,7 +920,7 @@ a:has(.brand-title) {
 .back-to-login {
     margin-top: 24px;
 
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -967,7 +967,7 @@ a:has(.brand-title) {
 .password-strength-rules .rule {
     display: flex;
     align-items: center;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -984,7 +984,7 @@ a:has(.brand-title) {
 }
 
 .register-form-row-password .password-strength {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 400;
     line-height: 20px;
@@ -1041,7 +1041,7 @@ a:has(.brand-title) {
     margin-top: -8px;
     margin-bottom: 24px;
 
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -1139,7 +1139,7 @@ a:has(.brand-title) {
 
 .sign-up-button-text {
     color: #4E5666;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -1188,7 +1188,7 @@ a:has(.brand-title) {
     width: 100%;
     position: relative;
     text-align: left;
-    font-family: var(--unnnic-font-family, Lato);
+    font-family: var(--unnnic-font-family, 'Inter', sans-serif);
 }
 
 .modal-dialog-close-button {
