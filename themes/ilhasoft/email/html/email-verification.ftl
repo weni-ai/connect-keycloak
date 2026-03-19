@@ -9,40 +9,40 @@
 <body>
     <div>
         <div style="width: 670px; min-height: 724px;">
-          <header style="width: 670px; height: 52px; border-bottom: 1px solid #E2E6ED;"> 
+          <header style="width: 670px; height: 52px; border-bottom: 1px solid #E0E0E0;"> 
             <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
           </header>
           <section style="width: 574px; margin: 48px auto;">
-            <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #808080;"> ${msg("emailVerificationWelcome",user.firstName)?no_esc}</div>
+            <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #707070;"> ${msg("emailVerificationWelcome",user.firstName)?no_esc}</div>
             
-            <div style="font-family: 'Inter', sans-serif; font-weight: bold; font-size: 20px; line-height: 28px; color: #262626; margin-top: 24px;">
+            <div style="font-family: 'Inter', sans-serif; font-weight: bold; font-size: 20px; line-height: 28px; color: #1F1F1F; margin-top: 24px;">
               ${msg("emailVerificationConfirmation")?no_esc}
             </div>
             
             ${msg("emailVerificationText", linkExpiration)?no_esc}
             
-            <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3B414D;color: #FFFFFF;font-size: 16px;
+            <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3D3D3D;color: #FFFFFF;font-size: 16px;
             font-family: 'Inter', sans-serif;margin-top:20px;border-radius: 4px; padding: 1px 0;">
               ${msg("emailVerificationConfirmationButton", link)?no_esc}
             </div>
 
             <div style="font-family: 'Inter', sans-serif;  font-style: normal; font-weight: normal;
-             font-size: 16px; line-height: 24px; color: #808080; margin-top: 48px;">
-             ${msg("emailVerificationScheduleChat")?no_esc} <a target="_blank" href="https://bit.ly/chat_weni" style="color: #808080;">${msg("emailVerificationScheduleChatLink")?no_esc}</a> 
+             font-size: 16px; line-height: 24px; color: #707070; margin-top: 48px;">
+             ${msg("emailVerificationScheduleChat")?no_esc} <a target="_blank" href="https://bit.ly/chat_weni" style="color: #707070;">${msg("emailVerificationScheduleChatLink")?no_esc}</a> 
             </div>
 
           </section>
           
-          <footer style="width: 670px;height: 150px; border-top: 1px solid #E2E6ED; border-bottom: 8px solid #262626;margin: auto; text-align: center;">
+          <footer style="width: 670px;height: 150px; border-top: 1px solid #E0E0E0; border-bottom: 8px solid #1F1F1F;margin: auto; text-align: center;">
  
             <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo-small.png" alt="Weni-Logo" style="margin: 15px 0;"/>
 
 
             <div style="width: 450px; font-size: 12px;line-height: 20px;margin: auto;">
-              <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">${msg("emailAccessOurSite")?no_esc}</a>
-              <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Facebook</a>
-              <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Instagram</a>
-              <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Twitter</a>
+              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">${msg("emailAccessOurSite")?no_esc}</a>
+              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Facebook</a>
+              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Instagram</a>
+              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Twitter</a>
             </div>
           
           ${msg("emailCopyright")?no_esc}

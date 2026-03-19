@@ -268,7 +268,7 @@ button,
 }
 
 .card-pf .left-side-content .benefits .benefits-list .benefit .unnnic-icon .primary {
-    fill: #F9F9F9;
+    fill: #F5F5F5;
 }
 
 .card-pf #kc-content {
@@ -607,7 +607,7 @@ a:has(.brand-title) {
 }
 
 .btn-secondary {
-    background-color: rgba(#E2E6ED, 0.16);
+    background-color: rgba(#E0E0E0, 0.16);
     color: var(--unnnic-color-gray-700);
     border: var(--unnnic-border-width-thinner) solid var(--unnnic-color-bg-muted);
 }
@@ -1138,7 +1138,7 @@ a:has(.brand-title) {
 }
 
 .sign-up-button-text {
-    color: #4E5666;
+    color: #5C5C5C;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;

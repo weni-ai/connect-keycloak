@@ -9,7 +9,7 @@
     <body>
         <div>
             <div style="width: 670px; min-height: 724px;">
-            <header style="width: 670px; height: 52px; border-bottom: 1px solid #E2E6ED;"> 
+            <header style="width: 670px; height: 52px; border-bottom: 1px solid #E0E0E0;"> 
                 <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
               </header>
               <section style="width: 574px; margin: 48px auto;">
@@ -18,21 +18,21 @@
                 
                 ${msg("passwordResetBodyText2Html", linkExpiration)?no_esc}
                 
-                <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3B414D;color: #FFFFFF;font-size: 16px;
+                <div style="cursor:pointer; margin: auto; width: 400px; text-align: center;background: #3D3D3D;color: #FFFFFF;font-size: 16px;
                 font-family: 'Inter', sans-serif;margin-top:20px;border-radius: 4px; padding: 1px 0;">
                   ${msg("passwordResetBodyHtml",link)?no_esc}
                 </div>
               </section>
               
-              <footer style="width: 670px;height: 150px; border-top: 1px solid #E2E6ED; border-bottom: 8px solid #262626;margin: auto; text-align: center;">
+              <footer style="width: 670px;height: 150px; border-top: 1px solid #E0E0E0; border-bottom: 8px solid #1F1F1F;margin: auto; text-align: center;">
  
                 <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo-small.png" alt="Weni-Logo" style="margin: 15px 0;"/>
   
                 <div style="width: 450px; font-size: 12px;line-height: 20px;margin: auto;">
-                  <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">${msg("emailAccessOurSite")?no_esc}</a>
-                  <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Facebook</a>
-                  <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Instagram</a>
-                  <a style="cursor: pointer;margin-right: 10px;color: #9CACCC;">Twitter</a>
+                  <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">${msg("emailAccessOurSite")?no_esc}</a>
+                  <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Facebook</a>
+                  <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Instagram</a>
+                  <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Twitter</a>
                 </div>
               
               ${msg("emailCopyright")?no_esc}
