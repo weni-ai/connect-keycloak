@@ -283,7 +283,7 @@
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
                     canLogin() {
-                        return this.usernameInput && this.usernameInput.trim().length > 0 && 
+                        return this.isEmailValid(this.usernameInput) && 
                                this.passwordInput && this.passwordInput.trim().length > 0;
                     },
                 </#if>

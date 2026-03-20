@@ -156,7 +156,7 @@
 
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                         <unnnic-button class="login-button" size="large" text="${msg('createAccount')}" type="primary"
-                            :disabled="!email || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordRules.passwordEquals || !passwordConfirm"></unnnic-button>
+                            :disabled="!isEmailValid(email) || !password || !passwordRules.lowercase || !passwordRules.uppercase || !passwordRules.number || !passwordRules.specialChar || !passwordRules.minLength || !passwordRules.passwordEquals || !passwordConfirm"></unnnic-button>
                     </div>
 
 
