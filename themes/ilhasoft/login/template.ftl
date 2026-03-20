@@ -126,17 +126,12 @@
                 <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
                     <#-- Alert positioned here to appear after greetings with CSS order -->
                     <#if displayMessage && message?has_content>
-                        <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
-                        <#elseif (message.summary == msg("emailSentMessage"))>
-                            <#-- Email sent modal handled above -->
-                        <#else>
-                            <div class="alert alert-${message.type} form-alert">
-                                <#if message.type = 'success'></#if>
-                                <#if message.type = 'warning'></#if>
-                                <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
-                                <#if message.type = 'info'></#if>
-                                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-                            </div>
+                        <#if (message.summary != msg("loginTimeout")) && (message.summary != msg("verifyEmailMessage")) && (message.summary != msg("emailSentMessage"))>
+                            <unnnic-disclaimer
+                                class="login-disclaimer"
+                                type="<#if message.type = 'error'>error<#elseif message.type = 'warning'>attention<#elseif message.type = 'success'>success<#else>informational</#if>"
+                                description="${kcSanitize(message.summary)}"
+                            ></unnnic-disclaimer>
                         </#if>
                     </#if>
                     <#nested "form">
@@ -446,6 +441,7 @@
                 'unnnic-button': window.Unnnic.unnnicButton,
                 'unnnic-checkbox': window.Unnnic.unnnicCheckbox,
                 'unnnic-alert': window.Unnnic.unnnicAlert,
+                'unnnic-disclaimer': window.Unnnic.unnnicDisclaimer,
             };
             
             Object.entries(componentsToRegister).forEach(([name, component]) => {
