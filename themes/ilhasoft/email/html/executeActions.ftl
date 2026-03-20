@@ -36,7 +36,7 @@
               <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Twitter</a>
             </div>
           
-          ${msg("emailCopyright")?no_esc}
+          ${msg("emailCopyright", .now?string("yyyy"))?no_esc}
         </footer>
             </div>
         </div>
