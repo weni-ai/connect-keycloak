@@ -13,7 +13,7 @@
             <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Logo" style="margin-left: 24px; margin-top: 10px;"/>
           </header>
           <section style="width: 574px; margin: 48px auto;">
-            <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #707070;"> ${msg("emailVerificationWelcome",user.firstName)?no_esc}</div>
+            <div style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; color: #707070;"> ${msg("emailVerificationWelcome")?no_esc}</div>
             
             <div style="font-family: 'Inter', sans-serif; font-weight: bold; font-size: 20px; line-height: 28px; color: #1F1F1F; margin-top: 24px;">
               ${msg("eventUpdatePasswordBodyHtml",event.date, event.ipAddress)?no_esc}
