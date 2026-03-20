@@ -12,7 +12,7 @@
         <unnnic-form-element
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
             <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput"
-                placeholder="${msg('placeholderLoginName')}" name="username"
+                placeholder="${msg('placeholderLoginName')}" name="username" autocomplete="username"
                 :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus @input="usernameInput = sanitizeHtml(usernameInput)"></unnnic-input>
         </unnnic-form-element>
 
@@ -25,6 +25,7 @@
                 :native-type="loginPasswordVisible ? 'text' : 'password'"
                 placeholder="${msg('placeholderLoginPassword')}"
                 name="password"
+                autocomplete="current-password"
                 @input="passwordInput = sanitizeHtml(passwordInput)"
                 @icon-right-click="toggleLoginPasswordVisibility"
             ></unnnic-input>
