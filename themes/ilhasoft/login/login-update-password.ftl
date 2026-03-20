@@ -32,9 +32,11 @@
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div class="${properties.kcFormOptionsWrapperClass!}">
                         <#if isAppInitiatedAction??>
-                            <div class="checkbox">
-                                <label><input type="checkbox" id="logout-sessions" name="logout-sessions" value="on" checked> ${msg("logoutOtherSessions")}</label>
-                            </div>
+                            <input type="hidden" name="logout-sessions" :value="logoutSessions ? 'on' : 'off'" />
+                            <unnnic-checkbox
+                              v-model="logoutSessions"
+                              :text-right="'${msg("logoutOtherSessions")}'"
+                            ></unnnic-checkbox>
                         </#if>
                     </div>
                 </div>
