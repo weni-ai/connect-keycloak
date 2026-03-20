@@ -6,12 +6,12 @@
     <#elseif section = "form">
         <div class="kc-otp-header">
             <div class="totp-title">
-                <span class="icon icon-lock-2-1"></span>
+                <unnnic-icon icon="lock" scheme="neutral-darkest" size="md"></unnnic-icon>
                 <h1>${msg("loginOtpTitle")}</h1>
             </div>
 
             <div class="totp-info">
-                <span class="icon icon-information-circle-4"></span>
+                <unnnic-icon icon="info" scheme="neutral-darkest" size="md"></unnnic-icon>
                 <span class="totp-info__text">${msg("loginOtpInfo")}</span>
             </div>
 

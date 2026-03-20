@@ -59,6 +59,7 @@
     <script src="${url.resourcesPath}/vue/modal-dialog.js"></script>
     <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
 </head>
 
 <body class="${properties.kcBodyClass!}" style="display: none;">
@@ -283,6 +284,7 @@
                     <#if displayLoginFormScriptsAndStyles>
                         loginUsername: '',
                         loginPassword: '',
+                        loginPasswordVisible: false,
                     </#if>
                 };
             },
@@ -449,6 +451,10 @@
 
                 closeEmailSentModal() {
                     this.emailSentModal = false;
+                },
+
+                toggleLoginPasswordVisibility() {
+                    this.loginPasswordVisible = !this.loginPasswordVisible;
                 },
             },
         });

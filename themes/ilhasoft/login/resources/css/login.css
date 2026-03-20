@@ -97,39 +97,6 @@ h1 {
     margin-right: var(--unnnic-space-1);
 }
 
-.icon {
-    font-size: var(--unnnic-icon-size-6);
-}
-
-.icon-image {
-    height: var(--unnnic-icon-size-6);
-    width: var(--unnnic-icon-size-6);
-}
-
-.icon-clickable {
-    cursor: pointer;
-}
-
-.icon-left,
-.icon-right {
-    top: 25%;
-    z-index: 1;
-}
-
-.icon-left {
-    position: absolute;
-    left: var(--unnnic-space-4);
-}
-
-.icon-right {
-    position: absolute;
-    right: var(--unnnic-space-4);
-}
-
-.icon-input {
-    color: var(--unnnic-color-bg-muted);
-}
-
 ::placeholder {
     color: var(--unnnic-color-gray-200);
     opacity: 1;
@@ -1262,4 +1229,7 @@ a:has(.brand-title) {
     position: absolute;
     margin-top: 2rem;
     margin-left: 13.05vh;
+    height: 40px;
+
+    filter: brightness(0) invert(1);
 }

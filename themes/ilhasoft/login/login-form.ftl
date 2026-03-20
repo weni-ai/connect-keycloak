@@ -17,8 +17,17 @@
         </unnnic-form-element>
 
         <unnnic-form-element label="${msg('password')}">
-            <unnnic-input ref="password" v-model="passwordInput" native-type="password"
-                placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password @input="passwordInput = sanitizeHtml(passwordInput)"></unnnic-input>
+            <unnnic-input
+                ref="password"
+                v-model="passwordInput"
+                :icon-right="loginPasswordVisible ? 'visibility_off' : 'visibility'"
+                icon-right-clickable
+                :native-type="loginPasswordVisible ? 'text' : 'password'"
+                placeholder="${msg('placeholderLoginPassword')}"
+                name="password"
+                @input="passwordInput = sanitizeHtml(passwordInput)"
+                @icon-right-click="toggleLoginPasswordVisibility"
+            ></unnnic-input>
         </unnnic-form-element>
 
         <div class="${properties.kcFormGroupClass!}">
