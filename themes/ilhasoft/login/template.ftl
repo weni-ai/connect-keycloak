@@ -172,32 +172,6 @@
     </div>
   </div>
     <style>
-        <#if displayLoginFormScriptsAndStyles>
-            #rememberMe {
-                display: none;
-            }
-
-            #rememberMe + label {
-                background: url('${url.resourcesPath}/img/login/checkbox-default.svg') no-repeat;
-                background-size: contain;
-                height: 16px;
-                width: 16px;
-                display:inline-block;
-                padding: 0;
-                margin: 0 6px 0 0;
-                cursor: pointer;
-            }
-
-            #rememberMe:checked + label {
-                background: url('${url.resourcesPath}/img/login/checkbox-select.svg') no-repeat;
-                background-size: contain;
-                height: 16px;
-                width: 16px;
-                display: inline-block;
-                padding: 0;
-            }
-        </#if>
-
         .login-pf-header .language-select {
             width: 12.5rem;
         }
@@ -248,8 +222,9 @@
                     registerPasswordConfirmFocused: false,
                     emailSentModal: true,
                     VTEXAppEmail,
-                    usernameInput: VTEXAppEmail || '${(login.username!'')}',
+                    usernameInput: VTEXAppEmail || '${((login.username)!'')}',
                     passwordInput: '',
+                    logoutSessions: true,
                     <#if realm.internationalizationEnabled>
                         keycloakCurrentLanguage:
                             <#list locale.supported as l>
@@ -285,6 +260,7 @@
                         loginUsername: '',
                         loginPassword: '',
                         loginPasswordVisible: false,
+                        rememberMe: <#if login?? && login.rememberMe??>true<#else>false</#if>,
                     </#if>
                 };
             },
