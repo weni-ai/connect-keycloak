@@ -126,17 +126,12 @@
                 <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
                     <#-- Alert positioned here to appear after greetings with CSS order -->
                     <#if displayMessage && message?has_content>
-                        <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
-                        <#elseif (message.summary == msg("emailSentMessage"))>
-                            <#-- Email sent modal handled above -->
-                        <#else>
-                            <div class="alert alert-${message.type} form-alert">
-                                <#if message.type = 'success'></#if>
-                                <#if message.type = 'warning'></#if>
-                                <#if message.type = 'error'><unnnic-icon icon="alert-circle-1-1" scheme="feedback-red"></unnnic-icon></#if>
-                                <#if message.type = 'info'></#if>
-                                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
-                            </div>
+                        <#if (message.summary != msg("loginTimeout")) && (message.summary != msg("verifyEmailMessage")) && (message.summary != msg("emailSentMessage"))>
+                            <unnnic-disclaimer
+                                class="login-disclaimer"
+                                type="<#if message.type = 'error'>error<#elseif message.type = 'warning'>attention<#elseif message.type = 'success'>success<#else>informational</#if>"
+                                description="${kcSanitize(message.summary)}"
+                            ></unnnic-disclaimer>
                         </#if>
                     </#if>
                     <#nested "form">
@@ -172,32 +167,6 @@
     </div>
   </div>
     <style>
-        <#if displayLoginFormScriptsAndStyles>
-            #rememberMe {
-                display: none;
-            }
-
-            #rememberMe + label {
-                background: url('${url.resourcesPath}/img/login/checkbox-default.svg') no-repeat;
-                background-size: contain;
-                height: 16px;
-                width: 16px;
-                display:inline-block;
-                padding: 0;
-                margin: 0 6px 0 0;
-                cursor: pointer;
-            }
-
-            #rememberMe:checked + label {
-                background: url('${url.resourcesPath}/img/login/checkbox-select.svg') no-repeat;
-                background-size: contain;
-                height: 16px;
-                width: 16px;
-                display: inline-block;
-                padding: 0;
-            }
-        </#if>
-
         .login-pf-header .language-select {
             width: 12.5rem;
         }
@@ -248,8 +217,9 @@
                     registerPasswordConfirmFocused: false,
                     emailSentModal: true,
                     VTEXAppEmail,
-                    usernameInput: VTEXAppEmail || '${(login.username!'')}',
+                    usernameInput: VTEXAppEmail || '${((login.username)!'')}',
                     passwordInput: '',
+                    logoutSessions: true,
                     <#if realm.internationalizationEnabled>
                         keycloakCurrentLanguage:
                             <#list locale.supported as l>
@@ -285,6 +255,7 @@
                         loginUsername: '',
                         loginPassword: '',
                         loginPasswordVisible: false,
+                        rememberMe: <#if login?? && login.rememberMe??>true<#else>false</#if>,
                     </#if>
                 };
             },
@@ -312,7 +283,7 @@
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
                     canLogin() {
-                        return this.usernameInput && this.usernameInput.trim().length > 0 && 
+                        return this.isEmailValid(this.usernameInput) && 
                                this.passwordInput && this.passwordInput.trim().length > 0;
                     },
                 </#if>
@@ -470,6 +441,7 @@
                 'unnnic-button': window.Unnnic.unnnicButton,
                 'unnnic-checkbox': window.Unnnic.unnnicCheckbox,
                 'unnnic-alert': window.Unnnic.unnnicAlert,
+                'unnnic-disclaimer': window.Unnnic.unnnicDisclaimer,
             };
             
             Object.entries(componentsToRegister).forEach(([name, component]) => {
