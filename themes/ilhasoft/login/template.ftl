@@ -67,7 +67,7 @@
     <div class="${properties.kcFormCardClass!}">
         <div class="left-side-content">
             <a href="${url.loginUrl}" class="brand-logo-link">
-                <img src="${url.resourcesPath}/img/login/weni-logo-white.svg" alt="Weni" class="brand-logo" />
+                <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
             </a>
             <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content Weni" />
         </div>
