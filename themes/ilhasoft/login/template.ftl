@@ -69,7 +69,7 @@
             <a href="${url.loginUrl}" class="brand-logo-link">
                 <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
             </a>
-            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content Weni" />
+            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content" />
         </div>
         <#if displayHeader>
         <div id="kc-content">
