@@ -3,7 +3,7 @@
 }
 
 #kc-totp-settings-form, #kc-totp-settings, .kc-otp-header, #kc-totp-settings-form > .form-group label {
-  color: var(--unnnic-color-gray-400);
+  color: var(--unnnic-color-fg-muted);
   font: var(--unnnic-font-body);
 }
 
@@ -22,10 +22,10 @@
 
 .kc-otp-header .totp-title .icon {
   padding: var(--unnnic-space-1);
-  background-color: rgba(var(--unnnic-color-aux-blue-rgb), 0.08);
+  background-color: var(--unnnic-color-bg-accent-plain);
   border-radius: var(--unnnic-radius-1);
   font-size: var(--unnnic-icon-size-4);
-  color: var(--unnnic-color-teal-400);
+  color: var(--unnnic-color-fg-accent);
 }
 
 
@@ -33,7 +33,7 @@
 .kc-otp-header .totp-info {
   padding: var(--unnnic-space-3);
   background-color: var(--unnnic-color-bg-soft);
-  color: var(--unnnic-color-gray-700);
+  color: var(--unnnic-color-fg-base);
   display: flex;
   align-items: center;
   border-radius: var(--unnnic-radius-1);

@@ -25,7 +25,7 @@
     display: flex;
     justify-content: flex-end;
     font-size: var(--unnnic-icon-size-4);
-    color: var(--unnnic-color-gray-700);
+    color: var(--unnnic-color-fg-base);
 }
 
 .modal-center-icon {
@@ -37,7 +37,7 @@
 
 .modal-text {
     font: var(--unnnic-font-display-4);
-    color: var(--unnnic-color-gray-400);
+    color: var(--unnnic-color-fg-muted);
     text-align: center;
     margin-bottom: 48px;
 }
@@ -53,12 +53,12 @@
     font: var(--unnnic-font-caption-2);
     padding: var(--unnnic-space-6);
     text-align: center;
-    color: var(--unnnic-color-gray-700);
+    color: var(--unnnic-color-fg-base);
     background-color: var(--unnnic-color-bg-muted);
 }
 
 .modal-message a {
-    color: var(--unnnic-color-gray-700);
+    color: var(--unnnic-color-fg-base);  
     font-weight: var(--unnnic-font-weight-bold);
 }
 
