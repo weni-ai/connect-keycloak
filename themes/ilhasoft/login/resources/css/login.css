@@ -735,9 +735,24 @@ button,
   margin: var(--unnnic-space-6) 0;
 }
 
-.email-sent-modal-body {
+.email-sent-modal-body,
+.verify-email-modal-body {
     padding: var(--unnnic-space-6);
     font: var(--unnnic-font-body);
     color: var(--unnnic-color-fg-muted);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--unnnic-space-2);
+}
+
+.verify-email-modal-resend a {
+  color: var(--unnnic-color-fg-muted);
+  font: var(--unnnic-font-caption-1);
+  text-decoration: underline;
+}
+
+.verify-email-modal-body p {
+  margin: 0;
 }
 

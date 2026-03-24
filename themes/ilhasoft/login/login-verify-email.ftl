@@ -6,23 +6,20 @@
     <#elseif section = "header">
         ${msg("loginTitleHtml",(realm.displayNameHtml!''))?no_esc}
     <#elseif section = "form">
-            <div id="modal" class="modal-background">
-            <div class="modal-container">
-                <div class="modal-content">
-                    <div class="modal-button-container">
-                        <span class="icon-clickable" onclick="closeModal('verifyEmail')">
-                            <unnnic-icon icon="close" scheme="neutral-darkest" size="sm"></unnnic-icon>
-                        </span>
-                    </div>
-                <div class="modal-center-icon">
-                    <unnnic-icon icon="error" scheme="fg-critical" size="xl"></unnnic-icon>
+        <unnnic-dialog :open="true" @update:open="navigateTo('${url.loginRestartFlowUrl}')">
+            <unnnic-dialog-content size="small">
+                <unnnic-dialog-header type="attention">
+                    <unnnic-dialog-title>${msg("emailVerifyTitle")}</unnnic-dialog-title>
+                </unnnic-dialog-header>
+                <div class="verify-email-modal-body">
+                    <p>${msg("emailVerifyInstruction1")}</p>
+                    <p class="verify-email-modal-resend">
+                        ${msg("emailVerifyInstruction2")}
+                        <a href="${url.loginAction}">${msg("emailVerifyInstruction3")}</a>
+                    </p>
                 </div>
-                <div class="modal-title">${msg("emailVerifyTitle")}</div>
-                <div class="modal-text">${msg("emailVerifyInstruction1")}</div>
-            </div>
-            <div class="modal-message">${msg("emailVerifyInstruction2")} <a href="${url.loginAction}">${msg("emailVerifyInstruction3")}</a></div>
-        </div>
-        </div>
+            </unnnic-dialog-content>
+        </unnnic-dialog>
         <#if realm.password>
             <@loginLayout.loginLayout></@loginLayout.loginLayout>
         </#if>
