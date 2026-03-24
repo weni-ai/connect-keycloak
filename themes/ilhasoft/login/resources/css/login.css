@@ -207,23 +207,10 @@ button,
     text-align: initial;
 }
 
-.card-pf #kc-content .greetings {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    color: var(--unnnic-color-fg-base);
-    margin-bottom: 24px;
-}
-
-.card-pf #kc-content .greetings-description {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    margin-top: -16px;
-    margin-bottom: 24px;
+.login-title {
+    font: var(--unnnic-font-display-3);
     color: var(--unnnic-color-fg-emphasized);
+    margin: 0;
 }
 
 .card-pf #kc-content .footer {
@@ -239,21 +226,6 @@ button,
     font-weight: 400;
     color: var(--unnnic-color-fg-base);
     text-decoration-line: underline;
-    text-underline-offset: 4px;
-}
-
-.card-pf #kc-content .greetings {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-pf #kc-content .greetings a:has(.brand-title) {
-    display: inline-block;
-    text-align: center;
-}
-
-.card-pf #kc-content .greetings .brand-title {
-    margin-bottom: 100px;
 }
 
 
@@ -273,13 +245,13 @@ button,
         right: var(--unnnic-space-4);
     }
 
-    .card-pf #kc-content .greetings {
-        text-align: center;
+    .sign-up-button-container {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .card-pf #kc-content .greetings .brand-title,
-    .card-pf #kc-content .greetings a:has(.brand-title) {
-        display: inline-block;
+    .sign-up-button {
+        width: 100%;
     }
 }
 

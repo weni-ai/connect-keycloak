@@ -5,9 +5,7 @@
     <#elseif section = "header">
         ${msg("emailForgotTitle")}
     <#elseif section = "form">
-        <div class="greetings">
-            ${msg("greetings")}
-        </div>
+        <h2 class="login-title">${msg("emailForgotTitle")}</h2>
         <div class="form-header">
             ${msg("loginResetInstructions")}
         </div>

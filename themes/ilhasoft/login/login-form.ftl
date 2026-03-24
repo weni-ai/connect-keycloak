@@ -1,12 +1,5 @@
 <#macro loginLayout>
-    <div class="greetings">
-        ${msg("greetings")}
-    </div>
-
-    <section v-if="!!VTEXAppEmail" class="greetings-description">
-        ${msg("accessPasswordSentToTheEmail")} {{ VTEXAppEmail }}.
-    </section>
-
+    <h2 class="login-title">${msg("loginFormTitle")}</h2>
     <form id="kc-form-login" ref="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}"
         method="post">
         <unnnic-form-element

@@ -3,9 +3,7 @@
         <#if section="header">
             ${msg("registerTitle")}
             <#elseif section="form">
-                <div class="greetings">
-                    ${msg("register_greetings")}
-                </div>
+                <h2 class="login-title">${msg("register_greetings")}</h2>
                 <section class="social-login-container">
                     <#if realm.password?? && social.providers??>
                         <#list social.providers as p>
