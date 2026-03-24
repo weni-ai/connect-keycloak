@@ -13,7 +13,7 @@
                             <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
                                 <div v-if="!VTEXAppEmail" id="separator-group">
                                     <div class="separator"></div>
-                                    <span class="separator-text"> ${msg("separatorMessage")} </span>
+                                    <span class="separator-text">${msg("separatorMessage")}</span>
                                     <div class="separator"></div>
                                 </div>
                                 <section class="social-login-container">

@@ -273,6 +273,10 @@ button,
     font: var(--unnnic-font-body);
 }
 
+#kc-info-wrapper #separator-group {
+    margin: var(--unnnic-space-4) 0;
+}
+
 #kc-info-wrapper a,
 #kc-registration a,
 #kc-form-options a {
@@ -299,8 +303,7 @@ button,
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: var(--unnnic-font-weight-bold);
-    margin: 16px auto;
+    gap: var(--unnnic-space-2);
     width: 100%;
 }
 
@@ -311,9 +314,9 @@ button,
 }
 
 .separator-text {
-    font: var(--unnnic-font-caption-2);
-    color: var(--unnnic-color-fg-base);
-    margin: 0 var(--unnnic-space-4);
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-fg-muted);
+    white-space: nowrap;
 }
 
 .font-primary {
@@ -779,6 +782,10 @@ button,
 .reset-password-buttons {
     display: flex;
     gap: 16px;
+}
+
+#kc-reset-password-form #separator-group {
+  margin: var(--unnnic-space-6) 0;
 }
 
 .modal-dialog-overlay {
