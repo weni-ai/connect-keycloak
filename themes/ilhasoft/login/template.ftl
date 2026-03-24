@@ -64,18 +64,7 @@
 
 <body class="${properties.kcBodyClass!}" style="display: none;">
     <div class="${properties.kcLoginClass!}" id="app">
-    <div class="${properties.kcFormCardClass!}">
-        <div class="left-side-content">
-            <a href="${url.loginUrl}" class="brand-logo-link">
-                <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
-            </a>
-            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content" />
-        </div>
-        <#if displayHeader>
-        <div id="kc-content">
-        <div class="content">
             <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-                <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
                 <div class="language-select top">
                     <unnnic-language-select
                         :value="language"
@@ -85,10 +74,15 @@
                     ></unnnic-language-select>
                 </div>
             </#if>
+    <div class="${properties.kcFormCardClass!}">
+        <#if displayHeader>
+        <div id="kc-content">
+        <div class="content">
         <#else>
         <div id="kc-content-headerless">
         </#if>
             <div id="kc-content-wrapper" class="custom-header-content">
+                <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
 
             <#--  <div id="modal" class="modal-background">
                 <div class="modal-container">
