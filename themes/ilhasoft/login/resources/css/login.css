@@ -50,6 +50,7 @@ h1 {
 }
 
 .login-pf-page {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,21 +200,8 @@ button,
     user-select: none;
 }
 
-.card-pf #kc-content .language-select.top {
-    position: absolute;
-    right: 0;
-    margin-right: 13.05vh;
-}
 
-.card-pf #kc-content .language-select.bottom {
-    display: none;
-}
-
-.card-pf #kc-content .language-select-counterpoint {
-    height: 36px;
-}
-
-.card-pf #kc-content .language-select .unnnic-language-select {
+.language-select.top .unnnic-language-select {
     width: 176px;
     display: inline-block;
     text-align: initial;
@@ -276,11 +264,13 @@ button,
 
     .card-pf #kc-content {
         width: 100%;
+        border: none;
+        padding: 32px 16px;
     }
 
-    .card-pf #kc-content .language-select.bottom {
-        margin-top: 16px;
-        display: inline-block;
+    .language-select.top {
+        top: var(--unnnic-space-4);
+        right: var(--unnnic-space-4);
     }
 
     .card-pf #kc-content .greetings {
