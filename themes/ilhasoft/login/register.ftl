@@ -6,10 +6,9 @@
                 <div class="greetings">
                     ${msg("register_greetings")}
                 </div>
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}" style="text-align: right;">
-                    <div class="${properties.kcFormButtonsWrapperClass!} login-buttons">
-                        <#if realm.password?? && social.providers??>
-                            <#list social.providers as p>
+                <section class="social-login-container">
+                    <#if realm.password?? && social.providers??>
+                        <#list social.providers as p>
                             <unnnic-button
                                 id="zocial-${p.alias}"
                                 class="social-button"
@@ -17,13 +16,12 @@
                                 size="large"
                                 @click.prevent="navigateTo('${p.loginUrl}')"
                             >
-                                        <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
+                                <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
                                     class="icon-image">
                             </unnnic-button>
-                            </#list>
-                        </#if>
-                    </div> 
-                </div>
+                        </#list>
+                    </#if>
+                </section>
                 <div id="separator-group">
                     <div class="separator"></div>
                     <span class="separator-text">${msg("separatorRegisterMessage")}</span>
