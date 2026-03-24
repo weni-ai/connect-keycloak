@@ -562,63 +562,39 @@ button,
     margin-top: 24px;
 
     text-decoration-line: underline;
-    text-underline-offset: 4px;
-    color: var(--unnnic-color-fg-base);
-}
 
-.register-form-row-email {
-    margin-bottom: 16px;
-}
-
-.register-form-row-password {
-    margin-bottom: 16px;
-}
-
-.register-form-row-password-confirm {
-    margin-bottom: 16px;
-}
-
-.password-strength-rules {
-    margin-top: 8px;
+    font: var(--unnnic-font-caption-1);
+    color: var(--unnnic-color-fg-muted);
 }
 
 .password-strength-columns {
     display: flex;
-    justify-content: space-between;
-    padding-right: 128px;
-    margin-top: 16px;
+    gap: var(--unnnic-space-8);
 }
 
 .password-strength-column {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--unnnic-space-1);
 }
 
 .password-strength-rules .rule {
     display: flex;
     align-items: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
+    font: var(--unnnic-font-caption-2);
     color: var(--unnnic-color-fg-base);
 }
 
 .password-strength-rules .rule .unnnic-icon {
-    margin-right: 4px;
+    margin-right: var(--unnnic-space-1);
 }
 
 .password-strength-rules .rule.valid span {
     color: var(--unnnic-color-fg-success);
-    font-weight: var(--unnnic-font-weight-bold);
 }
 
 .register-form-row-password .password-strength {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 20px;
+    font: var(--unnnic-font-caption-2);
     color: var(--unnnic-color-fg-base);
     text-align: center;
     margin-top: -8px;
@@ -672,10 +648,7 @@ button,
     margin-top: -8px;
     margin-bottom: 24px;
 
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
+    font: var(--unnnic-font-caption-2);
     color: var(--unnnic-color-fg-base);
 }
 

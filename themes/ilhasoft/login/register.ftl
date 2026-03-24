@@ -75,38 +75,6 @@
                                 :type="'${messagesPerField.get('password')}' ? 'error' : 'normal'"
                                 allow-toggle-password @input="password = sanitizeHtml(password)"></unnnic-input>
 
-                            <div class="password-strength-rules">
-                                <div class="password-strength-columns">
-                                    <div class="password-strength-column">
-                                        <div class="rule" :class="{ 'valid': passwordRules.lowercase }">
-                                            <unnnic-icon icon="check-circle-1-1-1" fill="true" size="sm" :scheme="passwordRules.lowercase ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
-                                            <span>${msg('password_step_1')}</span>
-                                        </div>
-                                        <div class="rule" :class="{ 'valid': passwordRules.uppercase }">
-                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.uppercase ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
-                                            <span>${msg('password_step_2')}</span>
-                                        </div>
-                                        <div class="rule" :class="{ 'valid': passwordRules.number }">
-                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.number ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
-                                            <span>${msg('password_step_5')}</span>
-                                        </div>
-                                    </div>
-                                    <div class="password-strength-column">
-                                        <div class="rule" :class="{ 'valid': passwordRules.specialChar }">
-                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.specialChar ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
-                                            <span>${msg('password_step_3')}</span>
-                                        </div>
-                                        <div class="rule" :class="{ 'valid': passwordRules.minLength }">
-                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.minLength ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
-                                            <span>${msg('password_step_4')}</span>
-                                        </div>
-                                        <div class="rule" :class="{ 'valid': passwordRules.passwordEquals }" v-if="passwordConfirm">
-                                            <unnnic-icon icon="check-circle-1-1-1" size="sm" :scheme="passwordRules.passwordEquals ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
-                                            <span>${msg('password_step_6')}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </unnnic-form-element>
                     </div>
 
@@ -122,6 +90,39 @@
                                     allow-toggle-password @input="passwordConfirm = sanitizeHtml(passwordConfirm)"></unnnic-input>
                             </unnnic-form-element>
                         </#if>
+                    </div>
+
+                    <div class="password-strength-rules">
+                        <div class="password-strength-columns">
+                            <div class="password-strength-column">
+                                <div class="rule" :class="{ 'valid': passwordRules.lowercase }">
+                                    <unnnic-icon icon="check_circle" filled size="sm" :scheme="passwordRules.lowercase ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                    <span>${msg('password_step_1')}</span>
+                                </div>
+                                <div class="rule" :class="{ 'valid': passwordRules.uppercase }">
+                                    <unnnic-icon icon="check_circle" filled size="sm" :scheme="passwordRules.uppercase ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                    <span>${msg('password_step_2')}</span>
+                                </div>
+                                <div class="rule" :class="{ 'valid': passwordRules.number }">
+                                    <unnnic-icon icon="check_circle" filled size="sm" :scheme="passwordRules.number ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                    <span>${msg('password_step_5')}</span>
+                                </div>
+                            </div>
+                            <div class="password-strength-column">
+                                <div class="rule" :class="{ 'valid': passwordRules.specialChar }">
+                                    <unnnic-icon icon="check_circle" filled size="sm" :scheme="passwordRules.specialChar ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                    <span>${msg('password_step_3')}</span>
+                                </div>
+                                <div class="rule" :class="{ 'valid': passwordRules.minLength }">
+                                    <unnnic-icon icon="check_circle" filled size="sm" :scheme="passwordRules.minLength ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                    <span>${msg('password_step_4')}</span>
+                                </div>
+                                <div class="rule" :class="{ 'valid': passwordRules.passwordEquals }" v-if="passwordConfirm">
+                                    <unnnic-icon icon="check_circle" filled size="sm" :scheme="passwordRules.passwordEquals ? 'feedback-green' : 'neutral-cleanest'"></unnnic-icon>
+                                    <span>${msg('password_step_6')}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <#if !realm.registrationEmailAsUsername>
