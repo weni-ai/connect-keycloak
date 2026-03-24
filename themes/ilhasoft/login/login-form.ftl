@@ -35,13 +35,12 @@
 
         <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
             <#if realm.rememberMe && !usernameEditDisabled??>
-                <div class="remember-me">
-                    <input type="hidden" name="rememberMe" :value="rememberMe ? 'on' : 'off'" />
-                    <unnnic-checkbox
-                      v-model="rememberMe"
-                      :text-right="'${msg("rememberMe")}'"
-                    ></unnnic-checkbox>
-                </div>
+                <input type="hidden" name="rememberMe" :value="rememberMe ? 'on' : 'off'" />
+                <unnnic-checkbox
+                  v-model="rememberMe"
+                  class="login-checkbox-remember-me"
+                  :text-right="'${msg("rememberMe")}'"
+                ></unnnic-checkbox>
             </#if>
 
             <#if realm.resetPasswordAllowed>

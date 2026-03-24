@@ -218,13 +218,11 @@ button,
 }
 
 .card-pf #kc-content .footer a.privacy-policy {
-    margin-top: 40px;
+    margin-top: var(--unnnic-space-8);
+
     display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    line-height: 24px;
-    font-weight: 400;
-    color: var(--unnnic-color-fg-base);
+    font: var(--unnnic-font-caption-1);
+    color: var(--unnnic-color-fg-muted);
     text-decoration-line: underline;
 }
 
@@ -264,12 +262,12 @@ button,
 }
 
 #kc-registration {
+    margin-top: var(--unnnic-space-6);
     text-align: center;
     color: var(--unnnic-color-fg-muted);
 }
 
 #kc-info-wrapper {
-    margin: var(--unnnic-space-6) 0 0 0;
     font: var(--unnnic-font-body);
 }
 
@@ -280,13 +278,9 @@ button,
 #kc-info-wrapper a,
 #kc-registration a,
 #kc-form-options a {
-    color: var(--unnnic-color-fg-accent);
+    color: var(--unnnic-color-fg-muted);
     text-decoration: none;
-    font-weight: var(--unnnic-font-weight-bold);
-}
-
-.login-button {
-    width: 100%;
+    font: var(--unnnic-font-body);
 }
 
 .buttons-group {
@@ -359,8 +353,7 @@ button,
 }
 
 .form-header {
-    margin: 0 0 var(--unnnic-space-6) 0;
-    color: var(--unnnic-color-fg-base);
+    color: var(--unnnic-color-fg-muted);
     font: var(--unnnic-font-body);
 }
 
@@ -382,6 +375,13 @@ button,
 #kc-form-options {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+}
+
+.login-checkbox-remember-me {
+    label {
+        margin: 0;
+    }
 }
 
 .input-message {
@@ -394,25 +394,15 @@ button,
     color: var(--unnnic-color-fg-base);
 }
 
-.remember-me {
-    display: flex;
-    align-items: center;
-    padding: 4px;
-}
-
-.remember-me label {
-    margin: 0;
-}
-
 .forgot-password {
     margin-top: var(--unnnic-space-1);
     font: var(--unnnic-font-caption-2);
 }
 
 #kc-form-options .forgot-password a {
-    color: var(--unnnic-color-fg-base);
+    color: var(--unnnic-color-fg-muted);
     text-decoration: none;
-    font-weight: var(--unnnic-font-weight-regular);
+    font: var(--unnnic-font-body);
 }
 
 
@@ -437,6 +427,12 @@ button,
 .input-control.error .form-control {
     color: var(--unnnic-color-fg-critical);
     border-color: var(--unnnic-color-fg-critical);
+}
+
+#kc-register-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--unnnic-space-4);
 }
 
 #kc-register-form .input-medium label {
@@ -549,18 +545,11 @@ button,
 }
 
 .back-to-login {
-    margin-top: 24px;
-
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    color: var(--unnnic-color-fg-base);
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-fg-muted);
 }
 
 .back-to-login a {
-    margin-top: 24px;
-
     text-decoration-line: underline;
 
     font: var(--unnnic-font-caption-1);
@@ -667,14 +656,6 @@ button,
     row-gap: 16px;
 }
 
-#kc-form-wrapper .greetings {
-    order: -3;
-}
-
-#kc-form-wrapper .greetings-description {
-    order: -2;
-}
-
 #kc-form-wrapper .login-disclaimer {
     order: -1;
 }
@@ -724,32 +705,25 @@ button,
 
 .sign-up-button-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin: 24px 16px 0 16px;
+    gap: var(--unnnic-space-4);
 }
 
 .sign-up-button-text {
-    color: #5C5C5C;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
+    color: var(--unnnic-color-fg-muted);
+    font: var(--unnnic-font-caption-1);
     margin: 0;
-    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .sign-up-button {
-    width: auto;
     min-width: auto;
-    flex: 1;
+    width: 100%;
 }
 
 .custom-header-content {
-    height: 100%;
-    align-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .reset-password-buttons {

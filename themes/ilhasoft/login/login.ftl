@@ -26,25 +26,19 @@
                                             size="large"
                                             @click.prevent="navigateTo('${p.loginUrl}')"
                                         >
-                                                <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
+                                            <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
                                                 class="icon-image">
                                         </unnnic-button>
                                     </#list>
-                                </#if>
+                                    </#if>
                                 </section>
                                 <div v-if="!VTEXAppEmail" id="kc-registration">
-                                    <#-- <input
-                                        class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}"
-                                        name="login" id="kc-login" ref="kc-login" type="submit" value="${msg("
-                                        doLogIn")}" /> -->
-                                        <section class="sign-up-button-container">
-                                            <section>
-                                                <p class="sign-up-button-text">${msg('signUpForFree')}</p>
-                                            </section>
-                                            <unnnic-button class="sign-up-button" size="large"
+                                    <section class="sign-up-button-container">
+                                        <p class="sign-up-button-text">${msg('signUpForFree')}</p>
+                                        <unnnic-button class="sign-up-button" size="large"
                                             text="${msg('doRegisterForFree')}" type="secondary"
                                             @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
-                                        </section>
+                                    </section>
                                 </div>
                             </#if>
                             <div class="footer">
