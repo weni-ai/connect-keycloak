@@ -68,10 +68,6 @@ h1 {
     box-sizing: border-box;
 }
 
-.social-button {
-    outline: none;
-}
-
 .form-control:focus {
     color: var(--unnnic-color-fg-accent);
     border-color: var(--unnnic-color-border-accent-strong);
@@ -84,17 +80,6 @@ h1 {
 
 .input-control {
     position: relative;
-}
-
-.button-control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.icon-button-left {
-    margin-right: var(--unnnic-space-1);
 }
 
 ::placeholder {
@@ -331,18 +316,6 @@ a:has(.brand-title) {
     text-align: center;
 }
 
-.card-pf #kc-content .login-buttons {
-    display: grid;
-    grid-gap: 20px 8px;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.card-pf #kc-content .login-buttons .login-button:not(:disabled),
-.card-pf #kc-content #kc-form-buttons .login-button:not(:disabled) {
-    background-color: var(--unnnic-color-bg-accent-strong);
-    grid-column: span 3;
-}
-
 .card-pf #kc-content .footer a.privacy-policy {
     margin-top: 40px;
     display: inline-block;
@@ -487,57 +460,8 @@ a:has(.brand-title) {
     grid-template-columns: repeat(auto-fit, minmax(198px, 1fr));
 }
 
-.social-button {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    line-height: 20px;
-    font-weight: 400;
-    padding: 12px 16px;
-}
-
 .social-button img {
     height: 20px;
-}
-
-.social-link {
-    text-decoration: none;
-    flex: 1;
-}
-
-#button-github {
-    background-color: var(--unnnic-color-bg-base);
-    color: var(--unnnic-color-fg-emphasized);
-
-    outline-style: solid;
-    outline-color: var(--unnnic-color-bg-muted);
-    outline-width: 1px;
-    outline-offset: -1px;
-}
-
-#button-microsoft {
-    background-color: var(--unnnic-color-bg-base);
-    color: var(--unnnic-color-fg-emphasized);
-
-    outline-style: solid;
-    outline-color: var(--unnnic-color-bg-muted);
-    outline-width: 1px;
-    outline-offset: -1px;
-}
-
-#button-google {
-    background-color: var(--unnnic-color-bg-base);
-    color: var(--unnnic-color-fg-emphasized);
-
-    outline-style: solid;
-    outline-color: var(--unnnic-color-bg-muted);
-    outline-width: 1px;
-    outline-offset: -1px;
-}
-
-#button-github:hover,
-#button-google:hover,
-#button-microsoft:hover {
-    opacity: var(--unnnic-opacity-level-clear);
 }
 
 /* button primary unnnic-system */

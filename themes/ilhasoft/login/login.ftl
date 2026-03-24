@@ -19,12 +19,16 @@
                                 <section class="social-login-container">
                                     <#if realm.password?? && social.providers??>
                                     <#list social.providers as p>
-                                        <a id="zocial-${p.alias}" class="social-link" href="${p.loginUrl}">
-                                            <button type="button" class="social-button button-control" id="button-${p.alias}">
+                                        <unnnic-button
+                                            id="zocial-${p.alias}"
+                                            class="social-button"
+                                            type="secondary"
+                                            size="large"
+                                            @click.prevent="navigateTo('${p.loginUrl}')"
+                                        >
                                                 <img src="${url.resourcesPath}/img/login/icon-${p.alias}.svg"
-                                                    class="icon-image icon-button-left">
-                                            </button>
-                                        </a>
+                                                class="icon-image">
+                                        </unnnic-button>
                                     </#list>
                                 </#if>
                                 </section>
