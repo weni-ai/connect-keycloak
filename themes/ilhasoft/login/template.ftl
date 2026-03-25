@@ -222,8 +222,8 @@
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
                     canLogin() {
-                        return this.isEmailValid(this.usernameInput) && 
-                               this.passwordInput && this.passwordInput.trim().length > 0;
+                        const usernameValid = <#if realm.registrationEmailAsUsername>this.isEmailValid(this.usernameInput)<#else>this.usernameInput && this.usernameInput.trim().length > 0</#if>;
+                        return usernameValid && this.passwordInput && this.passwordInput.trim().length > 0;
                     },
                 </#if>
                 supportedLanguages() {
