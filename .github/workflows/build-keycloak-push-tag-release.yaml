@@ -48,7 +48,7 @@ jobs:
       - name: Build Release - Keycloak (Connect)
         uses: addnab/docker-run-action@v3
         with:
-          image: bitnami/keycloak:25.2.0
+          image: bitnamilegacy/keycloak:20.0.3-debian-11-r5
           options: -v ${{ github.workspace }}:/workdir -w /workdir --user 0
           run: |
             apt-get update
