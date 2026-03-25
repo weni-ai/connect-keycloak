@@ -54,8 +54,8 @@
         <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
             <div class="language-select top">
                 <unnnic-language-select
-                    :value="language"
-                    @input="changeLanguage"
+                    :model-value="language"
+                    @update:model-value="changeLanguage"
                     position="bottom"
                     :supported-languages="supportedLanguages"
                 ></unnnic-language-select>
