@@ -50,6 +50,7 @@ h1 {
 }
 
 .login-pf-page {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,137 +158,50 @@ button,
 .card-pf {
     margin: 0;
     width: 100%;
-    align-content: center;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
 }
 
-.card-pf .left-side-content .icon-weni-background {
-    position: absolute;
-    margin-left: -75px;
-    margin-top: -133px;
-    pointer-events: none;
-}
-
-.card-pf .left-side-content .icon-screen-background {
-    position: absolute;
-    margin-left: -184px;
-    margin-top: -155.5px;
-    top: 50%;
-    pointer-events: none;
-}
-
-.card-pf .left-side-content {
-    flex-basis: 21.6%;
-    display: flex;
-}
-
-.card-pf .left-side-content .benefits {
-    margin-left: 300px;
-}
-
-.card-pf .left-side-content .benefits .title {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
-    color: var(--unnnic-color-fg-muted);
-    margin: 0;
-    margin-bottom: 32px;
-    z-index: 1;
-}
-
-.card-pf .left-side-content .benefits .benefits-list {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-}
-
-.card-pf .left-side-content .benefits .benefits-list .benefit {
-    padding-left: 20px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    color: var(--unnnic-color-fg-muted);
-    position: relative;
-}
-
-.card-pf .left-side-content .benefits .benefits-list .benefit .unnnic-icon {
-    margin-left: -20px;
-    position: absolute;
-    margin-top: 3px;
-}
-
-.card-pf .left-side-content .benefits .benefits-list .benefit .unnnic-icon .primary {
-    fill: #F5F5F5;
+.brand-logo {
+    width: 75px;
+    height: auto;
+    margin-bottom: var(--unnnic-space-8);
 }
 
 .card-pf #kc-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.card-pf .left-side-content>.content,
-.card-pf #kc-content>.content {
+    width: 525px;
+    max-width: 100%;
+    border: 1px solid var(--unnnic-color-border-base);
+    border-radius: var(--unnnic-radius-2);
+    padding: var(--unnnic-space-12) var(--unnnic-space-8) var(--unnnic-space-8);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    max-width: 560px;
+}
+
+.card-pf #kc-content > .content {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: var(--unnnic-space-8);
 }
 
-.card-pf .left-side-content>.content {
-    padding: 32px 16px;
-    padding-right: 44px;
-    box-sizing: border-box;
-    justify-content: space-between;
-    row-gap: 48px;
-}
 
-.card-pf #kc-content>.content {
-    padding: 32px 0px;
-    row-gap: 16px;
-    box-sizing: border-box;
-    justify-content: space-between;
-}
-
-.brand {
-    flex: 1;
-}
-
-.brand img {
-    width: 100%;
-}
-
-.brand-title-spacing {
-    height: 25px;
-}
-
-a:has(.brand-title) {
-    z-index: 1;
-}
-
-.card-pf #kc-content .language-select {
-    text-align: right;
+.language-select.top {
+    position: absolute;
+    top: var(--unnnic-space-6);
+    right: var(--unnnic-space-6);
+    z-index: 10;
     user-select: none;
 }
 
-.card-pf #kc-content .language-select.top {
-    position: absolute;
-    right: 0;
-    margin-right: 13.05vh;
-}
 
-.card-pf #kc-content .language-select.bottom {
-    display: none;
-}
-
-.card-pf #kc-content .language-select-counterpoint {
-    height: 36px;
-}
-
-.card-pf #kc-content .language-select .unnnic-language-select {
+.language-select.top .unnnic-language-select {
     width: 176px;
     display: inline-block;
     text-align: initial;
@@ -342,76 +256,21 @@ a:has(.brand-title) {
     margin-bottom: 100px;
 }
 
-@media (max-width: 1248px) {
-    .card-pf .left-side-content .icon-weni-background {
-        margin-left: -200px;
-        margin-top: -120px;
-    }
-
-    .card-pf .left-side-content .icon-screen-background {
-        display: none;
-    }
-
-    .card-pf .left-side-content .benefits {
-        margin-left: initial;
-    }
-
-    .card-pf .left-side-content>.content {
-        padding-left: 44px;
-        justify-content: flex-start;
-    }
-
-    .card-pf #kc-content>.content {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .card-pf .left-side-content a:has(.brand-title) {
-        display: none;
-    }
-
-    .card-pf .left-side-content .brand-title,
-    .card-pf .left-side-content .brand-title-spacing {
-        display: none;
-    }
-
-    .card-pf #kc-content .language-select.top,
-    .card-pf #kc-content .language-select-counterpoint {
-        display: none;
-    }
-
-    .card-pf #kc-content .language-select.bottom {
-        margin-top: 32px;
-        display: inline-block;
-    }
-}
-
-@media (max-width: 900px) {
-    .card-pf .left-side-content {
-        display: none;
-    }
-}
-
-@media (min-height: 950px) and (max-width: 1024px) {
-    .card-pf .left-side-content {
-        display: none;
-    }
-}
 
 @media (max-width: 600px) {
-    .card-pf .left-side-content {
-        display: none;
+    .card-pf {
+        padding: var(--unnnic-space-4);
     }
 
-    footer {
-        background: var(--unnnic-color-bg-accent-strong);
-        height: 16px;
+    .card-pf #kc-content {
         width: 100%;
+        border: none;
+        padding: var(--unnnic-space-8) var(--unnnic-space-4);
     }
 
-    .card-pf #kc-content .language-select.bottom {
-        margin-top: 16px;
-        display: inline-block;
+    .language-select.top {
+        top: var(--unnnic-space-4);
+        right: var(--unnnic-space-4);
     }
 
     .card-pf #kc-content .greetings {
@@ -1042,14 +901,5 @@ a:has(.brand-title) {
 .modal-dialog-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 12px;
-}
-
-.card-pf .left-side-content .brand-logo-link .brand-logo {
-    position: absolute;
-    margin-top: 2rem;
-    margin-left: 13.05vh;
-    height: 40px;
-
-    filter: brightness(0) invert(1);
+    gap: var(--unnnic-space-3);
 }

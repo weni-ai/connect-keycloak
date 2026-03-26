@@ -64,31 +64,25 @@
 
 <body class="${properties.kcBodyClass!}" style="display: none;">
     <div class="${properties.kcLoginClass!}" id="app">
+        <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
+            <div class="language-select top">
+                <unnnic-language-select
+                    :value="language"
+                    @input="changeLanguage"
+                    position="bottom"
+                    :supported-languages="supportedLanguages"
+                ></unnnic-language-select>
+            </div>
+        </#if>
     <div class="${properties.kcFormCardClass!}">
-        <div class="left-side-content">
-            <a href="${url.loginUrl}" class="brand-logo-link">
-                <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
-            </a>
-            <img src="${url.resourcesPath}/img/login/background-left-content.svg" alt="Background Left Content" />
-        </div>
         <#if displayHeader>
         <div id="kc-content">
         <div class="content">
-            <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-                <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
-                <div class="language-select top">
-                    <unnnic-language-select
-                        :value="language"
-                        @input="changeLanguage"
-                        position="bottom"
-                        :supported-languages="supportedLanguages"
-                    ></unnnic-language-select>
-                </div>
-            </#if>
         <#else>
         <div id="kc-content-headerless">
         </#if>
             <div id="kc-content-wrapper" class="custom-header-content">
+                <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
 
             <#--  <div id="modal" class="modal-background">
                 <div class="modal-container">
@@ -144,21 +138,7 @@
                     </div>
                 </div>
             </#if>
-                <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
-                    <#--  <a href="#" id="kc-current-locale-link">${locale.current}</a>  -->
-                    <div class="footer">
-                        <div class="language-select bottom">
-                            <unnnic-language-select
-                                :value="language"
-                                @input="changeLanguage"
-                                position="top"
-                                :supported-languages="supportedLanguages"
-                            ></unnnic-language-select>
-                        </div>
-                    </div>
-                </#if>
             </div>
-            <div class="language-select-counterpoint"></div>
         </div>
         <#if displayHeader>
         </div>
@@ -166,20 +146,6 @@
         </div>
     </div>
   </div>
-    <style>
-        .login-pf-header .language-select {
-            width: 12.5rem;
-        }
-        
-        .login-pf-header .language-select .unnnic-language-select {
-            user-select: none;
-            z-index: 1;
-        }
-
-        .card-pf {
-            margin-top: 0;
-        }
-    </style>
     <script>
         const kc2UnnnicLanguages = {
             'pt-BR': 'pt-br',
@@ -288,13 +254,16 @@
                     },
                 </#if>
                 supportedLanguages() {
+                    if (!this.keycloakLanguages) return [];
                     return Object.keys(this.keycloakLanguages)
                         .map((keycloakLanguage) => kc2UnnnicLanguages[keycloakLanguage])
                         .filter((language) => language);
                 },
 
                 language() {
-                    return kc2UnnnicLanguages[this.keycloakCurrentLanguage];
+                    return this.keycloakCurrentLanguage
+                        ? kc2UnnnicLanguages[this.keycloakCurrentLanguage]
+                        : null;
                 },
             },
 
@@ -408,6 +377,7 @@
                 },
 
                 changeLanguage(language) {
+                    if (!this.keycloakLanguages) return;
                     Object.keys(this.keycloakLanguages)
                         .forEach((keycloakLanguage) => {
                             if (kc2UnnnicLanguages[keycloakLanguage] === language) {
