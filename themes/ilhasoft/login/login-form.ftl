@@ -5,7 +5,7 @@
         <unnnic-form-element
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
             <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput"
-                placeholder="${msg('placeholderLoginName')}" name="username" autocomplete="username"
+                placeholder="<#if realm.registrationEmailAsUsername>${msg('placeholderLoginEmail')}<#else>${msg('placeholderLoginName')}</#if>" name="username" autocomplete="<#if realm.registrationEmailAsUsername>email<#else>username</#if>"
                 :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus @input="usernameInput = sanitizeHtml(usernameInput)"></unnnic-input>
         </unnnic-form-element>
 

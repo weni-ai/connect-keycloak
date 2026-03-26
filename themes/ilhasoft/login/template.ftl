@@ -54,8 +54,8 @@
         <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
             <div class="language-select top">
                 <unnnic-language-select
-                    :value="language"
-                    @input="changeLanguage"
+                    :model-value="language"
+                    @update:model-value="changeLanguage"
                     position="bottom"
                     :supported-languages="supportedLanguages"
                 ></unnnic-language-select>
@@ -222,8 +222,8 @@
                 </#if>
                 <#if displayLoginFormScriptsAndStyles>
                     canLogin() {
-                        return this.isEmailValid(this.usernameInput) && 
-                               this.passwordInput && this.passwordInput.trim().length > 0;
+                        const usernameValid = <#if realm.registrationEmailAsUsername>this.isEmailValid(this.usernameInput)<#else>this.usernameInput && this.usernameInput.trim().length > 0</#if>;
+                        return usernameValid && this.passwordInput && this.passwordInput.trim().length > 0;
                     },
                 </#if>
                 supportedLanguages() {
