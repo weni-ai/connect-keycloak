@@ -15,10 +15,10 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--unnic-color-neutral-dark);
-    text-fill-color: var(--unnic-color-neutral-dark);
-    -webkit-box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
-    box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
+    -webkit-text-fill-color: var(--unnnic-color-gray-700);
+    text-fill-color: var(--unnnic-color-gray-700);
+    -webkit-box-shadow: 0 0 0 100px var(--unnnic-color-bg-base) inset;
+    box-shadow: 0 0 0 100px var(--unnnic-color-bg-base) inset;
 }
 
 input:autofill,
@@ -30,14 +30,14 @@ textarea:autofill:focus,
 select:autofill,
 select:autofill:hover,
 select:autofill:focus {
-    -webkit-text-fill-color: var(--unnic-color-neutral-dark);
-    text-fill-color: var(--unnic-color-neutral-dark);
-    -webkit-box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
-    box-shadow: 0 0 0 100px var(--unnic-color-neutral-snow) inset;
+    -webkit-text-fill-color: var(--unnnic-color-gray-700);
+    text-fill-color: var(--unnnic-color-gray-700);
+    -webkit-box-shadow: 0 0 0 100px var(--unnnic-color-bg-base) inset;
+    box-shadow: 0 0 0 100px var(--unnnic-color-bg-base) inset;
 }
 
 body {
-    font-family: var(--unnic-font-family-primary);
+    font-family: var(--unnnic-font-family);
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@ body {
 }
 
 h1 {
-    font-size: var(--unnic-font-size-h1);
+    font-size: var(--unnnic-font-size-h1);
     text-align: center;
 }
 
@@ -58,13 +58,12 @@ h1 {
 }
 
 .form-control {
-    background: var(--unnic-color-neutral-snow);
-    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
-    border-radius: var(--unnic-border-radius-sm);
-    padding: var(--unnic-squish-xs);
+    background: var(--unnnic-color-bg-base);
+    border: var(--unnnic-border-width-thinner) solid var(--unnnic-color-bg-muted);
+    border-radius: var(--unnnic-radius-1);
+    padding: var(--unnnic-space-3) var(--unnnic-space-4);
     color: inherit;
-    font-weight: var(--unnic-font-weight-regular);
-    font-size: var(--unnic-font-size-body-gt);
+    font: var(--unnnic-font-body);
     width: 100%;
     box-sizing: border-box;
 }
@@ -74,13 +73,13 @@ h1 {
 }
 
 .form-control:focus {
-    color: var(--unnic-color-brand-weni);
-    border-color: var(--unnic-color-brand-weni);
+    color: var(--unnnic-color-teal-400);
+    border-color: var(--unnnic-color-teal-400);
     outline: none;
 }
 
 .input-control:focus-within .icon {
-    color: var(--unnic-color-brand-weni);
+    color: var(--unnnic-color-teal-400);
 }
 
 .input-control {
@@ -95,16 +94,16 @@ h1 {
 }
 
 .icon-button-left {
-    margin-right: var(--unnic-inline-nano);
+    margin-right: var(--unnnic-space-1);
 }
 
 .icon {
-    font-size: var(--unnic-icon-size-md);
+    font-size: var(--unnnic-icon-size-6);
 }
 
 .icon-image {
-    height: var(--unnic-icon-size-md);
-    width: var(--unnic-icon-size-md);
+    height: var(--unnnic-icon-size-6);
+    width: var(--unnnic-icon-size-6);
 }
 
 .icon-clickable {
@@ -119,20 +118,20 @@ h1 {
 
 .icon-left {
     position: absolute;
-    left: var(--unnic-inline-sm);
+    left: var(--unnnic-space-4);
 }
 
 .icon-right {
     position: absolute;
-    right: var(--unnic-inline-sm);
+    right: var(--unnnic-space-4);
 }
 
 .icon-input {
-    color: var(--unnic-color-neutral-clean);
+    color: var(--unnnic-color-bg-muted);
 }
 
 ::placeholder {
-    color: var(--unnic-color-brand-sec);
+    color: var(--unnnic-color-gray-200);
     opacity: 1;
     /* Firefox */
 }
@@ -140,14 +139,13 @@ h1 {
 :-ms-input-placeholder,
 ::-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: var(--unnic-color-brand-sec);
+    color: var(--unnnic-color-gray-200);
 }
 
 label {
-    font-size: var(--unnic-font-size-body-md);
-    font-family: var(--unnic-font-family-secondary);
-    margin: 0 0 var(--unnic-spacing-stack-xs) 0;
-    color: var(--unnic-color-neutral-darkest);
+    font: var(--unnnic-font-caption-2);
+    margin: 0 0 var(--unnnic-space-2) 0;
+    color: var(--unnnic-color-fg-emphasized);
     display: block;
 }
 
@@ -157,26 +155,26 @@ label {
 
 
 .form-group {
-    color: var(--unnic-color-neutral-dark);
+    color: var(--unnnic-color-gray-700);
     width: 100%;
 }
 
 button,
 .btn,
 .bt-lg {
-    background: var(--unnic-color-neutral-light);
-    border-radius: var(--unnic-border-radius-sm);
-    font-size: var(--unnic-font-size-body-lg);
-    padding: var(--unnic-squish-xs);
+    background: var(--unnnic-color-bg-soft);
+    border-radius: var(--unnnic-radius-1);
+    font: var(--unnnic-font-display-4);
+    padding: var(--unnnic-space-3) var(--unnnic-space-4);
     border: none;
     cursor: pointer;
     width: 100%;
-    color: var(--unnic-color-neutral-cloudy);
+    color: var(--unnnic-color-gray-400);
     outline: none;
 }
 
 .form-group+.form-group {
-    margin: var(--unnic-spacing-stack-md) 0 0 0;
+    margin: var(--unnnic-space-6) 0 0 0;
 }
 
 .form-group-nested {
@@ -184,7 +182,7 @@ button,
 }
 
 .form-group-nested> :not(:last-child) {
-    margin: 0 var(--unnic-inline-sm) 0 0;
+    margin: 0 var(--unnnic-space-4) 0 0;
 }
 
 .form-group-nested> :last-child {
@@ -192,12 +190,12 @@ button,
 }
 
 .form-group-wrapper {
-    margin: var(--unnic-spacing-stack-md) 0;
+    margin: var(--unnnic-space-6) 0;
 }
 
 .login-message {
-    font-size: var(--unnic-font-size-body-md);
-    margin: var(--unnic-spacing-stack-nano) 0;
+    font: var(--unnnic-font-caption-2);
+    margin: var(--unnnic-space-1) 0;
 }
 
 .login-password-recover {
@@ -237,11 +235,11 @@ button,
 }
 
 .card-pf .left-side-content .benefits .title {
-    font-family: 'Aleo', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 28px;
-    color: var(--color-neutral-lightest, #F9F9F9);
+    color: var(--unnnic-color-gray-50);
     margin: 0;
     margin-bottom: 32px;
     z-index: 1;
@@ -255,11 +253,11 @@ button,
 
 .card-pf .left-side-content .benefits .benefits-list .benefit {
     padding-left: 20px;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    color: var(--color-neutral-lightest, #F9F9F9);
+    color: var(--unnnic-color-gray-50);
     position: relative;
 }
 
@@ -270,7 +268,7 @@ button,
 }
 
 .card-pf .left-side-content .benefits .benefits-list .benefit .unnnic-icon .primary {
-    fill: #F9F9F9;
+    fill: #F5F5F5;
 }
 
 .card-pf #kc-content {
@@ -344,22 +342,22 @@ a:has(.brand-title) {
 }
 
 .card-pf #kc-content .greetings {
-    font-family: 'Aleo', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     line-height: 28px;
     font-weight: 400;
-    color: var(--color-neutral-dark, #4E5666);
+    color: var(--unnnic-color-gray-700);
     margin-bottom: 24px;
 }
 
 .card-pf #kc-content .greetings-description {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
     margin-top: -16px;
     margin-bottom: 24px;
-    color: var(--color-neutral-darkest, #3B414D);
+    color: var(--unnnic-color-gray-800);
 }
 
 .card-pf #kc-content .footer {
@@ -374,18 +372,18 @@ a:has(.brand-title) {
 
 .card-pf #kc-content .login-buttons .login-button:not(:disabled),
 .card-pf #kc-content #kc-form-buttons .login-button:not(:disabled) {
-    background-color: var(--color-weni-600, #00A49F);
+    background-color: var(--unnnic-color-teal-600);
     grid-column: span 3;
 }
 
 .card-pf #kc-content .footer a.privacy-policy {
     margin-top: 40px;
     display: inline-block;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     line-height: 24px;
     font-weight: 400;
-    color: var(--neutral-dark, #4E5666);
+    color: var(--unnnic-color-gray-700);
     text-decoration-line: underline;
     text-underline-offset: 4px;
 }
@@ -466,7 +464,7 @@ a:has(.brand-title) {
     }
 
     footer {
-        background: var(--color-weni-600, #00A49F);
+        background: var(--unnnic-color-teal-600);
         height: 16px;
         width: 100%;
     }
@@ -496,21 +494,20 @@ a:has(.brand-title) {
 
 #kc-registration {
     text-align: center;
-    color: var(--unnic-color-neutral-cloudy);
+    color: var(--unnnic-color-gray-400);
 }
 
 #kc-info-wrapper {
-    margin: var(--unnic-spacing-stack-md) 0 0 0;
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-gt);
+    margin: var(--unnnic-space-6) 0 0 0;
+    font: var(--unnnic-font-body);
 }
 
 #kc-info-wrapper a,
 #kc-registration a,
 #kc-form-options a {
-    color: var(--unnic-color-brand-weni);
+    color: var(--unnnic-color-teal-400);
     text-decoration: none;
-    font-weight: var(--unnic-font-weight-bold);
+    font-weight: var(--unnnic-font-weight-bold);
 }
 
 .login-button {
@@ -524,7 +521,7 @@ a:has(.brand-title) {
 }
 
 .social-button {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     line-height: 20px;
     font-weight: 400;
@@ -541,31 +538,31 @@ a:has(.brand-title) {
 }
 
 #button-github {
-    background-color: var(--unnic-color-neutral-snow);
-    color: var(--unnic-color-neutral-darkest);
+    background-color: var(--unnnic-color-bg-base);
+    color: var(--unnnic-color-fg-emphasized);
 
     outline-style: solid;
-    outline-color: var(--unnic-color-neutral-soft);
+    outline-color: var(--unnnic-color-bg-muted);
     outline-width: 1px;
     outline-offset: -1px;
 }
 
 #button-microsoft {
-    background-color: var(--unnic-color-neutral-snow);
-    color: var(--unnic-color-neutral-darkest);
+    background-color: var(--unnnic-color-bg-base);
+    color: var(--unnnic-color-fg-emphasized);
 
     outline-style: solid;
-    outline-color: var(--unnic-color-neutral-soft);
+    outline-color: var(--unnnic-color-bg-muted);
     outline-width: 1px;
     outline-offset: -1px;
 }
 
 #button-google {
-    background-color: var(--unnic-color-neutral-snow);
-    color: var(--unnic-color-neutral-darkest);
+    background-color: var(--unnnic-color-bg-base);
+    color: var(--unnnic-color-fg-emphasized);
 
     outline-style: solid;
-    outline-color: var(--unnic-color-neutral-soft);
+    outline-color: var(--unnnic-color-bg-muted);
     outline-width: 1px;
     outline-offset: -1px;
 }
@@ -573,7 +570,7 @@ a:has(.brand-title) {
 #button-github:hover,
 #button-google:hover,
 #button-microsoft:hover {
-    opacity: var(--unnic-opacity-level-clear);
+    opacity: var(--unnnic-opacity-level-clear);
 }
 
 /* button primary unnnic-system */
@@ -582,37 +579,37 @@ a:has(.brand-title) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--unnic-border-radius-sm);
+    border-radius: var(--unnnic-radius-1);
     border: 0;
     outline: none;
     overflow: hidden;
     white-space: nowrap;
-    font-weight: var(--unnic-font-weight-regular);
-    font-family: var(--unnic-font-family-secondary);
+    font-weight: var(--unnnic-font-weight-regular);
+    font-family: var(--unnnic-font-family);
     min-width: 56px;
     cursor: pointer;
 }
 
 .btn-primary {
-    background-color: var(--unnic-color-neutral-darkest);
-    color: var(--unnic-color-background-snow);
+    background-color: var(--unnnic-color-fg-emphasized);
+    color: var(--unnnic-color-white);
 }
 
 .btn-primary:hover:enabled {
-    opacity: var(--unnic-opacity-level-darkest);
+    opacity: var(--unnnic-opacity-level-darkest);
     border: 0;
 }
 
 .btn-primary:disabled {
-    background-color: var(--unnic-color-neutral-light);
-    color: var(--unnic-color-neutral-clean);
+    background-color: var(--unnnic-color-bg-soft);
+    color: var(--unnnic-color-bg-muted);
     cursor: not-allowed;
 }
 
 .btn-secondary {
-    background-color: rgba(#E2E6ED, 0.16);
-    color: var(--unnic-color-neutral-dark);
-    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-clean);
+    background-color: rgba(#E0E0E0, 0.16);
+    color: var(--unnnic-color-gray-700);
+    border: var(--unnnic-border-width-thinner) solid var(--unnnic-color-bg-muted);
 }
 
 .btn-secondary:hover {
@@ -620,34 +617,34 @@ a:has(.brand-title) {
 }
 
 .btn-secondary:disabled {
-    background-color: var(--unnic-color-neutral-light);
-    color: var(--unnic-color-neutral-cloudy);
-    border: var(--unnic-border-width-thinner) dashed var(--unnic-color-neutral-clean);
+    background-color: var(--unnnic-color-bg-soft);
+    color: var(--unnnic-color-gray-400);
+    border: var(--unnnic-border-width-thinner) dashed var(--unnnic-color-bg-muted);
 }
 
 .btn-tertiary {
     background-color: rgba(0, 0, 0, 0);
-    color: var(--unnic-color-neutral-dark);
+    color: var(--unnnic-color-gray-700);
 }
 
 .btn-tertiary:hover {
-    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
+    border: var(--unnnic-border-width-thinner) solid var(--unnnic-color-bg-muted);
 }
 
 .btn-tertiary:disabled {
-    background-color: var(--unnic-color-neutral-light);
-    color: var(--unnic-color-neutral-cloudy);
+    background-color: var(--unnnic-color-bg-soft);
+    color: var(--unnnic-color-gray-400);
 }
 
 #kc-form-wrapper #kc-register-form .form-group .btn-tertiary {
-    margin-top: var(--unnic-spacing-stack-sm);
+    margin-top: var(--unnnic-space-4);
 }
 
 #separator-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: var(--unnic-font-weight-bold);
+    font-weight: var(--unnnic-font-weight-bold);
     margin: 16px auto;
     width: 100%;
 }
@@ -655,62 +652,57 @@ a:has(.brand-title) {
 .separator {
     flex-grow: 1;
     width: 0;
-    border-top: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
+    border-top: var(--unnnic-border-width-thinner) solid var(--unnnic-color-bg-muted);
 }
 
 .separator-text {
-    font-size: var(--unnic-font-size-body-md);
-    font-family: var(--unnic-font-family-secondary);
-    font-weight: var(--unnic-font-weight-regular);
-    color: var(--unnic-color-neutral-dark);
-    margin: 0 var(--unnic-inline-sm);
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-gray-700);
+    margin: 0 var(--unnnic-space-4);
 }
 
 .font-primary {
-    font-family: var(--unnic-font-family-primary);
+    font-family: var(--unnnic-font-family);
 }
 
 .title-md {
-    font-family: var(--unnic-font-family-primary);
-    font-size: var(--unnic-font-size-title-lg);
-    margin: 0 0 var(--unnic-spacing-stack-sm) 0;
-    color: var(--unnic-color-neutral-darkest);
+    font-family: var(--unnnic-font-family);
+    font-size: var(--unnnic-font-size-title-lg);
+    margin: 0 0 var(--unnnic-space-4) 0;
+    color: var(--unnnic-color-fg-emphasized);
 }
 
 .title-sm {
-    font-size: var(--unnic-font-size-title-lg);
-    color: var(--unnic-color-neutral-cloudy);
-    margin: 0 0 var(--unnic-spacing-stack-xgiant) 0;
+    font-size: var(--unnnic-font-size-title-lg);
+    color: var(--unnnic-color-gray-400);
+    margin: 0 0 var(--unnnic-space-16) 0;
 }
 
 .text-md {
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-md);
-    margin: 0 0 var(--unnic-spacing-stack-xs) 0;
-    color: var(--unnic-color-neutral-dark);
+    font: var(--unnnic-font-caption-2);
+    margin: 0 0 var(--unnnic-space-2) 0;
+    color: var(--unnnic-color-gray-700);
 }
 
 .text-body-gt {
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-gt);
-    margin: 0 0 var(--unnic-spacing-stack-xs) 0;
-    color: var(--unnic-color-neutral-cloudy);
-    font-weight: var(--unnic-font-weight-regular);
+    font: var(--unnnic-font-body);
+    margin: 0 0 var(--unnnic-space-2) 0;
+    color: var(--unnnic-color-gray-400);
 }
 
 .keyword {
-    color: var(--unnic-color-brand-weni);
-    font-weight: var(--unnic-font-weight-bold);
+    color: var(--unnnic-color-teal-400);
+    font-weight: var(--unnnic-font-weight-bold);
 }
 
 .alert {
     padding: 16px;
     margin-bottom: 24px;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    background-color: var(--unnic-color-background-carpet);
+    background-color: var(--unnnic-color-bg-soft);
     display: flex;
     align-items: center;
     column-gap: 8px;
@@ -729,30 +721,28 @@ a:has(.brand-title) {
 }
 
 .checbkoxGroup {
-    margin: var(--unnic-spacing-stack-nano) 0;
+    margin: var(--unnnic-space-1) 0;
 }
 
 .form-header {
-    margin: 0 0 var(--unnic-spacing-stack-md) 0;
-    color: var(--unnic-color-neutral-cloudy);
-    font-size: var(--unnic-font-size-body-gt);
-    font-weight: var(--unnic-font-weight-regular);
-    font-family: var(--unnic-font-family-secondary);
+    margin: 0 0 var(--unnnic-space-6) 0;
+    color: var(--unnnic-color-gray-400);
+    font: var(--unnnic-font-body);
 }
 
 .has-error input {
-    border: 1px solid var(--unnic-color-feedback-red);
-    color: var(--unnic-color-feedback-red);
+    border: 1px solid var(--unnnic-color-fg-critical);
+    color: var(--unnnic-color-fg-critical);
     box-shadow: none;
 }
 
 .has-error .icon {
-    color: var(--unnic-color-feedback-red);
+    color: var(--unnnic-color-fg-critical);
 }
 
 .home-back-link,
 .home-back-link * {
-    color: var(--unnic-color-neutral-dark)
+    color: var(--unnnic-color-gray-700)
 }
 
 #kc-form-options {
@@ -761,14 +751,13 @@ a:has(.brand-title) {
 }
 
 .input-message {
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-md);
-    color: var(--unnic-color-neutral-darkest);
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-fg-emphasized);
     line-height: 20px;
 }
 
 .input-message label {
-    color: var(--unnic-color-neutral-dark);
+    color: var(--unnnic-color-gray-700);
 }
 
 .remember-me {
@@ -782,42 +771,41 @@ a:has(.brand-title) {
 }
 
 .forgot-password {
-    margin-top: var(--unnic-spacing-stack-nano);
-    font-size: var(--unnic-font-size-body-md);
+    margin-top: var(--unnnic-space-1);
+    font: var(--unnnic-font-caption-2);
 }
 
 #kc-form-options .forgot-password a {
-    color: var(--unnic-color-neutral-dark);
+    color: var(--unnnic-color-gray-700);
     text-decoration: none;
-    font-weight: var(--unnic-font-weight-normal);
+    font-weight: var(--unnnic-font-weight-regular);
 }
 
 .alert-error {
-    color: var(--unnic-color-neutral-dark);
+    color: var(--unnnic-color-gray-700);
 }
 
 .terms-use {
-    line-height: 20px;
-    font-size: var(--unnic-font-size-body-gt);
-    color: var(--unnic-color-neutral-cloudy);
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-gray-400);
     text-align: center;
     text-align: justify;
     text-align-last: center;
 }
 
 .terms-use a {
-    color: var(--unnic-color-neutral-cloudy) !important;
-    font-weight: var(--unnic-font-weight-bold) !important;
+    color: var(--unnnic-color-gray-400) !important;
+    font-weight: var(--unnnic-font-weight-bold) !important;
     text-decoration: underline !important;
 }
 
 .input-control.error .icon {
-    color: var(--unnic-color-feedback-red);
+    color: var(--unnnic-color-fg-critical);
 }
 
 .input-control.error .form-control {
-    color: var(--unnic-color-feedback-red);
-    border-color: var(--unnic-color-feedback-red);
+    color: var(--unnnic-color-fg-critical);
+    border-color: var(--unnnic-color-fg-critical);
 }
 
 #kc-register-form .input-medium label {
@@ -825,18 +813,15 @@ a:has(.brand-title) {
 }
 
 #kc-register-form .input-medium .label {
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-md);
-    font-weight: var(--unnic-font-weight-regular);
-    line-height: calc(var(--unnic-font-size-body-md) + var(--unnic-line-height-md));
-    color: var(--unnic-color-neutral-darkest);
-    margin-bottom: var(--unnic-spacing-stack-xs);
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-fg-emphasized);
+    margin-bottom: var(--unnnic-space-2);
 }
 
 #kc-register-form .input-medium .input {
     display: flex;
     align-items: center;
-    padding: var(--unnic-squish-xs);
+    padding: var(--unnnic-space-3) var(--unnnic-space-4);
     position: relative;
 }
 
@@ -848,15 +833,15 @@ a:has(.brand-title) {
     bottom: 0;
     left: 0;
     right: 0;
-    border-radius: var(--unnic-border-radius-sm);
-    border: var(--unnic-border-width-thinner) solid var(--unnic-color-neutral-soft);
-    background-color: var(--unnic-color-neutral-snow);
+    border-radius: var(--unnnic-radius-1);
+    border: var(--unnnic-border-width-thinner) solid var(--unnnic-color-bg-muted);
+    background-color: var(--unnnic-color-bg-base);
     z-index: -1;
 }
 
 #kc-register-form .input-medium .input .icon {
-    width: var(--unnic-icon-size-sm);
-    height: var(--unnic-icon-size-sm);
+    width: var(--unnnic-icon-size-4);
+    height: var(--unnnic-icon-size-4);
 }
 
 #kc-register-form .input-medium .input .icon.clickable {
@@ -864,20 +849,20 @@ a:has(.brand-title) {
 }
 
 #kc-register-form .input-medium .input .icon svg {
-    width: var(--unnic-icon-size-sm);
-    height: var(--unnic-icon-size-sm);
+    width: var(--unnnic-icon-size-4);
+    height: var(--unnnic-icon-size-4);
 }
 
 #kc-register-form .input-medium .input .icon.left {
-    margin-right: var(--unnic-inline-xs);
+    margin-right: var(--unnnic-space-2);
 }
 
 #kc-register-form .input-medium .input .icon.right {
-    margin-left: var(--unnic-inline-xs);
+    margin-left: var(--unnnic-space-2);
 }
 
 #kc-register-form .input-medium .input .icon .primary {
-    fill: var(--unnic-color-neutral-clean);
+    fill: var(--unnnic-color-bg-muted);
 }
 
 #kc-register-form .input-medium .input input {
@@ -886,20 +871,14 @@ a:has(.brand-title) {
     border: none;
 
     width: 100%;
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-gt);
-    font-weight: var(--unnic-font-weight-regular);
-    line-height: calc(var(--unnic-font-size-body-gt) + var(--unnic-line-height-md));
-    color: var(--unnic-color-neutral-dark);
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-gray-700);
 }
 
 #kc-register-form .input-medium .input-message {
-    margin-top: var(--unnic-spacing-stack-nano);
-    font-family: var(--unnic-font-family-secondary);
-    font-size: var(--unnic-font-size-body-md);
-    color: var(--unnic-color-neutral-darkest);
-    line-height: calc(var(--unnic-font-size-body-md) + var(--unnic-line-height-md));
-    min-height: calc(var(--unnic-font-size-body-md) + var(--unnic-line-height-md));
+    margin-top: var(--unnnic-space-1);
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-fg-emphasized);
 }
 
 #kc-register-form .input-group {
@@ -910,42 +889,42 @@ a:has(.brand-title) {
 
 
 #kc-register-form .input-medium:focus-within .input .icon .primary {
-    fill: var(--unnic-color-brand-weni-soft);
+    fill: var(--unnnic-color-teal-600);
 }
 
 #kc-register-form .input-medium:focus-within .input::after {
-    border-color: var(--unnic-color-brand-weni);
+    border-color: var(--unnnic-color-teal-400);
 }
 
 #kc-register-form .input-medium:focus-within .input input {
-    color: var(--unnic-color-brand-weni-soft);
+    color: var(--unnnic-color-teal-600);
 }
 
 
 #kc-register-form .input-medium.has-error .input .icon .primary {
-    fill: var(--unnic-color-feedback-red);
+    fill: var(--unnnic-color-fg-critical);
 }
 
 #kc-register-form .input-medium.has-error .input::after {
-    border-color: var(--unnic-color-feedback-red);
+    border-color: var(--unnnic-color-fg-critical);
 }
 
 #kc-register-form .input-medium.has-error .input input {
-    color: var(--unnic-color-feedback-red);
+    color: var(--unnnic-color-fg-critical);
 }
 
 #kc-register-form .input-medium.has-error .input-message {
-    color: var(--unnic-color-feedback-red);
+    color: var(--unnnic-color-fg-critical);
 }
 
 .back-to-login {
     margin-top: 24px;
 
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    color: var(--color-neutral-cloudy, #67738B);
+    color: var(--unnnic-color-fg-base);
 }
 
 .back-to-login a {
@@ -953,7 +932,7 @@ a:has(.brand-title) {
 
     text-decoration-line: underline;
     text-underline-offset: 4px;
-    color: var(--color-neutral-dark, #4E5666);
+    color: var(--unnnic-color-gray-700);
 }
 
 .register-form-row-email {
@@ -988,11 +967,11 @@ a:has(.brand-title) {
 .password-strength-rules .rule {
     display: flex;
     align-items: center;
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: var(--unnic-color-neutral-cloudy, #67738B);
+    color: var(--unnnic-color-fg-base);
 }
 
 .password-strength-rules .rule .unnnic-icon {
@@ -1000,16 +979,16 @@ a:has(.brand-title) {
 }
 
 .password-strength-rules .rule.valid span {
-    color: var(--unnic-color-aux-green-500, #38A169);
-    font-weight: var(--unnic-font-weight-bold);
+    color: var(--unnnic-color-fg-success);
+    font-weight: var(--unnnic-font-weight-bold);
 }
 
 .register-form-row-password .password-strength {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 400;
     line-height: 20px;
-    color: var(--color-neutral-cloudy, #67738B);
+    color: var(--unnnic-color-fg-base);
     text-align: center;
     margin-top: -8px;
 
@@ -1020,7 +999,7 @@ a:has(.brand-title) {
 
 .register-form-row-password .password-strength .bar {
     height: 3px;
-    background: var(--color-background-white, #FFF);
+    background: var(--unnnic-color-bg-base);
 }
 
 .register-form-row-password .password-strength .bar .progress {
@@ -1031,22 +1010,22 @@ a:has(.brand-title) {
 
 .register-form-row-password .password-strength .bar .progress.fulfilled-0 {
     width: 25%;
-    background: var(--red-color-aux-red-500, #E53E3E);
+    background: var(--unnnic-color-fg-critical);
 }
 
 .register-form-row-password .password-strength .bar .progress.fulfilled-1 {
     width: 50%;
-    background: var(--red-color-aux-red-500, #E53E3E);
+    background: var(--unnnic-color-fg-critical);
 }
 
 .register-form-row-password .password-strength .bar .progress.fulfilled-2 {
     width: 75%;
-    background: var(--green-color-aux-green-300, #68D391);
+    background: var(--unnnic-color-fg-success);
 }
 
 .register-form-row-password .password-strength .bar .progress.fulfilled-3 {
     width: 100%;
-    background: var(--green-color-aux-green-300, #68D391);
+    background: var(--unnnic-color-fg-success);
 }
 
 @media (max-width: 600px) {
@@ -1062,11 +1041,11 @@ a:has(.brand-title) {
     margin-top: -8px;
     margin-bottom: 24px;
 
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    color: var(--color-neutral-cloudy, #67738B);
+    color: var(--unnnic-color-fg-base);
 }
 
 .register-form-row-password-message ul {
@@ -1159,8 +1138,8 @@ a:has(.brand-title) {
 }
 
 .sign-up-button-text {
-    color: #4E5666;
-    font-family: Lato;
+    color: #5C5C5C;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
@@ -1200,16 +1179,16 @@ a:has(.brand-title) {
 }
 
 .modal-dialog-content {
-    background-color: var(--unnic-color-background-snow, #fff);
+    background-color: var(--unnnic-color-bg-base);
     padding: 24px;
-    border-radius: var(--unnic-border-radius-md, 8px);
+    border-radius: var(--unnnic-radius-2, 8px);
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
     min-width: 320px;
     max-width: 400px;
     width: 100%;
     position: relative;
     text-align: left;
-    font-family: var(--unnic-font-family-secondary, Lato);
+    font-family: var(--unnnic-font-family, 'Inter', sans-serif);
 }
 
 .modal-dialog-close-button {
@@ -1219,18 +1198,18 @@ a:has(.brand-title) {
     width: auto;
     background: none;
     border: none;
-    color: var(--unnic-color-neutral-clean, #B8BECB);
+    color: var(--unnnic-color-fg-muted);
     cursor: pointer;
     padding: 0;
     line-height: 1;
 }
 
 .modal-dialog-close-button .unnnic-icon {
-    color: var(--unnic-color-neutral-cloudy, #67738B);
+    color: var(--unnnic-color-fg-base);
 }
 
 .modal-dialog-close-button:hover .unnnic-icon {
-    color: var(--unnic-color-neutral-dark, #4E5666);
+    color: var(--unnnic-color-gray-700);
 }
 
 .modal-dialog-icon-wrapper {
@@ -1239,27 +1218,25 @@ a:has(.brand-title) {
 }
 
 .modal-dialog-icon-wrapper .unnnic-icon {
-    font-size: var(--unnic-icon-size-lg, 32px); 
+    font-size: var(--unnnic-icon-size-7, 32px); 
 }
 
 .modal-dialog-scheme-feedback-green .modal-dialog-icon-wrapper .unnnic-icon {
-    color: var(--unnic-color-feedback-green, #00A49F); 
+    color: var(--unnnic-color-fg-success); 
 }
 
 .modal-dialog-title-text {
-    font-family: var(--unnic-font-family-secondary, Lato);
-    font-size: var(--unnic-font-size-title-sm, 20px);
-    font-weight: var(--unnic-font-weight-bold, 700);
+    font: var(--unnnic-font-display-2);
     margin-top: 0;
     margin-bottom: 16px;
     padding-right: 30px;
 
-    color: var(--color-neutral-darkest, #3B414D);
+    color: var(--unnnic-color-gray-800);
 }
 
 .modal-dialog-separator {
     height: 1px;
-    background-color: var(--unnic-color-neutral-soft, #E2E6ED);
+    background-color: var(--unnnic-color-bg-muted);
     margin-bottom: 16px;
     margin-left: -20px;
     margin-right: -20px;
@@ -1267,11 +1244,8 @@ a:has(.brand-title) {
 }
 
 .modal-dialog-body-content {
-    font-size: var(--unnic-font-size-body-gt, 14px);
-    color: var(--unnic-color-neutral-cloudy, #67738B);
-    font-family: var(--unnic-font-family-secondary, Lato);
-    font-weight: 400;
-    line-height: 22px; 
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-fg-base);
 }
 
 .modal-dialog-body-content > div {

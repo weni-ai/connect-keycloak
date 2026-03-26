@@ -12,63 +12,60 @@
 }
 
 .modal-container {
-    background-color: var(--unnic-color-background-carpet);
-    border-radius: var(--unnic-border-radius-sm);
+    background-color: var(--unnnic-color-bg-soft);
+    border-radius: var(--unnnic-radius-1);
     overflow: hidden;
 }
 
 .modal-content {
-    padding: var(--unnic-squish-md);
+    padding: var(--unnnic-space-4) var(--unnnic-space-6);
 }
 
 .modal-button-container {
     display: flex;
     justify-content: flex-end;
-    font-size: var(--unnic-icon-size-sm);
-    color: var(--unnic-color-neutral-dark);
+    font-size: var(--unnnic-icon-size-4);
+    color: var(--unnnic-color-gray-700);
 }
 
 .modal-center-icon {
     display: flex;
     justify-content: center;
-    font-size: var(--unnic-icon-size-xl);
-    margin-bottom: var(--unnic-inset-sm);
+    font-size: var(--unnnic-icon-size-10);
+    margin-bottom: var(--unnnic-space-4);
 }
 
 .modal-text {
-    font-size: var(--unnic-font-size-body-lg);
-    color: var(--unnic-color-neutral-cloudy);
+    font: var(--unnnic-font-display-4);
+    color: var(--unnnic-color-gray-400);
     text-align: center;
-    line-height: 24px;
     margin-bottom: 48px;
 }
 
 .modal-title {
-    font-size: var(--unnic-font-size-title-sm);
-    font-weight: var(--unnic-font-weight-black);
-    color: var(--unnic-color-neutral-darkest);
+    font: var(--unnnic-font-display-2);
+    color: var(--unnnic-color-fg-emphasized);
     text-align: center;
-    line-height: 28px;
-    margin-bottom: var(--unnic-inline-md);
+    margin-bottom: var(--unnnic-space-6);
 }
 
 .modal-message {
-    font-size: var(--unnic-font-size-body-md);
-    padding: var(--unnic-inset-md);
+    font: var(--unnnic-font-caption-2);
+    padding: var(--unnnic-space-6);
     text-align: center;
-    color: var(--unnic-color-neutral-dark);
-    background-color: var(--unnic-color-neutral-soft);
+    color: var(--unnnic-color-gray-700);
+    background-color: var(--unnnic-color-bg-muted);
 }
 
 .modal-message a {
-    color: var(--unnic-color-neutral-dark);
-    font-weight: var(--unnic-font-weight-bold);
+    color: var(--unnnic-color-gray-700);
+    font-weight: var(--unnnic-font-weight-bold);
 }
 
 .icon-success {
-    color: var(--unnic-color-feedback-green);
+    color: var(--unnnic-color-fg-success);
 }
 
 .icon-alert {
-    color: var(--unnic-color-feedback-yellow);  
+    color: var(--unnnic-color-fg-warning);  
 }

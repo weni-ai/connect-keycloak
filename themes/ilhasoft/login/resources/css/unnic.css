@@ -1,152 +1,370 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..600;1,14..32,400..600&display=swap');
 
 :root {
+    /* Colors */
+    --unnnic-color-white: #FFFFFF;
+    --unnnic-color-black: #000000;
 
-    /* Brand */
-    --unnic-color-brand-weni: #00DED2;
-    --unnic-color-brand-weni-dark: #005E5A;
-    --unnic-color-brand-weni-soft: #009E96;
-    --unnic-color-brand-sec-dark: #2F343D;
-    --unnic-color-brand-sec-soft: #808080;
-    --unnic-color-brand-sec: #D0D0D0;
-    
-    /* Background */
-    --unnic-color-background-solo: #E8F4F4;
-    --unnic-color-background-sky: #F3FFFE;
-    --unnic-color-background-grass: #F5F6F6;
-    --unnic-color-background-carpet: #F9F9F9;
-    --unnic-color-background-snow: #FFFFFF;
+    --unnnic-color-gray-0: #FFFFFF;
+    --unnnic-color-gray-1: #F5F5F5;
+    --unnnic-color-gray-2: #EBEBEB;
+    --unnnic-color-gray-3: #E0E0E0;
+    --unnnic-color-gray-4: #D6D6D6;
+    --unnnic-color-gray-5: #C2C2C2;
+    --unnnic-color-gray-6: #ADADAD;
+    --unnnic-color-gray-7: #999999;
+    --unnnic-color-gray-8: #858585;
+    --unnnic-color-gray-9: #707070;
+    --unnnic-color-gray-10: #5C5C5C;
+    --unnnic-color-gray-11: #3D3D3D;
+    --unnnic-color-gray-12: #1F1F1F;
+    --unnnic-color-gray-13: #000000;
 
-    /* Neutral */
-    --unnic-color-neutral-black: #272B33;
-    --unnic-color-neutral-darkest: #3B414D;
-    --unnic-color-neutral-dark: #4E5666;
-    --unnic-color-neutral-cloudy: #758199;
-    --unnic-color-neutral-cleanest: #9CACCC;
-    --unnic-color-neutral-clean: #E2E6ED;
-    --unnic-color-neutral-soft: #E2E6ED;
-    --unnic-color-neutral-lightest: #F4F6F8;
-    --unnic-color-neutral-light: #F9F9F9;
-    --unnic-color-neutral-snow: #FFFFFF;
+    --unnnic-color-teal-1: #E9FAF8;
+    --unnnic-color-teal-2: #CFF8F4;
+    --unnnic-color-teal-3: #ABF2EB;
+    --unnnic-color-teal-4: #8DEAE3;
+    --unnnic-color-teal-5: #66DBD3;
+    --unnnic-color-teal-6: #40CAC2;
+    --unnnic-color-teal-7: #10B6AF;
+    --unnnic-color-teal-8: #01A29B;
+    --unnnic-color-teal-9: #018D88;
+    --unnnic-color-teal-10: #017873;
+    --unnnic-color-teal-11: #016460;
+    --unnnic-color-teal-12: #0D504D;
+    --unnnic-color-teal-13: #133D3B;
 
-    /* Feedback */
-    --unnic-color-feedback-red: #FF4545;
-    --unnic-color-feedback-green: #47D66F;
-    --unnic-color-feedback-yellow: #FDBA38;
-    --unnic-color-feedback-blue: #2856FC;
-    --unnic-color-feedback-grey: #ECECEC;
+    --unnnic-color-green-1: #E9FCE3;
+    --unnnic-color-green-2: #CEFDC0;
+    --unnnic-color-green-3: #AFF79E;
+    --unnnic-color-green-4: #97EF86;
+    --unnnic-color-green-5: #74E26C;
+    --unnnic-color-green-6: #4FD051;
+    --unnnic-color-green-7: #28BC37;
+    --unnnic-color-green-8: #08A822;
+    --unnnic-color-green-9: #019213;
+    --unnnic-color-green-10: #017D10;
+    --unnnic-color-green-11: #016810;
+    --unnnic-color-green-12: #01540E;
+    --unnnic-color-green-13: #01410B;
 
-    /* Auxiliary colors */
-    --unnic-color-aux-blue: #00DED3;
-    --unnic-color-aux-blue-rgb: 0, 224, 213;
-    --unnic-color-aux-purple: #8416DE;
-    --unnic-color-aux-orange: #F4691F;
-    --unnic-color-aux-lemon: #CCDE0B;
-    --unnic-color-aux-pink: #DE16BA;
+    --unnnic-color-blue-1: #F1F8FD;
+    --unnnic-color-blue-2: #E1F3FF;
+    --unnnic-color-blue-3: #CBE9FF;
+    --unnnic-color-blue-4: #B6DFFF;
+    --unnnic-color-blue-5: #97CFFE;
+    --unnnic-color-blue-6: #79BCFB;
+    --unnnic-color-blue-7: #5AA8F7;
+    --unnnic-color-blue-8: #3993F4;
+    --unnnic-color-blue-9: #157BF4;
+    --unnnic-color-blue-10: #0366DD;
+    --unnnic-color-blue-11: #0155B7;
+    --unnnic-color-blue-12: #014592;
+    --unnnic-color-blue-13: #013672;
+
+    --unnnic-color-purple-1: #F9F5FD;
+    --unnnic-color-purple-2: #F5EAFE;
+    --unnnic-color-purple-3: #EDDCFE;
+    --unnnic-color-purple-4: #E5CFFE;
+    --unnnic-color-purple-5: #DABAFD;
+    --unnnic-color-purple-6: #CBA3FC;
+    --unnnic-color-purple-7: #BC8AFB;
+    --unnnic-color-purple-8: #AD71F8;
+    --unnnic-color-purple-9: #9C56F3;
+    --unnnic-color-purple-10: #883CE6;
+    --unnnic-color-purple-11: #7225D2;
+    --unnnic-color-purple-12: #5C12B6;
+    --unnnic-color-purple-13: #460B93;
+
+    --unnnic-color-red-1: #FDF6F5;
+    --unnnic-color-red-2: #FFEDEA;
+    --unnnic-color-red-3: #FFDFD9;
+    --unnnic-color-red-4: #FFD0C7;
+    --unnnic-color-red-5: #FFBBAD;
+    --unnnic-color-red-6: #FF9E8B;
+    --unnnic-color-red-7: #FF7F68;
+    --unnnic-color-red-8: #F95D47;
+    --unnnic-color-red-9: #EC3727;
+    --unnnic-color-red-10: #D31A15;
+    --unnnic-color-red-11: #B40202;
+    --unnnic-color-red-12: #940303;
+    --unnnic-color-red-13: #720000;
+
+    --unnnic-color-orange-1: #FDF5E9;
+    --unnnic-color-orange-2: #FFEDCD;
+    --unnnic-color-orange-3: #FFE0AE;
+    --unnnic-color-orange-4: #FED392;
+    --unnnic-color-orange-5: #FEBC64;
+    --unnnic-color-orange-6: #FFA138;
+    --unnnic-color-orange-7: #F78612;
+    --unnnic-color-orange-8: #E57001;
+    --unnnic-color-orange-9: #CC5E01;
+    --unnnic-color-orange-10: #B24D01;
+    --unnnic-color-orange-11: #963E01;
+    --unnnic-color-orange-12: #7B3001;
+    --unnnic-color-orange-13: #622401;
+
+    --unnnic-color-yellow-1: #FBF7D4;
+    --unnnic-color-yellow-2: #FDF5AD;
+    --unnnic-color-yellow-3: #FAEC6D;
+    --unnnic-color-yellow-4: #FADE1E;
+    --unnnic-color-yellow-5: #E9C701;
+    --unnnic-color-yellow-6: #D8B401;
+    --unnnic-color-yellow-7: #C5A001;
+    --unnnic-color-yellow-8: #B18D01;
+    --unnnic-color-yellow-9: #9C7901;
+    --unnnic-color-yellow-10: #866701;
+    --unnnic-color-yellow-11: #715401;
+    --unnnic-color-yellow-12: #5C4401;
+    --unnnic-color-yellow-13: #493401;
+
+    --unnnic-color-cyan-1: #E6FAFD;
+    --unnnic-color-cyan-2: #C6F9FF;
+    --unnnic-color-cyan-3: #A5F1FF;
+    --unnnic-color-cyan-4: #89E8FB;
+    --unnnic-color-cyan-5: #61D9F4;
+    --unnnic-color-cyan-6: #34C6E9;
+    --unnnic-color-cyan-7: #13B1DB;
+    --unnnic-color-cyan-8: #029DC9;
+    --unnnic-color-cyan-9: #0187B5;
+    --unnnic-color-cyan-10: #0172A0;
+    --unnnic-color-cyan-11: #015E8A;
+    --unnnic-color-cyan-12: #014B74;
+    --unnnic-color-cyan-13: #013A5E;
+
+    --unnnic-color-pink-1: #FDF5F7;
+    --unnnic-color-pink-2: #FFEBF2;
+    --unnnic-color-pink-3: #FFDFEB;
+    --unnnic-color-pink-4: #FFC8DC;
+    --unnnic-color-pink-5: #FEB2CD;
+    --unnnic-color-pink-6: #FF98BF;
+    --unnnic-color-pink-7: #FE78AC;
+    --unnnic-color-pink-8: #EF5997;
+    --unnnic-color-pink-9: #DE387F;
+    --unnnic-color-pink-10: #CA226A;
+    --unnnic-color-pink-11: #AF0956;
+    --unnnic-color-pink-12: #8F0246;
+    --unnnic-color-pink-13: #74043B;
+
+    /* Deprecated primitive aliases (50-950 → 1-13 mapping) */
+    --unnnic-color-gray-50: #F5F5F5;
+    --unnnic-color-gray-100: #EBEBEB;
+    --unnnic-color-gray-200: #D6D6D6;
+    --unnnic-color-gray-300: #C2C2C2;
+    --unnnic-color-gray-400: #ADADAD;
+    --unnnic-color-gray-500: #999999;
+    --unnnic-color-gray-600: #858585;
+    --unnnic-color-gray-700: #5C5C5C;
+    --unnnic-color-gray-800: #1F1F1F;
+    --unnnic-color-gray-900: #000000;
+    --unnnic-color-gray-950: #000000;
+    --unnnic-color-teal-50: #E9FAF8;
+    --unnnic-color-teal-100: #CFF8F4;
+    --unnnic-color-teal-200: #8DEAE3;
+    --unnnic-color-teal-300: #66DBD3;
+    --unnnic-color-teal-400: #40CAC2;
+    --unnnic-color-teal-500: #10B6AF;
+    --unnnic-color-teal-600: #01A29B;
+    --unnnic-color-teal-700: #017873;
+    --unnnic-color-teal-800: #0D504D;
+    --unnnic-color-teal-900: #133D3B;
+    --unnnic-color-teal-950: #133D3B;
+    --unnnic-color-green-50: #E9FCE3;
+    --unnnic-color-green-100: #CEFDC0;
+    --unnnic-color-green-200: #97EF86;
+    --unnnic-color-green-300: #74E26C;
+    --unnnic-color-green-400: #4FD051;
+    --unnnic-color-green-500: #28BC37;
+    --unnnic-color-green-600: #08A822;
+    --unnnic-color-green-700: #017D10;
+    --unnnic-color-green-800: #01540E;
+    --unnnic-color-green-900: #01410B;
+    --unnnic-color-green-950: #01410B;
+    --unnnic-color-blue-50: #F1F8FD;
+    --unnnic-color-blue-100: #E1F3FF;
+    --unnnic-color-blue-200: #B6DFFF;
+    --unnnic-color-blue-300: #97CFFE;
+    --unnnic-color-blue-400: #79BCFB;
+    --unnnic-color-blue-500: #5AA8F7;
+    --unnnic-color-blue-600: #3993F4;
+    --unnnic-color-blue-700: #0366DD;
+    --unnnic-color-blue-800: #014592;
+    --unnnic-color-blue-900: #013672;
+    --unnnic-color-blue-950: #013672;
+    --unnnic-color-purple-50: #F9F5FD;
+    --unnnic-color-purple-100: #F5EAFE;
+    --unnnic-color-purple-200: #E5CFFE;
+    --unnnic-color-purple-300: #DABAFD;
+    --unnnic-color-purple-400: #CBA3FC;
+    --unnnic-color-purple-500: #BC8AFB;
+    --unnnic-color-purple-600: #AD71F8;
+    --unnnic-color-purple-700: #883CE6;
+    --unnnic-color-purple-800: #5C12B6;
+    --unnnic-color-purple-900: #460B93;
+    --unnnic-color-purple-950: #460B93;
+    --unnnic-color-red-50: #FDF6F5;
+    --unnnic-color-red-100: #FFEDEA;
+    --unnnic-color-red-200: #FFD0C7;
+    --unnnic-color-red-300: #FFBBAD;
+    --unnnic-color-red-400: #FF9E8B;
+    --unnnic-color-red-500: #FF7F68;
+    --unnnic-color-red-600: #F95D47;
+    --unnnic-color-red-700: #D31A15;
+    --unnnic-color-red-800: #940303;
+    --unnnic-color-red-900: #720000;
+    --unnnic-color-red-950: #720000;
+    --unnnic-color-orange-50: #FDF5E9;
+    --unnnic-color-orange-100: #FFEDCD;
+    --unnnic-color-orange-200: #FED392;
+    --unnnic-color-orange-300: #FEBC64;
+    --unnnic-color-orange-400: #FFA138;
+    --unnnic-color-orange-500: #F78612;
+    --unnnic-color-orange-600: #E57001;
+    --unnnic-color-orange-700: #B24D01;
+    --unnnic-color-orange-800: #7B3001;
+    --unnnic-color-orange-900: #622401;
+    --unnnic-color-orange-950: #622401;
+    --unnnic-color-yellow-50: #FBF7D4;
+    --unnnic-color-yellow-100: #FDF5AD;
+    --unnnic-color-yellow-200: #FADE1E;
+    --unnnic-color-yellow-300: #E9C701;
+    --unnnic-color-yellow-400: #D8B401;
+    --unnnic-color-yellow-500: #C5A001;
+    --unnnic-color-yellow-600: #B18D01;
+    --unnnic-color-yellow-700: #866701;
+    --unnnic-color-yellow-800: #5C4401;
+    --unnnic-color-yellow-900: #493401;
+    --unnnic-color-yellow-950: #493401;
+
+    /* Semantic Colors — Background */
+    --unnnic-color-bg-base: #FFFFFF;
+    --unnnic-color-bg-base-soft: #F5F5F5;
+    --unnnic-color-bg-soft: #F5F5F5;
+    --unnnic-color-bg-muted: #EBEBEB;
+    --unnnic-color-bg-accent-plain: #CFF8F4;
+    --unnnic-color-bg-accent-strong: #01A29B;
+    --unnnic-color-bg-active: #01A29B;
+    --unnnic-color-bg-info: #F1F8FD;
+    --unnnic-color-bg-success: #E9FCE3;
+    --unnnic-color-bg-warning: #FBF7D4;
+    --unnnic-color-bg-critical: #FDF6F5;
+    --unnnic-color-bg-red-plain: #FFDFD9;
+    --unnnic-color-bg-red-strong: #EC3727;
+    --unnnic-color-bg-orange-plain: #FFE0AE;
+    --unnnic-color-bg-orange-strong: #E57001;
+    --unnnic-color-bg-yellow-plain: #FDF5AD;
+    --unnnic-color-bg-yellow-strong: #B18D01;
+    --unnnic-color-bg-green-plain: #CEFDC0;
+    --unnnic-color-bg-green-strong: #08A822;
+    --unnnic-color-bg-teal-plain: #CFF8F4;
+    --unnnic-color-bg-teal-strong: #01A29B;
+    --unnnic-color-bg-blue-plain: #E1F3FF;
+    --unnnic-color-bg-blue-strong: #3993F4;
+    --unnnic-color-bg-purple-plain: #EDDCFE;
+    --unnnic-color-bg-purple-strong: #AD71F8;
+    --unnnic-color-bg-pink-plain: #FFDFEB;
+    --unnnic-color-bg-pink-strong: #EF5997;
+
+    /* Semantic Colors — Foreground */
+    --unnnic-color-fg-base: #3D3D3D;
+    --unnnic-color-fg-emphasized: #1F1F1F;
+    --unnnic-color-fg-muted: #707070;
+    --unnnic-color-fg-inverted: #FFFFFF;
+    --unnnic-color-fg-accent: #01A29B;
+    --unnnic-color-fg-active: #01A29B;
+    --unnnic-color-fg-info: #157BF4;
+    --unnnic-color-fg-success: #019213;
+    --unnnic-color-fg-warning: #9C7901;
+    --unnnic-color-fg-critical: #EC3727;
+
+    /* Semantic Colors — Border */
+    --unnnic-color-border-base: #E0E0E0;
+    --unnnic-color-border-soft: #E0E0E0;
+    --unnnic-color-border-muted: #EBEBEB;
+    --unnnic-color-border-emphasized: #999999;
+    --unnnic-color-border-accent-plain: #ABF2EB;
+    --unnnic-color-border-accent-strong: #01A29B;
+    --unnnic-color-border-active: #01A29B;
+    --unnnic-color-border-info: #CBE9FF;
+    --unnnic-color-border-success: #AFF79E;
+    --unnnic-color-border-warning: #FAEC6D;
+    --unnnic-color-border-critical: #FFDFD9;
+
+    --unnnic-color-aux-blue-rgb: 1, 162, 155;
 
     /* Font family */
-    --unnic-font-family-primary: 'Aleo', serif;
-    --unnic-font-family-secondary: Lato;
+    --unnnic-font-family: Inter, sans-serif;
 
     /* Font weight */
-    --unnic-font-weight-black: 900;
-    --unnic-font-weight-bold: 700;
-    --unnic-font-weight-regular: 400;
-    --unnic-font-weight-light: 300;
+    --unnnic-font-weight-bold: 600;
+    --unnnic-font-weight-semibold: 600;
+    --unnnic-font-weight-medium: 500;
+    --unnnic-font-weight-regular: 400;
 
     /* Font size */
-    --unnic-font-size-body-sm: 8px;
-    --unnic-font-size-body-md: 12px;
-    --unnic-font-size-body-gt: 14px;
-    --unnic-font-size-body-lg: 16px;
+    --unnnic-font-size: 16px;
 
-    --unnic-font-size-title-sm: 20px;
-    --unnic-font-size-title-md: 24px;
-    --unnic-font-size-title-lg: 32px;
+    /* Legacy font sizes, not available in the new design system tokens */
+    --unnnic-font-size-title-lg: 32px;
+    --unnnic-font-size-h1: 72px;
 
-    --unnic-font-size-h4: 40px;
-    --unnic-font-size-h3: 48px;
-    --unnic-font-size-h2: 56px;
-    --unnic-font-size-h1: 72px;
-
-    /* Line height */
-    --unnic-line-height-small: 4px;
-    --unnic-line-height-md: 8px;
-    --unnic-line-height-large: 16px;
+    /* Fonts */
+    --unnnic-font-display-1: 600 calc(1.5 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-display-2: 600 calc(1.25 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-display-3: 600 calc(1 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-display-4: 400 calc(1 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-body: 400 calc(0.875 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-emphasis: 500 calc(0.875 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-action: 600 calc(0.875 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-caption-1: 500 calc(0.75 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
+    --unnnic-font-caption-2: 400 calc(0.75 * var(--unnnic-font-size)) / 1.4 Inter, sans-serif;
 
     /* Icon size */
-    --unnic-icon-size-xl: 40px;
-    --unnic-icon-size-lg: 32px;
-    --unnic-icon-size-md: 24px;
-    --unnic-icon-size-sm: 16px;
-    --unnic-icon-size-xs: 12px;
-
-    /* Avatar size */
-    --unnic-avatar-size-lg: 120px;
-    --unnic-avatar-size-md: 104px;
-    --unnic-avatar-size-sm: 72px;
-    --unnic-avatar-size-xs: 40px;
-    --unnic-avatar-size-nano: 20px;
+    --unnnic-icon-size-3: calc(0.75 * 16px) /* 12px */;
+    --unnnic-icon-size-4: 16px /* 16px */;
+    --unnnic-icon-size-5: calc(1.25 * 16px) /* 20px */;
+    --unnnic-icon-size-6: calc(1.5 * 16px) /* 24px */;
+    --unnnic-icon-size-7: calc(2 * 16px) /* 32px */;
+    --unnnic-icon-size-10: calc(2.5 * 16px) /* 40px */;
 
     /* Border radius */
-    --unnic-border-radius-none: 0px;
-    --unnic-border-radius-sm: 4px;
-    --unnic-border-radius-md: 8px;
-    --unnic-border-radius-lg: 16px;
-    --unnic-border-radius-pill: 600px;
+    --unnnic-radius-0: 0 /* 0px */;
+    --unnnic-radius-1: calc(0.25 * 16px) /* 4px */;
+    --unnnic-radius-2: calc(0.5 * 16px) /* 8px */;
+    --unnnic-radius-3: calc(0.75 * 16px) /* 12px */;
+    --unnnic-radius-4: calc(1 * 16px) /* 16px */;
+    --unnnic-radius-full: 1000px;
 
     /* Border width */
-    --unnic-border-width-none: 0px;
-    --unnic-border-width-thinner: 1px;
-    --unnic-border-width-thin: 2px;
-    --unnic-border-width-thick: 4px;
+    --unnnic-border-width-none: 0px;
+    --unnnic-border-width-thinner: 1px;
+    --unnnic-border-width-thin: 2px;
+    --unnnic-border-width-thick: 4px;
 
     /* Shadow levels */
-    --unnic-shadow-level-near: 0px 4px 8 rgba(0, 0, 0, .12);
-    --unnic-shadow-level-separated: 0px 8px 16 rgba(0, 0, 0, .08);
-    --unnic-shadow-level-far: 0px 12px 32 rgba(0, 0, 0, .08);
-    --unnic-shadow-level-further: 0px 20px 40 rgba(0, 0, 0, .06);
+    --unnnic-shadow-1: 0px calc(0.25 * 16px) /* 4px */ 16px /* 16px */ 0px rgba(0, 0, 0, 0.16);
+    --unnnic-shadow-2: 0px calc(1.5 * 16px) /* 24px */ calc(3 * 16px) /* 48px */ 0px rgba(0, 0, 0, 0.16);
     
     /* Opacity levels */
-    --unnic-opacity-level-darkest: 0.8;
-    --unnic-opacity-level-dark: 0.64;
-    --unnic-opacity-level-clarifying: 0.48;
-    --unnic-opacity-level-clear: 0.32;
-    --unnic-opacity-level-light: 0.16;
+    --unnnic-opacity-level-darkest: 0.8;
+    --unnnic-opacity-level-dark: 0.64;
+    --unnnic-opacity-level-clarifying: 0.48;
+    --unnnic-opacity-level-clear: 0.32;
+    --unnnic-opacity-level-light: 0.16;
 
     /* Spacing */
-    --unnic-inset-nano: 8px;
-    --unnic-inset-xs: 12px;
-    --unnic-inset-sm: 16px;
-    --unnic-inset-md: 24px;
-    --unnic-inset-lg: 32px;
-
-    --unnic-squish-nano: 8px 16px;
-    --unnic-squish-xs: 12px 16px;
-    --unnic-squish-sm: 12px 24px;
-    --unnic-squish-md: 16px 24px;
-    --unnic-squish-lg: 24px 32px;
-
-    --unnic-inline-nano: 4px;
-    --unnic-inline-xs: 8px;
-    --unnic-inline-sm: 16px;
-    --unnic-inline-md: 24px;
-    --unnic-inline-lg: 32px;
-    --unnic-inline-xl: 40px;
-    --unnic-inline-giant: 48px;
-    --unnic-inline-xgiant: 64px;
-    --unnic-inline-awesome: 80px;
-
-    --unnic-spacing-stack-nano: 4px;
-    --unnic-spacing-stack-xs: 8px;
-    --unnic-spacing-stack-sm: 16px;
-    --unnic-spacing-stack-md: 24px;
-    --unnic-spacing-stack-lg: 32px;
-    --unnic-spacing-stack-xl: 40px;
-    --unnic-spacing-stack-giant: 48px;
-    --unnic-spacing-stack-xgiant: 64px;
-    --unnic-spacing-stack-awesome: 80px;
+    --unnnic-space-0: 0 /* 0px */;
+    --unnnic-space-05: calc(0.125 * 16px) /* 2px */;
+    --unnnic-space-1: calc(0.25 * 16px) /* 4px */;
+    --unnnic-space-2: calc(0.5 * 16px) /* 8px */;
+    --unnnic-space-3: calc(0.75 * 16px) /* 12px */;
+    --unnnic-space-4: calc(1 * 16px) /* 16px */;
+    --unnnic-space-5: calc(1.25 * 16px) /* 20px */;
+    --unnnic-space-6: calc(1.5 * 16px) /* 24px */;
+    --unnnic-space-7: calc(1.75 * 16px) /* 28px */;
+    --unnnic-space-8: calc(2 * 16px) /* 32px */;
+    --unnnic-space-10: calc(2.5 * 16px) /* 40px */;
+    --unnnic-space-12: calc(3 * 16px) /* 48px */;
+    --unnnic-space-16: calc(4 * 16px) /* 64px */;
+    --unnnic-space-20: calc(5 * 16px) /* 80px */;
 }
-
-
