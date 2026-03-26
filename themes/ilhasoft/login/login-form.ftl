@@ -1,12 +1,5 @@
 <#macro loginLayout>
-    <div class="greetings">
-        ${msg("greetings")}
-    </div>
-
-    <section v-if="!!VTEXAppEmail" class="greetings-description">
-        ${msg("accessPasswordSentToTheEmail")} {{ VTEXAppEmail }}.
-    </section>
-
+    <h2 class="login-title">${msg("loginFormTitle")}</h2>
     <form id="kc-form-login" ref="kc-form-login" class="${properties.kcFormClass!}" action="${url.loginAction}"
         method="post">
         <unnnic-form-element
@@ -42,13 +35,12 @@
 
         <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
             <#if realm.rememberMe && !usernameEditDisabled??>
-                <div class="remember-me">
-                    <input type="hidden" name="rememberMe" :value="rememberMe ? 'on' : 'off'" />
-                    <unnnic-checkbox
-                      v-model="rememberMe"
-                      :text-right="'${msg("rememberMe")}'"
-                    ></unnnic-checkbox>
-                </div>
+                <input type="hidden" name="rememberMe" :value="rememberMe ? 'on' : 'off'" />
+                <unnnic-checkbox
+                  v-model="rememberMe"
+                  class="login-checkbox-remember-me"
+                  :text-right="'${msg("rememberMe")}'"
+                ></unnnic-checkbox>
             </#if>
 
             <#if realm.resetPasswordAllowed>

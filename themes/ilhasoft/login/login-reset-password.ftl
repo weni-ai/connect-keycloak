@@ -5,9 +5,7 @@
     <#elseif section = "header">
         ${msg("emailForgotTitle")}
     <#elseif section = "form">
-        <div class="greetings">
-            ${msg("greetings")}
-        </div>
+        <h2 class="login-title">${msg("emailForgotTitle")}</h2>
         <div class="form-header">
             ${msg("loginResetInstructions")}
         </div>
@@ -28,23 +26,25 @@
                 </unnnic-form-element>
             </div>
 
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} reset-password-buttons">
-                    <unnnic-button class="" size="large"
+            <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} reset-password-buttons">
+                <unnnic-button class="" size="large"
                     text="${msg('cancel')}" type="secondary"
                     @click.prevent="navigateTo('${url.loginUrl}')"></unnnic-button>
-                    <unnnic-button id="required-input-button" class="login-button" size="large" text="${msg('confirm')}"
+                <unnnic-button id="required-input-button" class="login-button" size="large" text="${msg('confirm')}"
                     type="primary" native-type="submit" :disabled="!isEmailValid(usernameInput)"></unnnic-button>
-                </div>
+            </div>
+
+            <div id="separator-group">
+                <div class="separator"></div>
             </div>
 
             <section class="sign-up-button-container">
-                <section>
-                    <p class="sign-up-button-text">${msg('signUpForFree')}</p>
-                </section>
+                <p class="sign-up-button-text">${msg('signUpForFree')}</p>
                 <unnnic-button class="sign-up-button" size="large"
-                text="${msg('doRegisterForFree')}" type="secondary"
-                @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
+                    text="${msg('doRegisterForFree')}" type="secondary"
+                    @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
             </section>
+
             <div class="footer">
                 <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">
                     ${msg('termsOfService')}

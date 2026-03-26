@@ -207,23 +207,10 @@ button,
     text-align: initial;
 }
 
-.card-pf #kc-content .greetings {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    color: var(--unnnic-color-fg-base);
-    margin-bottom: 24px;
-}
-
-.card-pf #kc-content .greetings-description {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    margin-top: -16px;
-    margin-bottom: 24px;
+.login-title {
+    font: var(--unnnic-font-display-3);
     color: var(--unnnic-color-fg-emphasized);
+    margin: 0;
 }
 
 .card-pf #kc-content .footer {
@@ -231,29 +218,12 @@ button,
 }
 
 .card-pf #kc-content .footer a.privacy-policy {
-    margin-top: 40px;
+    margin-top: var(--unnnic-space-8);
+
     display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    line-height: 24px;
-    font-weight: 400;
-    color: var(--unnnic-color-fg-base);
+    font: var(--unnnic-font-caption-1);
+    color: var(--unnnic-color-fg-muted);
     text-decoration-line: underline;
-    text-underline-offset: 4px;
-}
-
-.card-pf #kc-content .greetings {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-pf #kc-content .greetings a:has(.brand-title) {
-    display: inline-block;
-    text-align: center;
-}
-
-.card-pf #kc-content .greetings .brand-title {
-    margin-bottom: 100px;
 }
 
 
@@ -273,13 +243,13 @@ button,
         right: var(--unnnic-space-4);
     }
 
-    .card-pf #kc-content .greetings {
-        text-align: center;
+    .sign-up-button-container {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .card-pf #kc-content .greetings .brand-title,
-    .card-pf #kc-content .greetings a:has(.brand-title) {
-        display: inline-block;
+    .sign-up-button {
+        width: 100%;
     }
 }
 
@@ -292,25 +262,25 @@ button,
 }
 
 #kc-registration {
+    margin-top: var(--unnnic-space-6);
     text-align: center;
     color: var(--unnnic-color-fg-muted);
 }
 
 #kc-info-wrapper {
-    margin: var(--unnnic-space-6) 0 0 0;
     font: var(--unnnic-font-body);
+}
+
+#kc-info-wrapper #separator-group {
+    margin: var(--unnnic-space-4) 0;
 }
 
 #kc-info-wrapper a,
 #kc-registration a,
 #kc-form-options a {
-    color: var(--unnnic-color-fg-accent);
+    color: var(--unnnic-color-fg-muted);
     text-decoration: none;
-    font-weight: var(--unnnic-font-weight-bold);
-}
-
-.login-button {
-    width: 100%;
+    font: var(--unnnic-font-body);
 }
 
 .buttons-group {
@@ -327,8 +297,7 @@ button,
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: var(--unnnic-font-weight-bold);
-    margin: 16px auto;
+    gap: var(--unnnic-space-2);
     width: 100%;
 }
 
@@ -339,9 +308,9 @@ button,
 }
 
 .separator-text {
-    font: var(--unnnic-font-caption-2);
-    color: var(--unnnic-color-fg-base);
-    margin: 0 var(--unnnic-space-4);
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-fg-muted);
+    white-space: nowrap;
 }
 
 .font-primary {
@@ -384,8 +353,7 @@ button,
 }
 
 .form-header {
-    margin: 0 0 var(--unnnic-space-6) 0;
-    color: var(--unnnic-color-fg-base);
+    color: var(--unnnic-color-fg-muted);
     font: var(--unnnic-font-body);
 }
 
@@ -407,6 +375,13 @@ button,
 #kc-form-options {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+}
+
+.login-checkbox-remember-me {
+    label {
+        margin: 0;
+    }
 }
 
 .input-message {
@@ -419,25 +394,15 @@ button,
     color: var(--unnnic-color-fg-base);
 }
 
-.remember-me {
-    display: flex;
-    align-items: center;
-    padding: 4px;
-}
-
-.remember-me label {
-    margin: 0;
-}
-
 .forgot-password {
     margin-top: var(--unnnic-space-1);
     font: var(--unnnic-font-caption-2);
 }
 
 #kc-form-options .forgot-password a {
-    color: var(--unnnic-color-fg-base);
+    color: var(--unnnic-color-fg-muted);
     text-decoration: none;
-    font-weight: var(--unnnic-font-weight-regular);
+    font: var(--unnnic-font-body);
 }
 
 
@@ -462,6 +427,12 @@ button,
 .input-control.error .form-control {
     color: var(--unnnic-color-fg-critical);
     border-color: var(--unnnic-color-fg-critical);
+}
+
+#kc-register-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--unnnic-space-4);
 }
 
 #kc-register-form .input-medium label {
@@ -574,76 +545,45 @@ button,
 }
 
 .back-to-login {
-    margin-top: 24px;
-
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    color: var(--unnnic-color-fg-base);
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-fg-muted);
 }
 
 .back-to-login a {
-    margin-top: 24px;
-
     text-decoration-line: underline;
-    text-underline-offset: 4px;
-    color: var(--unnnic-color-fg-base);
-}
 
-.register-form-row-email {
-    margin-bottom: 16px;
-}
-
-.register-form-row-password {
-    margin-bottom: 16px;
-}
-
-.register-form-row-password-confirm {
-    margin-bottom: 16px;
-}
-
-.password-strength-rules {
-    margin-top: 8px;
+    font: var(--unnnic-font-caption-1);
+    color: var(--unnnic-color-fg-muted);
 }
 
 .password-strength-columns {
     display: flex;
-    justify-content: space-between;
-    padding-right: 128px;
-    margin-top: 16px;
+    gap: var(--unnnic-space-8);
 }
 
 .password-strength-column {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--unnnic-space-1);
 }
 
 .password-strength-rules .rule {
     display: flex;
     align-items: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
+    font: var(--unnnic-font-caption-2);
     color: var(--unnnic-color-fg-base);
 }
 
 .password-strength-rules .rule .unnnic-icon {
-    margin-right: 4px;
+    margin-right: var(--unnnic-space-1);
 }
 
 .password-strength-rules .rule.valid span {
     color: var(--unnnic-color-fg-success);
-    font-weight: var(--unnnic-font-weight-bold);
 }
 
 .register-form-row-password .password-strength {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 20px;
+    font: var(--unnnic-font-caption-2);
     color: var(--unnnic-color-fg-base);
     text-align: center;
     margin-top: -8px;
@@ -697,10 +637,7 @@ button,
     margin-top: -8px;
     margin-bottom: 24px;
 
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
+    font: var(--unnnic-font-caption-2);
     color: var(--unnnic-color-fg-base);
 }
 
@@ -717,14 +654,6 @@ button,
     display: flex;
     flex-direction: column;
     row-gap: 16px;
-}
-
-#kc-form-wrapper .greetings {
-    order: -3;
-}
-
-#kc-form-wrapper .greetings-description {
-    order: -2;
 }
 
 #kc-form-wrapper .login-disclaimer {
@@ -776,32 +705,25 @@ button,
 
 .sign-up-button-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin: 24px 16px 0 16px;
+    gap: var(--unnnic-space-4);
 }
 
 .sign-up-button-text {
-    color: #5C5C5C;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
+    color: var(--unnnic-color-fg-muted);
+    font: var(--unnnic-font-caption-1);
     margin: 0;
-    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .sign-up-button {
-    width: auto;
     min-width: auto;
-    flex: 1;
+    width: 100%;
 }
 
 .custom-header-content {
-    height: 100%;
-    align-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .reset-password-buttons {
@@ -809,97 +731,28 @@ button,
     gap: 16px;
 }
 
-.modal-dialog-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; 
-    padding: 16px;
-    box-sizing: border-box;
+#kc-reset-password-form #separator-group {
+  margin: var(--unnnic-space-6) 0;
 }
 
-.modal-dialog-content {
-    background-color: var(--unnnic-color-bg-base);
-    padding: 24px;
-    border-radius: var(--unnnic-radius-2, 8px);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    min-width: 320px;
-    max-width: 400px;
-    width: 100%;
-    position: relative;
-    text-align: left;
-    font-family: var(--unnnic-font-family, 'Inter', sans-serif);
-}
-
-.modal-dialog-close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: auto;
-    background: none;
-    border: none;
-    color: var(--unnnic-color-fg-muted);
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-}
-
-.modal-dialog-close-button .unnnic-icon {
-    color: var(--unnnic-color-fg-base);
-}
-
-.modal-dialog-close-button:hover .unnnic-icon {
-    color: var(--unnnic-color-fg-base);
-}
-
-.modal-dialog-icon-wrapper {
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-.modal-dialog-icon-wrapper .unnnic-icon {
-    font-size: var(--unnnic-icon-size-7, 32px); 
-}
-
-.modal-dialog-scheme-feedback-green .modal-dialog-icon-wrapper .unnnic-icon {
-    color: var(--unnnic-color-fg-success); 
-}
-
-.modal-dialog-title-text {
-    font: var(--unnnic-font-display-2);
-    margin-top: 0;
-    margin-bottom: 16px;
-    padding-right: 30px;
-
-    color: var(--unnnic-color-fg-emphasized);
-}
-
-.modal-dialog-separator {
-    height: 1px;
-    background-color: var(--unnnic-color-bg-muted);
-    margin-bottom: 16px;
-    margin-left: -20px;
-    margin-right: -20px;
-    width: calc(100% + 40px);
-}
-
-.modal-dialog-body-content {
+.email-sent-modal-body,
+.verify-email-modal-body {
+    padding: var(--unnnic-space-6);
     font: var(--unnnic-font-body);
-    color: var(--unnnic-color-fg-base);
-}
+    color: var(--unnnic-color-fg-muted);
 
-.modal-dialog-body-content > div {
-    text-align: left;
-}
-
-.modal-dialog-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: var(--unnnic-space-3);
+    flex-direction: column;
+    row-gap: var(--unnnic-space-2);
 }
+
+.verify-email-modal-resend a {
+  color: var(--unnnic-color-fg-muted);
+  font: var(--unnnic-font-caption-1);
+  text-decoration: underline;
+}
+
+.verify-email-modal-body p {
+  margin: 0;
+}
+
