@@ -31,18 +31,6 @@
         </#list>
     </#if>
     <script>
-        const closeModal = (message) => {
-            const modal = document.getElementById("modal");
-            modal.remove()
-
-            if (message === 'verifyEmail') {
-                const restartLogin = "${url.loginRestartFlowUrl}";
-
-                window.location.href = restartLogin;
-            }
-        };
-    </script>
-    <script>
         // Shim for process.env which some npm packages expect
         window.process = window.process || { env: { NODE_ENV: 'production' } };
     </script>
@@ -56,7 +44,6 @@
         };
     </script>
     <script src="${url.resourcesPath}/vue/unnnic.umd.min.js"></script>
-    <script src="${url.resourcesPath}/vue/modal-dialog.js"></script>
     <script src="${url.resourcesPath}/js/sanatize-1.js"></script>
     <link href="${url.resourcesPath}/vue/unnnic.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
@@ -84,33 +71,19 @@
             <div id="kc-content-wrapper" class="custom-header-content">
                 <img src="${url.resourcesPath}/img/login/brand.svg" alt="Logo" class="brand-logo" />
 
-            <#--  <div id="modal" class="modal-background">
-                <div class="modal-container">
-                    <div class="modal-content">
-                        <div class="modal-button-container">
-                            <span class="icon-close-1 icon-clickable" onclick="closeModal()"></span>
-                        </div>
-                        <div class="modal-center-icon">
-                            <span class="icon-check-circle-1-1 icon-success"></span>
-                        </div>
-                    <div class="modal-title">${msg("emailSentTitle")}</div>
-                    <div class="modal-text">messa</div>
-                </div>
-                <div class="modal-message">${msg("emailSentSubitle")}</div>
-            </div>  -->
-
             <#if displayMessage && message?has_content>
                 <#if (message.summary == msg("loginTimeout")) || (message.summary == msg("verifyEmailMessage"))>
                 <#elseif (message.summary == msg("emailSentMessage"))>
-                    <modal-dialog
-                        :show="emailSentModal"
-                        @close="closeEmailSentModal"
-                        text="${msg('emailSentTitle')}"
-                    >
-                        <div slot="message" style="text-align: center;">
-                            ${kcSanitize(message.summary)?no_esc}
-                        </div>
-                    </modal-dialog>
+                    <unnnic-dialog :open="emailSentModal" @update:open="emailSentModal = $event">
+                        <unnnic-dialog-content size="small">
+                            <unnnic-dialog-header>
+                                <unnnic-dialog-title>${msg('emailSentTitle')}</unnnic-dialog-title>
+                            </unnnic-dialog-header>
+                            <div class="email-sent-modal-body">
+                                ${kcSanitize(message.summary)?no_esc}
+                            </div>
+                        </unnnic-dialog-content>
+                    </unnnic-dialog>
                 <#else>
                     <#-- Alert moved to kc-form-wrapper for correct positioning -->
                 </#if>
@@ -412,6 +385,11 @@
                 'unnnic-checkbox': window.Unnnic.unnnicCheckbox,
                 'unnnic-alert': window.Unnnic.unnnicAlert,
                 'unnnic-disclaimer': window.Unnnic.unnnicDisclaimer,
+                'unnnic-dialog': window.Unnnic.unnnicDialog,
+                'unnnic-dialog-content': window.Unnnic.unnnicDialogContent,
+                'unnnic-dialog-header': window.Unnnic.unnnicDialogHeader,
+                'unnnic-dialog-title': window.Unnnic.unnnicDialogTitle,
+                'unnnic-dialog-close': window.Unnnic.unnnicDialogClose,
             };
             
             Object.entries(componentsToRegister).forEach(([name, component]) => {
@@ -422,9 +400,6 @@
                 }
             });
         }
-        
-        // Register modal-dialog component
-        app.component('modal-dialog', ModalDialog);
         
         // Mount the app
         app.mount('#app');

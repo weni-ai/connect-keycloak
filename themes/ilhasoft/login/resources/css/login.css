@@ -735,97 +735,24 @@ button,
   margin: var(--unnnic-space-6) 0;
 }
 
-.modal-dialog-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; 
-    padding: 16px;
-    box-sizing: border-box;
-}
-
-.modal-dialog-content {
-    background-color: var(--unnnic-color-bg-base);
-    padding: 24px;
-    border-radius: var(--unnnic-radius-2, 8px);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    min-width: 320px;
-    max-width: 400px;
-    width: 100%;
-    position: relative;
-    text-align: left;
-    font-family: var(--unnnic-font-family, 'Inter', sans-serif);
-}
-
-.modal-dialog-close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: auto;
-    background: none;
-    border: none;
-    color: var(--unnnic-color-fg-muted);
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-}
-
-.modal-dialog-close-button .unnnic-icon {
-    color: var(--unnnic-color-fg-base);
-}
-
-.modal-dialog-close-button:hover .unnnic-icon {
-    color: var(--unnnic-color-fg-base);
-}
-
-.modal-dialog-icon-wrapper {
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-.modal-dialog-icon-wrapper .unnnic-icon {
-    font-size: var(--unnnic-icon-size-7, 32px); 
-}
-
-.modal-dialog-scheme-feedback-green .modal-dialog-icon-wrapper .unnnic-icon {
-    color: var(--unnnic-color-fg-success); 
-}
-
-.modal-dialog-title-text {
-    font: var(--unnnic-font-display-2);
-    margin-top: 0;
-    margin-bottom: 16px;
-    padding-right: 30px;
-
-    color: var(--unnnic-color-fg-emphasized);
-}
-
-.modal-dialog-separator {
-    height: 1px;
-    background-color: var(--unnnic-color-bg-muted);
-    margin-bottom: 16px;
-    margin-left: -20px;
-    margin-right: -20px;
-    width: calc(100% + 40px);
-}
-
-.modal-dialog-body-content {
+.email-sent-modal-body,
+.verify-email-modal-body {
+    padding: var(--unnnic-space-6);
     font: var(--unnnic-font-body);
-    color: var(--unnnic-color-fg-base);
-}
+    color: var(--unnnic-color-fg-muted);
 
-.modal-dialog-body-content > div {
-    text-align: left;
-}
-
-.modal-dialog-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: 12px;
+    flex-direction: column;
+    row-gap: var(--unnnic-space-2);
 }
+
+.verify-email-modal-resend a {
+  color: var(--unnnic-color-fg-muted);
+  font: var(--unnnic-font-caption-1);
+  text-decoration: underline;
+}
+
+.verify-email-modal-body p {
+  margin: 0;
+}
+
