@@ -901,5 +901,5 @@ button,
 .modal-dialog-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 12px;
+    gap: var(--unnnic-space-3);
 }
