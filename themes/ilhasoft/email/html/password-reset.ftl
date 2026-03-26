@@ -9,8 +9,8 @@
     <body>
         <div>
             <div style="width: 670px; min-height: 724px;">
-            <header style="width: 670px; height: 52px; border-bottom: 1px solid #E0E0E0;"> 
-                <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Weni-Logo" style="margin-left: 24px; margin-top: 10px;"/>
+            <header style="width: 670px; height: 52px; border-bottom: 1px solid #E0E0E0; display: flex;"> 
+                <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo.png" alt="Logo" style="margin-left: 24px; margin-top: 10px;"/>
               </header>
               <section style="width: 574px; margin: 48px auto;">
                 
@@ -24,9 +24,9 @@
                 </div>
               </section>
               
-              <footer style="width: 670px;height: 150px; border-top: 1px solid #E0E0E0; border-bottom: 8px solid #1F1F1F;margin: auto; text-align: center;">
+              <footer style="width: 670px; border-top: 1px solid #E0E0E0; border-bottom: 8px solid #1F1F1F;margin: auto; text-align: center;">
  
-                <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo-small.png" alt="Weni-Logo" style="margin: 15px 0;"/>
+                <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo-small.png" alt="Logo" height="42px" style="margin: 15px 0;"/>
   
                 <div style="width: 450px; font-size: 12px;line-height: 20px;margin: auto;">
                   <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">${msg("emailAccessOurSite")?no_esc}</a>
