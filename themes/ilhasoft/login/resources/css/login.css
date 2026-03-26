@@ -265,7 +265,7 @@ button,
     .card-pf #kc-content {
         width: 100%;
         border: none;
-        padding: 32px 16px;
+        padding: var(--unnnic-space-8) var(--unnnic-space-4);
     }
 
     .language-select.top {
