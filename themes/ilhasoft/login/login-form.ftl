@@ -12,13 +12,23 @@
         <unnnic-form-element
             label="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>">
             <unnnic-input :disabled="!!VTEXAppEmail" ref="loginUsername" v-model="usernameInput"
-                placeholder="${msg('placeholderLoginName')}" name="username"
+                placeholder="${msg('placeholderLoginName')}" name="username" autocomplete="username"
                 :disabled="<#if usernameEditDisabled??>true<#else>false</#if>" autofocus @input="usernameInput = sanitizeHtml(usernameInput)"></unnnic-input>
         </unnnic-form-element>
 
         <unnnic-form-element label="${msg('password')}">
-            <unnnic-input ref="password" v-model="passwordInput" native-type="password"
-                placeholder="${msg('placeholderLoginPassword')}" name="password" allow-toggle-password @input="passwordInput = sanitizeHtml(passwordInput)"></unnnic-input>
+            <unnnic-input
+                ref="password"
+                v-model="passwordInput"
+                :icon-right="loginPasswordVisible ? 'visibility_off' : 'visibility'"
+                icon-right-clickable
+                :native-type="loginPasswordVisible ? 'text' : 'password'"
+                placeholder="${msg('placeholderLoginPassword')}"
+                name="password"
+                autocomplete="current-password"
+                @input="passwordInput = sanitizeHtml(passwordInput)"
+                @icon-right-click="toggleLoginPasswordVisibility"
+            ></unnnic-input>
         </unnnic-form-element>
 
         <div class="${properties.kcFormGroupClass!}">
@@ -32,15 +42,12 @@
 
         <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
             <#if realm.rememberMe && !usernameEditDisabled??>
-                <div class="input-message remember-me">
-                    <#if login.rememberMe??>
-                        <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3" checked>
-                        <#else>
-                            <input id="rememberMe" tabindex="3" name="rememberMe" type="checkbox" tabindex="3">
-                    </#if>
-
-                    <label for="rememberMe"></label>
-                    <label for="rememberMe">${msg("rememberMe")}</label>
+                <div class="remember-me">
+                    <input type="hidden" name="rememberMe" :value="rememberMe ? 'on' : 'off'" />
+                    <unnnic-checkbox
+                      v-model="rememberMe"
+                      :text-right="'${msg("rememberMe")}'"
+                    ></unnnic-checkbox>
                 </div>
             </#if>
 

@@ -6,7 +6,7 @@
     
         <div class="kc-otp-header">
             <div class="totp-title">
-                <span class="icon icon-single-neutral-actions-1"></span>
+                <unnnic-icon icon="person" scheme="neutral-darkest" size="md"></unnnic-icon>
                 <h1>${msg("loginOtpTitleTwoFactor")}</h1>
             </div>
 

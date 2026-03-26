@@ -10,10 +10,12 @@
             <div class="modal-container">
                 <div class="modal-content">
                     <div class="modal-button-container">
-                        <span class="icon-close-1 icon-clickable" onclick="closeModal('verifyEmail')"></span>
+                        <span class="icon-clickable" onclick="closeModal('verifyEmail')">
+                            <unnnic-icon icon="close" scheme="neutral-darkest" size="sm"></unnnic-icon>
+                        </span>
                     </div>
                 <div class="modal-center-icon">
-                    <span class="icon-alert-circle-1 icon-alert"></span>
+                    <unnnic-icon icon="error" scheme="fg-critical" size="xl"></unnnic-icon>
                 </div>
                 <div class="modal-title">${msg("emailVerifyTitle")}</div>
                 <div class="modal-text">${msg("emailVerifyInstruction1")}</div>

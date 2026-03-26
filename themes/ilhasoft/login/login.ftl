@@ -38,8 +38,8 @@
                                                 <p class="sign-up-button-text">${msg('signUpForFree')}</p>
                                             </section>
                                             <unnnic-button class="sign-up-button" size="large"
-                                            text="${msg('doRegisterForFree')}" type="terciary"
-                                            @click.prevent="location.href = '${url.registrationUrl}'"></unnnic-button>
+                                            text="${msg('doRegisterForFree')}" type="secondary"
+                                            @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
                                         </section>
                                 </div>
                             </#if>
