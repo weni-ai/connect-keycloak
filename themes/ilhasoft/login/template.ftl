@@ -159,6 +159,10 @@
                     usernameInput: VTEXAppEmail || '${((login.username)!'')}',
                     passwordInput: '',
                     logoutSessions: true,
+                    newPasswordInput: '',
+                    confirmPasswordInput: '',
+                    newPasswordVisible: false,
+                    confirmPasswordVisible: false,
                     <#if realm.internationalizationEnabled>
                         keycloakCurrentLanguage:
                             <#list locale.supported as l>
@@ -226,6 +230,12 @@
                         return usernameValid && this.passwordInput && this.passwordInput.trim().length > 0;
                     },
                 </#if>
+                canUpdatePassword() {
+                    return this.newPasswordInput.length > 0
+                        && this.confirmPasswordInput.length > 0
+                        && this.newPasswordInput === this.confirmPasswordInput;
+                },
+
                 supportedLanguages() {
                     if (!this.keycloakLanguages) return [];
                     return Object.keys(this.keycloakLanguages)
@@ -369,6 +379,14 @@
 
                 toggleLoginPasswordVisibility() {
                     this.loginPasswordVisible = !this.loginPasswordVisible;
+                },
+
+                toggleNewPasswordVisibility() {
+                    this.newPasswordVisible = !this.newPasswordVisible;
+                },
+
+                toggleConfirmPasswordVisibility() {
+                    this.confirmPasswordVisible = !this.confirmPasswordVisible;
                 },
             },
         });
