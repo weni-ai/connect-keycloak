@@ -36,14 +36,6 @@
           <footer style="width: 670px; border-top: 1px solid #E0E0E0; border-bottom: 8px solid #1F1F1F;margin: auto; text-align: center;">
  
             <img src="https://weni-media-sp.s3-sa-east-1.amazonaws.com/logo/Logo-small.png" alt="Logo" height="42px" style="margin: 15px 0;"/>
-
-
-            <div style="width: 450px; font-size: 12px;line-height: 20px;margin: auto;">
-              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">${msg("emailAccessOurSite")?no_esc}</a>
-              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Facebook</a>
-              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Instagram</a>
-              <a style="cursor: pointer;margin-right: 10px;color: #ADADAD;">Twitter</a>
-            </div>
           
           ${msg("emailCopyright", .now?string("yyyy"))?no_esc}
           
