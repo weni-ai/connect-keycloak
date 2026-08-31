@@ -63,9 +63,16 @@ Verified against the working tree at the time of writing:
 - The theme does **not** override `login-username.ftl`, `login-password.ftl`, or
   `select-organization.ftl`. Keycloak 26.2's `base` theme provides all three, so today they would
   render as unstyled stock Keycloak pages inside this theme.
-- Keycloak's `base` theme ships **only** `messages_en.properties`. Because this theme sets
-  `parent=base` (not `parent=keycloak`), any Keycloak-provided message key resolves to English for
-  `pt_BR`, `es`, and `ro` users unless the key is also defined in this theme's own bundles.
+- Keycloak's `base` theme ships 34 locale bundles, but the non-English ones are **partial**:
+  `messages_en.properties` and `messages_es.properties` hold 468 keys, `messages_pt_BR.properties`
+  holds 338, and `messages_ro.properties` holds **34**. Keycloak resolves a locale by overlaying the
+  requested bundle on its parent (`pt-BR` → `pt` → `en`), so a key missing from a locale bundle falls
+  back to English **silently and per key**. Measured against the two new steps: 10 of the 11
+  Keycloak-provided keys they surface resolve to English under `ro`, while `pt_BR` and `es` resolve
+  none of them to English. One key can also be non-English and still wrong — `showPassword` under
+  `pt_BR` is inherited from `messages_pt` as European Portuguese. Any Keycloak-provided key these
+  steps surface therefore has to be checked per locale and re-declared in this theme's own bundles
+  where the base bundle lacks it.
 - Keycloak 26's `OrganizationAuthenticator` resolves an organization from the email domain and, on a
   match with a linked broker, redirects; when it cannot resolve, it re-challenges with
   `login-username.ftl`, and when several organizations match it challenges with
@@ -185,17 +192,21 @@ completion condition, but the flow can be proven correct on staging first (PS-BD
 locale is signed off. It is separated so that a locale gap blocks the release rather than the
 development of stories 1–3.
 
-**Independent Test**: Load each step with `?kc_locale=` set to each of the four locales and confirm no
-raw message key and no unexpected English string appears; then complete both steps using only Tab,
-Shift+Tab, and Enter with a screen reader running.
+**Verification** *(not independent — Stories 1 and 2 must render before this can run)*: Load each step
+in each of the four locales and confirm no raw message key and no
+unexpected English string appears; then complete both steps using only Tab, Shift+Tab, and Enter with a
+screen reader running. Note that `?kc_locale=` is **not** honored on the authorization endpoint in
+Keycloak 26.2 — it silently renders English there. Use `?ui_locales=` for the first render, or the
+`kc_locale` parameter on the `/login-actions/authenticate` URL that Keycloak itself puts in
+`locale.supported[].url`, or a `KEYCLOAK_LOCALE` cookie.
 
 **Acceptance Scenarios**:
 
 1. **Given** any of the four locales, **When** step 1 and step 2 render, **Then** no raw message key is
    visible and every string is in the requested locale.
 2. **Given** a Keycloak-provided key newly surfaced by these steps, **When** a non-English locale is
-   requested, **Then** the string is localized, because it is defined in this theme's own bundles and
-   not inherited from `base` (which is English-only).
+   requested, **Then** the string is localized, because it is defined in this theme's own bundles
+   rather than left to base's partial non-English bundles and their silent per-key English fallback.
 3. **Given** a keyboard-only user, **When** they Tab through step 1, **Then** they reach the email
    field, the submit control, each third-party button, and the sign-up control, and each third-party
    button is announced with a name identifying its provider.
@@ -211,6 +222,11 @@ Shift+Tab, and Enter with a screen reader running.
   disclaimer, and MUST NOT introduce copy that names a customer or states that a link is invalid.
 - **Realm with no identity providers enabled**: step 1 renders the email field with no provider block
   and no orphaned separator.
+- **Realm with registration disabled**: `login.ftl` today wraps the separator, the provider list, and
+  the sign-up block in one `realm.registrationAllowed` guard, so a realm with registration disabled
+  shows no third-party buttons at all. Step 1 must match that, per FR-003. The behavior is odd enough
+  to look like an oversight, which is why it is written down rather than silently reproduced or
+  silently dropped; changing it is a separate decision on a screen FR-013 freezes.
 - **Realm with more than three providers, or a provider with no local icon**: the provider block must
   not break layout and must not render a broken image. Only three icons exist today.
 - **A customer Okta broker that is not hidden from the login page**: it would appear as a public
@@ -248,8 +264,14 @@ Shift+Tab, and Enter with a screen reader running.
   *(PS design vision; PS clarification 2026-08-25 on placeholders)*
 - **FR-003**: The third-party provider block on step 1 MUST reproduce the block currently in
   `login.ftl` with the same element ids, classes, icon paths, ordering, and click behavior, so hover,
-  focus, and pressed appearance are inherited rather than redefined. The only permitted addition is
-  the accessible name required by FR-014. *(PS-FR-001, PS-BD-007)*
+  focus, and pressed appearance are inherited rather than redefined. It MUST also reproduce the
+  block's enclosing conditions: in `login.ftl` the separator, the provider list, and the sign-up block
+  share one `realm.password && realm.registrationAllowed` guard, and the separator additionally
+  carries `v-if="!VTEXAppEmail"`. A realm with registration disabled MUST therefore render the same
+  provider surface on step 1 as it does on `login.ftl` today. Exactly two additions are permitted: the
+  accessible name required by FR-014, and a guard that suppresses the separator when
+  `social.providers` is empty. Neither changes an id, class, icon path, or ordering.
+  *(PS-FR-001, PS-BD-007)*
 - **FR-004**: Step 1 MUST render only the providers Keycloak supplies in `social.providers`. The
   theme MUST NOT hardcode, add, remove, or filter a provider, and MUST NOT render any Okta entry.
   *(PS-BD-001, PS-FR-001)*
@@ -285,6 +307,11 @@ Shift+Tab, and Enter with a screen reader running.
 - **FR-013**: `login.ftl`, `login-form.ftl`, and every other template in
   `themes/ilhasoft/login/` MUST keep their current behavior. No Keycloak-required form field, hidden
   input, or action URL may be dropped from any existing template. *(Constitution II)*
+- **FR-023**: The `connect:requestlogout` `postMessage` that `template.ftl` emits on the login screen
+  MUST also be emitted on step 1, which replaces `login.ftl` as the first screen on an identity-first
+  realm. It is currently gated on `displayLoginFormScriptsAndStyles`, a flag only `login.ftl` passes,
+  so it would otherwise stop firing for every user on a migrated realm. *(Constitution II; the
+  Assumption that this delivery does not change session or logout behavior)*
 
 **Accessibility and feedback**
 
@@ -293,7 +320,11 @@ Shift+Tab, and Enter with a screen reader running.
   *(PS-NFR-005)*
 - **FR-015**: Both steps MUST render Keycloak's per-field validation errors for their own field
   (`username` on step 1, `password` on step 2) in a region announced to assistive technology, and the
-  existing form-level `unnnic-disclaimer` MUST be announced when it carries an error. *(PS-NFR-005)*
+  existing form-level `unnnic-disclaimer` MUST be announced when it carries an error. That disclaimer
+  lives in `template.ftl` and is shared with the screens FR-013 freezes, so annotating it improves
+  announcement on those screens too. This is accepted rather than avoided: it drops no field, hidden
+  input, or action URL, and FR-013's freeze governs Keycloak flow contracts, not additive
+  accessibility. *(PS-NFR-005)*
 - **FR-016**: Both steps MUST be completable with the keyboard alone, with focus starting on the
   step's single input and a logical tab order through submit, providers, and secondary links.
   *(PS-NFR-005)*
@@ -306,8 +337,9 @@ Shift+Tab, and Enter with a screen reader running.
   authoritative wording as the Crowdin source. *(Constitution III; PS-NFR-005)*
 - **FR-018**: Any key these steps surface that is provided by Keycloak's own bundle rather than this
   theme — the restart-login label required by FR-007 is the known case — MUST be defined in all four
-  of this theme's bundles, because `parent=base` supplies only English. An English string appearing
-  under `pt_BR`, `es`, or `ro` is a defect, not a fallback. *(Constitution III; PS-NFR-005)*
+  of this theme's bundles, because base's non-English bundles are partial and a key they omit falls
+  back to English silently and per key. An English string appearing under `pt_BR`, `es`, or `ro` is a
+  defect, not a fallback. *(Constitution III; PS-NFR-005)*
 - **FR-019**: New copy MUST follow the VTEX Content Guide: sentence case, no "please", no
   interjections, no exclamation marks, no personal pronouns in labels or titles, action labels of at
   most three words, and lowercase after a colon in `pt_BR`, `es`, and `ro`. *(PS design vision;
@@ -332,7 +364,10 @@ Shift+Tab, and Enter with a screen reader running.
 - **NFR-002**: Templates MUST be valid FreeMarker for the local runtime (`26.2.0`) and for the image
   the release job builds in (`26.3.2`). *(Runtime & Delivery Constraints)*
 - **NFR-003**: `keycloak-user-migration/` MUST NOT be modified. *(Constitution V)*
-- **NFR-004**: No file outside `themes/ilhasoft/login/` may be edited. *(Constitution VI)*
+- **NFR-004**: No repository file outside `themes/ilhasoft/login/` may be edited. The feature's own
+  specification artifacts under `specs/001-okta-login-theme/` are excluded — they are the record of
+  the change, not part of it, and the SC-011 scope check must exclude them explicitly rather than
+  report them as violations. *(Constitution VI)*
 - **NFR-005**: Redirect-start latency for a mapped domain is decided by Keycloak and the realm flow,
   not by the theme. The theme's only latency obligation is that step 1 renders and accepts input
   without waiting on a network call it originates. *(PS-NFR-002)*
@@ -359,7 +394,9 @@ Shift+Tab, and Enter with a screen reader running.
 - **SC-002**: Step 1 contains zero password inputs and step 2 contains zero email inputs, checked in
   the rendered DOM in all four locales. *(FR-001, FR-006, FR-012)*
 - **SC-003**: The step-1 provider block is byte-identical in ids, classes, icon paths, and ordering to
-  the block in `login.ftl` at the pinned baseline, except for the accessible names added by FR-014.
+  the block in `login.ftl` at the pinned baseline, except for the two additions FR-003 permits: the
+  accessible names added by FR-014 and the empty-list separator guard. Its enclosing
+  `realm.registrationAllowed` condition is reproduced, checked on a realm with registration disabled.
   *(FR-003, FR-014)*
 - **SC-004**: Submitting an unmapped-domain email reaches this theme's step 2, and its back control
   returns to an editable step 1, in every locale. *(FR-006, FR-007)*
@@ -377,9 +414,12 @@ Shift+Tab, and Enter with a screen reader running.
 - **SC-009**: An autofilled password on step 2 enables submit without any keystroke. *(FR-010)*
 - **SC-010**: No string introduced by this delivery names a customer, names a customer's identity
   provider, or asserts that a sign-in link is invalid. *(FR-020)*
-- **SC-011**: The diff touches only paths under `themes/ilhasoft/login/`, adds no new build step, and
-  the release job's `themes.tar.xz` still contains everything the screens need. *(FR-021, FR-022,
-  NFR-003, NFR-004)*
+- **SC-011**: The diff touches only paths under `themes/ilhasoft/login/` and this feature's own
+  `specs/001-okta-login-theme/`, adds no new build step, and the release job's `themes.tar.xz` still
+  contains everything the screens need. Checked against the merge base, not against the index, so that
+  committing the work cannot make the check pass vacuously. *(FR-021, FR-022, NFR-003, NFR-004)*
+- **SC-012**: The `connect:requestlogout` `postMessage` is observed on step 1 of an identity-first
+  realm, as it is on `login.ftl` today. *(FR-023)*
 
 ## Out of Scope
 
@@ -414,8 +454,10 @@ Each item below is assigned by the product spec to something other than the Keyc
 - **The missing `ro` entry in `kc2UnnnicLanguages`**: Romanian message files exist but Romanian is not
   offered in the language selector. This is a pre-existing defect that predates this delivery and is
   bounded out under Constitution VI. It is raised here because it limits how PS-NFR-005 can be
-  verified for `ro` through the UI; `?kc_locale=ro` is the workaround used by SC-006. It should be
-  fixed in its own change.
+  verified for `ro` through the UI. The workaround used by SC-006 is `?ui_locales=ro` on the
+  authorization endpoint, or a `KEYCLOAK_LOCALE=ro` cookie — **not** `?kc_locale=ro`, which Keycloak
+  26.2 ignores on that endpoint and which would therefore sign Romanian off by rendering English. It
+  should be fixed in its own change.
 - **Metrics, tracing, and login observability** (PS "Observability").
 
 ## Assumptions & Dependencies
@@ -435,11 +477,13 @@ Each item below is assigned by the product spec to something other than the Keyc
   button appears and PS-BD-001 is violated by configuration, not by the theme. This is a release-gate
   check for the operational procedure, not something the theme can enforce.
 - Keycloak's own message keys used by these steps are stable across 26.2 and 26.3; FR-018 removes the
-  dependency on Keycloak shipping non-English bundles by defining the keys locally.
+  dependency on Keycloak shipping *complete* non-English bundles by defining the keys locally.
 - Translations for new keys may arrive by the Crowdin pull request, but FR-017 requires all four
   bundles in the same change; a follow-up commit for locale parity does not satisfy it.
 - The `weni`-realm logout iframe list and the Connect `postMessage` events in `template.ftl` stay as
-  they are; this delivery does not change session or logout behavior.
+  they are; this delivery does not change session or logout behavior. Holding that assumption is not
+  free: the `connect:requestlogout` emission is gated on a flag only `login.ftl` passes, so keeping
+  the behavior unchanged on an identity-first realm takes the deliberate work FR-023 requires.
 - No automated UI test suite exists in this repository, so every success criterion is verified
   manually in the Compose container (NFR-001) and the review gate is the primary control
   (Constitution VI).
@@ -448,14 +492,14 @@ Each item below is assigned by the product spec to something other than the Keyc
 
 | Principle | How this spec complies |
 | --- | --- |
-| I. Theme-First | Every requirement is expressed as `.ftl`, `theme.properties`, `messages/*.properties`, or CSS under `themes/ilhasoft/login/`. FR-023 forbids a new build step. |
-| II. Keycloak Flow Compatibility | FR-013 preserves every existing template; FR-001 and FR-006 keep Keycloak's field names and action URLs. Story 3 tests the untouched flows. |
-| III. Four-Locale Copy | FR-017 requires all four bundles in one change with `en` as Crowdin source; FR-018 closes the English-fallback gap created by `parent=base`; FR-019 binds the VTEX Content Guide. |
+| I. Theme-First | Every requirement is expressed as `.ftl`, `theme.properties`, `messages/*.properties`, or CSS under `themes/ilhasoft/login/`. FR-022 forbids a new build step. |
+| II. Keycloak Flow Compatibility | FR-013 preserves every existing template; FR-001 and FR-006 keep Keycloak's field names and action URLs. Story 3 tests the untouched flows. FR-023 keeps the one outbound `postMessage` contract alive on the screen that replaces `login.ftl`. |
+| III. Four-Locale Copy | FR-017 requires all four bundles in one change with `en` as Crowdin source; FR-018 closes the silent per-key English-fallback gap left by base's partial non-English bundles; FR-019 binds the VTEX Content Guide. **Recorded divergence**: the 13 keys re-declared under FR-018 are copied from base verbatim, so `messages_en.properties` will carry base's inherited wording including its "please" (`missingPasswordMessage=Please specify password.`), which Principle III's copy rule forbids. Rewording them would change copy on screens FR-013 freezes, so the divergence is accepted and recorded here. FR-019 binds only copy this delivery authors; correcting base's inherited English is a follow-up change of its own. |
 | IV. One Design System | FR-003 reuses the existing UNNNIC composition; FR-021 forbids a second UI kit and requires new rules to extend the stylesheets already in `styles=`. |
 | V. Vendored Migration SPI | NFR-003 excludes `keycloak-user-migration/`. |
 | VI. Bounded Scope | NFR-004 limits the diff to `themes/ilhasoft/login/`. The `ro` language-selector defect is named and explicitly bounded out rather than fixed opportunistically. |
 
-No divergence from the constitution is claimed.
+One divergence is claimed and recorded, in the Principle III row above. No other is claimed.
 
 ## Traceability
 

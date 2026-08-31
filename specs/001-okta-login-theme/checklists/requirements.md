@@ -57,8 +57,12 @@ which this spec inherits without divergence.
 
 The Romanian locale is missing from `kc2UnnnicLanguages` in `template.ftl`, so `ro` is not offered in
 the language selector even though `messages_ro.properties` exists. It is documented under Out of
-Scope with a workaround for verification (`?kc_locale=ro`) rather than fixed here, because
-Constitution VI forbids opportunistic edits outside the stated scope. It needs its own change.
+Scope with a workaround for verification rather than fixed here, because Constitution VI forbids
+opportunistic edits outside the stated scope. It needs its own change.
+
+The workaround is `?ui_locales=ro` or a `KEYCLOAK_LOCALE=ro` cookie. An earlier revision of this note
+said `?kc_locale=ro`; Keycloak 26.2 ignores that parameter on the authorization endpoint and renders
+English, so it would have verified nothing. Corrected 2026-08-26 during `/speckit-plan` Phase 0.
 
 ### Note 3 — Two scope decisions, resolved 2026-08-26
 
