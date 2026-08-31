@@ -1,4 +1,4 @@
-<#macro registrationLayout bodyClass="" displayInfo=true displayMessage=true displayHeader=true displayRegisterScriptsAndStyles=false displayLoginFormScriptsAndStyles=false displaySocial=true>
+<#macro registrationLayout bodyClass="" displayInfo=true displayMessage=true displayHeader=true displayRegisterScriptsAndStyles=false displayLoginFormScriptsAndStyles=false displayUsernameFormScriptsAndStyles=false displayPasswordFormScriptsAndStyles=false displaySocial=true>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
 
@@ -98,6 +98,7 @@
                                 class="login-disclaimer"
                                 type="<#if message.type = 'error'>error<#elseif message.type = 'warning'>attention<#elseif message.type = 'success'>success<#else>informational</#if>"
                                 description="${kcSanitize(message.summary)}"
+                                role="alert"
                             ></unnnic-disclaimer>
                         </#if>
                     </#if>
@@ -158,6 +159,7 @@
                     VTEXAppEmail,
                     usernameInput: VTEXAppEmail || '${((login.username)!'')}',
                     passwordInput: '',
+                    submitting: false,
                     logoutSessions: true,
                     newPasswordInput: '',
                     confirmPasswordInput: '',
@@ -197,8 +199,10 @@
                     <#if displayLoginFormScriptsAndStyles>
                         loginUsername: '',
                         loginPassword: '',
-                        loginPasswordVisible: false,
                         rememberMe: <#if login?? && login.rememberMe??>true<#else>false</#if>,
+                    </#if>
+                    <#if displayLoginFormScriptsAndStyles || displayPasswordFormScriptsAndStyles>
+                        loginPasswordVisible: false,
                     </#if>
                 };
             },
@@ -228,6 +232,16 @@
                     canLogin() {
                         const usernameValid = <#if realm.registrationEmailAsUsername>this.isEmailValid(this.usernameInput)<#else>this.usernameInput && this.usernameInput.trim().length > 0</#if>;
                         return usernameValid && this.passwordInput && this.passwordInput.trim().length > 0;
+                    },
+                </#if>
+                <#if displayUsernameFormScriptsAndStyles>
+                    canSubmitUsername() {
+                        return <#if realm.registrationEmailAsUsername>this.isEmailValid(this.usernameInput)<#else>this.usernameInput && this.usernameInput.trim().length > 0</#if>;
+                    },
+                </#if>
+                <#if displayPasswordFormScriptsAndStyles>
+                    canSubmitPassword() {
+                        return this.passwordInput && this.passwordInput.trim().length > 0;
                     },
                 </#if>
                 canUpdatePassword() {
@@ -325,7 +339,14 @@
                     })
                 }
 
-                <#if displayLoginFormScriptsAndStyles>
+                <#if displayUsernameFormScriptsAndStyles>
+                    this.bindAutofillReconciliation('loginUsername', 'usernameInput');
+                </#if>
+                <#if displayPasswordFormScriptsAndStyles>
+                    this.bindAutofillReconciliation('password', 'passwordInput');
+                </#if>
+
+                <#if displayLoginFormScriptsAndStyles || displayUsernameFormScriptsAndStyles>
                     function emitConnectEvent(name, content) {
                         const data = {
                             pathname: window.location.pathname,
@@ -387,6 +408,41 @@
 
                 toggleConfirmPasswordVisibility() {
                     this.confirmPasswordVisible = !this.confirmPasswordVisible;
+                },
+
+                copyAutofillValueIntoModel(refName, modelKey) {
+                    const component = this.$refs[refName];
+                    if (!component || !component.$el) return;
+                    const input = component.$el.querySelector('input');
+                    if (!input) return;
+                    this[modelKey] = input.value;
+                },
+
+                bindAutofillReconciliation(refName, modelKey) {
+                    const component = this.$refs[refName];
+                    if (!component || !component.$el) return;
+                    const input = component.$el.querySelector('input');
+                    if (!input) return;
+
+                    const copyValue = () => this.copyAutofillValueIntoModel(refName, modelKey);
+                    copyValue();
+                    input.addEventListener('input', copyValue);
+                    input.addEventListener('change', copyValue);
+                    input.addEventListener('animationstart', (event) => {
+                        if (event.animationName === 'onAutoFillStart') {
+                            copyValue();
+                        }
+                    });
+
+                    let framesRemaining = 8;
+                    const retryUntilPasswordManagerSettles = () => {
+                        copyValue();
+                        framesRemaining -= 1;
+                        if (framesRemaining > 0) {
+                            requestAnimationFrame(retryUntilPasswordManagerSettles);
+                        }
+                    };
+                    requestAnimationFrame(retryUntilPasswordManagerSettles);
                 },
             },
         });

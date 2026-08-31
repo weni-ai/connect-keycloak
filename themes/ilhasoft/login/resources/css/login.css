@@ -756,3 +756,129 @@ button,
   margin: 0;
 }
 
+/* Scoped to login-username.ftl so these rules cannot leak onto screens FR-013 freezes. */
+.login-username {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.login-username:has(> form) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login-username form {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.login-username input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
+
+.login-username .social-login-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 16px;
+    max-width: 100%;
+}
+
+.login-username .social-button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+}
+
+.login-username .social-button img {
+    max-width: 100%;
+    max-height: 20px;
+    object-fit: contain;
+    overflow: hidden;
+    font-size: 0;
+}
+
+/* Scoped to login-password.ftl so these rules cannot leak onto screens FR-013 freezes. */
+.login-password {
+    position: relative;
+    min-width: 0;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login-password form {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.login-password-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.login-password-toggle:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: visible;
+    font: var(--unnnic-font-caption-2);
+    color: var(--unnnic-color-fg-muted);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-password input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.login-password-identity {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--unnnic-space-2) var(--unnnic-space-4);
+    min-width: 0;
+    max-width: 100%;
+}
+
+.login-password-attempted-username {
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-fg-emphasized);
+    overflow-wrap: anywhere;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.login-password-change-email {
+    font: var(--unnnic-font-body);
+    color: var(--unnnic-color-fg-muted);
+    text-decoration: underline;
+    white-space: nowrap;
+    flex: 0 0 auto;
+}
+
+.login-password .forgot-password a {
+    color: var(--unnnic-color-fg-muted);
+    text-decoration: none;
+    font: var(--unnnic-font-body);
+}
+
