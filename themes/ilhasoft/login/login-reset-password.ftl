@@ -34,16 +34,18 @@
                     type="primary" native-type="submit" :disabled="!isEmailValid(usernameInput)"></unnnic-button>
             </div>
 
-            <div id="separator-group">
-                <div class="separator"></div>
-            </div>
+            <#if realm.registrationAllowed>
+                <div id="separator-group">
+                    <div class="separator"></div>
+                </div>
 
-            <section class="sign-up-button-container">
-                <p class="sign-up-button-text">${msg('signUpForFree')}</p>
-                <unnnic-button class="sign-up-button" size="large"
-                    text="${msg('doRegisterForFree')}" type="secondary"
-                    @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
-            </section>
+                <section class="sign-up-button-container">
+                    <p class="sign-up-button-text">${msg('signUpForFree')}</p>
+                    <unnnic-button class="sign-up-button" size="large"
+                        text="${msg('doRegisterForFree')}" type="secondary"
+                        @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
+                </section>
+            </#if>
 
             <div class="footer">
                 <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">

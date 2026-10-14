@@ -41,7 +41,7 @@
         </div>
     <#elseif section = "info">
         <div class="login-username">
-            <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+            <#if realm.password && !registrationDisabled??>
                 <#if social.providers?? && social.providers?has_content>
                     <div v-if="!VTEXAppEmail" id="separator-group">
                         <div class="separator"></div>
@@ -66,14 +66,16 @@
                     </#list>
                     </#if>
                 </section>
-                <div v-if="!VTEXAppEmail" id="kc-registration">
-                    <section class="sign-up-button-container">
-                        <p class="sign-up-button-text">${msg('signUpForFree')}</p>
-                        <unnnic-button class="sign-up-button" size="large"
-                            text="${msg('doRegisterForFree')}" type="secondary"
-                            @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
-                    </section>
-                </div>
+                <#if realm.registrationAllowed>
+                    <div v-if="!VTEXAppEmail" id="kc-registration">
+                        <section class="sign-up-button-container">
+                            <p class="sign-up-button-text">${msg('signUpForFree')}</p>
+                            <unnnic-button class="sign-up-button" size="large"
+                                text="${msg('doRegisterForFree')}" type="secondary"
+                                @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
+                        </section>
+                    </div>
+                </#if>
             </#if>
             <div class="footer">
                 <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">

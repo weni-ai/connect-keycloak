@@ -97,7 +97,7 @@
                             <unnnic-disclaimer
                                 class="login-disclaimer"
                                 type="<#if message.type = 'error'>error<#elseif message.type = 'warning'>attention<#elseif message.type = 'success'>success<#else>informational</#if>"
-                                description="${kcSanitize(message.summary)}"
+                                description="${message.summary}"
                                 role="alert"
                             ></unnnic-disclaimer>
                         </#if>

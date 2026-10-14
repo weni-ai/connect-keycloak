@@ -10,12 +10,14 @@
                             <@loginLayout.loginLayout></@loginLayout.loginLayout>
                         </#if>
                         <#elseif section="info">
-                            <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
+                            <#if realm.password && !usernameEditDisabled??>
+                                <#if realm.registrationAllowed || (social.providers?? && social.providers?has_content)>
                                 <div v-if="!VTEXAppEmail" id="separator-group">
                                     <div class="separator"></div>
                                     <span class="separator-text">${msg("separatorMessage")}</span>
                                     <div class="separator"></div>
                                 </div>
+                                </#if>
                                 <section class="social-login-container">
                                     <#if realm.password?? && social.providers??>
                                     <#list social.providers as p>
@@ -32,6 +34,7 @@
                                     </#list>
                                     </#if>
                                 </section>
+                                <#if realm.registrationAllowed>
                                 <div v-if="!VTEXAppEmail" id="kc-registration">
                                     <section class="sign-up-button-container">
                                         <p class="sign-up-button-text">${msg('signUpForFree')}</p>
@@ -40,6 +43,7 @@
                                             @click.prevent="navigateTo('${url.registrationUrl}')"></unnnic-button>
                                     </section>
                                 </div>
+                                </#if>
                             </#if>
                             <div class="footer">
                                 <a class="privacy-policy" target="_blank" href="${properties.urlPrivacyPolicy!}">
