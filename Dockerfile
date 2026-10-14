@@ -1,11 +1,11 @@
-FROM quay.io/keycloak/keycloak:26.2.0
+FROM quay.io/keycloak/keycloak:26.7.3
 
 USER root
 
 COPY ./keycloak-user-migration/ /project
 RUN cd /project && sh ./mvnw clean package
 
-FROM quay.io/keycloak/keycloak:26.2.0
+FROM quay.io/keycloak/keycloak:26.7.3
 USER root
 
 COPY --from=0 /project/target/*.jar /opt/jboss/keycloak/standalone/deployments/app.jar
