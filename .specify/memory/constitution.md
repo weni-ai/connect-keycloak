@@ -1,53 +1,37 @@
 <!--
 Sync Impact Report
 ==================
-Version change: 1.0.0 → 2.0.0
-Bump rationale: MAJOR. Governance is redefined: the VTEX CX engineering base
-constitutions (root + frontend) now take precedence over the project layer, and
-the former "Evidence rule" is narrowed to project-layer rules. Principle VI is
-redefined (its secrets clause moves to Principle VIII). New MUST rules make an
-existing artifact non-conformant (spec 001 inheritance format, see TODOs).
-Principles I–VI keep their numbers so existing spec references stay valid.
+Version change: 2.0.0 → 2.1.0
+Bump rationale: MINOR. Re-sync with the root base constitution, which now
+accepts engineering specs born without a product spec. Principle XI gains a
+second, equally valid origin path and Principle XII is scoped to derived
+specs. Every spec valid under 2.0.0 stays valid, so no principle is removed
+or redefined incompatibly. The frontend base is unchanged since the last sync.
 
 Modified principles:
-- III. Four-Locale User-Facing Copy → III. Four-Locale User-Facing Copy and
-  Internationalization (absorbs frontend "Internationalization")
-- IV. One Design System (absorbs the design-token rule of frontend "Styling
-  Standards", instantiated as the `--unnnic-*` custom properties)
-- VI. Bounded Scope (secrets clause moved to VIII)
+- XI. Specification Traceability: adds the "Origin Without Product Spec"
+  path and its exact opening format; the inheritance format is now required
+  only for specs derived from a product spec; a product spec that exists but
+  cannot be pinned is a blocker, not an absence (root base)
+- XII. No Silent Divergence: applies only to specs derived from a product
+  spec (root base)
 
-Added principles:
-- VII. Version Control and Review (root)
-- VIII. Security and Secrets (root)
-- IX. Observability (root)
-- X. Versioned Contracts (root)
-- XI. Specification Traceability (root)
-- XII. No Silent Divergence (root)
-- XIII. Commit Messages (root)
-- XIV. Release Versioning and Changelog (root "Changelog Maintenance")
-- XV. Code as Documentation (frontend)
-- XVI. Type Safety (frontend, with explicit project exception)
-- XVII. Single Responsibility (frontend)
-- XVIII. Naming Conventions (frontend, with explicit in-DOM component exception)
-- XIX. Component Architecture (frontend)
-- XX. Styling Standards and BEM (frontend "Styling Standards" + "BEM Methodology")
-- XXI. State Management (frontend)
-- XXII. Async State Correctness (frontend)
-- XXIII. API Integration and Data Boundaries (frontend "API Integration" +
-  "API and Data Boundaries")
-
-Added sections:
-- Quality Standards: Testing, Accessibility, Performance, Defensive
-  Programming, Maintainability (frontend)
-
-Modified sections:
-- Development Workflow: product-spec inheritance, commit, and pull-request steps
-- Governance: precedence chain, applicability, transition rule for specs
-  planned under 1.0.0, evidence rule scoped to the project layer
-
+Added principles: none.
+Removed principles: none.
+Added sections: none.
 Removed sections: none.
 
-Explicit exceptions to base articles (each justified in its article):
+Modified sections:
+- Runtime & Delivery Constraints / Keycloak version: the reference image is
+  now `quay.io/keycloak/keycloak:26.7.3`, as pinned in `Dockerfile` and
+  `docker-compose.yml` (was 26.2.0); records the release packaging image
+  `bitnamilegacy/keycloak:26.3.2-debian-12-r0`
+- Development Workflow step 1: "Start from a product spec" → "Establish the
+  origin", covering both XI paths
+- Governance / Compliance: reviewers check either origin section
+- Governance / Transition: refers to the current version, not 2.0.0
+
+Explicit exceptions to base articles (unchanged, each justified in its article):
 - XVI Type Safety: TypeScript not required while Principle I forbids a build step
 - XVIII Naming Conventions: in-DOM Vue components are kebab-case
 - XIX Component Architecture: `.ftl` templates cannot be grouped in folders
@@ -57,11 +41,17 @@ Explicit exceptions to base articles (each justified in its article):
 - XIV: Keep a Changelog is scoped to public libraries; this repo is a deployable
 
 Templates:
-- .specify/templates/spec-template.md ⚠ pending: has no "Inheritance from
-  Product Spec" section required by XI. Authors add it by hand until the
-  template is updated in a separate change.
-- .specify/templates/plan-template.md ✅ no change (Constitution Check is generic)
+- .specify/presets/vtex-cx-engineering/templates/spec-template.md ✅ provides
+  both XI opening sections ("Inheritance from Product Spec" and "Origin
+  Without Product Spec"). The preset directory is not committed yet; commit
+  it with this change so `/speckit-specify` resolves it. This resolves the
+  2.0.0 pending note on `.specify/templates/spec-template.md`.
+- .specify/templates/plan-template.md ✅ no change (the preset appends its
+  additions; Constitution Check is generic)
 - .specify/templates/tasks-template.md ✅ no change
+
+History: 1.0.0 → 2.0.0 (2026-10-01) adopted the root and frontend bases as
+Principles VII–XXIII and Quality Standards, with the exceptions above.
 
 Follow-up TODOs (current state that does not yet comply):
 - TODO(PR_CI): no workflow runs on pull requests; VII requires a green CI run.
@@ -91,7 +81,8 @@ Follow-up TODOs (current state that does not yet comply):
 - TODO(TEMPLATE_SIZE): `login/template.ftl` is 503 lines, above the XVII limit.
 
 Provenance:
-- Source: weni-ai/vtex-cx-engineering-constitutions (main @ a516a7c0c25a24486f965c2875d47c62d27c637c)
+- Source: weni-ai/vtex-cx-engineering-constitutions (main @ 74ce306cb760341d63be6836c29e3a440b696565)
+- Previous sync: a516a7c0c25a24486f965c2875d47c62d27c637c
 - Bases: base-constitution.md, frontend/base-constitution.md
 - Domains: frontend
 - Project layer: this repository (Keycloak 26 theme `ilhasoft` + vendored
@@ -277,7 +268,12 @@ predictable path to adapt without a login outage.
 
 ### XI. Specification Traceability
 
-Every engineering spec in `specs/<NNN-name>/spec.md` MUST derive from exactly one
+An engineering spec in `specs/<NNN-name>/spec.md` either derives from a product spec or
+originates in engineering. Both are regular paths; neither requires a justification, and
+either may follow the full or the lite cycle. Whether a product spec exists is stated by
+the author, never assumed.
+
+When the change has a product spec, the engineering spec MUST derive from exactly one
 approved product spec (product specs live in `weni-ai/vtex-cx-experience-specs`) and
 MUST reference it through an immutable, pinned version (commit or tag); a mutable URL,
 branch name, or ID alone MUST NOT be used. The product spec MUST exist and be tagged
@@ -285,9 +281,11 @@ before its engineering spec is created. An engineering spec MUST NOT redefine th
 "what" it inherits: problem, scope, success criteria, and binding decisions belong to
 the product spec. A technical architecture document SHOULD be produced for non-trivial
 features; when it exists it MUST be linked from the engineering spec, pinned by commit
-or tag, but its absence MUST NOT block the engineering spec.
+or tag, but its absence MUST NOT block the engineering spec. A product spec that exists
+but cannot be pinned blocks the engineering spec; it is not treated as absent.
 
-Every engineering spec MUST open with an inheritance section in exactly this format:
+An engineering spec derived from a product spec MUST open with an inheritance section
+in exactly this format:
 
 ```
 ## Inheritance from Product Spec
@@ -299,10 +297,26 @@ Every engineering spec MUST open with an inheritance section in exactly this for
 - Divergences: <none | link to amendment>
 ```
 
-**Rationale:** Traceability from product intent to technical execution keeps decisions
-auditable. Pinning guarantees every team implements the same version of the feature
-instead of divergent readings of a spec that changed mid-flight. A single inheritance
-format keeps the link machine-checkable across repositories.
+An engineering spec without a product spec — a hotfix, a fix, technical debt such as
+the TODOs in this document's Sync Impact Report — states its own "what" and MUST open
+with an origin section in exactly this format:
+
+```
+## Origin Without Product Spec
+- Product Spec: none
+- Problem: <what is wrong or missing, in one or two sentences>
+- Acceptance criteria: <observable outcomes that prove the change is done>
+```
+
+Its acceptance criteria are what the change is verified against, including the
+container verification required by Quality Standards / Testing.
+
+**Rationale:** Traceability from intent to technical execution keeps decisions
+auditable. When a change is born in product, pinning the product spec guarantees every
+team implements the same version of the feature instead of divergent readings of a
+spec that changed mid-flight. When a change is born in engineering, the spec itself is
+the origin, so its problem and acceptance criteria are the audit trail. A fixed opening
+format for each path keeps the origin machine-checkable across repositories.
 
 ### XII. No Silent Divergence
 
@@ -313,6 +327,8 @@ and recorded in the `Divergences` field of the engineering spec's inheritance se
 linking to that amendment. Once the amendment is approved and tagged, the engineering
 spec's `Pinned version` MUST be updated to it. A technical difference that contradicts
 nothing inherited is an implementation decision and MUST live in the engineering spec.
+This principle applies only to engineering specs derived from a product spec; a spec
+with an `Origin Without Product Spec` section inherits nothing it could diverge from.
 
 **Rationale:** The product spec is the single source of truth. A silent code deviation
 makes intent and implementation drift apart with no audit trail.
@@ -549,8 +565,12 @@ creates coupling worse than the duplication it removes.
 
 ## Runtime & Delivery Constraints
 
-- **Keycloak version**: Keycloak 26 (`quay.io/keycloak/keycloak:26.2.0`) is the reference
-  runtime. Template and `theme.properties` syntax MUST be valid for that version.
+- **Keycloak version**: Keycloak 26 is the reference runtime, at the image pinned in both
+  `Dockerfile` and `docker-compose.yml` (currently `quay.io/keycloak/keycloak:26.7.3`).
+  The two pins MUST match. Template and `theme.properties` syntax MUST be valid for that
+  version. The release job packages the archives inside
+  `bitnamilegacy/keycloak:26.3.2-debian-12-r0`; templates MUST NOT rely on features
+  newer than the oldest Keycloak 26 image in use.
 - **Local runtime**: theme work MUST be verified against the Docker Compose setup, which
   mounts `themes/ilhasoft/` into the container and disables theme caching
   (`--spi-theme-cache-themes=false`, `--spi-theme-cache-templates=false`). "It looks right
@@ -566,8 +586,9 @@ creates coupling worse than the duplication it removes.
 
 ## Development Workflow
 
-1. **Start from a product spec.** Open the engineering spec with the inheritance section
-   from Principle XI, pinned to a tagged product spec.
+1. **Establish the origin.** Open the engineering spec with the inheritance section from
+   Principle XI, pinned to a tagged product spec, or with the `Origin Without Product
+   Spec` section when the change is born in engineering.
 2. **Locate before writing.** Identify the exact `.ftl`, `theme.properties`, CSS file, or
    message keys involved, and confirm which of the four theme types (`login`, `account`,
    `admin`, `email`) is affected.
@@ -606,8 +627,8 @@ corrected. Plans MUST pass the Constitution Check against the current version, a
 - **Versioning** follows semantic versioning: MAJOR for removing or redefining a principle
   or governance rule in a backward-incompatible way, MINOR for adding a principle or
   materially expanding guidance, PATCH for clarifications and wording.
-- **Compliance** is verified at review time. Reviewers MUST check the spec's pinned
-  inheritance section, locale parity, that the change stayed inside its stated scope,
+- **Compliance** is verified at review time. Reviewers MUST check the spec's origin
+  section (pinned inheritance or origin without product spec), locale parity, that the change stayed inside its stated scope,
   that no Keycloak flow contract or public interface was silently changed, commit
   format, and that no secret or personal data was committed or logged.
 - **Justified divergence** from a project-layer rule is allowed but never silent: it MUST
@@ -615,11 +636,11 @@ corrected. Plans MUST pass the Constitution Check against the current version, a
   MUST NOT waive a MUST derived from the base constitutions; that requires an explicit
   exception in this document, justified in the article.
 - **Transition**: specs planned under 1.0.0 (`specs/001-okta-login-theme`) remain valid
-  for their delivered scope and MUST be brought into compliance with this version,
-  including the Principle XI inheritance format, when next amended.
+  for their delivered scope and MUST be brought into compliance with the current
+  version, including the Principle XI inheritance format, when next amended.
 - **Evidence rule**: project-layer rules are added here only when this repository
   evidences them; a practice borrowed from another stack MUST NOT be added on the
   assumption it applies. Base-derived rules apply by default and are adapted to this
   repository, or excepted with justification, never silently dropped.
 
-**Version**: 2.0.0 | **Ratified**: 2026-08-26 | **Last Amended**: 2026-10-01
+**Version**: 2.1.0 | **Ratified**: 2026-08-26 | **Last Amended**: 2026-10-28
